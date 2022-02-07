@@ -1,0 +1,56 @@
+body {
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    font-size: 100%;
+    background-color: cadetblue;
+    background-size: cover;
+    font-smooth: auto;
+}
+
+h1#welcomemsg{
+    text-align: center;
+    padding-top: 2em;
+}
+
+div#loginbox{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    z-index: 15;
+    top: 40%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+}
+
+div#loginbox table caption{
+    font-size: 0%;
+}
+
+div#loginbox table img{
+    background: aliceblue;
+    border-radius: 100px;
+}
+
+div#loginbox table fieldset{
+    background: transparent;
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+div#loginbox table [type=submit] {
+    background-color: cornflowerblue;
+    color: white;
+    height: 3em;
+    width: 100%;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 2em;
+}
+
+div#loginbox table input[type=text]{
+    height: 2em;
+    width: 100%;
+    margin-left: 2em;
+}
+
+
