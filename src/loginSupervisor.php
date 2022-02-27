@@ -1,8 +1,14 @@
 <?php
 
 //Change credentials here if differ
-$user_login = 'root';
-$password_login = '';
+//User credentials
+$user_login = _GET['username'];
+$user_password = _GET['password'];
+
+
+//Database credentials
+$db_login_username = 'root';
+$db_login_password = '';
 $db = 'fypfinal';
 
 //Connect to database

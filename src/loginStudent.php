@@ -1,12 +1,18 @@
 <?php
 
 //Change credentials here if differ
-$user_login = 'root';
-$password_login = '';
+//User credentials
+$user_login = _GET['username'];
+$user_password = _GET['password'];
+
+
+//Database credentials
+$db_login_username = 'root';
+$db_login_password = '';
 $db = 'fypfinal';
 
 //Connect to database
-$db = new mysqli('localhost', $user_login, $password_login, $db) or die("Unabe to connect");
+$db = new mysqli('localhost', $db_login_username, $db_login_password, $db) or die("Unabe to connect");
 
 //Cross check with the database
 $advisor_check_query = "SELECT * FROM Student WHERE USER_ID = '$user_login'";
