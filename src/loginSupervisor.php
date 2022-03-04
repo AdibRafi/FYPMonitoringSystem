@@ -34,3 +34,5 @@ if ($advisor) {
 else {
     echo "ERROR: Login broke";
 }
+
+?>

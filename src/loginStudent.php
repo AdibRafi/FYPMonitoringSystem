@@ -34,3 +34,5 @@ if ($student) {
 else {
     echo "ERROR: Login broke";
 }
+
+?>
