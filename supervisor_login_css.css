@@ -1,42 +1,55 @@
 body {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    background-color: cadetblue;
+    background: url("src/supervisor_login_background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    font-smooth: auto;
 }
 
-h1#welcomemsg{
+/* Font Smoothing */
+font{
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+h1#welcome-msg{
     text-align: center;
     padding-top: 2em;
+    padding-bottom: 2em;
+    position: sticky;
 }
 
-div#loginbox{
-    position: absolute;
+div#login-box{
     width: 300px;
     height: 200px;
     z-index: 15;
-    top: 40%;
-    left: 50%;
-    margin: -100px 0 0 -150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-div#loginbox table caption{
-    font-size: 0%;
-}
+/*div#login-box table caption{*/
+/*    font-size: 0%;*/
+/*}*/
 
-div#loginbox table img{
-    background: aliceblue;
+div#login-box table img{
+    height: 70%;
+    width: 70%;
+    padding: 0.2em 0.2em;
+    background-color: aliceblue;
     border-radius: 100px;
 }
 
-div#loginbox table fieldset{
+
+div#login-box table fieldset{
     background: transparent;
     padding: 0.5em;
     margin: 0.5em;
 }
 
-div#loginbox table [type=submit] {
+div#login-box table [type=submit] {
     background-color: cornflowerblue;
     color: white;
     height: 3em;
@@ -44,13 +57,13 @@ div#loginbox table [type=submit] {
     border-style: none;
     font-weight: bold;
     border-radius: 10px;
-    margin-left: 2em;
+    margin-left: 0.5em;
 }
 
-div#loginbox table input[type=text]{
+div#login-box table input{
     height: 2em;
     width: 100%;
-    margin-left: 2em;
+    margin-left: 0.5em;
 }
 
 

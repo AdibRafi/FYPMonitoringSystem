@@ -7,10 +7,10 @@
 </head>
 
 <body>
-<form  method="get" action="http://www.randyconnolly.com/tests/process.php">
+<form  method="get">
 
-        <h1 id="welcomemsg">Welcome, Supervisor.</h1>
-        <div id="loginbox">
+        <h1 id="welcome-msg">Welcome, Supervisor.</h1>
+        <div id="login-box">
 
             <table>
                 <tr>
@@ -19,26 +19,35 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="src/person_128px.png">
+                        <img src="src/person_128px.png" alt="username icon">
                     </td>
                     <td>
-                        <input type="text" name="username" placeholder="Username" value="" required/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="src/lock_128px.png">
-                    </td>
-                    <td>
-                        <input type="text" name="password" placeholder="Password" value="" required/>
+                        <label>
+                            <input type="text" name="username" placeholder="Username" value="" required/>
+                        </label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="src/login_128px.png">
+                        <img src="src/lock_128px.png" alt="password icon">
+                    </td>
+                    <td>
+                        <label>
+                            <input type="password" name="password" placeholder="Password" value="" required/>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="src/login_128px.png" alt="login icon">
                     </td>
                     <td>
                         <input type="submit" value="Login">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p>Don't have any account? <a href=""> Sign Up</a></p>
                     </td>
                 </tr>
             </table>
