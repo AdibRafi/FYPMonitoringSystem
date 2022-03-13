@@ -57,6 +57,7 @@ body{
 
 .container{
     display: flex;
+    background-color: azure;
 }
 
 .sidebar-item-list{
@@ -79,11 +80,24 @@ body{
 }
 
 .content{
+    display: flex;
     margin: 1rem;
+    background-color: azure;
+    overflow-x: auto;
+    overflow-y: auto;
+    position: relative;
+    width: 100%;
 }
 
 .welcome-msg{
     display: inline;
     padding-left: 1rem;
 }
+.content .content-iframe{
+    border: none;
+    position: relative;
+    width: 100%;
+}
+
+
 
