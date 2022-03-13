@@ -1,4 +1,4 @@
-body{
+body {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
     background-color: azure;
@@ -10,6 +10,6 @@ body{
     padding: 0;
 }
 
-table#people-box .supervisor{
+.people-box .supervisor{
     padding-left: 2rem;
 }

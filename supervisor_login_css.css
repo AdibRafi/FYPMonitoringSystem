@@ -15,14 +15,14 @@ font{
     -webkit-font-smoothing: antialiased !important;
 }
 
-h1#welcome-msg{
+.welcome-msg{
     text-align: center;
     padding-top: 2em;
     padding-bottom: 2em;
     position: sticky;
 }
 
-div#login-box{
+.login-box{
     width: 300px;
     height: 200px;
     z-index: 15;
@@ -34,7 +34,7 @@ div#login-box{
 /*    font-size: 0%;*/
 /*}*/
 
-div#login-box table img{
+.login-box table img{
     height: 70%;
     width: 70%;
     padding: 0.2em 0.2em;
@@ -43,13 +43,13 @@ div#login-box table img{
 }
 
 
-div#login-box table fieldset{
+.login-box table fieldset{
     background: transparent;
     padding: 0.5em;
     margin: 0.5em;
 }
 
-div#login-box table [type=submit] {
+.login-box table [type=submit] {
     background-color: cornflowerblue;
     color: white;
     height: 3em;
@@ -60,7 +60,7 @@ div#login-box table [type=submit] {
     margin-left: 0.5em;
 }
 
-div#login-box table input{
+.login-box table input{
     height: 2em;
     width: 100%;
     margin-left: 0.5em;
