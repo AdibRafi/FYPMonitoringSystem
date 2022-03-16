@@ -12,5 +12,5 @@
     $db = 'fypfinal';
 
     //Connect to database
-    $db = new mysqli('localhost', $db_login_username, $db_login_password, $db) or die("Unabe to connect");
+    $db = new mysqli('localhost', $db_login_username, $db_login_password, $db) or die("Unable to connect");
 ?>
