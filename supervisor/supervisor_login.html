@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Supervisor Login</title>
     <link rel="stylesheet" href="css/supervisor_login_css.css">
+    <script type="text/javascript" src="js/supervisor_login.js"></script>
 </head>
 
 <body>
-<form  method="get">
+<form  method="get" id="mainForm">
 
         <h1 class="welcome-msg">Welcome, Supervisor.</h1>
         <div class="login-box">
@@ -23,7 +24,8 @@
                     </td>
                     <td>
                         <label>
-                            <input type="text" name="username" placeholder="Username" value="" required/>
+                            <input type="text" name="username" placeholder="Username" value=""
+                            required/>
                         </label>
                     </td>
                 </tr>
@@ -33,7 +35,8 @@
                     </td>
                     <td>
                         <label>
-                            <input type="password" name="password" placeholder="Password" value="" required/>
+                            <input type="password" name="password" placeholder="Password" value=""
+                            required/>
                         </label>
                     </td>
                 </tr>

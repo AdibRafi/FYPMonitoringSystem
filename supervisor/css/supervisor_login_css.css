@@ -30,6 +30,12 @@ font{
     margin-right: auto;
 }
 
+.error{
+    background: #FFCDD2 url(error.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #FF5252;
+    border-color: #FF1744;
+}
+
 /*div#login-box table caption{*/
 /*    font-size: 0%;*/
 /*}*/
