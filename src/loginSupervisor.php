@@ -24,11 +24,16 @@ $advisor = $result_query->fetch_assoc();
 if ($advisor) {
 
     if ($advisor['supervisor_username'] === $user_login && $advisor['supervisor_password'] == $user_password) {
-        echo "Log in successful!";
+        echo ("<script>
+                window.alert('Log in successful!');
+                window.location.href='../supervisor/supervisor_dashboard.html';
+                </script>");
     }
-
     else {
-        echo "Log in failed!";
+        echo ("<script>
+                window.alert('Log in failed!');
+                window.location.href='../supervisor/supervisor_login.html';
+                </script>");
     }
 
 }
