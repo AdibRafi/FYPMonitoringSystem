@@ -13,4 +13,12 @@
 
     //Connect to database
     $db = new mysqli('localhost', $db_login_username, $db_login_password, $db) or die("Unabe to connect");
+
+    //Run commands to insert into the database
+    //Get ID of latest data entry
+    $get_check_query = "SELECT USER_ID FROM Student"
+
+    //Append 1 to ID
+
+    //Insert data into database accordingly 
 ?>
