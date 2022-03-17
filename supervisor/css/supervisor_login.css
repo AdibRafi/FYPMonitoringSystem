@@ -1,7 +1,7 @@
 body {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    background: url("src/icon/supervisor_login_background.jpg") no-repeat center center fixed;
+    background: url("../../src/icon/supervisor_login_background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -28,6 +28,12 @@ font{
     z-index: 15;
     margin-left: auto;
     margin-right: auto;
+}
+
+.error{
+    background: #FFCDD2 url(error.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #FF5252;
+    border-color: #FF1744;
 }
 
 /*div#login-box table caption{*/

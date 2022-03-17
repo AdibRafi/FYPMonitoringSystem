@@ -2,8 +2,8 @@
 
 //Change credentials here if differ
 //User credentials
-$user_login = _GET['username'];
-$user_password = _GET['password'];
+$user_login = $_GET['username'];
+$user_password = $_GET['password'];
 
 
 //Database credentials

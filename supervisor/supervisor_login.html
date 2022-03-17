@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Supervisor Login</title>
-    <link rel="stylesheet" href="supervisor_login_css.css">
+    <link rel="stylesheet" href="css/supervisor_login.css">
+    <script type="text/javascript" src="js/supervisor_login.js"></script>
 </head>
 
 <body>
-<form  method="get">
+<form  action="../src/loginSupervisor.php" method="get" id="mainForm">
 
-        <h1 class="welcome-msg">Welcome, Supervisor.</h1>
+        <h1 class="welcome-msg">Login as Supervisor</h1>
         <div class="login-box">
 
             <table>
@@ -19,27 +20,29 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="src/icon/person_128px.png" alt="username icon">
+                        <img src="../src/icon/person_128px.png" alt="username icon">
                     </td>
                     <td>
                         <label>
-                            <input type="text" name="username" placeholder="Username" value="" required/>
+                            <input type="text" name="username" placeholder="Username" value=""
+                            class="required"/>
                         </label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="src/icon/lock_128px.png" alt="password icon">
+                        <img src="../src/icon/lock_128px.png" alt="password icon">
                     </td>
                     <td>
                         <label>
-                            <input type="password" name="password" placeholder="Password" value="" required/>
+                            <input type="password" name="password" placeholder="Password" value=""
+                            class="required"/>
                         </label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="src/icon/login_128px.png" alt="login icon">
+                        <img src="../src/icon/login_128px.png" alt="login icon">
                     </td>
                     <td>
                         <input type="submit" value="Login">
@@ -47,7 +50,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <p>Don't have any account? <a href=""> Sign Up</a></p>
+                        <p>Don't have any account? <a href="supervisor_register.html"> Sign Up</a></p>
                     </td>
                 </tr>
             </table>
