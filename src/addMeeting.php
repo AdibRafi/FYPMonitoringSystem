@@ -1,10 +1,10 @@
 <?php
     //Get data required to insert into the table
-    $student_user = _GET['user_id'];
-    $advisor_user = _GET['advisor_id'];
-    $time = _GET['timestamp'];
-    $place = _GET['location'];
-    $duration = _GET['duration'];
+    $student_user = $_GET['user_id'];
+    $advisor_user = $_GET['advisor_id'];
+    $time = $_GET['timestamp'];
+    $place = $_GET['location'];
+    $duration = $_GET['duration'];
 
     //Check if student is in database
 

@@ -1,9 +1,9 @@
 <?php
     //Get data required to insert into the table
-    $student_user = _GET['user_id'];
-    $progress = _GET['percentage'];
-    $project = _GET['project_id'];
-    $name = _GET['user_name'];
+    $student_user = $_GET['user_id'];
+    $progress = $_GET['percentage'];
+    $project = $_GET['project_id'];
+    $name = $_GET['user_name'];
 
     //Check if student is in database
 

@@ -1,9 +1,9 @@
 <?php
     //Get data required to insert into the table
-    $name_mark = _GET['mark_name'];
-    $percentage = _GET['percentage'];
-    $advisor_id = _GET['advisor_id'];
-    $user_id = _GET['student_id'];
+    $name_mark = $_GET['mark_name'];
+    $percentage = $_GET['percentage'];
+    $advisor_id = $_GET['advisor_id'];
+    $user_id = $_GET['student_id'];
 
     //Check if student is in database
 
