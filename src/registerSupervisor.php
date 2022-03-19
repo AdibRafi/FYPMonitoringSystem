@@ -1,7 +1,7 @@
 <?php
 
-    include("functions.php");
-    include("database.php");
+    require("functions.php");
+    require("database.php");
 
     //Get registration data
     $supervisor_fullname = $_GET['fullname'];

@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-    include ("../src/functions.php");
-    include ("../src/database.php");
+    require ("../src/functions.php");
+    require ("../src/database.php");
 
     $user_data = checkLogin($con);
 

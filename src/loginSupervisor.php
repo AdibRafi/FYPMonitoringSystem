@@ -2,8 +2,8 @@
 
     session_start();
 
-    include("database.php");
-    include("functions.php");
+    require("database.php");
+    require("functions.php");
 
     //Change credentials here if differ
     //User credentials
