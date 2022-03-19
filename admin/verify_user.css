@@ -1,0 +1,48 @@
+body {
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    font-size: 100%;
+    background: url("../src/icon/supervisor_login_background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Font Smoothing */
+font{
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+.error{
+    background: #FFCDD2 url(../supervisor/css/error.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #FF5252;
+    border-color: #FF1744;
+}
+
+.register-box{
+    margin-top: 4rem;
+    width: 500px;
+    z-index: 15;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+/* Register Button Styling*/
+.register-box [type=submit] {
+    background-color: cornflowerblue;
+    color: white;
+    height: 3em;
+    width: 100%;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 0.5em;
+    margin-bottom: 1rem;
+}
