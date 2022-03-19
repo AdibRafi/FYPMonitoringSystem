@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+    include ("../src/functions.php");
+    include ("../src/database.php");
+
+    $user_data = checkLogin($con);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +19,7 @@
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-             Welcome, Gaylord.
+             Welcome, <?php echo $user_data['supervisor_fullname']?>
         </div>
     </header>
     <div class="container">
@@ -17,7 +27,7 @@
             <div class="middle-sidebar">
                 <ul class="sidebar-item-list">
                     <li>
-                        <a href="supervisor_dashboard.html"><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
+                        <a href="supervisor_dashboard.php"><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
                        <a href="supervisor_project_proposal_management.html"><img class="sidebar-item" src="../src/icon/project_proposal_management_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
@@ -39,7 +49,7 @@
                         <img class="sidebar-item" src="../src/icon/edit_profile_128px.png" alt="edit profile icon" title="Edit Profile">
                     </li>
                     <li>
-                        <a href="supervisor_login.html"><img class="sidebar-item" src="../src/icon/logout_128px.png" alt="logout icon" title="Logout"></a>
+                        <a href="../src/logout.php"><img class="sidebar-item" src="../src/icon/logout_128px.png" alt="logout icon" title="Logout"></a>
                     </li>
                 </ul>
             </div>
