@@ -8,7 +8,13 @@
     //Change credentials here if differ
     //User credentials
     $user_login = $_GET['username'];
-    $user_password = $_GET['password'];
+    if (!preg_match("/^[a-zA-z0-9]+$/",$user_login)) {
+        echo("<script>
+        alert('Invalid login information, please try again!');
+        window.location.href='../supervisor/supervisor_login.html';
+        </script>");
+    }
+    $user_password = addslashes($_GET['password']);
 
     //Cross check with the database
     $advisor_check_query = $con ->prepare("SELECT * FROM supervisor WHERE supervisor_username = ?");
@@ -34,7 +40,6 @@
         }
 
     }
-
     else {
         echo "ERROR: Login broke";
     }
