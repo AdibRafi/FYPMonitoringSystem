@@ -4,13 +4,15 @@ function checkLogin($con){
 
     if(isset($_SESSION['supervisor_id'])){
 
-        $supervisor_username = $_SESSION['supervisor_id'];
-        $query = "select * from supervisor where supervisor_id = '$supervisor_username' limit 1";
-        $result = mysqli_query($con,$query);
+        $supervisor_id = $_SESSION['supervisor_id'];
+        $login_check_query = $con->prepare("select * from supervisor where supervisor_id = ? limit 1");
+        $login_check_query->bind_param("i",$supervisor_id);
+        $login_check_query->execute();
+        $login_check_query_result = $login_check_query->get_result();
 
-        if($result && mysqli_num_rows($result) > 0){
+        if($login_check_query_result && mysqli_num_rows($login_check_query_result) > 0){
 
-            return mysqli_fetch_assoc($result);
+            return mysqli_fetch_assoc($login_check_query_result);
 
         }
     }
