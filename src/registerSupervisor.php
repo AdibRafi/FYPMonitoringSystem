@@ -4,19 +4,20 @@
     include("database.php");
 
     //Get registration data
-    $supervisor_fullname = addslashes($_GET['fullname']);
+    $supervisor_fullname = $_GET['fullname'];
     $supervisor_username = $_GET['username'];
+    $supervisor_password = $_GET['password'];
+    $supervisor_confirmpassword = $_GET['confirmPassword'];
+    $supervisor_age = $_GET['age'];
+    $supervisor_email = $_GET['email'];
+
+    //only allowing user to enter pattern [a-zA-Z0-9] regular expression
     if (!preg_match("/^[a-zA-z0-9]+$/",$supervisor_username)) {
         echo("<script>
         alert('Invalid username, please try again!');
         window.location.href='../supervisor/supervisor_register.html';
         </script>");
     }
-    $supervisor_password = addslashes($_GET['password']);
-    $supervisor_confirmpassword = addslashes($_GET['confirmPassword']);
-    $supervisor_age = addslashes($_GET['age']);
-    $supervisor_email = addslashes($_GET['email']);
-
 
     $duplicate = "select * from supervisor where supervisor_username = ? or supervisor_email = ?";
     $duplicate_query = $con->prepare($duplicate);
