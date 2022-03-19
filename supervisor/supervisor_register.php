@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,12 +41,13 @@
             </div>
             <div class="register-inputfield">
                 <label>
+                    <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
                     <input placeholder="Confirm Password" type="password" name="confirmPassword" value="" class="required">
                 </label>
             </div>
-            <input type="submit" name="register" value="Register">
+            <input type="submit" value="Register">
         </form>
-        <label>Already have an account? <a href="supervisor_login.html">Sign In</a></label>
+        <label>Already have an account? <a href="supervisor_login.php">Sign In</a></label>
     </div>
 
 </body>

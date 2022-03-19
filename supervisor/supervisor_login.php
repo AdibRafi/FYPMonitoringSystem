@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    require ("../src/functions.php");
+    require ("../src/database.php");
+
+    $_SESSION['token'] = getToken(20);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +18,7 @@
 </head>
 
 <body>
+
 <form  action="../src/loginSupervisor.php" method="get" id="mainForm">
 
         <h1 class="welcome-msg">Login as Supervisor</h1>
@@ -45,12 +56,13 @@
                         <img src="../src/icon/login_128px.png" alt="login icon">
                     </td>
                     <td>
+                        <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
                         <input type="submit" value="Login">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <p>Don't have any account? <a href="supervisor_register.html"> Sign Up</a></p>
+                        <p>Don't have any account? <a href="supervisor_register.php"> Sign Up</a></p>
                     </td>
                 </tr>
             </table>
