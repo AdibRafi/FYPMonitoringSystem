@@ -15,13 +15,11 @@
             <th>Password</th>
         </tr>
         <?php
-        $conn = mysqli_connect("localhost", "root", "", "fypfinal");
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+
+        require ("../src/database.php");
 
         $sql = "SELECT * from Student";
-        $result = $conn->query($sql);
+        $result = $con->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr><td>".$row["USER_ID"]."</td><td>".$row["NAME"]."</td><td>".$row["PASSWORD"]."</td></tr>";
@@ -31,7 +29,7 @@
         else
             echo "0 result";
 
-        $conn->close();
+        $con->close();
         ?>
     </table>
     <div>
