@@ -12,7 +12,7 @@
     $form_token = $_GET['token'];
 
     //if all valid means form token is valid, proceed to login
-    if (isset($_SESSION['token']) && isset($token) && $_SESSION['token'] === $form_token){
+    if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
         //only allowing user to enter pattern [a-zA-Z0-9] regular expression
         if (!preg_match("/^[a-zA-z0-9]+$/",$user_login)) {
             echo("<script>
