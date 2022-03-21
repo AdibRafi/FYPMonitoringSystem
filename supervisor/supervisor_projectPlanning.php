@@ -34,7 +34,7 @@ session_start();
                     <a href="supervisor_project_proposal_management.php"><img class="sidebar-item" src="../src/icon/project_proposal_management_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
                 </li>
                 <li>
-                    <a href="supervisor_projectPlanning.php"><img class="sidebar-item selected" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                    <a><img class="sidebar-item selected" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                 </li>
                 <li>
                     <a href="supervisor_student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>

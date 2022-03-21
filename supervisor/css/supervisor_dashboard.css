@@ -81,7 +81,7 @@ body{
 
 .content{
     display: flex;
-
+    width: 100%;
 }
 
 .welcome-msg{
@@ -96,5 +96,9 @@ body{
 
 .sidebar-item.selected:hover{
     opacity: 100%;
+}
+
+.sidebar.active{
+    width: 100px;
 }
 

@@ -3,5 +3,9 @@
     font-size: 100%;
     background-color: azure;
     padding-left: 1rem;
-}
+} 
 
+.people-box th{
+    padding-right: 2rem;
+
+}

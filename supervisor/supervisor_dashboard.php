@@ -27,7 +27,7 @@ session_start();
             <div class="middle-sidebar">
                 <ul class="sidebar-item-list">
                     <li>
-                        <a href="#"><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
+                        <a><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
                        <a href="supervisor_project_proposal_management.php"><img class="sidebar-item" src="../src/icon/project_proposal_management_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
