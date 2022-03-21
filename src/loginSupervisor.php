@@ -7,10 +7,11 @@
 
     //Change credentials here if differ
     //User credentials
-    $user_login = $_GET['username'];
+    $user_login = $_GET['advisor_id'];
     $user_password = $_GET['password'];
     $form_token = $_GET['token'];
 
+    // I check, it gives me the error over here -adib
     //if all valid means form token is valid, proceed to login
     if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
         //only allowing user to enter pattern [a-zA-Z0-9] regular expression
@@ -23,15 +24,15 @@
 
 
         //Cross check with the database
-        $advisor_check_query = $con ->prepare("SELECT * FROM supervisor WHERE supervisor_username = ?");
+        $advisor_check_query = $con ->prepare("SELECT * FROM advisor WHERE advisor_id = ?");
         $advisor_check_query->bind_param("s",$user_login);
         $advisor_check_query->execute();
         $result_query = $advisor_check_query->get_result();
         $advisor = $result_query->fetch_assoc();
 
         if ($advisor) {
-            if ($advisor['supervisor_username'] === $user_login && $advisor['supervisor_password'] === $user_password) {
-                $_SESSION['supervisor_id'] = $advisor['supervisor_id'];
+            if ($advisor['advisor_id'] === $user_login && $advisor['password'] === $user_password) {
+                $_SESSION['supervisor_id'] = $advisor['advisor_id'];
 
                 echo ("<script>
             alert('Login successfully');

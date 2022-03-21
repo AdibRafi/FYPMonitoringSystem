@@ -5,7 +5,7 @@
         if(isset($_SESSION['supervisor_id'])){
 
             $supervisor_id = $_SESSION['supervisor_id'];
-            $login_check_query = $con->prepare("select * from supervisor where supervisor_id = ? limit 1");
+            $login_check_query = $con->prepare("select * from advisor where advisor_id = ? limit 1");
             $login_check_query->bind_param("i",$supervisor_id);
             $login_check_query->execute();
             $login_check_query_result = $login_check_query->get_result();
