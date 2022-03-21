@@ -21,7 +21,7 @@ session_start();
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['supervisor_fullname']?>
+            Welcome, <?php echo $user_data['NAME']?>
         </div>
     </header>
     <div class="container">

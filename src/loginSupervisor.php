@@ -7,7 +7,7 @@
 
     //Change credentials here if differ
     //User credentials
-    $user_login = $_GET['advisor_id'];
+    $user_login = $_GET['username'];
     $user_password = $_GET['password'];
     $form_token = $_GET['token'];
 
@@ -31,19 +31,19 @@
         $advisor = $result_query->fetch_assoc();
 
         if ($advisor) {
-            if ($advisor['advisor_id'] === $user_login && $advisor['password'] === $user_password) {
-                $_SESSION['supervisor_id'] = $advisor['advisor_id'];
+            if ($advisor['ADVISOR_ID'] === $user_login && $advisor['PASSWORD'] === $user_password) {
+                $_SESSION['advisor_id'] = $advisor['ADVISOR_ID'];
 
                 echo ("<script>
-            alert('Login successfully');
-            window.location.href='../supervisor/supervisor_dashboard.php';
-            </script>");
+                    alert('Login successfully');
+                    window.location.href='../supervisor/supervisor_dashboard.php';
+                    </script>");
             }
             else {
                 echo ("<script>
-            alert('Invalid login information, please try again!');
-            window.location.href='../supervisor/supervisor_login.php';
-            </script>");
+                alert('Invalid login information, please try again!');
+                window.location.href='../supervisor/supervisor_login.php';
+                </script>");
             }
 
         }

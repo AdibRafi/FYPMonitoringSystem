@@ -4,6 +4,8 @@ session_start();
 
 if (isset($_SESSION['supervisor_id'])){
     unset($_SESSION['supervisor_id']);
+
+    session_destroy();
 }
 
 echo ("<script>
