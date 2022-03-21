@@ -6,18 +6,18 @@
     require("database.php");
 
     //Get registration data
-    $supervisor_fullname = $_GET['fullname'];
-    $supervisor_username = $_GET['username'];
-    $supervisor_password = $_GET['password'];
-    $supervisor_confirmpassword = $_GET['confirmPassword'];
-    $supervisor_age = $_GET['age'];
-    $supervisor_email = $_GET['email'];
-    $date_created = date("Y-m-d H:i:s");
+    $advisor_fullname = $_GET['fullname'];
+    $advisor_username = $_GET['username'];
+    $advisor_password = $_GET['password'];
+    $advisor_confirmpassword = $_GET['confirmPassword'];
+    $advisor_age = $_GET['age'];
+    $advisor_email = $_GET['email'];
+  
     $form_token = $_GET['token'];
 
 
     //only allowing user to enter pattern [a-zA-Z0-9] regular expression
-    if (!preg_match("/^[a-zA-z0-9]+$/",$supervisor_username)) {
+    if (!preg_match("/^[a-zA-z0-9]+$/",$advisor_username)) {
         echo("<script>
         alert('Invalid username, please try again!');
         window.location.href='../supervisor/supervisor_register.php';
@@ -26,8 +26,8 @@
 
     //if all valid means form token is valid, proceed to register
     if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
-        $duplicate_query = $con->prepare("select * from supervisor where supervisor_username = ? or supervisor_email = ?");
-        $duplicate_query->bind_param("ss",$supervisor_username,$supervisor_email);
+        $duplicate_query = $con->prepare("select * from advisor where ADVISOR_ID = ? or EMAIL = ?");
+        $duplicate_query->bind_param("ss",$advisor_username,$advisor_email);
         $duplicate_query->execute();
         $duplicate_query_result = $duplicate_query->get_result();
 
@@ -42,36 +42,33 @@
                 </script>");
 
         }else{
-            if ($supervisor_age > 100 ){
+            if ($advisor_age > 100 ){
                     echo ("<script>
                         alert('Invalid age, please try again!');
                         window.location.href='../supervisor/supervisor_register.php';
                         </script>");
-                    die;
             }
 
             //if username contain space, return error and send user back to register
-            if (str_contains($supervisor_username," ")){
+            if (str_contains($advisor_username," ")){
                 echo ("<script>
                 alert('Spaces are not allowed in username, please try again!');
                     window.location.href='../supervisor/supervisor_register.php';
                     </script>");
-                die;
             }
 
             //if password does not match confirm password, return error
-            if ($supervisor_password != $supervisor_confirmpassword){
+            if ($advisor_password != $advisor_confirmpassword){
                 echo ("<script>
                     alert('Password does not match, please try again!');
                     window.location.href='../supervisor/supervisor_register.php';
                     </script>");
-                die;
             }
 
-            $sql = "INSERT INTO supervisor (supervisor_username,supervisor_password,supervisor_age,supervisor_email,supervisor_fullname,date_created)values(?,?,?,?,?,?)";
+            $sql = "INSERT INTO advisor (ADVISOR_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)";
             $register_query = $con->prepare($sql);
             try {
-                $register_query_result = $register_query->execute([$supervisor_username, $supervisor_password, $supervisor_age, $supervisor_email, $supervisor_fullname,$date_created]);
+                $register_query_result = $register_query->execute([$advisor_username, $advisor_password, $advisor_age, $advisor_email, $advisor_fullname]);
                 if ($register_query_result) {
 
                     //free result set
