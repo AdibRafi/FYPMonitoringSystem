@@ -35,8 +35,16 @@
                     </td>
                     <td>
                         <label>
-                            <input type="text" name="username" placeholder="Username" value=""
-                            class="required"/>
+                            <?php 
+                            
+                                if(isset($_GET['username'])){ 
+                                    $username = $_GET['username'];
+                                    echo ("<input type='text' name='username' placeholder='Username' value='$username' class='required'/>");
+                                }else{
+                                    echo ("<input type='text' name='username' placeholder='Username' value='' class='required'/>");
+                                } 
+                                
+                            ?>        
                         </label>
                     </td>
                 </tr>

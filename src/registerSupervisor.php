@@ -15,12 +15,13 @@
   
     $form_token = $_GET['token'];
 
+    $register_data = 'fullname='.$advisor_fullname.'&username='.$advisor_username.'&age='.$advisor_age.'&email='.$advisor_email;
 
     //only allowing user to enter pattern [a-zA-Z0-9] regular expression
     if (!preg_match("/^[a-zA-z0-9]+$/",$advisor_username)) {
         echo("<script>
         alert('Invalid username, please try again!');
-        window.location.href='../supervisor/supervisor_register.php';
+        window.location.href='../supervisor/supervisor_register.php?$register_data';
         </script>");
     }
 
@@ -38,14 +39,14 @@
         if($duplicate_query_result && mysqli_num_rows($duplicate_query_result)>0){
             echo ("<script>
                 alert('Email or Username taken, please try again!');
-                window.location.href='../supervisor/supervisor_register.php';
+                window.location.href='../supervisor/supervisor_register.php?$register_data';
                 </script>");
 
         }else{
             if ($advisor_age > 100 ){
                     echo ("<script>
                         alert('Invalid age, please try again!');
-                        window.location.href='../supervisor/supervisor_register.php';
+                        window.location.href='../supervisor/supervisor_register.php?$register_data';
                         </script>");
             }
 
@@ -53,7 +54,7 @@
             if (str_contains($advisor_username," ")){
                 echo ("<script>
                 alert('Spaces are not allowed in username, please try again!');
-                    window.location.href='../supervisor/supervisor_register.php';
+                    window.location.href='../supervisor/supervisor_register.php?$register_data';
                     </script>");
             }
 
@@ -61,7 +62,7 @@
             if ($advisor_password != $advisor_confirmpassword){
                 echo ("<script>
                     alert('Password does not match, please try again!');
-                    window.location.href='../supervisor/supervisor_register.php';
+                    window.location.href='../supervisor/supervisor_register.php?$register_data';
                     </script>");
             }
 
@@ -87,7 +88,7 @@
 
                 echo("<script>
                 alert('Something went wrong, please try again!');
-                window.location.href='../supervisor/supervisor_register.php';
+                window.location.href='../supervisor/supervisor_register.php?$register_data';
                 </script>");
             }
 

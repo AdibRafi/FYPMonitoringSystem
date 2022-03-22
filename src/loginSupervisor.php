@@ -11,6 +11,8 @@
     $user_password = $_GET['password'];
     $form_token = $_GET['token'];
 
+    $login_data = "username=".$user_login;
+
     // I check, it gives me the error over here -adib
     //if all valid means form token is valid, proceed to login
     if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
@@ -18,7 +20,7 @@
         if (!preg_match("/^[a-zA-z0-9]+$/",$user_login)) {
             echo("<script>
         alert('Invalid login information, please try again!');
-        window.location.href='../supervisor/supervisor_login.php';
+        window.location.href='../supervisor/supervisor_login.php?$login_data';
         </script>");
         }
 
@@ -36,13 +38,13 @@
 
                 echo ("<script>
                     alert('Login successfully');
-                    window.location.href='../supervisor/supervisor_dashboard.php';
+                    window.location.href='../supervisor/supervisor_dashboard.php?$login_data';
                     </script>");
             }
             else {
                 echo ("<script>
                 alert('Invalid login information, please try again!');
-                window.location.href='../supervisor/supervisor_login.php';
+                window.location.href='../supervisor/supervisor_login.php?$login_data';
                 </script>");
             }
 

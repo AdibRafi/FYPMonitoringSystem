@@ -16,22 +16,50 @@
         <form id="mainForm" method="get" action="../src/registerSupervisor.php">
             <div class="register-inputfield">
                 <label>
-                    <input placeholder="Full Name" type="text" name="fullname" value="" class="required">
+                    <?php                                
+                        if(isset($_GET['fullname'])){ 
+                            $fullname = $_GET['fullname'];
+                            echo ("<input placeholder='Full Name' type='text' name='fullname' value='$fullname' class='required'>");
+                        }else{
+                            echo ('<input placeholder="Full Name" type="text" name="fullname" value="" class="required">');
+                        }   
+                    ?>    
                 </label>
             </div>
             <div class="register-inputfield">
                 <label>
-                    <input placeholder="Username" type="text" name="username" value="" class="required">
+                    <?php 
+                        if(isset($_GET['username'])){ 
+                            $username = $_GET['username'];
+                            echo ("<input placeholder='Username' type='text' name='username' value='$username' class='required'>");
+                        }else{
+                            echo ('<input placeholder="Username" type="text" name="username" value="" class="required">');
+                        }    
+                    ?> 
                 </label>
             </div>
             <div class="register-inputfield">
                 <label>
-                    <input placeholder="Email" type="email" name="email" value="" class="required">
+                    <?php 
+                        if(isset($_GET['email'])){ 
+                            $email = $_GET['email'];
+                            echo ("<input placeholder='Email' type='email' name='email' value='$email' class='required'>");
+                        }else{
+                            echo ('<input placeholder="Email" type="email" name="email" value="" class="required">');
+                        }    
+                    ?>      
                 </label>
             </div>
             <div class="register-inputfield">
                 <label>
-                    <input placeholder="Age" type="number" name="age" value="" class="required">
+                    <?php 
+                        if(isset($_GET['age'])){ 
+                            $age = $_GET['age'];
+                            echo ("<input placeholder='Age' type='number' name='age' value='$age' class='required'>");
+                        }else{
+                            echo ('<input placeholder="Age" type="number" name="age" value="" class="required">');
+                        }    
+                    ?>      
                 </label>
             </div>
             <div class="register-inputfield">

@@ -48,7 +48,7 @@
 
         }
 
-        echo "verification failed!"
+        echo "verification failed!";
         die;
         
     }
