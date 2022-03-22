@@ -65,7 +65,7 @@
                     </script>");
             }
 
-            $sql = "INSERT INTO advisor (ADVISOR_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)";
+            $sql = "INSERT INTO Advisor (ADVISOR_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)";
             $register_query = $con->prepare($sql);
             try {
                 $register_query_result = $register_query->execute([$advisor_username, $advisor_password, $advisor_age, $advisor_email, $advisor_fullname]);
