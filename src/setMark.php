@@ -1,4 +1,7 @@
 <?php
+
+    require("database.php");
+
     //Get data required to insert into the table
     $name_mark = $_GET['mark_name'];
     $percentage = $_GET['percentage'];

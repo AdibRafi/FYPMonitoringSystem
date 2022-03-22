@@ -1,4 +1,7 @@
 <?php
+
+    require("database.php");
+    
     //Get data required to insert into the table
     $student_user = $_GET['user_id'];
     $advisor_user = $_GET['advisor_id'];
