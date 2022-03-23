@@ -2,10 +2,10 @@
 
     function checkLogin($con){
 
-        if(isset($_SESSION['supervisor_id'])){
+        if(isset($_SESSION['advisor_id'])){
 
             $supervisor_id = $_SESSION['advisor_id'];
-            $login_check_query = $con->prepare("select * from Advisor where advisor_id = ? limit 1");
+            $login_check_query = $con->prepare("select * from  advisor where ADVISOR_ID = ? limit 1");
             $login_check_query->bind_param("s",$supervisor_id);
             $login_check_query->execute();
             $login_check_query_result = $login_check_query->get_result();
@@ -18,7 +18,7 @@
         }
 
         //redirect to login
-        echo "<script>window.location.href='../supervisor/supervisor_login.php';</script>";
+        echo "<script>window.location.href='../supervisor/supervisor_login.php'</script>";
         die;
     }
 

@@ -57,11 +57,18 @@ session_start();
             </div>
         </div>
         <div class="content">
+            <form method="get" id="mainForm" action="../src/addMeeting.php"> 
             <div class="add-meet-box">
                 <h1>Meeting Management</h1><br>
-                <h2>Time</h2><br>
-                From <input type="time"> to <input type="time"><br>
-                <h2>People</h2><br>
+                <h2>Time</h2>
+                <div class="time-box">
+                    From <input name="start_time" type="time"> to <input name="end_time" type="time">
+                </div>
+                <h2>Date</h2>
+                <div class="date-box">
+                    <input name="date" type="date">
+                </div>
+                <h2>People</h2>
                 <table class="people-box">
                     <tr>
                         <th class="student">
@@ -73,19 +80,42 @@ session_start();
                     </tr>
                     <tr>
                         <td class="student">
-                            <select title="Student name" id="student-name">
-                                <option value="ok">ok</option>
-                                <option value="notok">notok</option>
+                            <select title="Student name" id="student-name" name="user_id">
+                                <?php
+                                    require ("../src/database.php");
+
+                                    $getStudentList_query = $con->prepare("SELECT * FROM student");
+                                    $getStudentList_query->execute();
+                                    $result = $getStudentList_query->get_result();
+
+                                    while($row = $result->fetch_assoc()){
+                                        echo '<option value='. $row['USER_ID'] .'>'.$row['NAME'].'</option>';
+                                    }
+
+                                ?>
                             </select>
                         </td>
                         <td class="supervisor">
-                            <select title="Supervisor name" id="supervisor-name">
-                                <option value="ok">ok</option>
-                                <option value="notok">notok</option>
+                            <select title="Supervisor name" id="supervisor-name" name="advisor_id">
+                                <?php
+
+                                    require ("../src/database.php");
+
+                                    $getAdvisorList_query = $con->prepare("SELECT * FROM advisor");
+                                    $getAdvisorList_query->execute();
+                                    $result = $getAdvisorList_query->get_result();
+
+                                    while($row = $result->fetch_assoc()){
+                                        echo '<option value='. $row['ADVISOR_ID'] .'>'.$row['NAME'].'</option>';
+                                    }
+                                    
+                                ?>
                             </select>
                         </td>
                     </tr>
                 </table>
+                <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
+                <input type="submit" value="Add Meeting">
             </div>
         </div>
     </div>

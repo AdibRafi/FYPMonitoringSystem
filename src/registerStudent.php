@@ -40,6 +40,7 @@
                 alert('Email or Username taken, please try again!');
                 window.location.href='../student/student_register.php';
                 </script>");
+        }
 
         if ($student_age > 100 ){
             echo ("<script>
@@ -91,5 +92,6 @@
             window.location.href='../student/student_register.php';
             </script>");
         }
+
     } 
 ?>

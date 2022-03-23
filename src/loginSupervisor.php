@@ -38,7 +38,7 @@
 
                 echo ("<script>
                     alert('Login successfully');
-                    window.location.href='../supervisor/supervisor_dashboard.php?$login_data';
+                    window.location.href='../supervisor/supervisor_dashboard.php';
                     </script>");
             }
             else {

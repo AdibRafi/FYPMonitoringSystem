@@ -5,9 +5,10 @@
     //Get data required to insert into the table
     $student_user = $_GET['user_id'];
     $advisor_user = $_GET['advisor_id'];
-    $time = $_GET['timestamp'];
-    $place = $_GET['location'];
-    $duration = $_GET['duration'];
+    $start = $_GET['date'].$_GET['start_time'];
+    $end = $_GET['date'].$_GET['end_time']; 
+    // $place = $_GET['location'];
+    // $duration = $_GET['duration'];
 
     //Check if student is in database
     
@@ -20,7 +21,14 @@
 
     //Append 1 to ID
 
-    //Insert data into database accordingly 
+    //Insert data into database accordingly
+    if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
+
+    }else{
+        echo ("<script>
+            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            </script>");
+    }
 
     //Insert into table
 

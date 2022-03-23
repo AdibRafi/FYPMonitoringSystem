@@ -1,11 +1,38 @@
-.content .add-meet-box {
+h1{
+    text-align: center;
+}
+
+
+.add-meet-box {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
     background-color: azure;
-    padding-left: 1rem;
+    padding-left: 5rem;
 } 
+
+.people-box{
+    margin: 0 0 0 0 ;
+}
 
 .people-box th{
     padding-right: 2rem;
 
+}
+
+.people-box tr{
+    margin: 0 0 2rem 0;
+}
+
+.add-meet-box [type=submit] {
+    background-color: cornflowerblue;
+    color: white;
+    height: 3em;
+    width: 100%;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.people-box, .time-box, .date-box{
+    margin-bottom: 2rem;
 }
