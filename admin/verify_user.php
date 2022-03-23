@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Verify User</title>
-    <link rel="stylesheet" href="../supervisor/css/supervisor_register.css">
+    <link rel="stylesheet" href="verify_user.css">
 </head>
 <body>
 <div class="register-box">
     <h1>Verify User</h1>
     <table>
         <tr>
+            <th></th>
             <th>ID</th>
             <th>Username</th>
             <th>Password</th>
         </tr>
         <?php
 
-        require ("../src/database.php");
+        require("../src/database.php");
 
         $sql = "SELECT * from Student";
         $result = $con->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>".$row["USER_ID"]."</td><td>".$row["NAME"]."</td><td>".$row["PASSWORD"]."</td></tr>";
+                echo '<tr><td><input type="checkbox" name="name1"></td><td>' . $row["USER_ID"] . '</td>
+                <td>' . $row["NAME"] . '</td><td>' . $row["PASSWORD"] . '</td></tr>';
             }
             echo "</table>";
-        }
-        else
+        } else
             echo "0 result";
 
         $con->close();
         ?>
     </table>
-    <div>
-        <input type="radio" value="Verify" id="verify">
-        <label for="verify">Verify</label>
-        <input type="radio" value="Remove" id="remove">
-        <label for="remove">Remove</label>
-    </div>
+    <form>
+        <div class="radioBtn">
+            <input type="radio" value="Verify" id="verify" name="submitResult">
+            <label for="verify">Verify</label>
+        </div>
+        <div class="radioBtn">
+            <input type="radio" value="Remove" id="remove" name="submitResult">
+            <label for="remove">Remove</label>
+        </div>
+    </form>
     <input type="submit" value="Submit">
 </div>
 </body>
