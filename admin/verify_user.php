@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Verify User</title>
-    <link rel="stylesheet" href="verify_user.css">
+    <link rel="stylesheet" href="verify_user.css" type="text/css">
 </head>
 <body>
-<div class="register-box">
+<div class="verify-box">
     <h1>Verify User</h1>
     <table>
         <tr>
@@ -34,16 +34,20 @@
         ?>
     </table>
     <form>
-        <div class="radioBtn">
-            <input type="radio" value="Verify" id="verify" name="submitResult">
-            <label for="verify">Verify</label>
-        </div>
-        <div class="radioBtn">
-            <input type="radio" value="Remove" id="remove" name="submitResult">
-            <label for="remove">Remove</label>
+        <div>
+            <div class="floated" style="text-align: center">
+                <div class="radioBtn">
+                    <input type="radio" value="Verify" id="verify" name="submitResult">
+                    <label for="verify">Verify</label>
+                </div>
+                <div class="radioBtn">
+                    <input type="radio" value="Remove" id="remove" name="submitResult">
+                    <label for="remove">Remove</label>
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="verify-box">
         </div>
     </form>
-    <input type="submit" value="Submit">
 </div>
 </body>
 </html>
