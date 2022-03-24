@@ -68,14 +68,14 @@
 
             $sql = "INSERT INTO Advisor (ADVISOR_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)";
             $register_query = $con->prepare($sql);
+            
             try {
                 $register_query_result = $register_query->execute([$advisor_username, $advisor_password, $advisor_age, $advisor_email, $advisor_fullname]);
+                //free result set
+                $register_query->close();
+                $con->next_result();
                 if ($register_query_result) {
-
-                    //free result set
-                    $register_query->close();
-                    $con->next_result();
-
+                    
                     echo("<script>
                     alert('Registration Successful!');
                     window.location.href='../supervisor/supervisor_login.php';
