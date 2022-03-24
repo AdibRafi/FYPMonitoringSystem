@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>Verify User</title>
     <link rel="stylesheet" href="verify_user.css" type="text/css">
+    <script type="text/javascript" src="verify_user.js"></script>
 </head>
 <body>
 <div class="verify-box">
     <h1>Verify User</h1>
+    <h2>Click row to checked</h2>
     <table>
         <tr>
             <th></th>
@@ -19,11 +21,11 @@
 
         require("../src/database.php");
 
-        $sql = "SELECT * from Student";
+        $sql = "SELECT * from Student"; //todo need to change in phpmyadmin: only display !isVerified bit(1)
         $result = $con->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo '<tr><td><input type="checkbox" name="name1"></td><td>' . $row["USER_ID"] . '</td>
+                echo '<tr onclick="selectRow(this)"><td><input type="checkbox" name="name1"></td><td>' . $row["USER_ID"] . '</td>
                 <td>' . $row["NAME"] . '</td><td>' . $row["PASSWORD"] . '</td></tr>';
             }
             echo "</table>";
