@@ -127,10 +127,17 @@
         $get_check_query = "SELECT MEETING_ID FROM Meeting";
 
         //Append 1 to ID
+        $meeting_id = getID($con,"meeting");
+        if($meeting_id === "invalid"){
+            echo("<script>
+            alert('invalid ID, please try again');
+            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            </script>");
+        }
 
         //Insert data into database accordingly
         $addMeet_query = $con->prepare("INSERT INTO meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,ADVISOR_ID) values(?,?,?,?,?,?,?)");
-        $addMeet_query_result = $addMeet_query->execute([getMeetingID($con),$meeting_name, $place, $start_string, $duration, $student_user,$advisor_user]);
+        $addMeet_query_result = $addMeet_query->execute([$meeting_id,$meeting_name, $place, $start_string, $duration, $student_user,$advisor_user]);
 
         $addMeet_query->close();
         $con->next_result();
