@@ -114,3 +114,7 @@ body{
     width: 100px;
 }
 
+.sidebar.hidden{
+    display: none;
+}
+

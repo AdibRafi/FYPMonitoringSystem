@@ -15,6 +15,7 @@ session_start();
     <title>Project Proposal Management</title>
     <link rel="stylesheet" href="css/supervisor_dashboard.css">
     <link rel="stylesheet" href="css/supervisor_project_proposal_management.css">
+    <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
 </head>
 <body>
 <header class="header">

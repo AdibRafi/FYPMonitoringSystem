@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <title>Supervisor Dashboard</title>
     <link rel="stylesheet" href="css/supervisor_dashboard.css">
+    <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
 </head>
 <body>
     <header class="header">
@@ -23,7 +24,7 @@
         </div>
     </header>
     <div class="container">
-        <div class="sidebar">
+        <div class="sidebar hidden">
             <div class="middle-sidebar">
                 <ul class="sidebar-item-list">
                     <li>
