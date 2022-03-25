@@ -1,3 +1,9 @@
+:root {
+    --bodyColour: #ffdac4;
+    --containerColour: #f6b98e;
+}
+
+
 body {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
@@ -19,7 +25,7 @@ font{
 
 .register-box{
     margin-top: 4rem;
-    width: 500px;
+    width: 700px;
     z-index: 15;
     margin-left: auto;
     margin-right: auto;
@@ -31,6 +37,7 @@ font{
 }
 
 .register-inputfield{
+    width: 500px;
     margin-bottom: 2rem;
 }
 
@@ -43,6 +50,7 @@ font{
     border-style: hidden hidden solid hidden;
     background-color: transparent;
     margin-top: 1rem;
+    width: 100%;
 }
 
 /* Register Button Styling*/

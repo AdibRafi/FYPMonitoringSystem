@@ -34,7 +34,6 @@ font{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    align-content: center;
 }
 
 .login-box p{
@@ -47,7 +46,6 @@ font{
     margin: 0 0 1rem 0;
     align-items: center;
 }
-
 
 .error{
     background: #FFCDD2 url(error.png) no-repeat 98% center;
@@ -66,15 +64,19 @@ font{
 
 
 .login-box input[type=text]{
+    font-family: "Roboto", Verdana, Arial, sans-serif;
     height: 60px;
     width: 100%;
     background: transparent;
+    border-width: 0 0 2px 0;
 }
 
 .login-box input[type=password]{
+    font-family: "Roboto", Verdana, Arial, sans-serif;
     height: 60px;
     width: 100%;
     background: transparent;
+    border-width: 0 0 2px 0;
 }
 
 .login-box [type=submit] {
