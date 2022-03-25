@@ -105,6 +105,38 @@ session_start();
                 <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
                 <input type="submit" value="Add Meeting">
             </div>
+            </form>
+            <div class="meeting-list-box">
+                <h1>Meeting List</h1>
+                <?php
+                    require ("../src/database.php");
+
+                    $getMeetingList_query = $con->prepare("SELECT * FROM meeting");
+                    $getMeetingList_query->execute();
+                    $getMeetingList_query_result = $getMeetingList_query->get_result();
+
+                    $getMeetingList_query->close();
+                    $con->next_result();
+
+                    while($row = $getMeetingList_query_result->fetch_assoc()){
+                        
+                        $studentData = getStudentDatabyStudentID($con,$row['STUDENT_ID']);
+                        $advisorData = getAdvisorDatabyAdvisorID($con,$row['ADVISOR_ID']);
+
+                        echo '
+                        <div class="meeting-box">
+                            <div> <b>Meeting ID:</b> '.$row['MEET_ID'].'</div>'.
+                            '<div> <b>Meeting Name:</b> '.$row['NAME'].'</div>'.
+                            '<div> <b>Meeting Time:</b> '.$row['TIME'].'</div>'.
+                            '<div> <b>Meeting Duration:</b> '.$row['DURATION'].' minutes'.'</div>'.
+                            '<div> <b>Meeting Place:</b> '.$row['PLACE'].'</div>'.
+                            '<div> <b>Meeting Participant:</b><br> <div style="margin-left: 40px"><b>Student:</b> '.$studentData['NAME']. '<br><b>Advisor:</b> '.$advisorData['NAME'].'</div></div>
+                        </div>
+                        ';
+                    }
+
+                ?>
+            </div>
         </div>
     </div>
 </body>

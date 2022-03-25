@@ -65,7 +65,7 @@
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['MEET_ID']);
         
                 }else{
-                    $id = "M0001";
+                    $id = "MT001";
                 }
                 break;
             case "goal":
@@ -77,7 +77,7 @@
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['GOAL_ID']);
         
                 }else{
-                    $id = "G0001";
+                    $id = "GO001";
                 }
                 break;
             case "mark":
@@ -89,7 +89,7 @@
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['MARK_ID']);
         
                 }else{
-                    $id = "M0001";
+                    $id = "MK001";
                 }
                 break;
             case "project":
@@ -101,7 +101,7 @@
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['PROJECT_ID']);
         
                 }else{
-                    $id = "P0001";
+                    $id = "PR001";
                 }
                 break;
             default:
@@ -120,6 +120,34 @@
             $length = strlen($matches[1]);
             return sprintf("%0".$length."d", ++$matches[1]);
         }    
+    }
+
+    function getStudentDatabyStudentID($con,$studentID){
+
+        $getStudentName_query = $con->prepare("SELECT * FROM student where STUDENT_ID = ?");
+        $getStudentName_query->bind_param("s",$studentID);
+        $getStudentName_query->execute();
+        $getStudentName_query_result = $getStudentName_query->get_result();
+        
+        $getStudentName_query->close();
+        $con->next_result();
+
+        return mysqli_fetch_assoc($getStudentName_query_result);
+
+    }
+
+    function getAdvisorDatabyAdvisorID($con,$advisorID){
+
+        $getAdvisorName_query = $con->prepare("SELECT * FROM advisor where ADVISOR_ID = ?");
+        $getAdvisorName_query->bind_param("s",$advisorID);
+        $getAdvisorName_query->execute();
+        $getAdvisorName_query_result = $getAdvisorName_query->get_result();
+        
+        $getAdvisorName_query->close();
+        $con->next_result();
+
+        return mysqli_fetch_assoc($getAdvisorName_query_result);
+
     }
 
 ?>
