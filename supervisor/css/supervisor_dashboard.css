@@ -1,9 +1,17 @@
+:root {
+    --bodyColour: #ffdac4;
+    --containerColour: #f6b98e;
+  }
+
+
 body{
+
+    background-color: var(--bodyColour);
     margin: 0;
 }
 
 .header{
-    background-color: darkgrey;
+    background-color: var(--containerColour);
     position:sticky;
     top: 0;
     display: flex;
@@ -57,7 +65,6 @@ body{
 
 .container{
     display: flex;
-    background-color: azure;
 }
 
 .sidebar-item-list{

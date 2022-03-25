@@ -1,3 +1,12 @@
+:root {
+    --bodyColour: #ffdac4;
+    --containerColour: #f6b98e;
+}
+
+body{
+    background-color: var(--bodyColour);
+}
+
 h1{
     text-align: center;
 }
@@ -6,7 +15,6 @@ h1{
 .add-meet-box {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    background-color: azure;
     padding: 1rem 5rem 1rem 5rem;
     /* border: 1px solid black; */
     margin-right:2rem;
@@ -26,7 +34,7 @@ h1{
 }
 
 .add-meet-box [type=submit] {
-    background-color: cornflowerblue;
+    background-color: var(--containerColour);
     color: white;
     height: 3em;
     width: 100%;
@@ -42,13 +50,12 @@ h1{
 .meeting-list-box{
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    background-color: azure;
     padding: 1rem 5rem 1rem 5rem;
     /* border: 1px solid black; */
 }
 
 .meeting-box{
-    background-color:antiquewhite;
+    background-color:var(--containerColour);
     /* border: 1px solid black; */
     width: 500px;
     margin-bottom: 2rem;
@@ -57,5 +64,5 @@ h1{
 }
 
 .meeting-box div{
-    padding-bottom: 2px;
+    padding-bottom: 3px;
 }
