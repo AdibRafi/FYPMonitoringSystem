@@ -10,32 +10,38 @@
 <div class="verify-box">
     <h1>Verify User</h1>
     <h2>Click row to checked</h2>
-    <table>
-        <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Password</th>
-        </tr>
-        <?php
+    <form action="update_user.php" method="post">
+        <table>
+            <tr>
+                <th></th>
+                <th>Student_ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+            <?php
 
-        require("../src/database.php");
+            require("../src/database.php");
 
-        $sql = "SELECT * from Student"; //todo need to change in phpmyadmin: only display !isVerified bit(1)
-        $result = $con->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<tr onclick="selectRow(this)"><td><input type="checkbox" name="name1"></td><td>' . $row["USER_ID"] . '</td>
-                <td>' . $row["NAME"] . '</td><td>' . $row["PASSWORD"] . '</td></tr>';
-            }
-            echo "</table>";
-        } else
-            echo "0 result";
+            $sql = "SELECT * from Student where ISVERIFIED = 0"; //todo need to change in phpmyadmin: only display !isVerified bit(1)
+            $result = $con->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<tr onclick="selectRow(this)">
+                        <td><input type="checkbox" name="student[]" value="'.$row["STUDENT_ID"].'"></td>
+                        <td>' . $row["STUDENT_ID"] . '</td>
+                        <td>' . $row["NAME"] . '</td>
+                        <td>' . $row["AGE"] . '</td>
+                        <td>' . $row["EMAIL"] . '</td>
+                       </tr>';
+                }
+                echo "</table>";
+            } else
+                echo "0 result";
 
-        $con->close();
-        ?>
-    </table>
-    <form>
+                    $con->close();
+            ?>
+        </table>
         <div>
             <div class="floated" style="text-align: center">
                 <div class="radioBtn">
@@ -47,7 +53,7 @@
                     <label for="remove">Remove</label>
                 </div>
             </div>
-            <input type="submit" value="Submit" class="verify-box">
+            <input type="submit" name="submit" value="submit" class="verify-box">
         </div>
     </form>
 </div>
