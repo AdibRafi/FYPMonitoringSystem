@@ -12,7 +12,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="300;url=../src/logout.php"/>
     <title>Supervisor Dashboard</title>
     <link rel="stylesheet" href="css/supervisor_dashboard.css">
 </head>

@@ -11,7 +11,6 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="300;url=../src/logout.php"/>
     <title>Student-To-Project Assignment</title>
     <link rel="stylesheet" href="css/supervisor_dashboard.css">
     <link rel="stylesheet" href="css/supervisor_student-to-project_assignment.css">

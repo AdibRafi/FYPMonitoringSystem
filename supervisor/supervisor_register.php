@@ -6,7 +6,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="300;url=../src/logout.php"/>
     <title>Supervisor Register</title>
     <link rel="stylesheet" href="css/supervisor_register.css">
     <script type="text/javascript" src="js/supervisor_login.js"></script>
