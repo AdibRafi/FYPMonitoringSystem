@@ -9,6 +9,6 @@ if (isset($_SESSION['supervisor_id'])){
 }
 
 echo ("<script>
-        alert('Logout successfully');
+        alert('Logout');
         window.location.href='../supervisor/supervisor_login.php';
         </script>");
