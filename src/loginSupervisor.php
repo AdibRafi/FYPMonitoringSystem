@@ -33,7 +33,7 @@
         $advisor = $result_query->fetch_assoc();
 
         if ($advisor) {
-            if ($advisor['ADVISOR_ID'] === $user_login && $advisor['PASSWORD'] === $user_password) {
+            if ($advisor['PASSWORD'] === $user_password) {
                 $_SESSION['advisor_id'] = $advisor['ADVISOR_ID'];
 
                 echo ("<script>
@@ -50,7 +50,10 @@
 
         }
         else {
-            echo "ERROR: Login broke";
+            echo ("<script>
+                alert('Account does not exist, please try again!');
+                window.location.href='../supervisor/supervisor_login.php?$login_data';
+                </script>");
         }
 
         //if token is invalid, malicious site trying to access form, do nothing

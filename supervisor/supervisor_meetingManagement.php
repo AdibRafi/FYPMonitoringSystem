@@ -80,7 +80,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="student">
-                            <select title="Student name" id="student-name" name="user_id">
+                            <select title="Student name" id="student-name" name="student_id">
                                 <?php
                                     require ("../src/database.php");
 
@@ -89,7 +89,7 @@ session_start();
                                     $result = $getStudentList_query->get_result();
 
                                     while($row = $result->fetch_assoc()){
-                                        echo '<option value='. $row['USER_ID'] .'>'.$row['NAME'].'</option>';
+                                        echo '<option value='. $row['STUDENT_ID'] .'>'.$row['NAME'].'</option>';
                                     }
 
                                 ?>
@@ -97,19 +97,7 @@ session_start();
                         </td>
                         <td class="supervisor">
                             <select title="Supervisor name" id="supervisor-name" name="advisor_id">
-                                <?php
-
-                                    require ("../src/database.php");
-
-                                    $getAdvisorList_query = $con->prepare("SELECT * FROM advisor");
-                                    $getAdvisorList_query->execute();
-                                    $result = $getAdvisorList_query->get_result();
-
-                                    while($row = $result->fetch_assoc()){
-                                        echo '<option value='. $row['ADVISOR_ID'] .'>'.$row['NAME'].'</option>';
-                                    }
-                                    
-                                ?>
+                                <option value="<?=$user_data['ADVISOR_ID']?>"><?=$user_data['NAME']?></option>';                                    
                             </select>
                         </td>
                     </tr>

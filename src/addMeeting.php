@@ -3,11 +3,12 @@
     session_start();
 
     require("database.php");
+    require("functions.php");
 
     //Get data required to insert into the table
     
     $form_token = $_GET['token'];
-    $student_user = $_GET['user_id'];
+    $student_user = $_GET['student_id'];
     $advisor_user = $_GET['advisor_id'];
     $start = new DateTime($_GET['date'].' '.$_GET['start_time']);
     $start_string = $start->format('Y-m-d H:i');
@@ -41,7 +42,7 @@
         $advisor_check_query = $con ->prepare("SELECT * FROM advisor WHERE ADVISOR_ID = ?");
         $advisor_check_query->bind_param("s",$advisor_user);
         $advisor_check_query->execute();
-        $advisor_query = $advisor_check_query->get_result();
+        $result_query = $advisor_check_query->get_result();
         $advisor = $result_query->fetch_assoc();
 
         $advisor_check_query->close();
@@ -60,40 +61,49 @@
         $dateTime_check_query = $con ->prepare("SELECT * FROM meeting WHERE ADVISOR_ID = ?");
         $dateTime_check_query->bind_param("s",$advisor_user);
         $dateTime_check_query->execute();
-        
-        while($dateTime_query = $dateTime_check_query->get_result()){
-            $start_datetime = new DateTime($dateTime_query['TIME']);
-            $end_datetime = new DateTime($start_datetime->add(new DateInterval('PT' . $dateTime_query['DURATION'] . 'M')));
+        $dateTime_query_result = $dateTime_check_query->get_result();
+
+        $dateTime_check_query->close();
+        $con->next_result();
+
+        while($row = $dateTime_query_result->fetch_assoc()){
+            $start_datetime = new DateTime($row['TIME']);
+            $end_datetime = new DateTime($row['TIME']);
+            $end_datetime->add(new DateInterval('PT' . $row['DURATION'] . 'M'));
+            
 
             if($start_datetime === $start){
                 echo ("<script>
-                alert('Advisor is occupied at".$start_string.", please try again');
+                alert('Advisor is occupied at ".$start_string." , please try again');
                 window.location.href='../supervisor/supervisor_meetingManagement.php';
                 </script>");
             }else if($end_datetime === $start){
                 echo ("<script>
-                alert('Advisor is occupied at".$start_string.", please try again');
+                alert('Advisor is occupied at ".$start_string." , please try again');
                 window.location.href='../supervisor/supervisor_meetingManagement.php';
                 </script>");
             }else if($start>=$start_datetime && $start<=$end_datetime){
                 echo ("<script>
-                alert('Advisor is occupied at".$start_string.", please try again');
+                alert('Advisor is occupied at ".$start_string." , please try again');
                 window.location.href='../supervisor/supervisor_meetingManagement.php';
                 </script>");
             }
         }
 
-        $dateTime_check_query->close();
-        $con->next_result();
+       
 
         //checking if Student is occupied
         $dateTime_check_query = $con ->prepare("SELECT * FROM meeting WHERE STUDENT_ID = ?");
         $dateTime_check_query->bind_param("s",$student_users);
         $dateTime_check_query->execute();
+        $dateTime_query_result = $dateTime_check_query->get_result();
+
+        $dateTime_check_query->close();
+        $con->next_result();
         
-        while($dateTime_query = $dateTime_check_query->get_result()){
-            $start_datetime = new DateTime($dateTime_query['TIME']);
-            $end_datetime = new DateTime($start_datetime->add(new DateInterval('PT' . $dateTime_query['DURATION'] . 'M')));
+        while($row = $dateTime_query_result->fetch_assoc()){
+            $start_datetime = new DateTime($row['TIME']);
+            $end_datetime = new DateTime($start_datetime->add(new DateInterval('PT' . $row['DURATION'] . 'M')));
 
             if($start_datetime === $start){
                 echo ("<script>
@@ -112,9 +122,6 @@
                 </script>");
             }
         }
-
-        $dateTime_check_query->close();
-        $con->next_result();
 
         //Get ID of latest data entry
         $get_check_query = "SELECT MEETING_ID FROM Meeting";
@@ -122,15 +129,13 @@
         //Append 1 to ID
 
         //Insert data into database accordingly
-        $addMeet_query = $con->prepare("INSERT INTO meeting (NAME,PLACE,TIME,DURATION,STUDENT_ID,ADVISOR_ID) values(?,?,?,?,?,?)");
-        $addMeet_query->execute([$meeting_name, $place, $start_string, $duration, $student_user,$advisor_user]);
-        $addMeet_query_result = $addMeet_query->get_result();
-        $addMeet = $addMeet_query_result->fetch_assoc();
+        $addMeet_query = $con->prepare("INSERT INTO meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,ADVISOR_ID) values(?,?,?,?,?,?,?)");
+        $addMeet_query_result = $addMeet_query->execute([getMeetingID($con),$meeting_name, $place, $start_string, $duration, $student_user,$advisor_user]);
 
         $addMeet_query->close();
         $con->next_result();
 
-        if($addMeet){
+        if($addMeet_query_result){
 
             echo("<script>
             alert('Meeting successfully added!');
