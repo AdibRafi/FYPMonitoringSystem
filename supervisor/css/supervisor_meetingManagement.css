@@ -3,10 +3,6 @@
     --containerColour: #f6b98e;
 }
 
-body{
-    background-color: var(--bodyColour);
-}
-
 h1{
     text-align: center;
 }

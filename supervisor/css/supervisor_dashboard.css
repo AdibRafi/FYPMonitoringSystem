@@ -1,11 +1,16 @@
 :root {
     --bodyColour: #ffdac4;
     --containerColour: #f6b98e;
-  }
+}
 
+/* Font Smoothing */
+font{
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
 
 body{
-
     background-color: var(--bodyColour);
     margin: 0;
 }

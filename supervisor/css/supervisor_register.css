@@ -1,11 +1,7 @@
 body {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    background: url("../../src/icon/supervisor_login_background.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: var(--bodyColour);
 }
 
 /* Font Smoothing */
@@ -51,7 +47,7 @@ font{
 
 /* Register Button Styling*/
 .register-box [type=submit] {
-    background-color: cornflowerblue;
+    background-color: var(--containerColour);
     color: white;
     height: 3em;
     width: 100%;
