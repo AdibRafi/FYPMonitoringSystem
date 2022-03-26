@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+require('../src/database.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +30,7 @@
 
             require("../src/database.php");
 
-            $sql = "SELECT * from Student where ISVERIFIED = 0"; //todo need to change in phpmyadmin: only display !isVerified bit(1)
+            $sql = "SELECT * from Student where ISVERIFIED = 0";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -42,19 +49,25 @@
                     $con->close();
             ?>
         </table>
-        <div>
-            <div class="floated" style="text-align: center">
-                <div class="radioBtn">
-                    <input type="radio" value="Verify" id="verify" name="submitResult">
-                    <label for="verify">Verify</label>
-                </div>
-                <div class="radioBtn">
-                    <input type="radio" value="Remove" id="remove" name="submitResult">
-                    <label for="remove">Remove</label>
-                </div>
-            </div>
-            <input type="submit" name="submit" value="submit" class="verify-box">
-        </div>
+        <tfoot>
+            <tr>
+                <td>
+                    <div class="floated" style="text-align: center">
+                        <div class="radioBtn">
+                            <input type="radio" value="verify" id="verify" name="submitResult">
+                            <label for="verify">Verify</label>
+                        </div>
+                        <div class="radioBtn">
+                            <input type="radio" value="remove" id="remove" name="submitResult">
+                            <label for="remove">Remove</label>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <input type="submit" name="submit" value="submit" class="verify-box">
+                </td>
+            </tr>
+        </tfoot>
     </form>
 </div>
 </body>
