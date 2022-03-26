@@ -16,7 +16,7 @@ session_start();
     <link rel="stylesheet" href="css/supervisor_dashboard.css">
     <link rel="stylesheet" href="css/supervisor_meetingManagement.css">
     <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
-    <script type="text/javascript" src="js/supervisor_login.js"></script>
+    <script type="text/javascript" src="js/loginPage.js"></script>
 </head>
 
 <body>

@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Supervisor Register</title>
-    <link rel="stylesheet" href="supervisor/css/supervisor_register.css">
-    <script type="text/javascript" src="supervisor/js/supervisor_login.js"></script>
+    <link rel="stylesheet" href="supervisor/css/registerPage.css">
+    <script type="text/javascript" src="supervisor/js/loginPage.js"></script>
 </head>
 <body>
     <div class="register-box">

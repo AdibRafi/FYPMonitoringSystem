@@ -13,8 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="supervisor/css/supervisor_login.css">
-    <script type="text/javascript" src="supervisor/js/supervisor_login.js"></script>
+    <link rel="stylesheet" href="supervisor/css/loginPage.css">
+    <script type="text/javascript" src="supervisor/js/loginPage.js"></script>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
             </div>
             <div class="login-row">
                 <img src="src/icon/lock_128px.png" alt="password icon">
-                <input class="passworldField"type="password" name="password" placeholder="Password" value=""
+                <input type="password" name="password" placeholder="Password" value=""
                 class="required"/>
             </div>
             <div class="login-row">
