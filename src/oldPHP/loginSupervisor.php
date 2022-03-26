@@ -19,9 +19,9 @@
         //only allowing user to enter pattern [a-zA-Z0-9] regular expression
         if (!preg_match("/^[a-zA-z0-9]+$/",$user_login)) {
             echo("<script>
-        alert('Invalid login information, please try again!');
-        window.location.href='../supervisor/supervisor_login.php?$login_data';
-        </script>");
+                alert('Invalid login information, please try again!');
+                window.location.href='../supervisor/supervisor_login.php?$login_data';
+                </script>");
         }
 
 
@@ -62,4 +62,4 @@
             window.location.href='../supervisor/supervisor_login.php';
             </script>");
     }
-
+?>

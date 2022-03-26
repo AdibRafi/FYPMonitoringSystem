@@ -20,19 +20,17 @@
 <body>
 
     <div class="login-box">
-        <form  action="../src/loginSupervisor.php" method="get" id="mainForm">
+        <form  action="../src/login.php" method="get" id="mainForm">
             <h1 class="welcome-msg">Login</h1>
             <div class="login-row">
                 <img src="../src/icon/person_128px.png" alt="username icon">
                 <?php 
-                
                     if(isset($_GET['username'])){ 
                         $username = $_GET['username'];
                         echo ("<input type='text' name='username' placeholder='Username' value='$username' class='required'/>");
                     }else{
                         echo ("<input type='text' name='username' placeholder='Username' value='' class='required'/>");
                     } 
-                    
                 ?>        
             </div>
             <div class="login-row">
