@@ -56,7 +56,7 @@
                 </script>");
         }
 
-        //if token is invalid, malicious site trying to access form, do nothing
+    //if token is invalid, malicious site trying to access form, do nothing
     }else{
         echo ("<script>
             window.location.href='../supervisor/supervisor_login.php';
