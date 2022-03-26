@@ -63,7 +63,7 @@ font{
 }
 
 
-.login-box input[type=text]{
+.login-box input{
     font-family: "Roboto", Verdana, Arial, sans-serif;
     height: 60px;
     width: 100%;
@@ -71,13 +71,13 @@ font{
     border-width: 0 0 2px 0;
 }
 
-.login-box input[type=password]{
+/* .login-box input[type=password]{
     font-family: "Roboto", Verdana, Arial, sans-serif;
     height: 60px;
     width: 100%;
     background: transparent;
     border-width: 0 0 2px 0;
-}
+} */
 
 .login-box [type=submit] {
     background-color: var(--containerColour);

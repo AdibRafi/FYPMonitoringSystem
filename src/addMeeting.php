@@ -8,19 +8,25 @@
     //Get data required to insert into the table
     
     $form_token = $_GET['token'];
-    $student_user = $_GET['student_id'];
-    $advisor_user = $_GET['advisor_id'];
-    $start = new DateTime($_GET['date'].' '.$_GET['start_time']);
-    $start_string = $start->format('Y-m-d H:i');
-    $end = new DateTime($_GET['date']." ".$_GET['end_time']); 
-    $end_string = $end->format('Y-m-d H:i');
-    $place = "google meet";
-    $duration = abs($start->getTimestamp() - $end->getTimestamp()) / 60; //duration in minutes
-    $meeting_name = $student_user." and ".$advisor_user." meeting ";
     
     //echo "<script>console.log('".$start->format('Y-m-d H:i')."')</script>";
 
     if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
+
+        $student_user = $_GET['student_id'];
+        $advisor_user = $_GET['advisor_id'];
+        $start = new DateTime($_GET['date'].' '.$_GET['start_time']);
+        $start_string = $start->format('Y-m-d H:i');
+        $end = new DateTime($_GET['date']." ".$_GET['end_time']); 
+        $end_string = $end->format('Y-m-d H:i');
+        $place = $_GET['place'];
+        $duration = abs($start->getTimestamp() - $end->getTimestamp()) / 60; //duration in minutes
+        $meeting_name = $_GET['name'];
+
+        if (empty($meeting_name)){
+            $meeting_name = $student_user." and ". $advisor_user." meeting";
+        }
+
         //Check if student is in database
         $student_check_query = $con ->prepare("SELECT * FROM student WHERE STUDENT_ID = ?");
         $student_check_query->bind_param("s",$student_user);

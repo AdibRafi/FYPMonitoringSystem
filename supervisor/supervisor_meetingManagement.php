@@ -16,6 +16,7 @@ session_start();
     <link rel="stylesheet" href="css/supervisor_dashboard.css">
     <link rel="stylesheet" href="css/supervisor_meetingManagement.css">
     <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
+    <script type="text/javascript" src="js/supervisor_login.js"></script>
 </head>
 
 <body>
@@ -61,12 +62,21 @@ session_start();
             <form method="get" id="mainForm" action="../src/addMeeting.php"> 
             <div class="add-meet-box">
                 <h1>Meeting Management</h1><br>
-                <h2>Time</h2>
+                <div class="name-box">
+                    <h2>Meeting Name</h2>
+                    <p><mark>**Default meeting name will be [Student Username] and [Advisor Username] meeting.</mark></p>
+                    <input type="text" name="name" placeholder="Insert meeting name here">
+                </div>
+                <div class="place-box">
+                    <h2>Meeting Place</h2>
+                    <input type="text" name="place" placeholder="Insert meeting place here" class="required">
+                </div>
                 <div class="time-box">
+                    <h2>Time</h2>
                     From <input name="start_time" type="time"> to <input name="end_time" type="time">
                 </div>
-                <h2>Date</h2>
                 <div class="date-box">
+                    <h2>Date</h2>
                     <input name="date" type="date">
                 </div>
                 <h2>People</h2>
