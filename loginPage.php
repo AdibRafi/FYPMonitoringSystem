@@ -1,8 +1,8 @@
 <?php
     session_start();
 
-    require("../src/functions.php");
-    require("../src/database.php");
+    require("src/functions.php");
+    require("src/database.php");
 
     $_SESSION['token'] = getToken(20);
 
@@ -43,7 +43,7 @@
                 <input type="submit" value="Login">
                 <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
             </div>
-            <p>Don't have any account? <a href="register.php"> Sign Up</a></p>
+            <p>Don't have any account? <a href="registerPage.php"> Sign Up</a></p>
         </form>
     </div>
     

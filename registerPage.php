@@ -13,7 +13,7 @@
 <body>
     <div class="register-box">
         <h1>Register as Supervisor</h1>
-        <form id="mainForm" method="get" action="src/registerSupervisor.php">
+        <form id="mainForm" method="get" action="src/register.php">
             <div class="register-inputfield">
                 <label>
                     <?php                                
@@ -73,9 +73,18 @@
                     <input placeholder="Confirm Password" type="password" name="confirmPassword" value="" class="required">
                 </label>
             </div>
+            <div class="register-inputfield">
+                <label>
+                    Register as:
+                    <select name="userType">
+                        <option value="supervisor">Supervisor</option>
+                        <option value="student">Student</option>
+                    </select>
+                </label>
+            </div>
             <input type="submit" value="Register">
         </form>
-        <label>Already have an account? <a href="supervisor_login.php">Sign In</a></label>
+        <label>Already have an account? <a href="loginPage.php">Sign In</a></label>
     </div>
 
 </body>

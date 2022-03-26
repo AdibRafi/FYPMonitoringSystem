@@ -4,15 +4,17 @@
     require("database.php");
     require("functions.php");
 
-    //Change credentials here if differ
-    //User credentials
-    $user_login = $_GET['username'];
-    $user_password = $_GET['password'];
     $form_token = $_GET['token'];
 
-    $login_data = "username=".$user_login;
+
 
     if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
+
+        //Change credentials here if differ
+        //User credentials
+        $user_login = $_GET['username'];
+        $user_password = $_GET['password'];
+        $login_data = "username=".$user_login;
 
         //check if user logging in is a supervisor
         $supervisor = getAdvisorDatabyAdvisorID($con,$user_login);
