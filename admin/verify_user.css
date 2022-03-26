@@ -38,19 +38,18 @@ font {
 
 /* Register Button Styling*/
 .verify-box [type=submit] {
-    background-color: var(--containerColour);
-    color: #ffffff;
-    height: 3em;
-    margin-top: 0;
-    width: 330px;
-    border-style: none;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 10px;
-    position: relative;
-    padding: 20px;
-    margin-right: 0;
-
+     background-color: var(--containerColour);
+     color: #ffffff;
+     height: 3em;
+     margin-top: 0;
+     width: 330px;
+     border-style: none;
+     font-weight: bold;
+     font-size: 20px;
+     border-radius: 10px;
+     position: relative;
+     padding: 20px;
+     margin-right: 0;
 }
 
 table {

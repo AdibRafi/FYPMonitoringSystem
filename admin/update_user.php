@@ -5,6 +5,11 @@ require('../src/database.php');
 $student = $_POST['student'];
 $select = $_POST['submitResult'];
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['backBtn'])) {
+        echo "<script>window.location.href='../supervisor/supervisor_login.php';</script>";
+    }
+}
 if (empty($student)) {
     echo "<script>
         alert('Please Select a row');

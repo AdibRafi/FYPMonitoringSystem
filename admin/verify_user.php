@@ -18,6 +18,10 @@ require('../src/database.php');
     <h1>Verify User</h1>
     <h2>Click row to checked</h2>
     <form action="update_user.php" method="post">
+        <thead>
+            <input type="submit" name="backBtn" value="Back to Login"
+                   class="verify-box" style="margin-left: 0">
+        </thead>
         <table>
             <tr>
                 <th></th>
@@ -27,8 +31,6 @@ require('../src/database.php');
                 <th>Email</th>
             </tr>
             <?php
-
-            require("../src/database.php");
 
             $sql = "SELECT * from Student where ISVERIFIED = 0";
             $result = $con->query($sql);
