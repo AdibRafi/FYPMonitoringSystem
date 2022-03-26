@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Supervisor Login</title>
+    <title>Login</title>
     <link rel="stylesheet" href="css/supervisor_login.css">
     <script type="text/javascript" src="js/supervisor_login.js"></script>
 </head>
@@ -21,7 +21,7 @@
 
     <div class="login-box">
         <form  action="../src/loginSupervisor.php" method="get" id="mainForm">
-            <h1 class="welcome-msg">Login as Supervisor</h1>
+            <h1 class="welcome-msg">Login</h1>
             <div class="login-row">
                 <img src="../src/icon/person_128px.png" alt="username icon">
                 <?php 
