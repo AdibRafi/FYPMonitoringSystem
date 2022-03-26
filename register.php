@@ -7,13 +7,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Supervisor Register</title>
-    <link rel="stylesheet" href="css/supervisor_register.css">
-    <script type="text/javascript" src="js/supervisor_login.js"></script>
+    <link rel="stylesheet" href="supervisor/css/supervisor_register.css">
+    <script type="text/javascript" src="supervisor/js/supervisor_login.js"></script>
 </head>
 <body>
     <div class="register-box">
         <h1>Register as Supervisor</h1>
-        <form id="mainForm" method="get" action="../src/registerSupervisor.php">
+        <form id="mainForm" method="get" action="src/registerSupervisor.php">
             <div class="register-inputfield">
                 <label>
                     <?php                                

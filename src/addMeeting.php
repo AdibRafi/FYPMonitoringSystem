@@ -40,7 +40,7 @@
         if (!$student){
             echo ("<script>
             alert('Student is not in the database, please try again');
-            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            window.location.href='../supervisor/meeting_management.php';
             </script>");
         }
         
@@ -57,7 +57,7 @@
         if (!$advisor){
             echo ("<script>
             alert('Advisor is not in the database, please try again');
-            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            window.location.href='../supervisor/meeting_management.php';
             </script>");
         }
 
@@ -80,18 +80,18 @@
 
             if($start_datetime === $start){
                 echo ("<script>
-                alert('Advisor is occupied at ".$start_string." , please try again');
-                window.location.href='../supervisor/supervisor_meetingManagement.php';
+                alert('Advisor is occupied at ".$start_string. " , please try again');
+                window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }else if($end_datetime === $start){
                 echo ("<script>
-                alert('Advisor is occupied at ".$start_string." , please try again');
-                window.location.href='../supervisor/supervisor_meetingManagement.php';
+                alert('Advisor is occupied at ".$start_string. " , please try again');
+                window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }else if($start>=$start_datetime && $start<=$end_datetime){
                 echo ("<script>
-                alert('Advisor is occupied at ".$start_string." , please try again');
-                window.location.href='../supervisor/supervisor_meetingManagement.php';
+                alert('Advisor is occupied at ".$start_string. " , please try again');
+                window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }
         }
@@ -113,18 +113,18 @@
 
             if($start_datetime === $start){
                 echo ("<script>
-                alert('Student is occupied at".$start_string.", please try again');
-                window.location.href='../supervisor/supervisor_meetingManagement.php';
+                alert('Student is occupied at".$start_string. ", please try again');
+                window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }else if($end_datetime === $start){
                 echo ("<script>
-                alert('Student is occupied at".$start_string.", please try again');
-                window.location.href='../supervisor/supervisor_meetingManagement.php';
+                alert('Student is occupied at".$start_string. ", please try again');
+                window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }else if($start>=$start_datetime && $start<=$end_datetime){
                 echo ("<script>
-                alert('Student is occupied at".$start_string.", please try again');
-                window.location.href='../supervisor/supervisor_meetingManagement.php';
+                alert('Student is occupied at".$start_string. ", please try again');
+                window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }
         }
@@ -137,7 +137,7 @@
         if($meeting_id === "invalid"){
             echo("<script>
             alert('invalid ID, please try again');
-            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            window.location.href='../supervisor/meeting_management.php';
             </script>");
         }
 
@@ -152,21 +152,21 @@
 
             echo("<script>
             alert('Meeting successfully added!');
-            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            window.location.href='../supervisor/meeting_management.php';
             </script>");
 
 
         }else{
             echo("<script>
             alert('Something went wrong!');
-            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            window.location.href='../supervisor/meeting_management.php';
             </script>");
         }
 
     }else{
 
         echo ("<script>
-            window.location.href='../supervisor/supervisor_meetingManagement.php';
+            window.location.href='../supervisor/meeting_management.php';
             </script>");
     }
 
