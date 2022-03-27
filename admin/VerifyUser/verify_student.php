@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require('../src/database.php');
+require('../../src/database.php');
 
 ?>
 
@@ -17,10 +17,17 @@ require('../src/database.php');
 <div class="verify-box">
     <h1>Verify User</h1>
     <h2>Click row to checked</h2>
-    <form action="update_user.php" method="post">
+    <form action="update/update_student.php" method="post">
         <thead>
             <input type="submit" name="backBtn" value="Back to Login"
-                   class="verify-box" style="margin-left: 0">
+                   class="verify-box" style="display: inline-block;margin-left: 0">
+            <input type="submit" name="studentTable" value="Student Table"
+                    class="verify-box" style="display: inline-block;margin-left: 0" id="changeText"
+                    onclick="changeTextToStudent(this)">
+            <input type="submit" name="supervisorTable" value="Supervisor Table"
+                   class="verify-box" style="display: inline-block;margin-left: 0" id="changeText"
+                   onclick="changeTextToSupervisor(this)">
+            <p style="text-align: center" id="changeUserText">
         </thead>
         <table>
             <tr>
@@ -31,7 +38,6 @@ require('../src/database.php');
                 <th>Email</th>
             </tr>
             <?php
-
             $sql = "SELECT * from Student where ISVERIFIED = 0";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
