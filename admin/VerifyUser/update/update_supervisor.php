@@ -6,13 +6,7 @@ $supervisor = $_POST['supervisor'];
 $select = $_POST['submitResult'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['backBtn'])) {
-        echo "<script>window.location.href='../../../loginPage.php';</script>";
-    } else if (isset($_POST['studentTable'])) {
-        echo "<script>window.location.href='../verify_student.php';</script>";
-    } else if (isset($_POST['supervisorTable'])) {
-        echo "<script>window.location.href='../verify_supervisor.php';</script>";
-    } else if (empty($supervisor)) {
+    if (empty($supervisor)) {
         echo "<script>
         alert('Please Select a row');
         </script>";

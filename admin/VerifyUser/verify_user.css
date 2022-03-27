@@ -7,7 +7,6 @@
 body{
     background-color: var(--bodyColour);
     margin: 0;
-    padding-bottom: 200px;
 }
 
 /* Font Smoothing */
