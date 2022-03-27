@@ -11,36 +11,62 @@ require('../../src/database.php');
     <meta charset="UTF-8">
     <title>Verify User</title>
     <link rel="stylesheet" href="verify_user.css" type="text/css">
+    <link rel="stylesheet" href="../../supervisor/css/supervisor_dashboard.css" type="text/css">
     <script type="text/javascript" src="verify_user.js"></script>
 </head>
 <body>
-<div class="verify-box">
-    <h1>Verify User</h1>
-    <h2>Click row to checked</h2>
-    <form action="update/update_supervisor.php" method="post">
-        <thead>
-        <input type="submit" name="backBtn" value="Back to Login"
-               class="verify-box" style="display: inline-block;margin-left: 0">
-        <input type="submit" name="studentTable" value="Student Table"
-               class="verify-box" style="display: inline-block;margin-left: 0" id="changeText">
-        <input type="submit" name="supervisorTable" value="Supervisor Table"
-               class="verify-box" style="display: inline-block;margin-left: 0" id="changeText">
-        </thead>
-        <table>
-            <tr>
-                <th></th>
-                <th>Advisor_ID</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Email</th>
-                <th>Profession</th>
-            </tr>
-            <?php
-            $sql = "SELECT * from Supervisor where ISVERIFIED = 0";
-            $result = $con->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<tr onclick="selectRow(this)">
+<header class="header">
+    <img class="menu-icon" src="../../src/icon/menu_128px.png" alt="menu icon" title="Menu">
+    <div class="welcome-msg">
+        Welcome, Gaylord.
+    </div>
+</header>
+<div class="container">
+    <div class="sidebar">
+        <div class="middle-sidebar">
+            <ul class="sidebar-item-list">
+                <li>
+                    <a href="verify_supervisor.php"><img class="sidebar-item selected" src="../../src/icon/verify_128px.png" alt="verify supervisor" title="Verify Supervisor"></a>
+                </li>
+                <li>
+                    <a href="verify_student.php"><img class="sidebar-item" src="../../src/icon/verify_128px.png" alt="verify student" title="Verify Student"></a>
+                </li>
+                <li>
+                    <a href="#"><img class="sidebar-item" src="../../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom-sidebar">
+            <ul class="sidebar-item-list">
+                <li>
+                    <img class="sidebar-item" src="../../src/icon/edit_profile_128px.png" alt="edit profile icon" title="Edit Profile">
+                </li>
+                <li>
+                    <a href="../../src/logout.php"><img class="sidebar-item" src="../../src/icon/logout_128px.png" alt="logout icon" title="Logout"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="verify-box">
+            <h1>Verify User</h1>
+            <h2>Click row to checked</h2>
+            <form action="update/update_supervisor.php" method="post">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Advisor_ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Profession</th>
+                    </tr>
+                    <?php
+                    $sql = "SELECT * from Supervisor where ISVERIFIED = 0";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<tr onclick="selectRow(this)">
                         <td><input type="checkbox" name="supervisor[]" value="' . $row["SUPERVISOR_ID"] . '"></td>
                         <td>' . $row["SUPERVISOR_ID"] . '</td>
                         <td>' . $row["NAME"] . '</td>
@@ -48,34 +74,56 @@ require('../../src/database.php');
                         <td>' . $row["EMAIL"] . '</td>
                         <td>' . $row["PROFESSION"] . '</td>
                        </tr>';
-                }
-                echo "</table>";
-            } else
-                echo "0 result";
+                        }
+                        echo "</table>";
+                    } else
+                        echo "0 result";
 
-            $con->close();
-            ?>
-        </table>
-        <tfoot>
-        <tr>
-            <td>
-                <div class="floated" style="text-align: center">
-                    <div class="radioBtn">
-                        <input type="radio" value="verify" id="verify" name="submitResult">
-                        <label for="verify">Verify</label>
-                    </div>
-                    <div class="radioBtn">
-                        <input type="radio" value="remove" id="remove" name="submitResult">
-                        <label for="remove">Remove</label>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <input type="submit" name="submit" value="submit" class="verify-box">
-            </td>
-        </tr>
-        </tfoot>
-    </form>
+                    $con->close();
+                    ?>
+                </table>
+                <tfoot>
+                <tr>
+                    <td>
+                        <div class="floated" style="text-align: center">
+                            <div class="radioBtn">
+                                <input type="radio" value="verify" id="verify" name="submitResult">
+                                <label for="verify">Verify</label>
+                            </div>
+                            <div class="radioBtn">
+                                <input type="radio" value="remove" id="remove" name="submitResult">
+                                <label for="remove">Remove</label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="submit" name="submit" value="submit" class="verify-box">
+                    </td>
+                </tr>
+                </tfoot>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+
+<?php
+$sql = "SELECT * from Student where ISVERIFIED = 0";
+$result = $con->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<tr onclick="selectRow(this)">
+                        <td><input type="checkbox" name="student[]" value="'.$row["STUDENT_ID"].'"></td>
+                        <td>' . $row["STUDENT_ID"] . '</td>
+                        <td>' . $row["NAME"] . '</td>
+                        <td>' . $row["AGE"] . '</td>
+                        <td>' . $row["EMAIL"] . '</td>
+                       </tr>';
+    }
+    echo "</table>";
+} else
+    echo "0 result";
+
+$con->close();
+?>
