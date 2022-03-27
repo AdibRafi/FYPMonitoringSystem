@@ -61,7 +61,7 @@
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
-                if ($query_result){
+                if ($query_result && mysqli_num_rows($query_result)>0){
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['MEET_ID']);
         
                 }else{
@@ -73,7 +73,7 @@
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
-                if ($query_result){
+                if ($query_result && mysqli_num_rows($query_result)>0){
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['GOAL_ID']);
         
                 }else{
@@ -85,7 +85,7 @@
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
-                if ($query_result){
+                if ($query_result && mysqli_num_rows($query_result)>0){
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['MARK_ID']);
         
                 }else{
@@ -97,7 +97,7 @@
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
-                if ($query_result){
+                if ($query_result && mysqli_num_rows($query_result)>0){
                     $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['PROJECT_ID']);
         
                 }else{
@@ -108,9 +108,6 @@
                 $id ="invalid";
 
         }
-
-
-       
 
         return $id;
     }

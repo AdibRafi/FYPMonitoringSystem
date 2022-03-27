@@ -141,7 +141,12 @@ session_start();
                             '<div> <b>Meeting Time:</b> '.$row['TIME'].'</div>'.
                             '<div> <b>Meeting Duration:</b> '.$row['DURATION'].' minutes'.'</div>'.
                             '<div> <b>Meeting Place:</b> '.$row['PLACE'].'</div>'.
-                            '<div> <b>Meeting Participant:</b><br> <div style="margin-left: 40px"><b>Student:</b> '.$studentData['NAME']. '<br><b>Supervisor:</b> '.$supervisorData['NAME'].'</div></div>
+                            '<div> <b>Meeting Participant:</b><br> 
+                                 <div style="margin-left: 40px">
+                                    <b>Student:</b> '.$studentData['NAME']. '<br>
+                                    <b>Supervisor:</b> '.$supervisorData['NAME'].'
+                                 </div>
+                            </div>
                         </div>
                         ';
                     }

@@ -2,8 +2,7 @@
 
 session_start();
 
-if (isset($_SESSION['supervisor_id'])){
-    unset($_SESSION['supervisor_id']);
+if (isset($_SESSION)){
 
     session_destroy();
 }

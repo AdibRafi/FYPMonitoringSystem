@@ -129,9 +129,6 @@
             }
         }
 
-        //Get ID of latest data entry
-        $get_check_query = "SELECT MEETING_ID FROM Meeting";
-
         //Append 1 to ID
         $meeting_id = getID($con,"meeting");
         if($meeting_id === "invalid"){

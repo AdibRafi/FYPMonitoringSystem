@@ -25,7 +25,7 @@
         </div>
     </header>
     <div class="container">
-        <div class="sidebar hidden">
+        <div class="sidebar">
             <div class="middle-sidebar">
                 <ul class="sidebar-item-list">
                     <li>

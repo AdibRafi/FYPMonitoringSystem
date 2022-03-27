@@ -3,16 +3,17 @@
     --containerColour: #f6b98e;
 }
 
+body{
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    background-color: var(--bodyColour);
+    margin: 0;
+}
+
 /* Font Smoothing */
 font{
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-}
-
-body{
-    background-color: var(--bodyColour);
-    margin: 0;
 }
 
 .header{
@@ -101,6 +102,7 @@ body{
 .welcome-msg{
     display: inline;
     padding-left: 1rem;
+    font-weight: bold;
 }
 
 .sidebar-item.selected{
