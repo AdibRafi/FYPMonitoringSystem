@@ -62,56 +62,73 @@
                 <?php
                 $supervisorID = $_SESSION['SUPERVISOR_ID'];
                 $index = 0;
-                $getStudentGoals_query = $con->prepare("SELECT *,Goal.NAME as GNAME,Project.NAME as PNAME FROM Goal JOIN Project on Goal.Proj_id = Project.Proj_id where SUPERVISOR_ID = ?;");
-                $getStudentGoals_query->bind_param("s",$supervisorID);
-                $getStudentGoals_query->execute();
-                $getStudentGoals_query_result = $getStudentGoals_query->get_result();
-                $getStudentGoals_query->close();
+
+                $query = "SELECT student.STUDENT_ID,student.NAME as SName,project.NAME as PName from student join project where project.STUDENT_ID = student.STUDENT_ID and project.SUPERVISOR_ID = ?";
+                $getStudentList_query = $con->prepare($query);
+                $getStudentList_query->bind_param("s",$supervisorID);
+                $getStudentList_query->execute();
+                $getStudentList_query_result = $getStudentList_query->get_result();
+                $getStudentList_query->close();
                 $con->next_result();
 
-                if($getStudentGoals_query_result && mysqli_num_rows($getStudentGoals_query_result) > 0){
-                    while($goalList = $getStudentGoals_query_result->fetch_assoc()){
-                        $studentData = getStudentDatabyStudentID($con,$goalList['STUDENT_ID']);
-                        $studentName = $studentData['NAME'];
-                        $goalID = $goalList['GOAL_ID'];
-                        $goalDescription = $goalList['GNAME'];
-                        $projectName = $goalList['PNAME'];
-                        $goalPercentage = $goalList['PERCENTAGE']*100;
-                        $goalPercentage.="%";
+                if($getStudentList_query_result && mysqli_num_rows($getStudentList_query_result) > 0){
+                    while($studentList = $getStudentList_query_result->fetch_assoc()){
+                    
+                        $query = "SELECT *,Goal.NAME as GNAME,Project.NAME as PNAME FROM Goal JOIN Project on Goal.Proj_id = Project.Proj_id where SUPERVISOR_ID = ? and goal.STUDENT_ID = ? order by goal.STUDENT_ID;";
+                        $getStudentGoals_query = $con->prepare($query);
+                        $getStudentGoals_query->bind_param("ss",$supervisorID,$studentList['STUDENT_ID']);
+                        $getStudentGoals_query->execute();
+                        $getStudentGoals_query_result = $getStudentGoals_query->get_result();
+                        $getStudentGoals_query->close();
+                        $con->next_result();
+
+                        // $studentData = getStudentDatabyStudentID($con,$studentList['STUDENT_ID']);
+                        $studentName = $studentList['SName'];
+                        $projectName = $studentList['PName'];
 
                         echo (" 
-                        <h2>
-                            ".$studentName."<br>
-                            Project Name: ".$projectName."
-                        </h2>
-                        <div class = 'goal'>
-                            <div class='bar'>
-                                <div class='info'>
-                                    <span>".$goalID." : ".$goalDescription."</span>
-                                </div>
-                                <div class='progress-line GoalDescription' >
-                                    <span style='width: ".$goalPercentage."'></span>
-                                    <script>
-                                        try{
-                                            let box = document.getElementsByClassName('progress-line GoalDescription');
-                                            let span = box.item(".$index.").querySelector('span');     
-                                            span.setAttribute('afterBack','".$goalPercentage."');                      
-                                        }catch(err){
-                                            span = box.item(".$index.").querySelector('span');  
-                                            span.setAttribute('afterBack','".$goalPercentage."');
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
+                            <h2>
+                                ".$studentName."<br>
+                                Project Name: ".$projectName."
+                            </h2>
                         ");
-                        $index++;
+    
+                        while($goalList = $getStudentGoals_query_result->fetch_assoc()){
+                            
+                            $goalID = $goalList['GOAL_ID'];
+                            $goalDescription = $goalList['GNAME'];
+                            
+                            $goalPercentage = $goalList['PERCENTAGE']*100;
+                            $goalPercentage.="%";
+    
+                            echo("
+                                <div class = 'goal'>
+                                    <div class='bar'>
+                                        <div class='info'>
+                                            <span>".$goalID." : ".$goalDescription."</span>
+                                        </div>
+                                        <div class='progress-line GoalDescription' >
+                                            <span style='width: ".$goalPercentage."'></span>
+                                            <script>
+                                                try{
+                                                    let box = document.getElementsByClassName('progress-line GoalDescription');
+                                                    let span = box.item(".$index.").querySelector('span');     
+                                                    span.setAttribute('afterBack','".$goalPercentage."');                      
+                                                }catch(err){
+                                                    span = box.item(".$index.").querySelector('span');  
+                                                    span.setAttribute('afterBack','".$goalPercentage."');
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            ");
+                            $index++;
+                        }
+                    
                     }
                 }else{
                     echo("
-                        <script>
-                           console.log('gay');
-                        </script>
                         <h2>THERE IS NO STUDENT UNDER YOU CURRENTLY</h2>
                     ");
                 }
