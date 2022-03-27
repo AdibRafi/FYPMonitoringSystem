@@ -13,7 +13,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Project Proposal Management</title>
-    <link rel="stylesheet" href="css/supervisor_dashboard.css">
+    <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_project_proposal_management.css">
     <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
 </head>
@@ -38,7 +38,7 @@ session_start();
                     <a href="project_planning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                 </li>
                 <li>
-                    <a href="supervisor_student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
+                    <a href="student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
                 </li>
                 <li>
                     <a href="meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>

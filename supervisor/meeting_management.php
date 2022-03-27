@@ -13,7 +13,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Meeting Management</title>
-    <link rel="stylesheet" href="css/supervisor_dashboard.css">
+    <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_meetingManagement.css">
     <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
     <script type="text/javascript" src="js/loginPage.js"></script>
@@ -40,7 +40,7 @@ session_start();
                         <a href="project_planning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
-                        <a href="supervisor_student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
+                        <a href="student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
                     </li>
                     <li>
                         <a><img class="sidebar-item selected" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
@@ -64,7 +64,7 @@ session_start();
                 <h1>Meeting Management</h1><br>
                 <div class="name-box">
                     <h2>Meeting Name</h2>
-                    <p><mark>**Default meeting name will be [Student Username] and [Advisor Username] meeting.</mark></p>
+                    <p><mark>**Default meeting name will be [Student Username] and [Supervisor Username] meeting.</mark></p>
                     <input type="text" name="name" placeholder="Insert meeting name here">
                 </div>
                 <div class="place-box">
@@ -107,8 +107,8 @@ session_start();
                             </select>
                         </td>
                         <td class="supervisor">
-                            <select title="Supervisor name" id="supervisor-name" name="advisor_id">
-                                <option value="<?=$user_data['ADVISOR_ID']?>"><?=$user_data['NAME']?></option>';                                    
+                            <select title="Supervisor name" id="supervisor-name" name="supervisor_id">
+                                <option value="<?=$user_data['SUPERVISOR_ID']?>"><?=$user_data['NAME']?></option>';                                    
                             </select>
                         </td>
                     </tr>
@@ -132,7 +132,7 @@ session_start();
                     while($row = $getMeetingList_query_result->fetch_assoc()){
                         
                         $studentData = getStudentDatabyStudentID($con,$row['STUDENT_ID']);
-                        $advisorData = getAdvisorDatabyAdvisorID($con,$row['ADVISOR_ID']);
+                        $supervisorData = getSupervisorDatabySupervisorID($con,$row['SUPERVISOR_ID']);
 
                         echo '
                         <div class="meeting-box">
@@ -141,7 +141,7 @@ session_start();
                             '<div> <b>Meeting Time:</b> '.$row['TIME'].'</div>'.
                             '<div> <b>Meeting Duration:</b> '.$row['DURATION'].' minutes'.'</div>'.
                             '<div> <b>Meeting Place:</b> '.$row['PLACE'].'</div>'.
-                            '<div> <b>Meeting Participant:</b><br> <div style="margin-left: 40px"><b>Student:</b> '.$studentData['NAME']. '<br><b>Advisor:</b> '.$advisorData['NAME'].'</div></div>
+                            '<div> <b>Meeting Participant:</b><br> <div style="margin-left: 40px"><b>Student:</b> '.$studentData['NAME']. '<br><b>Supervisor:</b> '.$supervisorData['NAME'].'</div></div>
                         </div>
                         ';
                     }

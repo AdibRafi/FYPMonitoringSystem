@@ -2,10 +2,10 @@
 
     function checkLogin($con){
 
-        if(isset($_SESSION['advisor_id'])){
+        if(isset($_SESSION['SUPERVISOR_ID'])){
 
-            $supervisor_id = $_SESSION['advisor_id'];
-            $login_check_query = $con->prepare("select * from  advisor where ADVISOR_ID = ? limit 1");
+            $supervisor_id = $_SESSION['SUPERVISOR_ID'];
+            $login_check_query = $con->prepare("select * from  supervisor where SUPERVISOR_ID = ? limit 1");
             $login_check_query->bind_param("s",$supervisor_id);
             $login_check_query->execute();
             $login_check_query_result = $login_check_query->get_result();
@@ -18,7 +18,7 @@
         }
 
         //redirect to login
-        echo "<script>window.location.href='../supervisor/supervisor_login.php'</script>";
+        echo "<script>window.location.href='../loginPage.php'</script>";
         die;
     }
 
@@ -35,8 +35,8 @@
             $query->execute();
             $query_result = $query->get_result();
         } else {
-            //Advisor
-            $query = $con->prepare("SELECT USER_ID FROM Advisor WHERE ADVISOR_ID == ?");
+            //Supervisor
+            $query = $con->prepare("SELECT USER_ID FROM SUPERVISOR WHERE SUPERVISOR_ID == ?");
             $query->bind_param("s", $user_id);
             $query->execute();
             $query_result = $query->get_result();
@@ -136,17 +136,17 @@
 
     }
 
-    function getAdvisorDatabyAdvisorID($con,$advisorID){
+    function getSupervisorDatabySupervisorID($con, $supervisorID){
 
-        $getAdvisorName_query = $con->prepare("SELECT * FROM advisor where ADVISOR_ID = ?");
-        $getAdvisorName_query->bind_param("s",$advisorID);
-        $getAdvisorName_query->execute();
-        $getAdvisorName_query_result = $getAdvisorName_query->get_result();
+        $getSupervisorName_query = $con->prepare("SELECT * FROM Supervisor where SUPERVISOR_ID = ?");
+        $getSupervisorName_query->bind_param("s",$supervisorID);
+        $getSupervisorName_query->execute();
+        $getSupervisorName_query_result = $getSupervisorName_query->get_result();
         
-        $getAdvisorName_query->close();
+        $getSupervisorName_query->close();
         $con->next_result();
 
-        return mysqli_fetch_assoc($getAdvisorName_query_result);
+        return mysqli_fetch_assoc($getSupervisorName_query_result);
 
     }
 

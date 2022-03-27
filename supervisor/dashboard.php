@@ -13,7 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Supervisor Dashboard</title>
-    <link rel="stylesheet" href="css/supervisor_dashboard.css">
+    <link rel="stylesheet" href="css/sidebar_header.css"/>
+    <link rel="stylesheet" href="css/supervisor_dashboard.css"/>
     <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
 </head>
 <body>
@@ -37,7 +38,7 @@
                         <a href="project_planning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
-                        <a href="supervisor_student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
+                        <a href="student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
                     </li>
                     <li>
                         <a href="meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
@@ -56,7 +57,67 @@
             </div>
         </div>
         <div class="content">
+            <div class="goal-progress-box">
+                <h1>Goal Progression</h1>
+                <?php
+                $supervisorID = $_SESSION['SUPERVISOR_ID'];
+                $index = 0;
+                $getStudentGoals_query = $con->prepare("SELECT *,Goal.NAME as GNAME,Project.NAME as PNAME FROM Goal JOIN Project on Goal.Proj_id = Project.Proj_id where SUPERVISOR_ID = ?;");
+                $getStudentGoals_query->bind_param("s",$supervisorID);
+                $getStudentGoals_query->execute();
+                $getStudentGoals_query_result = $getStudentGoals_query->get_result();
+                $getStudentGoals_query->close();
+                $con->next_result();
 
+                if($getStudentGoals_query_result && mysqli_num_rows($getStudentGoals_query_result) > 0){
+                    while($goalList = $getStudentGoals_query_result->fetch_assoc()){
+                        $studentData = getStudentDatabyStudentID($con,$goalList['STUDENT_ID']);
+                        $studentName = $studentData['NAME'];
+                        $goalID = $goalList['GOAL_ID'];
+                        $goalDescription = $goalList['GNAME'];
+                        $projectName = $goalList['PNAME'];
+                        $goalPercentage = $goalList['PERCENTAGE']*100;
+                        $goalPercentage.="%";
+
+                        echo (" 
+                        <h2>
+                            ".$studentName."<br>
+                            Project Name: ".$projectName."
+                        </h2>
+                        <div class = 'goal'>
+                            <div class='bar'>
+                                <div class='info'>
+                                    <span>".$goalID." : ".$goalDescription."</span>
+                                </div>
+                                <div class='progress-line GoalDescription' >
+                                    <span style='width: ".$goalPercentage."'></span>
+                                    <script>
+                                        try{
+                                            let box = document.getElementsByClassName('progress-line GoalDescription');
+                                            let span = box.item(".$index.").querySelector('span');     
+                                            span.setAttribute('afterBack','".$goalPercentage."');                      
+                                        }catch(err){
+                                            span = box.item(".$index.").querySelector('span');  
+                                            span.setAttribute('afterBack','".$goalPercentage."');
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        ");
+                        $index++;
+                    }
+                }else{
+                    echo("
+                        <script>
+                           console.log('gay');
+                        </script>
+                        <h2>THERE IS NO STUDENT UNDER YOU CURRENTLY</h2>
+                    ");
+                }
+
+                ?>
+            </div>
         </div>
     </div>
 </body>

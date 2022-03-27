@@ -40,7 +40,7 @@
         $duplicate = false;
 
         if (strtolower($usertype) === "supervisor"){
-            $duplicate_query = $con->prepare("select * from advisor where ADVISOR_ID = ? or EMAIL = ?");
+            $duplicate_query = $con->prepare("select * from supervisor where SUPERVISOR_ID = ? or EMAIL = ?");
             $duplicate_query->bind_param("ss",$username,$email);
             $duplicate_query->execute();
             $duplicate_query_result = $duplicate_query->get_result();
@@ -94,7 +94,7 @@
 
         switch ($usertype){
             case "supervisor":
-                $sql = "INSERT INTO Advisor (ADVISOR_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)";
+                $sql = "INSERT INTO Supervisor (SUPERVISOR_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)";
                 $register_query = $con->prepare($sql);
 
                 try {

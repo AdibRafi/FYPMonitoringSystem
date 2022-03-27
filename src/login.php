@@ -17,10 +17,10 @@
         $login_data = "username=".$user_login;
 
         //check if user logging in is a supervisor
-        $supervisor = getAdvisorDatabyAdvisorID($con,$user_login);
+        $supervisor = getSupervisorDatabySupervisorID($con,$user_login);
         if ($supervisor) {
             if ($supervisor['PASSWORD'] === $user_password) {
-                $_SESSION['advisor_id'] = $supervisor['ADVISOR_ID'];
+                $_SESSION['SUPERVISOR_ID'] = $supervisor['SUPERVISOR_ID'];
 
                 echo ("<script>
                     alert('Login successfully');
@@ -30,7 +30,7 @@
             else {
                 echo ("<script>
                     alert('Invalid login information, please try again!');
-                    window.location.href='../supervisor/supervisor_login.php?$login_data';
+                    window.location.href='../loginPage.php?$login_data';
                     </script>");
             }
         }
@@ -39,30 +39,30 @@
         $student = getStudentDatabyStudentID($con,$user_login);
         if ($student) {
             if ($student['PASSWORD'] === $user_password) {
-                $_SESSION['student_id'] = $student['student_id'];
+                $_SESSION['STUDENT_ID'] = $student['STUDENT_ID'];
 
                 echo ("<script>
                     alert('Login successfully');
-                    window.location.href='../student/dashboard.html';
+                    window.location.href='../student/student_dashboard.html';
                     </script>");
 
             }else{
                 echo ("<script>
                     alert('Invalid login information, please try again!');
-                    window.location.href='../supervisor/supervisor_login.php?$login_data';
+                    window.location.href='../loginPage.php?$login_data';
                     </script>");
             }
         }
         //if reach this point means user does not exist in database
         echo ("<script>
             alert('Login information does not exist, please try again!');
-            window.location.href='../supervisor/supervisor_login.php?$login_data';
+            window.location.href='../loginPage.php?$login_data';
             </script>");
 
         //if token is invalid, malicious site trying to access form, do nothing
     }else{
         echo ("<script>
-            window.location.href='../supervisor/supervisor_login.php';
+            window.location.href='../loginPage.php';
             </script>");
     }
 ?>

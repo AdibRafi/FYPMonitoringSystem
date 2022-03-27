@@ -14,7 +14,7 @@
     if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
 
         $student_user = $_GET['student_id'];
-        $advisor_user = $_GET['advisor_id'];
+        $supervisor_user = $_GET['supervisor_id'];
         $start = new DateTime($_GET['date'].' '.$_GET['start_time']);
         $start_string = $start->format('Y-m-d H:i');
         $end = new DateTime($_GET['date']." ".$_GET['end_time']); 
@@ -24,7 +24,7 @@
         $meeting_name = $_GET['name'];
 
         if (empty($meeting_name)){
-            $meeting_name = $student_user." and ". $advisor_user." meeting";
+            $meeting_name = $student_user." and ". $supervisor_user." meeting";
         }
 
         //Check if student is in database
@@ -44,28 +44,28 @@
             </script>");
         }
         
-        //Check if advisor is in database
-        $advisor_check_query = $con ->prepare("SELECT * FROM advisor WHERE ADVISOR_ID = ?");
-        $advisor_check_query->bind_param("s",$advisor_user);
-        $advisor_check_query->execute();
-        $result_query = $advisor_check_query->get_result();
-        $advisor = $result_query->fetch_assoc();
+        //Check if supervisor is in database
+        $supervisor_check_query = $con ->prepare("SELECT * FROM supervisor WHERE SUPERVISOR_ID = ?");
+        $supervisor_check_query->bind_param("s",$supervisor_user);
+        $supervisor_check_query->execute();
+        $result_query = $supervisor_check_query->get_result();
+        $supervisor = $result_query->fetch_assoc();
 
-        $advisor_check_query->close();
+        $supervisor_check_query->close();
         $con->next_result();
         
-        if (!$advisor){
+        if (!$supervisor){
             echo ("<script>
-            alert('Advisor is not in the database, please try again');
+            alert('Supervisor is not in the database, please try again');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
         }
 
         //Check table to ensure no conflict
 
-        //checking if advisor is occupied
-        $dateTime_check_query = $con ->prepare("SELECT * FROM meeting WHERE ADVISOR_ID = ?");
-        $dateTime_check_query->bind_param("s",$advisor_user);
+        //checking if supervisor is occupied
+        $dateTime_check_query = $con ->prepare("SELECT * FROM meeting WHERE SUPERVISOR_ID = ?");
+        $dateTime_check_query->bind_param("s",$supervisor_user);
         $dateTime_check_query->execute();
         $dateTime_query_result = $dateTime_check_query->get_result();
 
@@ -80,17 +80,17 @@
 
             if($start_datetime === $start){
                 echo ("<script>
-                alert('Advisor is occupied at ".$start_string. " , please try again');
+                alert('Supervisor is occupied at ".$start_string. " , please try again');
                 window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }else if($end_datetime === $start){
                 echo ("<script>
-                alert('Advisor is occupied at ".$start_string. " , please try again');
+                alert('Supervisor is occupied at ".$start_string. " , please try again');
                 window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }else if($start>=$start_datetime && $start<=$end_datetime){
                 echo ("<script>
-                alert('Advisor is occupied at ".$start_string. " , please try again');
+                alert('Supervisor is occupied at ".$start_string. " , please try again');
                 window.location.href='../supervisor/meeting_management.php';
                 </script>");
             }
@@ -142,8 +142,8 @@
         }
 
         //Insert data into database accordingly
-        $addMeet_query = $con->prepare("INSERT INTO meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,ADVISOR_ID) values(?,?,?,?,?,?,?)");
-        $addMeet_query_result = $addMeet_query->execute([$meeting_id,$meeting_name, $place, $start_string, $duration, $student_user,$advisor_user]);
+        $addMeet_query = $con->prepare("INSERT INTO meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,SUPERVISOR_ID) values(?,?,?,?,?,?,?)");
+        $addMeet_query_result = $addMeet_query->execute([$meeting_id,$meeting_name, $place, $start_string, $duration, $student_user,$supervisor_user]);
 
         $addMeet_query->close();
         $con->next_result();

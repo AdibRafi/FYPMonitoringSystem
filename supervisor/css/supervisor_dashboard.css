@@ -1,120 +1,115 @@
-:root {
-    --bodyColour: #ffdac4;
-    --containerColour: #f6b98e;
-}
-
-/* Font Smoothing */
-font{
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-    text-rendering: optimizeLegibility !important;
-    -webkit-font-smoothing: antialiased !important;
-}
-
-body{
-    background-color: var(--bodyColour);
-    margin: 0;
-}
-
-.header{
-    background-color: var(--containerColour);
-    position:sticky;
-    top: 0;
-    display: flex;
-    /*padding: .1em .1em;*/
-    height: 40px;
-    align-items: center;
-}
-
-.menu-icon{
-    width: 30px;
-    height: 30px;
-    padding-top: .3em;
-    padding-left: .6em;
-}
-
-.menu-icon:hover{
-    opacity: 50%;
-}
-
-.edit-profile-icon:hover{
-    opacity: 50%;
-}
-
-.edit-profile-icon button{
-    border-radius: 100px;
-}
-
-.edit-profile-icon img{
-    width: 100%;
-    height: 100%;
-}
-
-.sidebar{
-    flex-shrink: 0;
-    background-color: azure;
-    width: 50px;
-    border: 1px solid lightgrey;
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 42px);
-    position: sticky;
-    left: 0;
-    top: 40px;
-}
-
-.middle-sidebar{
-    flex-grow: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.container{
-    display: flex;
-}
-
-.sidebar-item-list{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.sidebar-item{
-    width: 30px;
-    height: 30px;
-    margin-top: 1rem;
-}
-
-.sidebar-item:hover{
-    opacity: 50%;
-}
 
 .content{
-    display: flex;
+    justify-content: center;
+}
+
+.goal-progress-box{
+    /*border: 1px solid black;*/
+    margin-left: 50px;
+    width: 50%;
+    align-content: center;
+}
+
+.goal-progress-box .bar{
+    margin: 20px 0;
+}
+.goal-progress-box .bar:first-child{
+    margin-top: 0px;
+}
+.goal-progress-box .bar .info{
+    margin: 0 0 30px 0;
+}
+.goal-progress-box .bar .info span{
+    font-weight: 500;
+    font-size: 17px;
+    opacity: 0;
+    animation: showText 0.5s 1s linear forwards;
+}
+@keyframes showText {
+    100%{
+        opacity: 1;
+    }
+}
+
+.goal-progress-box .bar .progress-line{
+    height: 10px;
     width: 100%;
+    background: #f0f0f0;
+    position: relative;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05),
+    0 1px rgba(255,255,255,0.8);
+    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+}
+@keyframes animate {
+    100%{
+        transform: scaleX(1);
+    }
+}
+.bar .progress-line span{
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: #6665ee;
+    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+}
+/*.bar .progress-line.GoalDescription1 span{*/
+/*    width: 90%;*/
+/*}*/
+
+.progress-line span::before{
+    position: absolute;
+    content: "";
+    top: -10px;
+    right: 0;
+    height: 0;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-top-color: #000;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+.progress-line span::after{
+    position: absolute;
+    top: -28px;
+    right: 0;
+    font-weight: 500;
+    background: #000;
+    color: #fff;
+    padding: 1px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+@keyframes showText2 {
+    100%{
+        opacity: 1;
+    }
+}
+.progress-line.GoalDescription span::after{
+    content: attr(afterBack);
 }
 
-.welcome-msg{
-    display: inline;
-    padding-left: 1rem;
+h2{
+    font-size: large;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 2px;
+    text-align: center;
+    padding: 10px;
 }
 
-.sidebar-item.selected{
-    background-color: grey;
-    border-radius: 100px;
-}
-
-.sidebar-item.selected:hover{
-    opacity: 100%;
-}
-
-.sidebar.active{
-    width: 100px;
-}
-
-.sidebar.hidden{
-    display: none;
+.goal{
+    border: 1px solid black;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 10px;
 }
 

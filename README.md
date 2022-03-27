@@ -3,7 +3,7 @@
 Following project was made in tendem with the assignment provided in the class Web Development Fundamentals in MMU Cyberjaya.
 
 Goals of the assignment is to:
- - Design and develop a web application for Management and M onitoring of Final Year Projects to be used by MMU lecturers and FYP students. 
+ - Design and develop a web application for Management and Monitoring of Final Year Projects to be used by MMU lecturers and FYP students. 
  
 Allocated criterias
  -  Two user types for the app, namely supervisor and student.

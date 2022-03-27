@@ -12,7 +12,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Student-To-Project Assignment</title>
-    <link rel="stylesheet" href="css/supervisor_dashboard.css">
+    <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_student-to-project_assignment.css">
     <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
 </head>
