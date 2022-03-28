@@ -22,9 +22,11 @@ font {
     border-color: #FF1744;
 }
 
+.content{
+    justify-content: center;
+}
 .verify-box {
     margin-top: 2rem;
-    width: 100%;
     z-index: 15;
     margin-left: auto;
     margin-right: auto;

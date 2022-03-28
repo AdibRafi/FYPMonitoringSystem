@@ -11,8 +11,9 @@ require('../../src/database.php');
     <meta charset="UTF-8">
     <title>Verify User</title>
     <link rel="stylesheet" href="verify_user.css" type="text/css">
-    <link rel="stylesheet" href="../../supervisor/css/supervisor_dashboard.css" type="text/css">
+    <link rel="stylesheet" href="../../supervisor/css/sidebar_header.css" type="text/css">
     <script type="text/javascript" src="verify_user.js"></script>
+    <script type="text/javascript" src="../../supervisor/js/supervisor_sidebar.js"></script>
 </head>
 <body>
 <header class="header">
@@ -48,7 +49,7 @@ require('../../src/database.php');
         </div>
     </div>
     <div class="content">
-        <div class="verify-box">
+<!--        <div class="verify-box">-->
             <h1>Verify User</h1>
             <h2>Click row to checked</h2>
             <form action="update/update_student.php" method="post">
@@ -100,7 +101,7 @@ require('../../src/database.php');
                 </tr>
                 </tfoot>
             </form>
-        </div>
+<!--        </div>-->
     </div>
 </div>
 </body>

@@ -11,8 +11,9 @@ require('../../src/database.php');
     <meta charset="UTF-8">
     <title>Verify User</title>
     <link rel="stylesheet" href="verify_user.css" type="text/css">
-    <link rel="stylesheet" href="../../supervisor/css/supervisor_dashboard.css" type="text/css">
+    <link rel="stylesheet" href="../../supervisor/css/sidebar_header.css" type="text/css">
     <script type="text/javascript" src="verify_user.js"></script>
+
 </head>
 <body>
 <header class="header">
@@ -107,23 +108,3 @@ require('../../src/database.php');
 </div>
 </body>
 </html>
-
-<?php
-$sql = "SELECT * from Student where ISVERIFIED = 0";
-$result = $con->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo '<tr onclick="selectRow(this)">
-                        <td><input type="checkbox" name="student[]" value="'.$row["STUDENT_ID"].'"></td>
-                        <td>' . $row["STUDENT_ID"] . '</td>
-                        <td>' . $row["NAME"] . '</td>
-                        <td>' . $row["AGE"] . '</td>
-                        <td>' . $row["EMAIL"] . '</td>
-                       </tr>';
-    }
-    echo "</table>";
-} else
-    echo "0 result";
-
-$con->close();
-?>
