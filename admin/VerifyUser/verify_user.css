@@ -22,19 +22,18 @@ font {
     border-color: #FF1744;
 }
 
-.content{
-    justify-content: center;
+.sidebar{
+    margin-right: 2rem;
 }
+
 .verify-box {
     margin-top: 2rem;
-    z-index: 15;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding-bottom: 2rem;
     padding-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Register Button Styling*/
@@ -73,6 +72,7 @@ tr:hover {
     display: flex;
     justify-content: flex-end;
 }
+
 .radioBtn {
     position: relative;
     display: block;
