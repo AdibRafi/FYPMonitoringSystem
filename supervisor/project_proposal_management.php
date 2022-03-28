@@ -15,13 +15,13 @@ session_start();
     <title>Project Proposal Management</title>
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_project_proposal_management.css">
-    <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
+    <script type="text/javascript" src="js/sidebar.js"></script>
 </head>
 <body>
 <header class="header">
     <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
     <div class="welcome-msg">
-        Welcome, <?php echo $user_data['NAME']?>
+        Welcome, <?php echo $user_data['NAME']?>.
     </div>
 </header>
 <div class="container">
@@ -57,7 +57,9 @@ session_start();
         </div>
     </div>
     <div class="content">
-
+        <div class="proposal-management-box">
+            <h1>Welcome to Project Proposal Management</h1>
+        </div>
     </div>
 </div>
 

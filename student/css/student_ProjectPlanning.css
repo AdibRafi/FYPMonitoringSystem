@@ -1,106 +1,6 @@
-body{
-    margin: 0;
-}
-
-.header{
-    background-color: darkgrey;
-    position:sticky;
-    top: 0;
-    display: flex;
-    /*padding: .1em .1em;*/
-    height: 40px;
-    align-items: center;
-}
-
-.menu-icon{
-    width: 30px;
-    height: 30px;
-    padding-top: .3em;
-    padding-left: .6em;
-}
-
-.menu-icon:hover{
-    opacity: 50%;
-}
-
-.edit-profile-icon:hover{
-    opacity: 50%;
-}
-
-.edit-profile-icon button{
-    border-radius: 100px;
-}
-
-.edit-profile-icon img{
-    width: 100%;
-    height: 100%;
-}
-
-.sidebar{
-    flex-shrink: 0;
-    background-color: azure;
-    width: 50px;
-    border: 1px solid lightgrey;
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 42px);
-    position: sticky;
-    left: 0;
-    top: 40px;
-}
-
-.middle-sidebar{
-    flex-grow: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.container{
-    display: flex;
-    background-color: azure;
-}
-
-.sidebar-item-list{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.sidebar-item{
-    width: 30px;
-    height: 30px;
-    margin-top: 1rem;
-}
-
-.sidebar-item:hover{
-    opacity: 50%;
-}
-
-.content{
-    display: flex;
-
-}
-
-.welcome-msg{
-    display: inline;
-    padding-left: 1rem;
-}
-
-.sidebar-item.selected{
-    background-color: grey;
-    border-radius: 100px;
-}
-
-.sidebar-item.selected:hover{
-    opacity: 100%;
-}
-
 .banner{
     padding-left: 30px;
-  }
+}
   
 .student{
     text-align: center;
@@ -113,11 +13,11 @@ body{
     margin-left: 100px;
 }
   
-
 .plan {
     padding-top: 25px;
 
 }
+
 .addPlan {
     padding-top: 50px;
 }

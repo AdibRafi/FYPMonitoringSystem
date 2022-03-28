@@ -6,9 +6,7 @@
 .add-meet-box {
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    padding: 1rem 5rem 1rem 5rem;
     /* border: 1px solid black; */
-    margin-right:2rem;
 } 
 
 .people-box{
@@ -53,8 +51,7 @@
 .meeting-list-box{
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    float: left;
-    padding: 1rem 5rem 1rem 5rem;
+    float: left;    
     /* border: 1px solid black; */
     margin-left: auto;
     margin-right: 10rem;

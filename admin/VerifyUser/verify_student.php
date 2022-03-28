@@ -13,7 +13,7 @@ require('../../src/database.php');
     <link rel="stylesheet" href="verify_user.css" type="text/css">
     <link rel="stylesheet" href="../../supervisor/css/sidebar_header.css" type="text/css">
     <script type="text/javascript" src="verify_user.js"></script>
-    <script type="text/javascript" src="../../supervisor/js/supervisor_sidebar.js"></script>
+    <script type="text/javascript" src="../../supervisor/js/sidebar.js"></script>
 </head>
 <body>
 <header class="header">

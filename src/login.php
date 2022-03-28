@@ -43,7 +43,7 @@
 
                 echo ("<script>
                     alert('Login successfully');
-                    window.location.href='../student/student_dashboard.html';
+                    window.location.href='../student/student_dashboard.php';
                     </script>");
 
             }else{

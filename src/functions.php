@@ -1,25 +1,61 @@
 <?php
 
+    function getStudentDatabyStudentID($con,$studentID){
+
+        $getStudentName_query = $con->prepare("SELECT * FROM student where STUDENT_ID = ?");
+        $getStudentName_query->bind_param("s",$studentID);
+        $getStudentName_query->execute();
+        $getStudentName_query_result = $getStudentName_query->get_result();
+        
+        $getStudentName_query->close();
+        $con->next_result();
+
+        return mysqli_fetch_assoc($getStudentName_query_result);
+
+    }
+
+    function getSupervisorDatabySupervisorID($con, $supervisorID){
+
+        $getSupervisorName_query = $con->prepare("SELECT * FROM Supervisor where SUPERVISOR_ID = ?");
+        $getSupervisorName_query->bind_param("s",$supervisorID);
+        $getSupervisorName_query->execute();
+        $getSupervisorName_query_result = $getSupervisorName_query->get_result();
+        
+        $getSupervisorName_query->close();
+        $con->next_result();
+
+        return mysqli_fetch_assoc($getSupervisorName_query_result);
+
+    }
+
     function checkLogin($con){
 
         if(isset($_SESSION['SUPERVISOR_ID'])){
 
             $supervisor_id = $_SESSION['SUPERVISOR_ID'];
-            $login_check_query = $con->prepare("select * from  supervisor where SUPERVISOR_ID = ? limit 1");
-            $login_check_query->bind_param("s",$supervisor_id);
-            $login_check_query->execute();
-            $login_check_query_result = $login_check_query->get_result();
+            $login_check_query_result = getSupervisorDatabySupervisorID($con,$supervisor_id);
 
-            if($login_check_query_result && mysqli_num_rows($login_check_query_result) > 0){
+            if($login_check_query_result){
 
-                return mysqli_fetch_assoc($login_check_query_result);
+                return $login_check_query_result;
+                die;
+            }
+
+        }else if(isset($_SESSION['STUDENT_ID'])){
+            $student_id = $_SESSION['STUDENT_ID'];
+            $login_check_query_result = getStudentDatabyStudentID($con,$student_id);
+
+            if($login_check_query_result){
+
+                return $login_check_query_result;
+                die;
 
             }
         }
 
         //redirect to login
-        echo "<script>window.location.href='../loginPage.php'</script>";
-        die;
+        // echo "<script>window.location.href='../loginPage.php'</script>";
+        // die;
     }
 
     function getToken($length): string
@@ -117,34 +153,6 @@
             $length = strlen($matches[1]);
             return sprintf("%0".$length."d", ++$matches[1]);
         }    
-    }
-
-    function getStudentDatabyStudentID($con,$studentID){
-
-        $getStudentName_query = $con->prepare("SELECT * FROM student where STUDENT_ID = ?");
-        $getStudentName_query->bind_param("s",$studentID);
-        $getStudentName_query->execute();
-        $getStudentName_query_result = $getStudentName_query->get_result();
-        
-        $getStudentName_query->close();
-        $con->next_result();
-
-        return mysqli_fetch_assoc($getStudentName_query_result);
-
-    }
-
-    function getSupervisorDatabySupervisorID($con, $supervisorID){
-
-        $getSupervisorName_query = $con->prepare("SELECT * FROM Supervisor where SUPERVISOR_ID = ?");
-        $getSupervisorName_query->bind_param("s",$supervisorID);
-        $getSupervisorName_query->execute();
-        $getSupervisorName_query_result = $getSupervisorName_query->get_result();
-        
-        $getSupervisorName_query->close();
-        $con->next_result();
-
-        return mysqli_fetch_assoc($getSupervisorName_query_result);
-
     }
 
 ?>

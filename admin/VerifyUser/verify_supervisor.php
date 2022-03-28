@@ -11,6 +11,7 @@ require('../../src/database.php');
     <meta charset="UTF-8">
     <title>Verify User</title>
     <link rel="stylesheet" href="verify_user.css" type="text/css">
+    <script type="text/javascript" src="js/sidebar.js"></script>
     <link rel="stylesheet" href="../../supervisor/css/sidebar_header.css" type="text/css">
     <script type="text/javascript" src="verify_user.js"></script>
 

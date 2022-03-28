@@ -1,15 +1,27 @@
+<?php
+    session_start();
+
+    require ("../src/functions.php");
+    require ("../src/database.php");
+
+    $user_data = checkLogin($con);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="css/student_GoalSetting_PlanningTracking.css">
+    <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
+    <script type="text/javascript" src="../supervisor/js/sidebar.js"></script>
 </head>
 <body>
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, Gaylord. 
+            Welcome, <?php echo $user_data['NAME']?>.
         </div>
     </header>
     <div class="container">
@@ -17,13 +29,13 @@
             <div class="middle-sidebar">
                 <ul class="sidebar-item-list">
                     <li>
-                        <a href="../student/student_dashboard.html"><img class="sidebar-item " src="../src/icon/studentDashboard.png" alt="student dashboard icon" title="Student Dashboard"></a>
+                        <a href="../student/student_dashboard.php"><img class="sidebar-item" src="../src/icon/studentDashboard.png" alt="student dashboard icon" title="Student Dashboard"></a>
                     </li>
                     <li>
-                        <a href="../student/student_GoalSetting_ProgressTracking.html"><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
+                        <a><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
-                        <a href="../student/student_ProjectPlanning.html"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a href="../student/student_ProjectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                 </ul>
             </div>

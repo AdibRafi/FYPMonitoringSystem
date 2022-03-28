@@ -15,7 +15,7 @@ session_start();
     <title>Meeting Management</title>
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_meetingManagement.css">
-    <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
+    <script type="text/javascript" src="js/sidebar.js"></script>
     <script type="text/javascript" src="js/loginPage.js"></script>
 </head>
 
@@ -23,7 +23,7 @@ session_start();
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['NAME']?>
+            Welcome, <?php echo $user_data['NAME']?>.
         </div>
     </header>
     <div class="container">
@@ -61,7 +61,8 @@ session_start();
         <div class="content">
             <form method="get" id="mainForm" action="../src/addMeeting.php"> 
             <div class="add-meet-box">
-                <h1>Meeting Management</h1><br>
+                <h1>Welcome to Meeting Management</h1><br>
+                <h1>Add meeting</h1>
                 <div class="name-box">
                     <h2>Meeting Name</h2>
                     <p><mark>**Default meeting name will be [Student Username] and [Supervisor Username] meeting.</mark></p>
@@ -122,33 +123,40 @@ session_start();
                 <?php
                     require ("../src/database.php");
 
-                    $getMeetingList_query = $con->prepare("SELECT * FROM meeting");
+                    $getMeetingList_query = $con->prepare("SELECT * FROM meeting where SUPERVISOR_ID = ?");
+                    $getMeetingList_query->bind_param("s",$_SESSION['SUPERVISOR_ID']);
                     $getMeetingList_query->execute();
                     $getMeetingList_query_result = $getMeetingList_query->get_result();
 
                     $getMeetingList_query->close();
                     $con->next_result();
+                    
+                    if($getMeetingList_query_result && mysqli_num_rows($getMeetingList_query_result) > 0){
+                        while($row = $getMeetingList_query_result->fetch_assoc()){
+                            
+                            $studentData = getStudentDatabyStudentID($con,$row['STUDENT_ID']);
+                            $supervisorData = getSupervisorDatabySupervisorID($con,$row['SUPERVISOR_ID']);
 
-                    while($row = $getMeetingList_query_result->fetch_assoc()){
-                        
-                        $studentData = getStudentDatabyStudentID($con,$row['STUDENT_ID']);
-                        $supervisorData = getSupervisorDatabySupervisorID($con,$row['SUPERVISOR_ID']);
-
-                        echo '
-                        <div class="meeting-box">
-                            <div> <b>Meeting ID:</b> '.$row['MEET_ID'].'</div>'.
-                            '<div> <b>Meeting Name:</b> '.$row['NAME'].'</div>'.
-                            '<div> <b>Meeting Time:</b> '.$row['TIME'].'</div>'.
-                            '<div> <b>Meeting Duration:</b> '.$row['DURATION'].' minutes'.'</div>'.
-                            '<div> <b>Meeting Place:</b> '.$row['PLACE'].'</div>'.
-                            '<div> <b>Meeting Participant:</b><br> 
-                                 <div style="margin-left: 40px">
-                                    <b>Student:</b> '.$studentData['NAME']. '<br>
-                                    <b>Supervisor:</b> '.$supervisorData['NAME'].'
-                                 </div>
+                            echo '
+                            <div class="meeting-box">
+                                <div> <b>Meeting ID:</b> '.$row['MEET_ID'].'</div>'.
+                                '<div> <b>Meeting Name:</b> '.$row['NAME'].'</div>'.
+                                '<div> <b>Meeting Time:</b> '.$row['TIME'].'</div>'.
+                                '<div> <b>Meeting Duration:</b> '.$row['DURATION'].' minutes'.'</div>'.
+                                '<div> <b>Meeting Place:</b> '.$row['PLACE'].'</div>'.
+                                '<div> <b>Meeting Participant:</b><br> 
+                                    <div style="margin-left: 40px">
+                                        <b>Student:</b> '.$studentData['NAME']. '<br>
+                                        <b>Supervisor:</b> '.$supervisorData['NAME'].'
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        ';
+                            ';
+                        }
+                    }else{
+                        echo("
+                        <h2 style='border: 3px solid black'>THERE IS CURRENTLY NO MEETING</h2>
+                    ");
                     }
 
                 ?>

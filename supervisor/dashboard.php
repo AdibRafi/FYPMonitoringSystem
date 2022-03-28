@@ -15,13 +15,13 @@
     <title>Supervisor Dashboard</title>
     <link rel="stylesheet" href="css/sidebar_header.css"/>
     <link rel="stylesheet" href="css/supervisor_dashboard.css"/>
-    <script type="text/javascript" src="js/supervisor_sidebar.js"></script>
+    <script type="text/javascript" src="js/sidebar.js"></script>
 </head>
 <body>
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['NAME']?>
+            Welcome, <?php echo $user_data['NAME']?>.
         </div>
     </header>
     <div class="container">
@@ -58,6 +58,7 @@
         </div>
         <div class="content">
             <div class="goal-progress-box">
+                <h1>Welcome to Supervisor Dashboard</h1>
                 <h1>Goal Progression</h1>
                 <?php
                 $supervisorID = $_SESSION['SUPERVISOR_ID'];

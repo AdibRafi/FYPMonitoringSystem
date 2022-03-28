@@ -98,6 +98,7 @@ font{
     display: flex;
     width: 100%;
     margin-top: 2rem;
+    margin-left: 50px;
 }
 
 .welcome-msg{
