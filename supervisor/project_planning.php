@@ -58,7 +58,7 @@ session_start();
     </div>
     <div class="content">
         <div class="project-planning-box">
-            <h1>Welcome to Project Plannsing</h1>
+            <h1>Welcome to Project Planning</h1>
         </div>
     </div>
 </div>
