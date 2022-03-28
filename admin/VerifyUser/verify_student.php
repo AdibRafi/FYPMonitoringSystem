@@ -49,7 +49,7 @@ require('../../src/database.php');
         </div>
     </div>
     <div class="content">
-<!--        <div class="verify-box">-->
+        <div class="verify-box">
             <h1>Verify User</h1>
             <h2>Click row to checked</h2>
             <form action="update/update_student.php" method="post">
@@ -101,7 +101,7 @@ require('../../src/database.php');
                 </tr>
                 </tfoot>
             </form>
-<!--        </div>-->
+        </div>
     </div>
 </div>
 </body>
