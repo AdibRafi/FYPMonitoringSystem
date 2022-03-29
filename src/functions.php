@@ -58,11 +58,12 @@
     {
         return substr(md5(rand()), 0, $length);
     }
-
+ 
+    
     function checkUsername($user_id, $user_type) {
         if ($user_type == "student") {
             //Student
-            $query = $con->prepare("SELECT USER_ID FROM STUDENT WHERE USER_ID == ?");
+            $query = $con->prepare("SELECT STUDENT_ID FROM STUDENT WHERE STUDENT_ID == ?");
             $query->bind_param("s", $user_id);
             $query->execute();
             $query_result = $query->get_result();
@@ -80,7 +81,18 @@
 
         }
 
-        echo "verification failed!";
+        //Verification has failed
+        if ($user_type == "student") {
+            echo ("<script>
+            alert('Student is not in the database, please try again');
+            window.location.href='../supervisor/meeting_management.php';
+            </script>");
+        } else {
+            echo ("<script>
+            alert('Supervisor is not in the database, please try again');
+            window.location.href='../supervisor/meeting_management.php';
+            </script>");
+        }
         die;
         
     }
