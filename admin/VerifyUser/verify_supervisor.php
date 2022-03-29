@@ -36,13 +36,13 @@ require('../../src/database.php');
                                                       alt="verify student" title="Verify Student"></a>
                 </li>
                 <li>
-                    <a href="../ListUser/list_student.php"><img class="sidebar-item" src="../../src/icon/project_planning_128px.png"
-                                     alt="project planning icon" title="Project Planning"></a>
+                    <a href="../ListUser/student_list/list_student.php"><img class="sidebar-item" src="../../src/icon/project_planning_128px.png"
+                                                                             alt="project planning icon" title="Project Planning"></a>
                 </li>
                 <li>
-                    <a href="../ListUser/list_supervisor.php"><img class="sidebar-item"
-                                                       src="../../src/icon/project_planning_128px.png" alt="list supervisor"
-                                                       title="List Supervisor"></a>
+                    <a href="../ListUser/supervisor_list/list_supervisor.php"><img class="sidebar-item"
+                                                                                   src="../../src/icon/project_planning_128px.png" alt="list supervisor"
+                                                                                   title="List Supervisor"></a>
                 </li>
                 <li>
                     <a href="../ListProject/list_project.php"><img class="sidebar-item"
