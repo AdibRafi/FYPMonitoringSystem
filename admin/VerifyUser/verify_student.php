@@ -10,9 +10,9 @@ require('../../src/database.php');
 <head>
     <meta charset="UTF-8">
     <title>Verify User</title>
-    <link rel="stylesheet" href="verify_user.css" type="text/css">
+    <link rel="stylesheet" href="../admin.css" type="text/css">
     <link rel="stylesheet" href="../../supervisor/css/sidebar_header.css" type="text/css">
-    <script type="text/javascript" src="verify_user.js"></script>
+    <script type="text/javascript" src="../admin.js"></script>
     <script type="text/javascript" src="../../supervisor/js/sidebar.js"></script>
 </head>
 <body>
@@ -44,6 +44,11 @@ require('../../src/database.php');
                                                        src="../../src/icon/project_planning_128px.png" alt="list supervisor"
                                                        title="List Supervisor"></a>
                 </li>
+                <li>
+                    <a href="../ListProject/list_project.php"><img class="sidebar-item"
+                                                                   src="../../src/icon/project_list_128px.png" alt="list project"
+                                                                   title="List Project"></a>
+                </li>
             </ul>
         </div>
         <div class="bottom-sidebar">
@@ -61,9 +66,9 @@ require('../../src/database.php');
     </div>
     <div class="content">
         <div class="verify-box">
-            <h1>Verify User</h1>
+            <h1>Verify Student</h1>
             <h2>Click row to checked</h2>
-            <form action="update/update_student.php" method="post">
+            <form action="verifyStudent_fucntion.php" method="post">
                 <table>
                     <tr>
                         <th></th>
