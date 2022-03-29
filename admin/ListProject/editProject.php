@@ -12,8 +12,9 @@ require('../../src/database.php');
     <title>Verify User</title>
     <link rel="stylesheet" href="../admin.css" type="text/css">
     <link rel="stylesheet" href="../../supervisor/css/sidebar_header.css" type="text/css">
+<!--    PINJAM REGISTER.CSS JAP ALEX-->
+    <link rel="stylesheet" href="../../supervisor/css/registerPage.css" type="text/css">
     <script type="text/javascript" src="../admin.js"></script>
-    <script type="text/javascript" src="../../supervisor/js/sidebar.js"></script>
 </head>
 <body>
 <header class="header">
@@ -69,49 +70,54 @@ require('../../src/database.php');
     </div>
     <div class="content">
         <div class="verify-box">
-            <h1>List Project</h1>
-            <h2>Click Row to Select</h2>
-            <form action="listProject_function.php" method="post">
-                <table>
-                    <tr>
-                        <th>Project Id</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Student ID</th>
-                        <th>Supervisor ID</th>
-                        <th>Approved</th>
-                    </tr>
-                    <?php
-                    $sql = "SELECT * from Project";
-                    $result = $con->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<tr onclick="selectRow(this)">
-                        <td><div class="radioBtn">
-                        <input type="radio" value="' . $row["PROJ_ID"] . '"
-                        id="select" name="selectRadio">
-                        <label for="select">' . $row["PROJ_ID"] . '</label>
-                        </div> </td>
-                        <td>' . $row["NAME"] . '</td>
-                        <td>' . $row["DESCRIPTION"] . '</td>
-                        <td>' . $row["STUDENT_ID"] . '</td>
-                        <td>' . $row["SUPERVISOR_ID"] . '</td>
-                        <td>' . $row["IS_APPROVED"] . '</td>
-                       </tr>';
-                        }
-                        echo "</table>";
-                    } else
-                        echo "0 result";
-
-                    $con->close();
-                    ?>
-                </table>
+            <h1>Edit Project</h1>
+            <form action="editProject_function.php" method="post">
+                <?php
+                $projectSelect = $_SESSION["passedProjectParameter"];
+                $sql = "SELECT * FROM Project WHERE PROJ_ID = '".$projectSelect."'";
+                $result = $con->query($sql);
+                $project = $result->fetch_assoc();
+                echo '
+                <div class="register-inputfield">
+                    <label> Project ID
+                        <input placeholder="Project ID" type="text" name="projectId" value="'.$project["PROJ_ID"].'">
+                    </label>
+                </div>
+                <div class="register-inputfield">
+                    <label> Name
+                        <input placeholder="Name" type="text" name="name" value="'.$project["NAME"].'">
+                    </label>
+                </div>
+                <div class="register-inputfield">
+                    <label> Description
+                        <input placeholder="Description" type="text" name="description" value="'.$project["DESCRIPTION"].'">
+                    </label>
+                </div>
+                <div class="register-inputfield">
+                    <label> Student ID
+                        <input placeholder="Student ID" type="text" name="studentId" value="'.$project["STUDENT_ID"].'">
+                    </label>
+                </div>
+                <div class="register-inputfield">
+                    <label> Supervisor ID
+                        <input placeholder="Supervisor ID" type="text" name="supervisorId" value="'.$project["SUPERVISOR_ID"].'">
+                    </label>
+                </div>
+                <div class="register-inputfield">
+                    <label for="approveOption"> Approved <br><br>
+                        <select name="approvedOption" id="approveOption">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                        </select>
+                    </label>
+                </div>
+                '
+                ?>
                 <tfoot>
                 <tr>
                     <td>
                         <div class="floated">
-                            <button class="listBtn" name="editBtn">Edit</button>
-                            <button class="listBtn" name="removeBtn">Remove</button>
+                            <button class="listBtn" name="submitBtn">Submit</button>
                         </div>
                     </td>
                 </tr>

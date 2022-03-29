@@ -3,6 +3,7 @@ session_start();
 require('../../src/database.php');
 
 $project = $_POST['selectRadio'];
+$_SESSION["passedProjectParameter"] = $project;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($project)) {
@@ -10,15 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         alert('Please Select Project');
         </script>";
         echo "<script>window.location.href='list_project.php';</script>";
-    }
-    else if (isset($_POST['editBtn'])) {
-        echo "<script>
-        alert('Edit Button Click');
-        </script>";
-        echo "<script>window.location.href='list_project.php';</script>";
-    }
-    else if (isset($_POST['removeBtn'])) {
-        $removeSql = "DELETE FROM Project WHERE PROJ_ID = '".$project."'";
+    } else if (isset($_POST['editBtn'])) {
+        echo "<script>window.location.href='editProject.php'</script>";
+    } else if (isset($_POST['removeBtn'])) {
+        $removeSql = "DELETE FROM Project WHERE PROJ_ID = '" . $project . "'";
         if ($con->query($removeSql) === TRUE) {
             echo "<script>
         alert('$project has been removed from database');
@@ -30,3 +26,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
