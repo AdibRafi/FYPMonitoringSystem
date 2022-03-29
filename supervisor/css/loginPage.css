@@ -74,6 +74,7 @@ font{
     width: 100%;
     background: transparent;
     border-width: 0 0 2px 0;
+    border-color: var(--containerColour);
 }
 
 /* .login-box input[type=password]{

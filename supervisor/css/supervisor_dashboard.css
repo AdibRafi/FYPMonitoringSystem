@@ -16,18 +16,22 @@
 .goal-progress-box .bar{
     margin: 20px 0;
 }
+
 .goal-progress-box .bar:first-child{
     margin-top: 0px;
 }
+
 .goal-progress-box .bar .info{
     margin: 0 0 30px 0;
 }
+
 .goal-progress-box .bar .info span{
     font-weight: 500;
     font-size: 17px;
     opacity: 0;
     animation: showText 0.5s 1s linear forwards;
 }
+
 @keyframes showText {
     100%{
         opacity: 1;
@@ -46,11 +50,13 @@
     0 1px rgba(255,255,255,0.8);
     animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
 }
+
 @keyframes animate {
     100%{
         transform: scaleX(1);
     }
 }
+
 .bar .progress-line span{
     height: 100%;
     position: absolute;
@@ -78,6 +84,7 @@
     opacity: 0;
     animation: showText2 0.5s 1.5s linear forwards;
 }
+
 .progress-line span::after{
     position: absolute;
     top: -28px;
@@ -91,11 +98,13 @@
     opacity: 0;
     animation: showText2 0.5s 1.5s linear forwards;
 }
+
 @keyframes showText2 {
     100%{
         opacity: 1;
     }
 }
+
 .progress-line.GoalDescription span::after{
     content: attr(afterBack);
 }

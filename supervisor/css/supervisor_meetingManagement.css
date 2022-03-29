@@ -3,19 +3,27 @@
     --containerColour: #f6b98e;
 }
 
+.content{
+    justify-content: space-between;
+    flex-direction: column;
+}
+
 .add-meet-box {
+    display: flex;
+    flex-direction: column;
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
     /* border: 1px solid black; */
 } 
 
 .people-box{
+    display: flex;
+    flex-direction: column;
     margin: 0 0 0 0 ;
 }
 
 .people-box th{
     padding-right: 2rem;
-
 }
 
 .people-box tr{
@@ -53,7 +61,6 @@
     font-size: 100%;
     float: left;    
     /* border: 1px solid black; */
-    margin-left: auto;
     margin-right: 10rem;
 }
 
