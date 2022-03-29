@@ -16,11 +16,6 @@ font {
     -webkit-font-smoothing: antialiased !important;
 }
 
-.error {
-    background: #FFCDD2 url(../supervisor/css/error.png) no-repeat 98% center;
-    box-shadow: 0 0 5px #FF5252;
-    border-color: #FF1744;
-}
 
 .sidebar{
     margin-right: 2rem;
@@ -53,9 +48,10 @@ font {
 }
 .submitBtn {
     transition-duration: 0.4s;
+    border: 2px solid #b2866a;
 }
 .submitBtn:hover{
-    background-color: rgb(105, 77, 63);
+    background-color: #8a5e4a;
     color: #ffffff;
 }
 
@@ -70,6 +66,8 @@ font {
     position: relative;
     padding: 10px;
     transition-duration: 0.4s;
+    border: 2px solid #b2866a;
+    margin-top: 5px;
 }
 
 .listBtn:hover{
