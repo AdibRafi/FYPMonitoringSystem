@@ -79,8 +79,8 @@ require('../../../src/database.php');
                 $student = $result->fetch_assoc();
                 echo '
                 <div class="register-inputfield">
-                    <label> Student ID
-                        <input placeholder="Student ID" type="text" name="studentId" value="'.$student["STUDENT_ID"].'">
+                    <label>
+                        Student ID <br><p style="font-weight: bold">'.$student["STUDENT_ID"].'</p>
                     </label>
                 </div>
                 <div class="register-inputfield">
@@ -99,13 +99,13 @@ require('../../../src/database.php');
                     </label>
                 </div>
                 <div class="register-inputfield">
-                    <label> Mark ID
-                        <input placeholder="Mark ID" type="text" name="markId" value="'.$student["MARK_ID"].'">
+                    <label>
+                        Mark ID <br><p style="font-weight: bold">'.$student["MARK_ID"].'</p>
                     </label>
                 </div>
                 <div class="register-inputfield">
-                    <label> Project ID
-                        <input placeholder="Project Id" type="text" name="projectId" value="'.$student["PROJ_ID"].'">
+                    <label>
+                        Project ID <br><p style="font-weight: bold">'.$student["PROJ_ID"].'</p>
                     </label>
                 </div>
                 '

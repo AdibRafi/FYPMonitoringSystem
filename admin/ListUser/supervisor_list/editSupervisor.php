@@ -70,7 +70,7 @@ require('../../../src/database.php');
     </div>
     <div class="content">
         <div class="verify-box">
-            <h1>Edit Student</h1>
+            <h1>Edit Supervisor</h1>
             <form action="editSupervisor_function.php" method="post">
                 <?php
                 $supervisorSelect = $_SESSION["passedSupervisorParameter"];
@@ -79,8 +79,8 @@ require('../../../src/database.php');
                 $supervisor = $result->fetch_assoc();
                 echo '
                 <div class="register-inputfield">
-                    <label> Student ID
-                        <input placeholder="Supervisor ID" type="text" name="supervisorId" value="'.$supervisor["SUPERVISOR_ID"].'">
+                    <label>
+                        Supervisor ID <br><p style="font-weight: bold">'.$supervisor["SUPERVISOR_ID"].'</p>
                     </label>
                 </div>
                 <div class="register-inputfield">
@@ -99,13 +99,13 @@ require('../../../src/database.php');
                     </label>
                 </div>
                 <div class="register-inputfield">
-                    <label> Email
+                    <label> Profession
                         <input placeholder="Profession" type="text" name="profession" value="'.$supervisor["PROFESSION"].'">
                     </label>
                 </div>
                 <div class="register-inputfield">
-                    <label> Mark ID
-                        <input placeholder="Mark ID" type="text" name="markId" value="'.$supervisor["MARK_ID"].'">
+                    <label>
+                        Mark ID <br><p style="font-weight: bold">'.$supervisor["MARK_ID"].'</p>
                     </label>
                 </div>
                 '

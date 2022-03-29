@@ -2,12 +2,9 @@
 session_start();
 require('../../../src/database.php');
 
-$newStudentID = $_POST['studentId'];
 $newName = $_POST['name'];
 $newAge = $_POST['age'];
 $newEmail = $_POST['email'];
-$newMarkID = $_POST['markId'];
-$newProjectID = $_POST['projectId'];
 $oldStudentID = $_SESSION['passedStudentParameter'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -15,15 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $getSql = $con->query($sql);
     $getStudent = $getSql->fetch_assoc();
 
-    echo "<script>
-    alert('$oldStudentID $newStudentID $newName $newAge $newEmail $newMarkID $newProjectID');
-    </script>";
-
     $deleteSql = "DELETE FROM Student WHERE STUDENT_ID = '" . $oldStudentID . "'";
 
     $insertSql = "INSERT INTO Student(STUDENT_ID,NAME,PASSWORD,AGE,EMAIL,MARK_ID,PROJ_ID,ISVERIFIED)
-                  VALUES ('".$newStudentID."','".$newName."','".$getStudent["PASSWORD"]."'
-                  ,'".$newAge."','".$newEmail."','".$newMarkID."','".$newProjectID."',b'1')";
+                  VALUES ('".$getStudent["STUDENT_ID"]."','".$newName."','".$getStudent["PASSWORD"]."'
+                  ,'".$newAge."','".$newEmail."','".$getStudent["MARK_ID"]."','".$getStudent["PROJ_ID"]."',b'1')";
 
 
     if ($con->query($deleteSql) === TRUE) {

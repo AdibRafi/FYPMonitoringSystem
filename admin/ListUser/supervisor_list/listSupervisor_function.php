@@ -14,9 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>window.location.href='../list_supervisor.php.php';</script>";
     }
     else if (isset($_POST['editBtn'])) {
-        echo "<script>
-        alert('Edit Button Click');
-        </script>";
         echo "<script>window.location.href='editSupervisor.php';</script>";
     }
     else if (isset($_POST['removeBtn'])) {

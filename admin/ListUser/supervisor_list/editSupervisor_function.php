@@ -2,28 +2,22 @@
 session_start();
 require('../../../src/database.php');
 
-$newSupervisorID = $_POST['supervisorId'];
 $newName = $_POST['name'];
 $newAge = $_POST['age'];
 $newEmail = $_POST['email'];
 $newProfession = $_POST['profession'];
-$newMarkID = $_POST['markId'];
 $oldSupervisorID = $_SESSION['passedSupervisorParameter'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $sql = "SELECT * FROM Student WHERE STUDENT_ID = '" . $oldSupervisorID . "'";
+    $sql = "SELECT * FROM Supervisor WHERE SUPERVISOR_ID = '" . $oldSupervisorID . "'";
     $getSql = $con->query($sql);
-    $getStudent = $getSql->fetch_assoc();
-
-    echo "<script>
-    alert('$oldSupervisorID $newSupervisorID $newName $newAge $newEmail $newMarkID $newProfession');
-    </script>";
+    $getSupervisor = $getSql->fetch_assoc();
 
     $deleteSql = "DELETE FROM Supervisor WHERE SUPERVISOR_ID = '" . $oldSupervisorID . "'";
 
     $insertSql = "INSERT INTO Supervisor(SUPERVISOR_ID,NAME,PASSWORD,AGE,EMAIL,PROFESSION,MARK_ID,ISVERIFIED)
-                  VALUES ('".$newSupervisorID."','".$newName."','".$getStudent["PASSWORD"]."'
-                  ,'".$newAge."','".$newEmail."','".$newProfession."','".$newMarkID."',b'1')";
+                  VALUES ('".$getSupervisor["SUPERVISOR_ID"]."','".$newName."','".$getSupervisor["PASSWORD"]."'
+                  ,'".$newAge."','".$newEmail."','".$newProfession."','".$getSupervisor["MARK_ID"]."',b'1')";
 
 
     if ($con->query($deleteSql) === TRUE) {
