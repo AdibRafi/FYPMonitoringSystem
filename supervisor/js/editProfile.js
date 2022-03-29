@@ -1,20 +1,27 @@
 
 function changePassword(password) {
-    let inputPassword = prompt("Please enter your password to proceed.","");
-    console.log(inputPassword);
-    if (inputPassword === password.toString()){
-    }else{
-        alert("password incorrect!");
+    let newPassword = prompt("Please enter your new password.","");
+
+    if (confirm("Do you wish to change your password to "+newPassword+"? Press \"OK\" to confirm, press cancel to revoke action")) {
+        let inputPassword = prompt("Please enter your old password to proceed.","");
+        if (inputPassword === password.toString()){
+            window.location.href="../src/editprofile.php?changePasword="+newPassword;
+        }else{
+            alert("password incorrect!");
+        }
     }
 
 }
 
 function changeEmail(password) {
-    let inputPassword = prompt("Please enter your password to proceed.","");
-
-    if (inputPassword === password.toString()){
-
-    }else{
-        alert("password incorrect!");
+    let newEmail = prompt("Please enter your new password.","");
+    
+    if (confirm("Do you wish to change your email to "+newEmail+"? Press \"OK\" to confirm, press cancel to revoke action")) {
+        let inputPassword = prompt("Please enter your password to proceed.","");
+        if (inputPassword === password.toString()){
+            window.location.href="../src/editprofile.php?changeEmail="+newEmail;
+        }else{
+            alert("password incorrect!");
+        }
     }
 }

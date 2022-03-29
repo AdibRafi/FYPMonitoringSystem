@@ -62,15 +62,17 @@ $user_data = checkLogin($con);
             <div class="edit-profile-box">
                 <h1>Edit Profile</h1>
                 <div class="email-row">
-                    <span>Email:<input type="email" value="<?=$user_data['EMAIL']?>"></span>
+                    <span>Email:<?php echo(" ".$user_data['EMAIL'])?></span>
                     <div class="button-box">
                         <button onclick=changeEmail(<?=$user_data['PASSWORD']?>) class="emailChange" role="button">Change Email</button>
                     </div>
                 </div>
                 <div class="password-row">
                     <span>Password:
-                        <input type="password" value="<?=$user_data['PASSWORD']?>">
-                    </span>
+                        <?php
+                            $passwordLen = strlen($user_data['PASSWORD']);
+                            echo(str_repeat("*",$passwordLen));
+                        ?></span>
                     <div class="button-box">
                         <button onclick=changePassword(<?=$user_data['PASSWORD']?>) class="passwordChange" role="button">Change Password</button>
                     </div>
