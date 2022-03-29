@@ -30,32 +30,28 @@
 
     function checkLogin($con){
 
-        if(isset($_SESSION['SUPERVISOR_ID'])){
+        if(isset($_SESSION['SUPERVISOR_ID'])) {
 
             $supervisor_id = $_SESSION['SUPERVISOR_ID'];
-            $login_check_query_result = getSupervisorDatabySupervisorID($con,$supervisor_id);
+            $login_check_query_result = getSupervisorDatabySupervisorID($con, $supervisor_id);
 
-            if($login_check_query_result){
-
+            if ($login_check_query_result) {
                 return $login_check_query_result;
                 die;
             }
-
         }else if(isset($_SESSION['STUDENT_ID'])){
             $student_id = $_SESSION['STUDENT_ID'];
             $login_check_query_result = getStudentDatabyStudentID($con,$student_id);
 
             if($login_check_query_result){
-
                 return $login_check_query_result;
                 die;
-
             }
         }
 
         //redirect to login
-        // echo "<script>window.location.href='../loginPage.php'</script>";
-        // die;
+         echo "<script>window.location.href='../loginPage.php'</script>";
+         die;
     }
 
     function getToken($length): string

@@ -1,5 +1,3 @@
-
-
 window.addEventListener("load",function (){
     var menuIcon = document.querySelector('.menu-icon');
 
