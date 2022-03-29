@@ -13,7 +13,7 @@ require('../../src/database.php');
     <link rel="stylesheet" href="../admin.css" type="text/css">
     <link rel="stylesheet" href="../../supervisor/css/sidebar_header.css" type="text/css">
     <script type="text/javascript" src="../admin.js"></script>
-
+    <script type="text/javascript" src="../../supervisor/js/sidebar.js"></script>
 </head>
 <body>
 <header class="header">
@@ -27,17 +27,20 @@ require('../../src/database.php');
         <div class="middle-sidebar">
             <ul class="sidebar-item-list">
                 <li>
-                    <a href="verify_supervisor.php"><img class="sidebar-item selected"
-                                                         src="../../src/icon/verify_128px.png" alt="verify supervisor"
-                                                         title="Verify Supervisor"></a>
+                    <a href="../VerifyUser/verify_supervisor.php"><img class="sidebar-item"
+                                                                       src="../../src/icon/verify_128px.png"
+                                                                       alt="verify supervisor"
+                                                                       title="Verify Supervisor"></a>
                 </li>
                 <li>
-                    <a href="verify_student.php"><img class="sidebar-item" src="../../src/icon/verify_128px.png"
-                                                      alt="verify student" title="Verify Student"></a>
+                    <a href="../VerifyUser/verify_student.php"><img class="sidebar-item"
+                                                                    src="../../src/icon/verify_128px.png"
+                                                                    alt="verify student" title="Verify Student"></a>
                 </li>
                 <li>
-                    <a href="../ListUser/student_list/list_student.php"><img class="sidebar-item" src="../../src/icon/project_planning_128px.png"
-                                                                             alt="project planning icon" title="Project Planning"></a>
+                    <a href="../ListUser/student_list/list_student.php"><img class="sidebar-item"
+                                                                             src="../../src/icon/project_planning_128px.png" alt="list student"
+                                                                             title="List Student"></a>
                 </li>
                 <li>
                     <a href="../ListUser/supervisor_list/list_supervisor.php"><img class="sidebar-item"
@@ -45,7 +48,7 @@ require('../../src/database.php');
                                                                                    title="List Supervisor"></a>
                 </li>
                 <li>
-                    <a href="../ListProject/list_project.php"><img class="sidebar-item"
+                    <a href="list_project.php"><img class="sidebar-item selected"
                                                     src="../../src/icon/project_list_128px.png" alt="list project"
                                                     title="List Project"></a>
                 </li>
@@ -66,30 +69,34 @@ require('../../src/database.php');
     </div>
     <div class="content">
         <div class="verify-box">
-            <h1>Verify Supervisor</h1>
-            <h2>Click row to checked</h2>
-            <form action="verifySupervisor_function.php" method="post">
+            <h1>List Project</h1>
+            <h2>Click Row to Select</h2>
+            <form action="listProject_function.php" method="post">
                 <table>
                     <tr>
-                        <th></th>
-                        <th>Advisor_ID</th>
+                        <th>Project Id</th>
                         <th>Name</th>
-                        <th>Age</th>
-                        <th>Email</th>
-                        <th>Profession</th>
+                        <th>Description</th>
+                        <th>Student ID</th>
+                        <th>Supervisor ID</th>
+                        <th>Approved</th>
                     </tr>
                     <?php
-                    $sql = "SELECT * from Supervisor where ISVERIFIED = 0";
+                    $sql = "SELECT * from Project";
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo '<tr onclick="selectRow(this)">
-                        <td><input type="checkbox" name="supervisor[]" value="' . $row["SUPERVISOR_ID"] . '"></td>
-                        <td>' . $row["SUPERVISOR_ID"] . '</td>
+                        <td><div class="radioBtn">
+                        <input type="radio" value="' . $row["PROJ_ID"] . '"
+                        id="select" name="selectRadio">
+                        <label for="select">' . $row["PROJ_ID"] . '</label>
+                        </div> </td>
                         <td>' . $row["NAME"] . '</td>
-                        <td>' . $row["AGE"] . '</td>
-                        <td>' . $row["EMAIL"] . '</td>
-                        <td>' . $row["PROFESSION"] . '</td>
+                        <td>' . $row["DESCRIPTION"] . '</td>
+                        <td>' . $row["STUDENT_ID"] . '</td>
+                        <td>' . $row["SUPERVISOR_ID"] . '</td>
+                        <td>' . $row["IS_APPROVED"] . '</td>
                        </tr>';
                         }
                         echo "</table>";
@@ -102,20 +109,11 @@ require('../../src/database.php');
                 <tfoot>
                 <tr>
                     <td>
-                        <div class="floated" style="text-align: center">
-                            <div class="radioBtn">
-                                <input type="radio" value="verify" id="verify" name="submitResult">
-                                <label for="verify">Verify</label>
-                            </div>
-                            <div class="radioBtn">
-                                <input type="radio" value="remove" id="remove" name="submitResult">
-                                <label for="remove">Remove</label>
-                            </div>
+                        <div class="floated">
+                            <button class="listBtn" name="editBtn">Edit</button>
+                            <button class="listBtn" name="removeBtn">Remove</button>
                         </div>
                     </td>
-                    <div class="floated">
-                        <input type="submit" name="submit" value="submit" class="submitBtn">
-                    </div>
                 </tr>
                 </tfoot>
             </form>

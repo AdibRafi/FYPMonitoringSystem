@@ -16,11 +16,6 @@ font {
     -webkit-font-smoothing: antialiased !important;
 }
 
-.error {
-    background: #FFCDD2 url(../../supervisor/css/error.png) no-repeat 98% center;
-    box-shadow: 0 0 5px #FF5252;
-    border-color: #FF1744;
-}
 
 .sidebar{
     margin-right: 2rem;
@@ -39,7 +34,7 @@ font {
 /* Register Button Styling*/
 .verify-box [type=submit] {
      background-color: var(--containerColour);
-     color: #ffffff;
+     color: black;
      height: 3em;
      margin-top: 0;
      width: 330px;
@@ -49,7 +44,35 @@ font {
      border-radius: 10px;
      position: relative;
      padding: 20px;
-     margin-right: 0;
+     margin-left: 0;
+}
+.submitBtn {
+    transition-duration: 0.4s;
+    border: 2px solid #b2866a;
+}
+.submitBtn:hover{
+    background-color: #8a5e4a;
+    color: #ffffff;
+}
+
+.listBtn {
+    background-color: var(--containerColour);
+    color: black;
+    height: 3em;
+    width: 80px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    position: relative;
+    padding: 10px;
+    transition-duration: 0.4s;
+    border: 2px solid #b2866a;
+    margin-top: 5px;
+}
+
+.listBtn:hover{
+    background-color: rgb(105, 77, 63);
+    color: #ffffff;
 }
 
 table {
@@ -83,7 +106,7 @@ tr:hover {
 .radioBtn label {
     display: block;
     background: rgba(206, 136, 104, 0.48);
-    color: #000;
+    color: black;
     border-radius: 5px;
     padding: 10px 40px;
     border: 2px solid #b2866a;
@@ -112,13 +135,14 @@ tr:hover {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNS4zIDEzLjIiPiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0LjcuOGwtLjQtLjRhMS43IDEuNyAwIDAgMC0yLjMuMUw1LjIgOC4yIDMgNi40YTEuNyAxLjcgMCAwIDAtMi4zLjFMLjQgN2ExLjcgMS43IDAgMCAwIC4xIDIuM2wzLjggMy41YTEuNyAxLjcgMCAwIDAgMi40LS4xTDE1IDMuMWExLjcgMS43IDAgMCAwLS4yLTIuM3oiIGRhdGEtbmFtZT0iUGZhZCA0Ii8+PC9zdmc+);
 }
 input[type="radio"] {
-    display: none;
+    display: block;
     position: absolute;
     width: 100%;
     appearance: none;
 }
 input[type="radio"]:checked + label {
     background:#8a5e4a;
+    color: white;
     animation-name: blink;
     animation-duration: 1s;
     border-color: $accentcolor;
