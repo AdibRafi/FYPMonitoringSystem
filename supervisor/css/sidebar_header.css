@@ -1,6 +1,7 @@
 :root {
     --bodyColour: #ffdac4;
     --containerColour: #f6b98e;
+    --headerHeight: 40px;
 }
 
 body{
@@ -21,7 +22,7 @@ font{
     position:sticky;
     top: 0;
     display: flex;
-    height: 40px;
+    height: var(--headerHeight);
     box-shadow: 0 1px 10px black;
     align-items: center;
     padding: 0 .5rem;
@@ -59,7 +60,10 @@ font{
     border-right: 1px solid lightgrey;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 40px);
+    position: sticky;
+    height: calc(100vh - var(--headerHeight));
+    left: 0;
+    top: var(--headerHeight);
 }
 
 .middle-sidebar{
@@ -98,7 +102,7 @@ font{
 
 .content{
     display: flex;
-    margin-left: 2rem;
+    margin: 1rem;
 }
 
 .welcome-msg{
