@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../../../src/database.php');
+require('../../src/database.php');
 
 $supervisor = $_POST['selectRadio'];
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>
         alert('Edit Button Click');
         </script>";
-        echo "<script>window.location.href='../list_supervisor.php';</script>";
+        echo "<script>window.location.href='list_supervisor.php';</script>";
     }
     else if (isset($_POST['removeBtn'])) {
         $removeSql = "DELETE FROM Supervisor WHERE SUPERVISOR_ID = '".$supervisor."'";
@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<script>
         alert('$supervisor has been removed from database');
         </script>";
-            echo "<script>window.location.href='../list_supervisor.php';</script>";
+            echo "<script>window.location.href='list_supervisor.php';</script>";
         } else {
             mysqli_connect_error();
-            echo "<script>window.location.href='../list_supervisor.php';</script>";
+            echo "<script>window.location.href='list_supervisor.php';</script>";
         }
     }
 }
