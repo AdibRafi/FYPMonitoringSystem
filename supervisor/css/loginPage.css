@@ -22,13 +22,12 @@ font{
 }
 
 .welcome-msg{
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
 }
 
 #mainForm{
     width: 100%;
-    height: 100%;
 }
 
 .login-box{
@@ -37,8 +36,6 @@ font{
     margin: 10% 20% 10% 20%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .login-box p{
@@ -59,8 +56,8 @@ font{
 }
 
 .login-box img{
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     background-color: aliceblue;
     border-radius: 100px;
     margin-bottom: 0;
