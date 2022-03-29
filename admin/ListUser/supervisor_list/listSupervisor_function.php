@@ -1,8 +1,10 @@
 <?php
 session_start();
-require('../../src/database.php');
+require('../../../src/database.php');
 
 $supervisor = $_POST['selectRadio'];
+$_SESSION["passedSupervisorParameter"] = $supervisor;
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($supervisor)) {
@@ -15,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>
         alert('Edit Button Click');
         </script>";
-        echo "<script>window.location.href='list_supervisor.php';</script>";
+        echo "<script>window.location.href='editSupervisor.php';</script>";
     }
     else if (isset($_POST['removeBtn'])) {
         $removeSql = "DELETE FROM Supervisor WHERE SUPERVISOR_ID = '".$supervisor."'";

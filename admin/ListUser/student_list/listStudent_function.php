@@ -1,8 +1,9 @@
 <?php
 session_start();
-require('../../src/database.php');
+require('../../../src/database.php');
 
 $student = $_POST['selectRadio'];
+$_SESSION["passedStudentParameter"] = $student;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($student)) {
@@ -12,10 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>window.location.href='list_student.php';</script>";
     }
     else if (isset($_POST['editBtn'])) {
-        echo "<script>
-        alert('Edit Button Click');
-        </script>";
-        echo "<script>window.location.href='list_student.php';</script>";
+        echo "<script>window.location.href='editStudent.php';</script>";
     }
     else if (isset($_POST['removeBtn'])) {
         $removeSql = "DELETE FROM Student WHERE STUDENT_ID = '".$student."'";
