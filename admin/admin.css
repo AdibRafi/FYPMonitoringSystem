@@ -17,7 +17,7 @@ font {
 }
 
 .error {
-    background: #FFCDD2 url(../../supervisor/css/error.png) no-repeat 98% center;
+    background: #FFCDD2 url(../supervisor/css/error.png) no-repeat 98% center;
     box-shadow: 0 0 5px #FF5252;
     border-color: #FF1744;
 }
@@ -39,7 +39,7 @@ font {
 /* Register Button Styling*/
 .verify-box [type=submit] {
      background-color: var(--containerColour);
-     color: #ffffff;
+     color: black;
      height: 3em;
      margin-top: 0;
      width: 330px;
@@ -56,12 +56,12 @@ font {
 }
 .submitBtn:hover{
     background-color: rgb(105, 77, 63);
-    color: black;
+    color: #ffffff;
 }
 
 .listBtn {
     background-color: var(--containerColour);
-    color: white;
+    color: black;
     height: 3em;
     width: 80px;
     font-size: 15px;
@@ -74,7 +74,7 @@ font {
 
 .listBtn:hover{
     background-color: rgb(105, 77, 63);
-    color: black;
+    color: #ffffff;
 }
 
 table {
@@ -108,7 +108,7 @@ tr:hover {
 .radioBtn label {
     display: block;
     background: rgba(206, 136, 104, 0.48);
-    color: #000;
+    color: black;
     border-radius: 5px;
     padding: 10px 40px;
     border: 2px solid #b2866a;
@@ -144,6 +144,7 @@ input[type="radio"] {
 }
 input[type="radio"]:checked + label {
     background:#8a5e4a;
+    color: white;
     animation-name: blink;
     animation-duration: 1s;
     border-color: $accentcolor;
