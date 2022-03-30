@@ -61,7 +61,9 @@ session_start();
             </div>
         </div>
         <div class="content">
+            
             <div class="meeting-list-box">
+                <h1 class="center">Welcome to Meeting Management</h1>
                 <span><h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button></span>
                 <?php
                     require ("../src/database.php");
@@ -106,8 +108,9 @@ session_start();
             </div>
             <div class="popup-box">
                 <div class="add-meet-box">
+                    <h1 class="center">Welcome to Meeting Management</h1>
                     <form method="get" id="mainForm" action="../src/addMeeting.php"> 
-                        <h1>Welcome to Meeting Management</h1></h1><span class="close-btn">&times;</span><br>
+                        <span class="close-btn">&times;</span>
                         <h1>Add meeting
                         <div class="name-box">
                             <h2>Meeting Name</h2>

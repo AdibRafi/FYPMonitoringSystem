@@ -19,5 +19,6 @@ addMeetBtn.onclick = function(){
 window.onclick = function(event) {
     if (event.target == popupBox) {
         popupBox.style.display = "none";
+        meetListBox.style.display = "block"
     }
 }

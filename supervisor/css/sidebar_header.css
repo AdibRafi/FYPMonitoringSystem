@@ -102,7 +102,11 @@ font{
 
 .content{
     display: flex;
-    margin: 1rem;
+    margin: 2rem;
+}
+
+.center{
+    text-align: center;
 }
 
 .welcome-msg{
