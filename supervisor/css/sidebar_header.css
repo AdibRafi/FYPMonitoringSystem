@@ -37,6 +37,7 @@ font{
 
 .menu-icon:hover{
     opacity: 50%;
+    cursor: pointer;
 }
 
 .edit-profile-icon:hover{

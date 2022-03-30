@@ -6,6 +6,8 @@ var projectListBox = document.getElementsByClassName("proposed-project-list").it
 
 var closeBtn = document.getElementsByClassName("close-btn").item(0);
 
+var submitProposalBtn = document.getElementsByClassName("submit-btn").item(0);
+
 proposeProjectBtn.addEventListener("click",()=>{
     proposeProjectBox.classList.toggle("visible");
     projectListBox.classList.toggle("hidden");
@@ -14,4 +16,8 @@ proposeProjectBtn.addEventListener("click",()=>{
 closeBtn.addEventListener("click",()=>{
     proposeProjectBox.classList.toggle("visible");
     projectListBox.classList.toggle("hidden");
+})
+
+submitProposalBtn.addEventListener("click",()=>{
+    
 })

@@ -93,3 +93,9 @@ font{
     padding: 0.5em;
     margin: 0.5em;
 }
+
+.login-box [type=submit]:hover{
+    opacity: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}

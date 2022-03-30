@@ -1,5 +1,5 @@
 .content{
-
+    font-family: "Roboto", Verdana, Arial, sans-serif;
 }
 
 .proposal-management-box{
@@ -47,10 +47,18 @@
     border-radius: 5px;
 }
 
+.submit-btn:hover{
+    opacity: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
 .proposed-project-list{
+    display: flex;
+    flex-direction: column;
     font-family: "Roboto", Verdana, Arial, sans-serif;
     font-size: 100%;
-    justify-content: center;
+    align-items: center;
     /* border: 1px solid black; */
 }
 
@@ -61,9 +69,7 @@
     margin-bottom: 2rem;
     border-radius: 10px;
     margin-top: 2rem;
-    margin-left: 35%;
-    margin-right: 35%;
-    width: 30%;
+    width: 40%;
     color: white;
 }
 
@@ -86,6 +92,7 @@
 .propose-project-btn:hover{
     opacity: 50%;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .hidden{
@@ -113,4 +120,10 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.error{
+    background: #FFCDD2 url(error.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #FF5252;
+    border-color: #FF1744;
 }

@@ -65,6 +65,17 @@ font{
     margin-bottom: 1rem;
 }
 
+select:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.register-box [type=submit]:hover{
+    opacity: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
 .register-inputfield select{
     width: 100px;
     height: 30px;

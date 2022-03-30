@@ -116,19 +116,19 @@ session_start();
                             <div class="name-box">
                                 <h2>Meeting Name</h2>
                                 <p><mark>**Default meeting name will be [Student Username] and [Supervisor Username] meeting.</mark></p>
-                                <input type="text" name="name" placeholder="Insert meeting name here">
+                                <input class="required" type="text" name="name" placeholder="Insert meeting name here">
                             </div>
                             <div class="place-box">
                                 <h2>Meeting Place</h2>
-                                <input type="text" name="place" placeholder="Insert meeting place here" class="required">
+                                <input class="required" type="text" name="place" placeholder="Insert meeting place here">
                             </div>
                             <div class="time-box">
                                 <h2>Time</h2>
-                                From <input name="start_time" type="time"> to <input name="end_time" type="time">
+                                From <input class="required" name="start_time" type="time"> to <input class="required" name="end_time" type="time">
                             </div>
                             <div class="date-box">
                                 <h2>Date</h2>
-                                <input name="date" type="date">
+                                <input class="required" name="date" type="date">
                             </div>
                             <h2>People</h2>
                             <table class="people-box">
@@ -142,7 +142,7 @@ session_start();
                                 </tr>
                                 <tr>
                                     <td class="student">
-                                        <select title="Student name" id="student-name" name="student_id">
+                                        <select class="required" title="Student name" id="student-name" name="student_id">
                                             <?php
                                                 require ("../src/database.php");
 

@@ -137,7 +137,7 @@
                 }
                 break;
             case "project":
-                $query = $con->prepare("select * from project BY PROJECT_ID DESC LIMIT 1");
+                $query = $con->prepare("select * from project ORDER BY PROJ_ID DESC LIMIT 1");
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();

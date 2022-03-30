@@ -19,6 +19,7 @@ session_start();
     <link rel="stylesheet" href="css/supervisor_project_proposal_management.css">
     <!-- Javascipts -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
+    <script type="text/javascript" src="js/loginPage.js" defer></script>
     <script type="text/javascript" src="js/projectProposal.js" defer></script>
 </head>
 <body>
@@ -66,24 +67,51 @@ session_start();
                 <div class="proposed-project-list">
                     <span><h2 style="display:inline">Proposed project by you</h2><button class="propose-project-btn">Propose Project</button></span>
                     <div class="project-box">
-                        <div><strong>Project Name:</strong> </div>
-                        <div><strong>Project Description:</strong> </div>
-                        <div><strong>Proposed by:</strong> </div>
-                        <div><strong>Approved:</strong></div>
+                        <?php
+
+                            $sql = "select * from project where supervisor_id = ?";
+                            $getProjectList_query = $con->prepare($sql);
+                            $getProjectList_query->bind_param("s",$_SESSION['SUPERVISOR_ID']);
+                            $getProjectList_query->execute();
+
+                            $getProjectList_query_result = $getProjectList_query->get_result();
+
+                            if($getProjectList_query_result){
+                              while($row = $getProjectList_query_result->fetch_assoc()){
+                                    $isApproved = ($row['IS_APPROVED']==0)?"Not Approved":"Approved";
+
+                                echo("
+                                    <div><strong>Project ID:</strong>".$row['PROJ_ID']."</div>
+                                    <div><strong>Project Name:</strong>". $row['NAME']."</div>
+                                    <div><strong>Project Description:</strong>". $row['DESCRIPTION']."</div>
+                                    <div><strong>Proposed by:</strong>". $user_data['NAME']."</div>
+                                    <div><strong>Approved:</strong>". $isApproved."</div>
+                                ");
+                              }
+                               
+                            }else{
+                                echo("
+                                <h2 style='margin: top 20px;'>There is no proposed project by you</h2>
+                                ");
+                            }
+
+                        ?>
+                        
                     </div>        
                 </div>
                 <div class="project-propose-box">
                     <span class="close-btn">&times;</span>
                     <h2>Propose a project</h2>
-                    <form>
+                    <form method="get" action="../src/proposeProject.php" id="mainForm">
                         <div class="project-name-box">
-                            <h2>Project Name:</h2><input type="text" placeholder="Project Name">
+                            <h2>Project Name:</h2><input name="projectName"type="text" placeholder="Project Name" class="required">
                         </div>
                         <div class="project-description-box">
-                            <h2>Project Description:</h2><textarea title="Project Description" placeholder="Project Description"></textarea>
+                            <h2>Project Description:</h2><textarea name="projectDescription" title="Project Description" placeholder="Project Description" class="required"></textarea>
                         </div>
                         <div class="propose-btn-box">
-                            <button class="submit-btn" type="submit">Propose Project</button>
+                            <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
+                            <input class="submit-btn" type="submit" value="Propose Project">
                         </div>
                     </form>
                 </div>
