@@ -12,11 +12,13 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Meeting Management</title>
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_meetingManagement.css">
     <script type="text/javascript" src="js/sidebar.js"></script>
     <script type="text/javascript" src="js/loginPage.js"></script>
+    <script type="text/javascript" src="js/meetingManagement.js" defer></script>
 </head>
 
 <body>
@@ -59,67 +61,8 @@ session_start();
             </div>
         </div>
         <div class="content">
-            <div class="add-meet-box">
-                <form method="get" id="mainForm" action="../src/addMeeting.php"> 
-                    <h1>Welcome to Meeting Management</h1><br>
-                    <h1>Add meeting</h1>
-                    <div class="name-box">
-                        <h2>Meeting Name</h2>
-                        <p><mark>**Default meeting name will be [Student Username] and [Supervisor Username] meeting.</mark></p>
-                        <input type="text" name="name" placeholder="Insert meeting name here">
-                    </div>
-                    <div class="place-box">
-                        <h2>Meeting Place</h2>
-                        <input type="text" name="place" placeholder="Insert meeting place here" class="required">
-                    </div>
-                    <div class="time-box">
-                        <h2>Time</h2>
-                        From <input name="start_time" type="time"> to <input name="end_time" type="time">
-                    </div>
-                    <div class="date-box">
-                        <h2>Date</h2>
-                        <input name="date" type="date">
-                    </div>
-                    <h2>People</h2>
-                    <table class="people-box">
-                        <tr>
-                            <th class="student">
-                                Student
-                            </th>
-                            <th class="supervisor">
-                                Supervisor
-                            </th>
-                        </tr>
-                        <tr>
-                            <td class="student">
-                                <select title="Student name" id="student-name" name="student_id">
-                                    <?php
-                                        require ("../src/database.php");
-
-                                        $getStudentList_query = $con->prepare("SELECT * FROM student");
-                                        $getStudentList_query->execute();
-                                        $result = $getStudentList_query->get_result();
-
-                                        while($row = $result->fetch_assoc()){
-                                            echo '<option value='. $row['STUDENT_ID'] .'>'.$row['NAME'].'</option>';
-                                        }
-
-                                    ?>
-                                </select>
-                            </td>
-                            <td class="supervisor">
-                                <select title="Supervisor name" id="supervisor-name" name="supervisor_id">
-                                    <option value="<?=$user_data['SUPERVISOR_ID']?>"><?=$user_data['NAME']?></option>';                                    
-                                </select>
-                            </td>
-                        </tr>
-                    </table>
-                    <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
-                    <input type="submit" value="Add Meeting">
-                </form>
-            </div>
             <div class="meeting-list-box">
-                <h1>Meeting List</h1>
+                <span><h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button></span>
                 <?php
                     require ("../src/database.php");
 
@@ -160,6 +103,67 @@ session_start();
                     }
 
                 ?>
+            </div>
+            <div class="popup-box">
+                <div class="add-meet-box">
+                    <form method="get" id="mainForm" action="../src/addMeeting.php"> 
+                        <h1>Welcome to Meeting Management</h1></h1><span class="close-btn">&times;</span><br>
+                        <h1>Add meeting
+                        <div class="name-box">
+                            <h2>Meeting Name</h2>
+                            <p><mark>**Default meeting name will be [Student Username] and [Supervisor Username] meeting.</mark></p>
+                            <input type="text" name="name" placeholder="Insert meeting name here">
+                        </div>
+                        <div class="place-box">
+                            <h2>Meeting Place</h2>
+                            <input type="text" name="place" placeholder="Insert meeting place here" class="required">
+                        </div>
+                        <div class="time-box">
+                            <h2>Time</h2>
+                            From <input name="start_time" type="time"> to <input name="end_time" type="time">
+                        </div>
+                        <div class="date-box">
+                            <h2>Date</h2>
+                            <input name="date" type="date">
+                        </div>
+                        <h2>People</h2>
+                        <table class="people-box">
+                            <tr>
+                                <th class="student">
+                                    Student
+                                </th>
+                                <th class="supervisor">
+                                    Supervisor
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="student">
+                                    <select title="Student name" id="student-name" name="student_id">
+                                        <?php
+                                            require ("../src/database.php");
+
+                                            $getStudentList_query = $con->prepare("SELECT * FROM student");
+                                            $getStudentList_query->execute();
+                                            $result = $getStudentList_query->get_result();
+
+                                            while($row = $result->fetch_assoc()){
+                                                echo '<option value='. $row['STUDENT_ID'] .'>'.$row['NAME'].'</option>';
+                                            }
+
+                                        ?>
+                                    </select>
+                                </td>
+                                <td class="supervisor">
+                                    <select title="Supervisor name" id="supervisor-name" name="supervisor_id">
+                                        <option value="<?=$user_data['SUPERVISOR_ID']?>"><?=$user_data['NAME']?></option>';                                    
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
+                        <input type="submit" value="Add Meeting">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
