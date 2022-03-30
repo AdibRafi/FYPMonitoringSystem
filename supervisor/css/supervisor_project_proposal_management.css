@@ -1,3 +1,112 @@
 .content{
 
 }
+
+.proposed-project-list{
+    display: block;
+}
+
+.project-propose-box{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.project-propose-box [type="text"]{
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border-width: 0 0 2px 0;
+}
+
+.project-propose-box textarea{
+    height: 100px;
+    width: 100%;
+    background: transparent;
+    resize: none;
+}
+
+.project-propose-box div{
+    margin-bottom: 50px;
+}
+
+.submit-btn{
+    background-color: var(--containerColour);
+    color: white;
+    height: 3em;
+    width: 100%;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.proposed-project-list{
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    font-size: 100%;
+    justify-content: center;
+    /* border: 1px solid black; */
+    width: 100%;
+}
+
+.project-box{
+    background-color:var(--containerColour);
+    /* border: 1px solid black; */
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    margin-left: 35%;
+    margin-right: 35%;
+    width: 30%;
+    color: white;
+}
+
+.proposed-project-list span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.propose-project-btn{
+    margin-left: 20px;
+    background-color: var(--containerColour);
+    border-radius: 10px;
+    border-width: 0;
+    width: 100px;
+    height: 40px;
+    color: white;
+}
+
+.propose-project-btn:hover{
+    opacity: 50%;
+    border: 1px solid black;
+}
+
+.hidden{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.visible{
+    opacity: 100%;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+.close-btn:hover, .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

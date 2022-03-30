@@ -41,6 +41,7 @@ font{
 
 .edit-profile-icon:hover{
     opacity: 50%;
+    border: 1px solid black;
 }
 
 .edit-profile-icon button{
@@ -73,6 +74,7 @@ font{
     overflow-x: hidden;
     margin: 1rem 0;
 }
+
 .bottom-sidebar{
     width: 100%;
 }
@@ -91,13 +93,15 @@ font{
 }
 
 .sidebar-item{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin-top: 1rem;
+    margin-bottom: 10px;
 }
 
 .sidebar-item:hover{
-    opacity: 50%;
+    border-radius: 100px;
+    background-color: var(--bodyColour);
 }
 
 .content{
@@ -116,7 +120,7 @@ font{
 }
 
 .sidebar-item.selected{
-    background-color: grey;
+    background-color: var(--containerColour);
     border-radius: 100px;
 }
 
