@@ -12,9 +12,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="supervisor/css/loginPage.css">
-    <script type="text/javascript" src="supervisor/js/loginPage.js"></script>
+    <!-- Javascript -->
+    <script type="text/javascript" src="supervisor/js/loginPage.js" defer></script>
 </head>
 
 <body>

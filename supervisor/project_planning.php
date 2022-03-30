@@ -12,10 +12,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project Planning</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_projectPlanning.css">
-    <script type="text/javascript" src="js/sidebar.js"></script>
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/sidebar.js"defer></script>
 </head>
 <body>
     <header class="header">

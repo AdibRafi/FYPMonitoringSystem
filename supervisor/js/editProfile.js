@@ -1,3 +1,7 @@
+var changePassordBtn = document.getElementsByClassName("").item(0);
+
+var changeEmailBtn = document.getElementsByClassName("").item(0);
+
 
 function changePassword(password) {
     let newPassword = prompt("Please enter your new password.","");

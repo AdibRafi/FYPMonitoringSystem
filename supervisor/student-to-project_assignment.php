@@ -11,9 +11,12 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Student-To-Project Assignment</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_student-to-project_assignment.css">
+    <!-- Javascript -->
     <script type="text/javascript" src="js/sidebar.js"></script>
 </head>
 <body>

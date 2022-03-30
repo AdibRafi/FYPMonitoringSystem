@@ -6,8 +6,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-widt~h, initial-scale=1">
     <title>Supervisor Register</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="supervisor/css/registerPage.css">
+    <!-- Javascript -->
     <script type="text/javascript" src="supervisor/js/loginPage.js"></script>
 </head>
 <body>

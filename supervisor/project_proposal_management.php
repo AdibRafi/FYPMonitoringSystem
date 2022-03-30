@@ -14,8 +14,10 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Proposal Management</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_project_proposal_management.css">
+    <!-- Javascipts -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
     <script type="text/javascript" src="js/projectProposal.js" defer></script>
 </head>

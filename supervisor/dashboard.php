@@ -12,10 +12,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Supervisor Dashboard</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/supervisor_dashboard.css"/>
     <link rel="stylesheet" href="css/sidebar_header.css"/>
-    <script type="text/javascript" src="js/sidebar.js"></script>
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/sidebar.js" defer></script>
 </head>
 <body>
     <header class="header">

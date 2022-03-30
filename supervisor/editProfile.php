@@ -12,12 +12,14 @@ $user_data = checkLogin($con);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit Profile</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css"/>
     <link rel="stylesheet" href="css/editProfile.css"/>
-    <script type="text/javascript" src="js/sidebar.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/editProfile.js"></script>
+    <!-- Javascripts -->
+    <script type="text/javascript" src="js/sidebar.js" defer></script>
+    <script type="text/javascript" src="js/editProfile.js" defer></script>
 </head>
 <body>
     <header class="header">

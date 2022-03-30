@@ -14,10 +14,12 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Meeting Management</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_meetingManagement.css">
-    <script type="text/javascript" src="js/sidebar.js"></script>
-    <script type="text/javascript" src="js/loginPage.js"></script>
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/sidebar.js" defer></script>
+    <script type="text/javascript" src="js/loginPage.js" defer></script>
     <script type="text/javascript" src="js/meetingManagement.js" defer></script>
 </head>
 
