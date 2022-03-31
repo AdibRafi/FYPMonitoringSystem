@@ -66,7 +66,6 @@ session_start();
                 <h1>Welcome to Project Proposal Management</h1>
                 <div class="proposed-project-list">
                     <span><h2 style="display:inline">Proposed project by you</h2><button class="propose-project-btn">Propose Project</button></span>
-                    <div class="project-box">
                         <?php
 
                             $sql = "select * from project where supervisor_id = ?";
@@ -81,11 +80,13 @@ session_start();
                                     $isApproved = ($row['IS_APPROVED']==0)?"Not Approved":"Approved";
 
                                 echo("
-                                    <div><strong>Project ID:</strong>".$row['PROJ_ID']."</div>
-                                    <div><strong>Project Name:</strong>". $row['NAME']."</div>
-                                    <div><strong>Project Description:</strong>". $row['DESCRIPTION']."</div>
-                                    <div><strong>Proposed by:</strong>". $user_data['NAME']."</div>
-                                    <div><strong>Approved:</strong>". $isApproved."</div>
+                                    <div class='project-box'>
+                                        <div><strong>Project ID: </strong>".$row['PROJ_ID']."</div>
+                                        <div><strong>Project Name: </strong>". $row['NAME']."</div>
+                                        <div><strong>Project Description: </strong>". $row['DESCRIPTION']."</div>
+                                        <div><strong>Proposed by: </strong>". $user_data['NAME']."</div>
+                                        <div><strong>Approved: </strong>". $isApproved."</div>
+                                    </div>    
                                 ");
                               }
                                
@@ -96,8 +97,6 @@ session_start();
                             }
 
                         ?>
-                        
-                    </div>        
                 </div>
                 <div class="project-propose-box">
                     <span class="close-btn">&times;</span>

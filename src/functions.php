@@ -142,7 +142,7 @@
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
                 if ($query_result && mysqli_num_rows($query_result)>0){
-                    $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['PROJECT_ID']);
+                    $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['PROJ_ID']);
         
                 }else{
                     $id = "PR001";
