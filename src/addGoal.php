@@ -27,7 +27,7 @@
  
      //Insert data into database accordingly
     $addGoal_query = $con->prepare("INSERT INTO Goal (GOAL_ID, NAME, DESCRIPTION, PERCENTAGE, PROJ_ID, STUDENT_ID) values(?,?,?,?,?,?)");
-    $addGoal_query_result = $addGoal_query->execute([$goal_id, $goal_name, $goal_description, $goal_percentage, $project_id, $student_id]);
+    $addGoal_query_result = $addGoal_query->execute([$goal_id, $goal_name, $goal_description, $goal_percentage, $project_id, $student_name]);
 
     $addGoal_query-> close();
     $con->next_result();
