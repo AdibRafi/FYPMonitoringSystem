@@ -6,17 +6,12 @@
     //Get data required to insert into the table
     $goal_name = $_GET['goal_name'];
     $goal_description = $_GET['goal_description'];
-    $goal_percentage = $_GET['goal_percentage'];
     $project_id = $_GET['project_id'];
+    $goal_percentage = $_GET['goal_percentage'];
     $student_name = $_GET['student_id'];
 
-    //Check if student is in database
-    $student = checkUsername($student_name, "student");
-    $student_check_query->close();
-    $con->next_result();
-
     //Check if project is in database
-    //This part would be completed in js
+   
 
     //Get ID of latest data entry
     $get_check_query = "SELECT GOAL_ID FROM Goal";
@@ -32,7 +27,7 @@
  
      //Insert data into database accordingly
     $addGoal_query = $con->prepare("INSERT INTO Goal (GOAL_ID, NAME, DESCRIPTION, PERCENTAGE, PROJ_ID, STUDENT_ID) values(?,?,?,?,?,?)");
-    $addGoal_query_result = $addGoal_query->execute([$goal_id, $goal_name, $goal_description, $goal_percentage, $project_id]);
+    $addGoal_query_result = $addGoal_query->execute([$goal_id, $goal_name, $goal_description, $goal_percentage, $project_id, $student_id]);
 
     $addGoal_query-> close();
     $con->next_result();

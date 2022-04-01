@@ -6,6 +6,13 @@
 
     $user_data = checkLogin($con);
 
+    $queryProj = $con->prepare("SELECT PROJ_ID,NAME FROM PROJECT");
+    $queryProj->execute();
+    $queryProj_result = $queryProj->get_result();
+
+    $queryGoal = $con->prepare("SELECT * FROM GOAL");
+    $queryGoal->execute();
+    $queryGoal_result = $queryGoal->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -51,27 +58,54 @@
             </div>
         </div>
         <div class="content">
-            <div class = "banner">
-                <form method= "get" action = "http://www.randyconnolly.com/tests/process.php">
+            <div class ="banner">
+                <form method= "get" action = "../src/addGoal.php">
                 <h1 class = "student">Welcome to Goal Setting and Progress Tracking</h1>
                 <div class = "goalName">
                     <h2><label>Goal Name</label></h2>
-                    <input type = "text" name = "Goal Name" placeholder="Enter Goal Name" required>
+                    <input type = "text" name = "goal_name" placeholder="Enter Goal Name" required>
                 </div>
 
-                <div class = "goalDescription">
+                <div class ="goalDescription">
                     <h2><label>Goal Description</label></h2>
-                    <input type = "text" name = "Goal Description" placeholder="Enter Goal Description" required>
+                    <input type = "text" name = "goal_description" placeholder="Enter Goal Description" required>
                 </div>
-                
-                <p class = "addgoal"><input type = "Submit" value = "Add Goal" ></p>
 
-            </div> 
+                <div class ="projectDropDown">
+                    <h2><label>Select Project:</label><h2>
+                    <select name="project_id">
+                    <option value="PRNUL">Select Project</option>
+                    <?php
+                        //Foreach loop to send the id values and the option
+                        while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
+                            echo '<option value="'.$project_arr['PROJ_ID'].'">'.$project_arr['NAME'].'</option>';
+                        }
+                    ?>
+                    </select>
+                </div>
+
+                <div class ="percentage">
+                <h2><label>Percentage:</label><h2>
+                <input type = "text" name = "goal_percentage" placeholder="Enter Percentage (Ex.: 30%)">
+                </div>
+
+                <div class ="student">
+                        <?php
+                            echo '<input type="hidden" name ="student_id" value="'.$_SESSION['STUDENT_ID'].'">';
+                        ?>
+                </div>
+                <p class = "addgoal"><input type = "Submit" value = "Add Goal" ></p>
+                
+            </div>
+
             <div class = "currentGoal">
                 <section>
-                    <p class = fontsizeGoal>Current Goal 1 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a></p>
-                    <p class = fontsizeGoal>Current Goal 2 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a></p>
-                    <p class = fontsizeGoal>Current Goal 3 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a></p>
+                    <p class = fontsizeGoal>Current Goal 1 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
+                                                           <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>
+                    <p class = fontsizeGoal>Current Goal 2 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
+                                                           <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>
+                    <p class = fontsizeGoal>Current Goal 3 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
+                                                           <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>
                 </section>
             </div>
         </div>

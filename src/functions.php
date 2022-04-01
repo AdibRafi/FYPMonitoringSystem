@@ -63,7 +63,7 @@
     function checkUsername($user_id, $user_type) {
         if ($user_type == "student") {
             //Student
-            $query = $con->prepare("SELECT STUDENT_ID FROM STUDENT WHERE STUDENT_ID == ?");
+            $query = $con->prepare("SELECT STUDENT_ID FROM STUDENT WHERE STUDENT_ID == ".$user_id);
             $query->bind_param("s", $user_id);
             $query->execute();
             $query_result = $query->get_result();
