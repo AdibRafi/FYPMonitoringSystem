@@ -7,7 +7,7 @@
     $goal_name = $_GET['goal_name'];
     $goal_description = $_GET['goal_description'];
     $goal_percentage = $_GET['goal_percentage'];
-    $project_name = $_GET['project_name'];
+    $project_id = $_GET['project_id'];
     $student_name = $_GET['student_id'];
 
     //Check if student is in database
@@ -16,9 +16,10 @@
     $con->next_result();
 
     //Check if project is in database
+    //This part would be completed in js
 
-     //Get ID of latest data entry
-     $get_check_query = "SELECT GOAL_ID FROM Goal";
+    //Get ID of latest data entry
+    $get_check_query = "SELECT GOAL_ID FROM Goal";
 
      //Append 1 to ID
     $goal_id = getID($con,"goal");
@@ -29,8 +30,26 @@
         </script>");
     }
  
-     //Insert data into database accordingly 
+     //Insert data into database accordingly
+    $addGoal_query = $con->prepare("INSERT INTO Goal (GOAL_ID, NAME, DESCRIPTION, PERCENTAGE, PROJ_ID, STUDENT_ID) values(?,?,?,?,?,?)");
+    $addGoal_query_result = $addGoal_query->execute([$goal_id, $goal_name, $goal_description, $goal_percentage, $project_id]);
 
-    //Insert into table
+    $addGoal_query-> close();
+    $con->next_result();
+
+    if($addGoal_query_result){
+
+        echo("<script>
+        alert('Goal successfully added!');
+        window.location.href='../student/student_GoalSetting_ProgressTracking.php';
+        </script>");
+
+
+    }else{
+        echo("<script>
+        alert('Something went wrong!');
+        window.location.href='../student/student_GoalSetting_ProgressTracking.php';
+        </script>");
+    }
 
 ?>
