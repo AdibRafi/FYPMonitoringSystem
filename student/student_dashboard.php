@@ -6,6 +6,10 @@
 
     $user_data = checkLogin($con);
 
+    $queryGoal = $con->prepare("SELECT * FROM GOAL");
+    $queryGoal->execute();
+    $queryGoal_result = $queryGoal->get_result();
+
 ?>
 
 
@@ -62,22 +66,18 @@
                 <div class = "goal">
                     <span>Goal</span>
                 </div>
-                <div class="bar">
-                  <div class="info">
-                    <span>Goal Description 1</span>
-                  </div>
-                  <div class="progress-line GoalDescription1">
-                    <span></span>
-                  </div>
-                </div>
-                <div class="bar">
-                  <div class="info">
-                    <span>Goal Description 2</span>
-                  </div>
-                  <div class="progress-line GoalDescription2">
-                    <span></span>
-                  </div>
-                </div>
+                <?php
+                    while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
+                        echo '<div class="bar">';
+                            echo '<div class="info">';
+                            echo '<span>'.$goal_arr['NAME'].'</span>';
+                            echo '</div>';
+                            echo '<div class="progress-line '.$goal_arr['NAME'].'">';
+                            echo '<span style="width:'.($goal_arr['PERCENTAGE']*100).'%;"></span>';
+                            echo '</div>';
+                        echo '</div>';
+                    }
+                ?>
             </div>
         </div>
     </div>
