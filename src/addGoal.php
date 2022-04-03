@@ -10,9 +10,15 @@
     $goal_percentage = $_GET['goal_percentage'];
     $student_name = $_GET['student_id'];
 
-    //Check if project is in database
-   
-
+    //Handle percentage offset
+    if ($goal_percentage > 100 || $goal_percentage < 1) {
+        echo("<script>
+        alert('Goal percentage invalid');
+        window.location.href='../student/student_GoalSetting_ProgressTracking.php';
+        </script>");
+        die();
+    }
+    
     //Get ID of latest data entry
     $get_check_query = "SELECT GOAL_ID FROM Goal";
 

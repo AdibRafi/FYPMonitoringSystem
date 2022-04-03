@@ -100,12 +100,13 @@
 
             <div class = "currentGoal">
                 <section>
-                    <p class = fontsizeGoal>Current Goal 1 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
-                                                           <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>
-                    <p class = fontsizeGoal>Current Goal 2 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
-                                                           <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>
-                    <p class = fontsizeGoal>Current Goal 3 <a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
-                                                           <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>
+                    <?php
+                        while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
+                            echo '<p class="fontsizeGoal">'.$goal_arr['NAME'].'<a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
+                                                                               <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>';
+                        }
+                    ?>
+                    
                 </section>
             </div>
         </div>
