@@ -1,0 +1,7 @@
+function editGoal() {
+
+}
+
+function deleteGoal() {
+
+}
