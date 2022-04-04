@@ -38,13 +38,20 @@ require('../../src/database.php');
                                                                     alt="verify student" title="Verify Student"></a>
                 </li>
                 <li>
+                    <a href="verify_project.php"><img class="sidebar-item"
+                                                      src="../../src/icon/verify_project_128px.png" alt="verify project"
+                                                      title="Verify Project"></a>
+                </li>
+                <li>
                     <a href="../ListUser/student_list/list_student.php"><img class="sidebar-item"
-                                                                             src="../../src/icon/project_planning_128px.png" alt="list student"
+                                                                             src="../../src/icon/list_student_128px.png"
+                                                                             alt="list student"
                                                                              title="List Student"></a>
                 </li>
                 <li>
                     <a href="../ListUser/supervisor_list/list_supervisor.php"><img class="sidebar-item"
-                                                                                   src="../../src/icon/project_planning_128px.png" alt="list supervisor"
+                                                                                   src="../../src/icon/list_supervisor_128px.png"
+                                                                                   alt="list supervisor"
                                                                                    title="List Supervisor"></a>
                 </li>
                 <li>
@@ -79,10 +86,9 @@ require('../../src/database.php');
                         <th>Description</th>
                         <th>Student ID</th>
                         <th>Supervisor ID</th>
-                        <th>Approved</th>
                     </tr>
                     <?php
-                    $sql = "SELECT * from Project";
+                    $sql = "SELECT * from Project WHERE IS_APPROVED = 1";
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -96,7 +102,6 @@ require('../../src/database.php');
                         <td>' . $row["DESCRIPTION"] . '</td>
                         <td>' . $row["STUDENT_ID"] . '</td>
                         <td>' . $row["SUPERVISOR_ID"] . '</td>
-                        <td>' . $row["IS_APPROVED"] . '</td>
                        </tr>';
                         }
                         echo "</table>";
