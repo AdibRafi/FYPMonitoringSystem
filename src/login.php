@@ -19,7 +19,7 @@
         //check if user logging in is a supervisor
         $supervisor = getSupervisorDatabySupervisorID($con,$user_login);
         if ($supervisor) {
-            if ($supervisor['ISVERIFIED'] === true){
+            if ($supervisor['ISVERIFIED'] === 1){
                 if ($supervisor['PASSWORD'] === $user_password) {
                     $_SESSION['SUPERVISOR_ID'] = $supervisor['SUPERVISOR_ID'];
     
@@ -46,7 +46,7 @@
         //check if user logging is a student
         $student = getStudentDatabyStudentID($con,$user_login);
         if ($student) {
-            if ($supervisor['ISVERIFIED'] === true){
+            if ($supervisor['ISVERIFIED'] === 1){
                 if ($student['PASSWORD'] === $user_password) {
                     $_SESSION['STUDENT_ID'] = $student['STUDENT_ID'];
 

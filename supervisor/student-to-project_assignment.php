@@ -61,6 +61,35 @@ session_start();
         <div class="content">
             <div class="student-to-project-assignment-box">
                 <h1>Welcome to Student-to-Project Assginment</h1>
+                <div class="approved-project-list-box">  
+                    <h2>Approved Project List</h2>
+                            <?php
+                                $sql = "SELECT * FROM project WHERE IS_APPROVED = 1 and SUPERVISOR_ID = ?";
+                                $getApprovedProject_query = $con->prepare($sql);
+                                $getApprovedProject_query->execute([$user_data['SUPERVISOR_ID']]);
+                                $getApprovedProject_query_result = $getApprovedProject_query->get_result();
+                                if (mysqli_num_rows($getApprovedProject_query_result) > 0) {
+                                    while($row = mysqli_fetch_assoc($getApprovedProject_query_result)) {
+                                        echo "<div class='approved-project-box'>";
+                                        echo "<div class='approved-project-name'>";
+                                        echo "<Label>Project Name: </Label>";
+                                        echo $row['NAME'];
+                                        echo "</div>";
+                                        echo "<div class='approved-project-description'>";
+                                        echo "<Label>Project Description: </Label>";
+                                        echo $row['DESCRIPTION'];
+                                        echo "</div>";
+                                        echo "<div class='approved-project-id'>";
+                                        echo "<Label>Project ID: </Label>";
+                                        echo $row['PROJ_ID'];
+                                        echo "</div>";
+                                        echo "</div>";
+                                    }
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

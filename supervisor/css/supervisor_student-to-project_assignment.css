@@ -3,3 +3,63 @@
   font-family: "Roboto", Verdana, Arial, sans-serif;
   justify-content: center;
 }
+
+.approved-project-list-box {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  font-size: 100%;
+  align-items: center;
+}
+
+.approved-project-box {
+  background-color: var(--containerColour);
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  margin-top: 2rem;
+  color: white;
+  height: 300px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.approved-project-box:hover {
+  cursor: pointer;
+  box-shadow: 3px 10px 20px var(--shadowColour);
+}
+
+.approved-project-box .approved-project-name {
+  flex: 20%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: var(--DarkercontainerColour);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.approved-project-box .approved-project-description {
+  margin: 10px;
+  flex: 60%;
+  display: grid;
+}
+
+.approved-project-box .approved-project-id {
+  flex: 20%;
+  border-top: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  background-color: var(--DarkercontainerColour);
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  justify-content: flex-start;
+}
+
+.approved-project-box Label {
+  font-weight: bold;
+  margin-right: 10px;
+}
