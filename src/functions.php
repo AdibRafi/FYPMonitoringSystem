@@ -156,11 +156,59 @@
         return $id;
     }
 
+    function getNameFromID($con, $id, $type):string {
+        switch(strtolower($type)) {      
+            case "student":
+                $query = $con->prepare("SELECT NAME FROM STUDENT HAVING STUDENT_ID=".$id."");        
+                break;
+
+            case "supervisor":
+                $query = $con->prepare('SELECT NAME FROM SUPERVISOR WHERE SUPERVISOR_ID="'.$id.'"');
+                break;
+
+            case "meeting":
+                $query = $con->prepare("SELECT NAME FROM MEETING WHERE MEETING_ID=".$id."");
+                break;
+
+            case "goal":
+                $query = $con->prepare("SELECT NAME FROM GOAL WHERE GOAL_ID=".$id."");
+                break;
+
+            case "mark":
+                $query = $con->prepare("SELECT NAME FROM MARK WHERE MARK_ID=".$id."");
+                break;
+
+            case "project":
+                $query = $con->prepare('SELECT NAME FROM PROJECT HAVING PROJ_ID='.$id.'');
+                break;
+
+            default:
+                $name ="invalid";
+        }
+
+        $query->execute();
+        $query_result = $query->get_result();
+        while ($query_arr = mysqli_fetch_assoc($query_result)) {
+            $name = $query_arr['NAME'];
+        }
+        return $name;
+    }
+
+    function isApproved($bit) {
+        if ($bit == '0') {
+            return 'Pending';
+        } else {
+            return 'Approved';
+        }
+    }
+
     function increment($matches){
         if(isset($matches[1])){
             $length = strlen($matches[1]);
             return sprintf("%0".$length."d", ++$matches[1]);
         }    
     }
+    
+    
 
 ?>
