@@ -112,7 +112,7 @@ session_start();
                     <div class="add-meet-box">
                         <form method="get" id="mainForm" action="../src/addMeeting.php"> 
                             <span class="close-btn">&times;</span>
-                            <h1>Add meeting
+                            <h1>Add meeting</h1>
                             <div class="name-box">
                                 <h2>Meeting Name</h2>
                                 <p><mark>**Default meeting name will be [Student Username] and [Supervisor Username] meeting.</mark></p>

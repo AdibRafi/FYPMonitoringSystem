@@ -1,6 +1,6 @@
-var changePassordBtn = document.getElementsByClassName("").item(0);
+const changePassordBtn = document.getElementsByClassName("").item(0);
 
-var changeEmailBtn = document.getElementsByClassName("").item(0);
+const changeEmailBtn = document.getElementsByClassName("").item(0);
 
 
 function changePassword(password) {

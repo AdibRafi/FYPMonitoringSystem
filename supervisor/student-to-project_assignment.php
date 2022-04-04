@@ -17,7 +17,8 @@ session_start();
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_student-to-project_assignment.css">
     <!-- Javascript -->
-    <script type="text/javascript" src="js/sidebar.js"></script>
+    <script type="text/javascript" src="js/sidebar.js" defer></script>
+    <script type="text/javascript" src="js/assignProject.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -61,33 +62,48 @@ session_start();
         <div class="content">
             <div class="student-to-project-assignment-box">
                 <h1>Welcome to Student-to-Project Assginment</h1>
-                <div class="approved-project-list-box">  
-                    <h2>Approved Project List</h2>
+                <div class="approved-project-list-box" >  
+                    <h1>Approved Project List</h1>
                             <?php
-                                $sql = "SELECT * FROM project WHERE IS_APPROVED = 1 and SUPERVISOR_ID = ?";
+                                $sql = "SELECT * FROM project WHERE IS_APPROVED = 1 and SUPERVISOR_ID = ? and STUDENT_ID is NULL";
                                 $getApprovedProject_query = $con->prepare($sql);
                                 $getApprovedProject_query->execute([$user_data['SUPERVISOR_ID']]);
                                 $getApprovedProject_query_result = $getApprovedProject_query->get_result();
                                 if (mysqli_num_rows($getApprovedProject_query_result) > 0) {
                                     while($row = mysqli_fetch_assoc($getApprovedProject_query_result)) {
-                                        echo "<div class='approved-project-box'>";
-                                        echo "<div class='approved-project-name'>";
-                                        echo "<Label>Project Name: </Label>";
+                                        echo "<div class='approved-project-box' onclick='clickedProject(this)'>";
+                                        echo "<div class='approved-project-header'>";
+                                        echo $row['PROJ_ID'];
+                                        echo "<br>";
                                         echo $row['NAME'];
                                         echo "</div>";
-                                        echo "<div class='approved-project-description'>";
-                                        echo "<Label>Project Description: </Label>";
+                                        echo "<div class='approved-project-body'>";
                                         echo $row['DESCRIPTION'];
-                                        echo "</div>";
-                                        echo "<div class='approved-project-id'>";
-                                        echo "<Label>Project ID: </Label>";
-                                        echo $row['PROJ_ID'];
                                         echo "</div>";
                                         echo "</div>";
                                     }
                                 }
                             ?>
-                        </div>
+                </div>
+                <div class="select-student-box">
+                    <span class="close-btn">&times;</span>
+                    <h1>Select Student</h1>
+                    <div class="select-student">
+                        <select required title='Student name' id='student-id' name='student_id'>
+                        <?php
+                            $sql = "SELECT * FROM student WHERE PROJ_ID is NULL";
+                            $getStudent_query = $con->prepare($sql);
+                            $getStudent_query->execute();
+                            $getStudent_query_result = $getStudent_query->get_result();
+                            if (mysqli_num_rows($getStudent_query_result) > 0) {
+                                while($row = mysqli_fetch_assoc($getStudent_query_result)) {
+                                    echo '<option value='. $row['STUDENT_ID'] .'>'.$row['NAME'].'</option>';
+                                }
+                            }
+                        ?>
+                        </select>
+                        <input type="hidden" value="<?=$_SESSION['token']?>" id="token">
+                        <button class="assign-btn">Assign project to student</button>
                     </div>
                 </div>
             </div>

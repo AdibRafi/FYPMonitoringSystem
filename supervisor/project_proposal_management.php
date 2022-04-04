@@ -65,7 +65,7 @@ session_start();
             <div class="proposal-management-box">
                 <h1>Welcome to Project Proposal Management</h1>
                 <div class="proposed-project-list">
-                    <span><h2 style="display:inline">Proposed project by you</h2><button class="propose-project-btn">Propose Project</button></span>
+                    <span><h1 style="display:inline">Proposed project by you</h1><button class="propose-project-btn">Propose Project</button></span>
                         <?php
 
                             $sql = "select * from project where supervisor_id = ?";
