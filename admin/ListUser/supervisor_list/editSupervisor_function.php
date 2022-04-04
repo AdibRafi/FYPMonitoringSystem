@@ -13,19 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $getSql = $con->query($sql);
     $getSupervisor = $getSql->fetch_assoc();
 
-    $deleteSql = "DELETE FROM Supervisor WHERE SUPERVISOR_ID = '" . $oldSupervisorID . "'";
+    $updateSql = "UPDATE Supervisor SET NAME = '" . $newName . "',AGE= '" . $newAge . "' ,
+    EMAIL = '" . $newEmail . "' , PROFESSION = '" . $newProfession . "', ISVERIFIED = b'1'
+    WHERE Supervisor.SUPERVISOR_ID = '" . $oldSupervisorID . "'";
 
-    $insertSql = "INSERT INTO Supervisor(SUPERVISOR_ID,NAME,PASSWORD,AGE,EMAIL,PROFESSION,MARK_ID,ISVERIFIED)
-                  VALUES ('".$getSupervisor["SUPERVISOR_ID"]."','".$newName."','".$getSupervisor["PASSWORD"]."'
-                  ,'".$newAge."','".$newEmail."','".$newProfession."','".$getSupervisor["MARK_ID"]."',b'1')";
-
-
-    if ($con->query($deleteSql) === TRUE) {
-        if ($con->query($insertSql) === TRUE) {
-            echo "<script>
+    if ($con->query($updateSql) === TRUE) {
+        echo "<script>
           alert('Edit successful');
           </script>";
-            echo "<script>window.location.href='list_supervisor.php';</script>";
-        }
+        echo "<script>window.location.href='list_supervisor.php';</script>";
     }
 }

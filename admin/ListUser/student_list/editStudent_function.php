@@ -12,19 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $getSql = $con->query($sql);
     $getStudent = $getSql->fetch_assoc();
 
-    $deleteSql = "DELETE FROM Student WHERE STUDENT_ID = '" . $oldStudentID . "'";
-
-    $insertSql = "INSERT INTO Student(STUDENT_ID,NAME,PASSWORD,AGE,EMAIL,MARK_ID,PROJ_ID,ISVERIFIED)
-                  VALUES ('".$getStudent["STUDENT_ID"]."','".$newName."','".$getStudent["PASSWORD"]."'
-                  ,'".$newAge."','".$newEmail."','".$getStudent["MARK_ID"]."','".$getStudent["PROJ_ID"]."',b'1')";
+    $updateSql = "UPDATE Student SET NAME = '" . $newName . "', AGE = '" . $newAge . "',
+    EMAIL = '" . $newEmail . "', ISVERIFIED = b'1' WHERE Student.STUDENT_ID = '" . $oldStudentID . "'";
 
 
-    if ($con->query($deleteSql) === TRUE) {
-        if ($con->query($insertSql) === TRUE) {
-            echo "<script>
+    if ($con->query($updateSql) === TRUE) {
+        echo "<script>
           alert('Edit successful');
           </script>";
-            echo "<script>window.location.href='list_student.php';</script>";
-        }
+        echo "<script>window.location.href='list_student.php';</script>";
     }
 }
