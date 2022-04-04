@@ -39,19 +39,28 @@ require('../../../src/database.php');
                                                                        alt="verify student" title="Verify Student"></a>
                 </li>
                 <li>
-                    <a href="../../ListUser/student_list/list_student.php"><img class="sidebar-item"
-                                                                                src="../../../src/icon/project_planning_128px.png" alt="list student"
-                                                                                title="List Student"></a>
+                    <a href="../../adminProject/verify_project.php"><img class="sidebar-item"
+                                                                         src="../../../src/icon/verify_project_128px.png"
+                                                                         alt="verify project"
+                                                                         title="Verify Project"></a>
+                </li>
+                <li>
+                    <a href="../student_list/list_student.php"><img class="sidebar-item"
+                                                                    src="../../../src/icon/list_student_128px.png"
+                                                                    alt="list student"
+                                                                    title="List Student"></a>
                 </li>
                 <li>
                     <a href="../supervisor_list/list_supervisor.php"><img class="sidebar-item selected"
-                                                                          src="../../../src/icon/project_planning_128px.png" alt="list supervisor"
+                                                                          src="../../../src/icon/list_supervisor_128px.png"
+                                                                          alt="list supervisor"
                                                                           title="List Supervisor"></a>
                 </li>
                 <li>
-                    <a href="../../ListProject/list_project.php"><img class="sidebar-item"
-                                                                      src="../../../src/icon/project_list_128px.png" alt="list project"
-                                                                      title="List Project"></a>
+                    <a href="../../adminProject/list_project.php"><img class="sidebar-item"
+                                                                       src="../../../src/icon/project_list_128px.png"
+                                                                       alt="list project"
+                                                                       title="List Project"></a>
                 </li>
             </ul>
         </div>
@@ -74,38 +83,38 @@ require('../../../src/database.php');
             <form action="editSupervisor_function.php" method="post">
                 <?php
                 $supervisorSelect = $_SESSION["passedSupervisorParameter"];
-                $sql = "SELECT * FROM Supervisor WHERE SUPERVISOR_ID = '".$supervisorSelect."'";
+                $sql = "SELECT * FROM Supervisor WHERE SUPERVISOR_ID = '" . $supervisorSelect . "'";
                 $result = $con->query($sql);
                 $supervisor = $result->fetch_assoc();
                 echo '
                 <div class="register-inputfield">
                     <label>
-                        Supervisor ID <br><p style="font-weight: bold">'.$supervisor["SUPERVISOR_ID"].'</p>
+                        Supervisor ID <br><p style="font-weight: bold">' . $supervisor["SUPERVISOR_ID"] . '</p>
                     </label>
                 </div>
                 <div class="register-inputfield">
                     <label> Name
-                        <input placeholder="Name" type="text" name="name" value="'.$supervisor["NAME"].'">
+                        <input placeholder="Name" type="text" name="name" value="' . $supervisor["NAME"] . '">
                     </label>
                 </div>
                 <div class="register-inputfield">
                     <label> Age
-                        <input placeholder="Age" type="text" name="age" value="'.$supervisor["AGE"].'">
+                        <input placeholder="Age" type="text" name="age" value="' . $supervisor["AGE"] . '">
                     </label>
                 </div>
                 <div class="register-inputfield">
                     <label> Email
-                        <input placeholder="Email" type="email" name="email" value="'.$supervisor["EMAIL"].'">
+                        <input placeholder="Email" type="email" name="email" value="' . $supervisor["EMAIL"] . '">
                     </label>
                 </div>
                 <div class="register-inputfield">
                     <label> Profession
-                        <input placeholder="Profession" type="text" name="profession" value="'.$supervisor["PROFESSION"].'">
+                        <input placeholder="Profession" type="text" name="profession" value="' . $supervisor["PROFESSION"] . '">
                     </label>
                 </div>
                 <div class="register-inputfield">
                     <label>
-                        Mark ID <br><p style="font-weight: bold">'.$supervisor["MARK_ID"].'</p>
+                        Mark ID <br><p style="font-weight: bold">' . $supervisor["MARK_ID"] . '</p>
                     </label>
                 </div>
                 '

@@ -38,19 +38,28 @@ require('../../../src/database.php');
                                                                        alt="verify student" title="Verify Student"></a>
                 </li>
                 <li>
+                    <a href="../../adminProject/verify_project.php"><img class="sidebar-item"
+                                                                         src="../../../src/icon/verify_project_128px.png"
+                                                                         alt="verify project"
+                                                                         title="Verify Project"></a>
+                </li>
+                <li>
                     <a href="../student_list/list_student.php"><img class="sidebar-item"
-                                                                    src="../../../src/icon/project_planning_128px.png" alt="list student"
+                                                                    src="../../../src/icon/list_student_128px.png"
+                                                                    alt="list student"
                                                                     title="List Student"></a>
                 </li>
                 <li>
                     <a href="list_supervisor.php"><img class="sidebar-item selected"
-                                                       src="../../../src/icon/project_planning_128px.png" alt="list supervisor"
+                                                       src="../../../src/icon/list_supervisor_128px.png"
+                                                       alt="list supervisor"
                                                        title="List Supervisor"></a>
                 </li>
                 <li>
-                    <a href="../../ListProject/list_project.php"><img class="sidebar-item"
-                                                                      src="../../../src/icon/project_list_128px.png" alt="list project"
-                                                                      title="List Project"></a>
+                    <a href="../../adminProject/list_project.php"><img class="sidebar-item"
+                                                                       src="../../../src/icon/project_list_128px.png"
+                                                                       alt="list project"
+                                                                       title="List Project"></a>
                 </li>
             </ul>
         </div>
