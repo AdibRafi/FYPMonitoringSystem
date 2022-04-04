@@ -1,155 +1,158 @@
-.content{
-    display: flex;
-    width: 100%;
-    font-family: "Roboto", Verdana, Arial, sans-serif;
+.content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
 }
 
-.meeting-management-box{
-    display: flex;
-    flex-direction: column;
+.meeting-management-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .add-meet-box {
-    display: flex;
-    flex-direction: column;
-    font-family: "Roboto", Verdana, Arial, sans-serif;
-    font-size: 100%;
-    width: 100%;
-    /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  font-size: 100%;
+  width: 100%;
+  /* border: 1px solid black; */
 }
 
-h2{
-    font-size: 20px;
+h2 {
+  font-size: 20px;
 }
 
-.people-box{
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 0 0 ;
+.people-box {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 0;
 }
 
-.people-box th{
-    padding-right: 2rem;
+.people-box th {
+  padding-right: 2rem;
 }
 
-.people-box tr{
-    margin: 0 0 2rem 0;
+.people-box tr {
+  margin: 0 0 2rem 0;
 }
 
-.add-meet-box [type=submit] {
-    background-color: var(--containerColour);
-    color: white;
-    height: 3em;
-    width: 100%;
-    border-style: none;
-    font-weight: bold;
-    border-radius: 5px;
+.add-meet-box [type="submit"] {
+  background-color: var(--containerColour);
+  color: white;
+  height: 3em;
+  width: 100%;
+  border-style: none;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
-.add-meet-box [type=submit]:hover{
-    opacity: 50%;
-    border: 1px solid black;
-    cursor: pointer;
+.add-meet-box [type="submit"]:hover {
+  opacity: 50%;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
-.add-meet-box p{
-    font-size: 10px;
+.add-meet-box p {
+  font-size: 10px;
 }
 
-.people-box, .time-box, .date-box .name-box{
-    margin-bottom: 2rem;
+.people-box,
+.time-box,
+.date-box .name-box {
+  margin-bottom: 2rem;
 }
 
-.add-meet-box [type=text]{
-    font-family: "Roboto", Verdana, Arial, sans-serif;
-    width: 100%;
-    height: 20px;
-    background: transparent;
-    border-width: 0 0 2px 0;
+.add-meet-box [type="text"] {
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  border-width: 0 0 2px 0;
 }
 
-.meeting-list-box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Roboto", Verdana, Arial, sans-serif;
-    font-size: 100%;
-    /* border: 1px solid black; */
+.meeting-list-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  font-size: 100%;
+  /* border: 1px solid black; */
 }
 
-.meeting-box{
-    justify-content: center;
-    background-color:var(--containerColour);
-    /* border: 1px solid black; */
-    padding: 1rem;
-    border-radius: 10px;
-    margin-top: 2rem;
-    width: 50%;
-    color: white;
+.meeting-box {
+  justify-content: center;
+  background-color: var(--containerColour);
+  /* border: 1px solid black; */
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  color: white;
 }
 
-.error{
-    background: #FFCDD2 url(error.png) no-repeat 98% center;
-    box-shadow: 0 0 5px #FF5252;
-    border-color: #FF1744;
+.error {
+  background: #ffcdd2 url(error.png) no-repeat 98% center;
+  box-shadow: 0 0 5px #ff5252;
+  border-color: #ff1744;
 }
 
-.meeting-box div{
-    padding-bottom: 3px;
+.meeting-box div {
+  padding-bottom: 3px;
 }
 
-.popup-box{
-    display: none; /* Hidden by default */
-    background-color: var(--bodyColour);
-    border-radius: 10px;
+.popup-box {
+  display: none; /* Hidden by default */
+  background-color: var(--bodyColour);
+  border-radius: 10px;
 }
 
-.addMeet-btn{
-    margin-left: 20px;
-    background-color: var(--containerColour);
-    border-radius: 10px;
-    border-width: 0;
-    width: 100px;
-    height: 30px;
-    color: white;
+.addMeet-btn {
+  margin-left: 20px;
+  background-color: var(--containerColour);
+  border-radius: 10px;
+  border-width: 0;
+  width: 100px;
+  height: 30px;
+  color: white;
 }
 
-.addMeet-btn:hover{
-    opacity: 50%;
-    border: 1px solid black;
-    cursor: pointer;
+.addMeet-btn:hover {
+  opacity: 50%;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-.close-btn:hover, .close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-span{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0;
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.hidden{
-    opacity: 0;
-    width: 0;
-    height: 0;
-    display: none;
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
 }
 
-.visible{
-    opacity: 100%;
-    width: 100%;
-    height: 100%;
-    display: block;
+.hidden {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.visible {
+  opacity: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
 }

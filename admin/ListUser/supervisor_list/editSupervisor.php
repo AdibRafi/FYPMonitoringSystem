@@ -14,6 +14,7 @@ require('../../../src/database.php');
     <link rel="stylesheet" href="../../../supervisor/css/sidebar_header.css" type="text/css">
     <!--    PINJAM REGISTER.CSS JAP ALEX-->
     <link rel="stylesheet" href="../../../supervisor/css/registerPage.css" type="text/css">
+    <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
     <script type="text/javascript" src="../../admin.js"></script>
 </head>
 <body>

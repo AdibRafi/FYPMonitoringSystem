@@ -83,6 +83,7 @@
         $age = $_GET['age'];
         $email = $_GET['email'];
         $usertype = $_GET['userType'];
+        $isVerified = false;
 
         if(checkingAccountDuplication($con,$username,$email,$usertype)){
             $register_data = 'fullname=' . $fullname . '&age=' . $age;
@@ -94,11 +95,11 @@
 
         switch ($usertype){
             case "supervisor":
-                $sql = "INSERT INTO Supervisor (SUPERVISOR_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)";
+                $sql = "INSERT INTO Supervisor (SUPERVISOR_ID,PASSWORD,AGE,EMAIL,NAME,ISVERIFIED)values(?,?,?,?,?,?)";
                 $register_query = $con->prepare($sql);
 
                 try {
-                    $register_query_result = $register_query->execute([$username, $password, $age, $email, $fullname]);
+                    $register_query_result = $register_query->execute([$username, $password, $age, $email, $fullname, $isVerified]);
                     //free result set
                     $register_query->close();
                     $con->next_result();
@@ -121,10 +122,10 @@
                 }
                 break;
             case "student":
-                $register_query = $con->prepare( "INSERT INTO student (STUDENT_ID,PASSWORD,AGE,EMAIL,NAME)values(?,?,?,?,?)");
+                $register_query = $con->prepare( "INSERT INTO student (STUDENT_ID,PASSWORD,AGE,EMAIL,NAME,ISVERIFIED)values(?,?,?,?,?,?)");
 
                 try {
-                    $register_query_result = $register_query->execute([$username, $password, $age, $email, $fullname]);
+                    $register_query_result = $register_query->execute([$username, $password, $age, $email, $fullname, $isVerified]);
                     //free result set
                     $register_query->close();
                     $con->next_result();

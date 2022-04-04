@@ -1,37 +1,42 @@
 :root {
-    --bodyColour: #ffdac4;
-    --containerColour: #f6b98e;
+  --bodyColour: #ffdac4;
+  --containerColour: #f6b98e;
 }
 
-.edit-profile-box span{
-    margin-right: 20px;
+.edit-profile-box span {
+  margin-right: 20px;
 }
 
-
-
-button{
-    background-color: var(--containerColour);
-    color: white;
-    height: 30px;
-    border-style: none;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 0.5em;
-    margin: 0.5em;
-    justify-content: flex-end;
+.content {
+  width: 100%;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  justify-content: center;
 }
 
-.email-row,.password-row{
-    width: 100%;
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
+button {
+  background-color: var(--containerColour);
+  color: white;
+  height: 30px;
+  border-style: none;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 0.5em;
+  justify-content: flex-end;
 }
 
-.button-box{
-    margin-left: auto;
+.email-row,
+.password-row {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
 }
 
-button:hover{
-    opacity: 50%;
+.button-box {
+  margin-left: auto;
+}
+
+button:hover {
+  opacity: 50%;
 }

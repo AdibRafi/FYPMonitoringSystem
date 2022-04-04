@@ -19,36 +19,51 @@
         //check if user logging in is a supervisor
         $supervisor = getSupervisorDatabySupervisorID($con,$user_login);
         if ($supervisor) {
-            if ($supervisor['PASSWORD'] === $user_password) {
-                $_SESSION['SUPERVISOR_ID'] = $supervisor['SUPERVISOR_ID'];
-
+            if ($supervisor['ISVERIFIED'] === true){
+                if ($supervisor['PASSWORD'] === $user_password) {
+                    $_SESSION['SUPERVISOR_ID'] = $supervisor['SUPERVISOR_ID'];
+    
+                    echo ("<script>
+                        alert('Login successfully');
+                        window.location.href='../supervisor/dashboard.php';
+                        </script>");
+                }
+                else {
+                    echo ("<script>
+                        alert('Invalid login information, please try again!');
+                        window.location.href='../loginPage.php?$login_data';
+                        </script>");
+                }
+            }else{
                 echo ("<script>
-                    alert('Login successfully');
-                    window.location.href='../supervisor/dashboard.php';
-                    </script>");
-            }
-            else {
-                echo ("<script>
-                    alert('Invalid login information, please try again!');
+                    alert('Account is not verified by the admin, please try again later!');
                     window.location.href='../loginPage.php?$login_data';
                     </script>");
             }
+            
         }
 
         //check if user logging is a student
         $student = getStudentDatabyStudentID($con,$user_login);
         if ($student) {
-            if ($student['PASSWORD'] === $user_password) {
-                $_SESSION['STUDENT_ID'] = $student['STUDENT_ID'];
+            if ($supervisor['ISVERIFIED'] === true){
+                if ($student['PASSWORD'] === $user_password) {
+                    $_SESSION['STUDENT_ID'] = $student['STUDENT_ID'];
 
-                echo ("<script>
-                    alert('Login successfully');
-                    window.location.href='../student/student_dashboard.php';
-                    </script>");
+                    echo ("<script>
+                        alert('Login successfully');
+                        window.location.href='../student/student_dashboard.php';
+                        </script>");
 
+                }else{
+                    echo ("<script>
+                        alert('Invalid login information, please try again!');
+                        window.location.href='../loginPage.php?$login_data';
+                        </script>");
+                }
             }else{
                 echo ("<script>
-                    alert('Invalid login information, please try again!');
+                    alert('Account is not verified by the admin, please try again later!');
                     window.location.href='../loginPage.php?$login_data';
                     </script>");
             }

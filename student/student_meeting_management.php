@@ -18,7 +18,7 @@ session_start();
     <link rel="stylesheet" href="css/sidebarStudent_header.css">
     <link rel="stylesheet" href="css/student_meetingManagement.css">
     <!-- Javascript -->
-    <script type="text/javascript" src="../supervisor/js/sidebar.js"></script>
+    <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
     <script type="text/javascript" src="../supervisor/js/loginPage.js" defer></script>
     <script type="text/javascript" src="../supervisor/js/meetingManagement.js" defer></script>
 </head>

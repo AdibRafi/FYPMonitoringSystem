@@ -1,3 +1,5 @@
-.content{
-
+.content {
+  width: 100%;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  justify-content: center;
 }

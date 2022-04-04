@@ -15,7 +15,7 @@
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="css/student_ProjectPlanning.css">
     <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
-    <script type="text/javascript" src="../supervisor/js/sidebar.js"></script>
+    <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
 </head>
 <body>
     <header class="header">

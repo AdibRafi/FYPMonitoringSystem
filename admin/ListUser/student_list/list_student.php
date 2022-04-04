@@ -13,7 +13,7 @@ require('../../../src/database.php');
     <link rel="stylesheet" href="../../admin.css" type="text/css">
     <link rel="stylesheet" href="../../../supervisor/css/sidebar_header.css" type="text/css">
     <script type="text/javascript" src="../../admin.js"></script>
-    <script type="text/javascript" src="../../../supervisor/js/sidebar.js"></script>
+    <script type="text/javascript" src="../../../supervisor/js/sidebar.js" defer></script>
 </head>
 <body>
 <header class="header">
