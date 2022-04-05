@@ -103,7 +103,6 @@ h2 {
 .popup-box {
   display: none; /* Hidden by default */
   background-color: var(--bodyColour);
-  border-radius: 10px;
 }
 
 .addMeet-btn {

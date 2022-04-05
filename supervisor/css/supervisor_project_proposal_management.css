@@ -1,8 +1,8 @@
 .content {
   display: flex;
+  justify-content: center;
   width: 100%;
   font-family: "Roboto", Verdana, Arial, sans-serif;
-  justify-content: center;
 }
 
 .proposal-management-box {
@@ -10,15 +10,17 @@
   flex-direction: column;
 }
 
-.proposed-project-list {
-  display: block;
+.project-propose-box {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  font-size: 100%;
+  width: 100%;
 }
 
-.project-propose-box {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  display: none;
+.popup-box {
+  display: none; /* Hidden by default */
+  background-color: var(--bodyColour);
 }
 
 .project-propose-box [type="text"] {
@@ -59,10 +61,10 @@
 .proposed-project-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-family: "Roboto", Verdana, Arial, sans-serif;
   font-size: 100%;
-  align-items: center;
-  /* border: 1px solid black; */
+  align-content: center;
 }
 
 .project-box {
@@ -72,14 +74,8 @@
   border-radius: 10px;
   margin-top: 2rem;
   color: white;
-  width: 500px;
-  overflow-wrap: break-word;
-}
-
-.proposed-project-list span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  word-break: break-word;
+  width: 30%;
 }
 
 .propose-project-btn {
@@ -98,6 +94,36 @@
   cursor: pointer;
 }
 
+.close-btn,
+.remove-project-btn {
+  color: #aaa;
+  justify-content: flex-end;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.remove-project-btn:hover,
+.close-btn:focus,
+.remove-project-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.error {
+  background: #ffcdd2 url(error.png) no-repeat 98% center;
+  box-shadow: 0 0 5px #ff5252;
+  border-color: #ff1744;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
 .hidden {
   opacity: 0;
   width: 0;
@@ -110,24 +136,4 @@
   width: 100%;
   height: 100%;
   display: block;
-}
-
-.close-btn {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.error {
-  background: #ffcdd2 url(error.png) no-repeat 98% center;
-  box-shadow: 0 0 5px #ff5252;
-  border-color: #ff1744;
 }

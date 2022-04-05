@@ -63,9 +63,9 @@ session_start();
         </div>
         <div class="content">
             <div class="proposal-management-box">
-                <h1>Welcome to Project Proposal Management</h1>
+                <h1 class="center">Welcome to Project Proposal Management</h1>
                 <div class="proposed-project-list">
-                    <span><h1 style="display:inline">Proposed project by you</h1><button class="propose-project-btn">Propose Project</button></span>
+                    <span><h1>Proposed project by you</h1><button class="propose-project-btn">Propose Project</button></span>
                         <?php
 
                             $sql = "select * from project where supervisor_id = ?";
@@ -81,11 +81,12 @@ session_start();
 
                                 echo("
                                     <div class='project-box'>
-                                        <div><strong>Project ID: </strong>".$row['PROJ_ID']."</div>
-                                        <div><strong>Project Name: </strong>". $row['NAME']."</div>
-                                        <div><strong>Project Description: </strong>". $row['DESCRIPTION']."</div>
-                                        <div><strong>Proposed by: </strong>". $user_data['NAME']."</div>
-                                        <div><strong>Approved: </strong>". $isApproved."</div>
+                                        
+                                        <div>Project ID:".$row['PROJ_ID']."</div>
+                                        <div>Project Name:". $row['NAME']."</div>
+                                        <div>Project Description:". $row['DESCRIPTION']."</div>
+                                        <div>Proposed by:". $user_data['NAME']."</div>
+                                        <div>Approved:". $isApproved."</div>
                                     </div>    
                                 ");
                               }
@@ -98,21 +99,23 @@ session_start();
 
                         ?>
                 </div>
-                <div class="project-propose-box">
-                    <span class="close-btn">&times;</span>
-                    <h2>Propose a project</h2>
-                    <form method="get" action="../src/proposeProject.php" id="mainForm">
-                        <div class="project-name-box">
-                            <h2>Project Name:</h2><input name="projectName"type="text" placeholder="Project Name" class="required">
-                        </div>
-                        <div class="project-description-box">
-                            <h2>Project Description:</h2><textarea name="projectDescription" title="Project Description" placeholder="Project Description" class="required"></textarea>
-                        </div>
-                        <div class="propose-btn-box">
-                            <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
-                            <input class="submit-btn" type="submit" value="Propose Project">
-                        </div>
-                    </form>
+                <div class="popup-box">
+                    <div class="project-propose-box">
+                        <span class="close-btn">&times;</span>
+                        <h2>Propose a project</h2>
+                        <form method="get" action="../src/proposeProject.php" id="mainForm">
+                            <div class="project-name-box">
+                                <h2>Project Name:</h2><input name="projectName"type="text" placeholder="Project Name" class="required">
+                            </div>
+                            <div class="project-description-box">
+                                <h2>Project Description:</h2><textarea name="projectDescription" title="Project Description" placeholder="Project Description" class="required"></textarea>
+                            </div>
+                            <div class="propose-btn-box">
+                                <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
+                                <input class="submit-btn" type="submit" value="Propose Project">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
