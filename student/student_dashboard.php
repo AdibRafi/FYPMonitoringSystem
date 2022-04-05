@@ -43,7 +43,7 @@
                         <a href="../student/student_ProjectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
-                        <a href="../student/student_meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a href="../student/student_meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="project planning icon" title="Meeting Management"></a>
                     </li>                    
                 </ul>
             </div>
