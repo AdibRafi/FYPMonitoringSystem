@@ -72,6 +72,8 @@
   border-radius: 10px;
   margin-top: 2rem;
   color: white;
+  width: 500px;
+  overflow-wrap: break-word;
 }
 
 .proposed-project-list span {
