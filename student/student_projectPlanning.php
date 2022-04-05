@@ -71,10 +71,10 @@
 				<th>Status</th>
 			  </tr>
 			  <tr>
-				<td>John Doe</td>
-				<td>Mobile Application are used to quick response time</td>
-				<td>Farouk Ali</td>
-				<td>In Progress</td>
+				<td class="column-1">John Doe</td>
+				<td class="column-2">Mobile Application are used to quick response time</td>
+				<td class="column-3">Farouk Ali</td>
+				<td class="column-4">In Progress</td>
 			  </tr>
 			  <tr>
 				<td>John Doe</td>

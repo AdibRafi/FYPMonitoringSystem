@@ -46,7 +46,7 @@
         //check if user logging is a student
         $student = getStudentDatabyStudentID($con,$user_login);
         if ($student) {
-            if ($supervisor['ISVERIFIED'] === 1){
+            if ($student['ISVERIFIED'] === 1){
                 if ($student['PASSWORD'] === $user_password) {
                     $_SESSION['STUDENT_ID'] = $student['STUDENT_ID'];
 
