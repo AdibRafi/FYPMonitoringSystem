@@ -111,7 +111,7 @@
                                                                                <a href="#" onclick="openGoalEdit()"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>';
                         }
                     } else{
-                        echo("<h2>No goals are currently set</h2>");
+                        echo '<h2>No goals are currently set</h2>';
                     }
                     ?>
                     
