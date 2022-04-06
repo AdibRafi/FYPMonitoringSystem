@@ -65,10 +65,8 @@ session_start();
                 <div class="meeting-list-box">               
                     <span><h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button></span>
                     <?php
-                        require ("../src/database.php");
-
-                        $getMeetingList_query = $con->prepare("SELECT * FROM meeting where SUPERVISOR_ID = ?");
-                        $getMeetingList_query->bind_param("s",$_SESSION['SUPERVISOR_ID']);
+                        $getMeetingList_query = $con->prepare("SELECT * FROM meeting where STUDENT_ID = ?");
+                        $getMeetingList_query->bind_param("s",$_SESSION['STUDENT_ID']);
                         $getMeetingList_query->execute();
                         $getMeetingList_query_result = $getMeetingList_query->get_result();
 
