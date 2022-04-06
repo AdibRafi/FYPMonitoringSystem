@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/student_GoalSetting_PlanningTracking.css">
     <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
     <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
+    <script type="text/javascript" src="js/goalManage.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -105,13 +106,28 @@
                 <section>
                     <?php
                         while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
-                            echo '<p class="fontsizeGoal">'.$goal_arr['NAME'].'<a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
-                                                                               <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>';
+                            echo '<p class="fontsizeGoal">'.$goal_arr['NAME'].'<a href="#" onclick="openGoalRemove()"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
+                                                                               <a href="#" onclick="openGoalEdit()"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>';
                         }
                     ?>
                     
                 </section>
             </div>
+        </div>
+        <div class="popupEdit">
+            <div class ="popup-content">
+                <h2><label>Change Percentage</label></h2>
+                <a href="#" onclick="closeGoalEdit()"><img class="closeBtn" src="../src/icon/exitIcon.png" style="width: 42px; height: 42px;" alt="exit"></a>
+                <input type="text" class="popupInput" placeholder="New Percentage">
+                <a href="#" class="button">Save Changes</a>            
+        </div>
+
+        <div class="popupRemove">
+            <div class ="popup-content">
+                <h2><label>Are you sure you want to remove this goal?</label></h2>
+                <a href="#" onclick="closeGoalRemove()"><img class="closeBtn" src="../src/icon/exitIcon.png" style="width: 42px; height: 42px;" alt="exit"></a>
+                <a href="#" class="button">Yes</a>
+                <a href="#" class="button">No</a>               
         </div>
     </div>
 </body>

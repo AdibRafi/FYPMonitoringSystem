@@ -10,6 +10,10 @@
     $queryGoal->execute();
     $queryGoal_result = $queryGoal->get_result();
 
+    $queryProj = $con->prepare("SELECT * FROM PROJECT");
+    $queryProj->execute();
+    $queryProj_result = $queryProj->get_result();
+
 ?>
 
 
@@ -63,6 +67,9 @@
                 <h1 class = "student">Welcome to Student Dashboard</h1>
                 <div class = "projectBox">
                     <h2>Current Project Display Here</h2>
+                    <?php
+                        //Insert project data here
+                    ?>
                 </div> 
             </div> 
             <div class="skill-bars">
