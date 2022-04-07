@@ -93,9 +93,7 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
                 alert('Email or Username taken, please try again!');
                 window.location.href='../registerPage.php?$register_data';
                 </script>");
-    }
-
-    else if ($password !== $confirmpassword){
+    } else if ($password !== $confirmpassword) {
         echo("<script>
                 alert('Password Not Match With Confirm Password');
                 window.location.href='../registerPage.php?';
@@ -104,11 +102,12 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
 
     switch ($usertype) {
         case "supervisor":
-            $sql = "INSERT INTO Supervisor (SUPERVISOR_ID,PASSWORD,AGE,EMAIL,NAME,ISVERIFIED)values(?,?,?,?,?,?)";
+            $profession = $_GET['profession'];
+            $sql = "INSERT INTO Supervisor (SUPERVISOR_ID,PASSWORD,AGE,EMAIL,NAME,PROFESSION,ISVERIFIED)values(?,?,?,?,?,?,?)";
             $register_query = $con->prepare($sql);
 
             try {
-                $register_query_result = $register_query->execute([$username, $password, $age, $email, $fullname, $isVerified]);
+                $register_query_result = $register_query->execute([$username, $password, $age, $email, $fullname, $profession, $isVerified]);
                 //free result set
                 $register_query->close();
                 $con->next_result();

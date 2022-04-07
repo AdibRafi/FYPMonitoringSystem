@@ -76,10 +76,17 @@
                     <input placeholder="Confirm Password" type="password" name="confirmPassword" value="" class="required">
                 </label>
             </div>
+
+            <div class="register-inputfield" id="professionInput" style="display: block">
+                <label>
+                    <input placeholder="Profession" type="text" name="profession" value="">
+                </label>
+            </div>
+
             <div class="register-inputfield">
                 <label>
                     Register as:
-                    <select name="userType">
+                    <select name="userType" id="userType" onchange="professionCheck(this);">
                         <option value="supervisor">Supervisor</option>
                         <option value="student">Student</option>
                     </select>
