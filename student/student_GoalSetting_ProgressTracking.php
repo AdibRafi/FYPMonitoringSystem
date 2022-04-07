@@ -77,12 +77,12 @@ $queryGoal_result = $queryGoal->get_result();
         <div class="banner">
             <form method="get" action="../src/addGoal.php">
                 <h1 class="student">Welcome to Goal Setting and Progress Tracking</h1>
-                <div class="goalName">
+                <div class="goalName inputTextField">
                     <h2><label>Goal Name</label></h2>
                     <input type="text" name="goal_name" placeholder="Enter Goal Name" required>
                 </div>
 
-                <div class="goalDescription">
+                <div class="goalDescription inputTextField">
                     <h2><label>Goal Description</label></h2>
                     <input type="text" name="goal_description" placeholder="Enter Goal Description" required>
                 </div>
@@ -101,7 +101,7 @@ $queryGoal_result = $queryGoal->get_result();
                             </select>
                 </div>
 
-                <div class="percentage">
+                <div class="percentage inputTextField">
                     <h2><label>Percentage:</label>
                         <h2>
                             <input type="text" name="goal_percentage" placeholder="Enter Percentage (Ex.: 30%)">
