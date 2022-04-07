@@ -1,17 +1,25 @@
 //determine if inputField is empty
-function makeClean(inputField){
+function makeClean(inputField) {
     inputField.classList.remove("error");
 }
 
-function isBlank(inputField){
-    if (inputField.value === ""){
+function isBlank(inputField) {
+    if (inputField.value === "") {
         return true
     }
     return false
 }
 
+function professionCheck(that) {
+    if (that.value === "supervisor"){
+        document.getElementById("professionInput").style.display = "block";
+    }
+    else document.getElementById("professionInput").style.display = "none";
+
+}
+
 // wait until the window load before executing the function
-window.addEventListener("load",function (){
+window.addEventListener("load", function () {
     var requiredInputs = document.querySelectorAll(".required");
     for (var i = 0; i < requiredInputs; i++) {
         requiredInputs[i].addEventListener("change", function (e) {
@@ -20,7 +28,7 @@ window.addEventListener("load",function (){
     }
 
     var mainForm = document.getElementById("mainForm");
-    mainForm.addEventListener("submit", function (e){
+    mainForm.addEventListener("submit", function (e) {
         var requiredInputs = document.querySelectorAll(".required");
         for (var i = 0; i < requiredInputs.length; i++) {
             if (isBlank(requiredInputs[i])) {

@@ -6,11 +6,11 @@
 
     $user_data = checkLogin($con);
 
-    $queryProj = $con->prepare("SELECT PROJ_ID,NAME FROM PROJECT");
+    $queryProj = $con->prepare("SELECT PROJ_ID,NAME FROM Project");
     $queryProj->execute();
     $queryProj_result = $queryProj->get_result();
 
-    $queryGoal = $con->prepare("SELECT * FROM GOAL");
+    $queryGoal = $con->prepare("SELECT * FROM Goal");
     $queryGoal->execute();
     $queryGoal_result = $queryGoal->get_result();
 ?>
@@ -43,7 +43,7 @@
                         <a><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
-                        <a href="../student/student_ProjectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a href="../student/student_projectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
                         <a href="../student/student_meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="project planning icon" title="Meeting Management"></a>

@@ -6,11 +6,11 @@
 
     $user_data = checkLogin($con);
 
-    $queryProj = $con->prepare("SELECT * FROM PROJECT");
+    $queryProj = $con->prepare("SELECT * FROM Project");
     $queryProj->execute();
     $queryProj_result = $queryProj->get_result();
 
-    $querySup = $con->prepare("SELECT SUPERVISOR_ID,NAME FROM SUPERVISOR");
+    $querySup = $con->prepare("SELECT SUPERVISOR_ID,NAME FROM Supervisor");
     $querySup->execute();
     $querySup_result = $querySup->get_result();
 

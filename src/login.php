@@ -6,8 +6,7 @@
 
     $form_token = $_GET['token'];
 
-
-
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
 
         //Change credentials here if differ
@@ -16,13 +15,21 @@
         $user_password = $_GET['password'];
         $login_data = "username=".$user_login;
 
+        //check first if user logging as admin
+        if ($user_login === 'admin' && $user_password === 'admin') {
+            echo "<script>
+                alert('Login as Admin');
+                window.location.href='../admin/VerifyUser/verify_supervisor.php';
+                </script>";
+        }
+
         //check if user logging in is a supervisor
         $supervisor = getSupervisorDatabySupervisorID($con,$user_login);
         if ($supervisor) {
             if ($supervisor['ISVERIFIED'] === 1){
                 if ($supervisor['PASSWORD'] === $user_password) {
                     $_SESSION['SUPERVISOR_ID'] = $supervisor['SUPERVISOR_ID'];
-    
+
                     echo ("<script>
                         alert('Login successfully');
                         window.location.href='../supervisor/dashboard.php';
@@ -40,10 +47,10 @@
                     window.location.href='../loginPage.php?$login_data';
                     </script>");
             }
-            
-        }
 
+        }
         //check if user logging is a student
+
         $student = getStudentDatabyStudentID($con,$user_login);
         if ($student) {
             if ($student['ISVERIFIED'] === 1){
@@ -80,4 +87,6 @@
             window.location.href='../loginPage.php';
             </script>");
     }
+}
+
 ?>
