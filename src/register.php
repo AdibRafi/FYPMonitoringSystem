@@ -95,6 +95,13 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
                 </script>");
     }
 
+    else if ($password !== $confirmpassword){
+        echo("<script>
+                alert('Password Not Match With Confirm Password');
+                window.location.href='../registerPage.php?';
+                </script>");
+    }
+
     switch ($usertype) {
         case "supervisor":
             $sql = "INSERT INTO Supervisor (SUPERVISOR_ID,PASSWORD,AGE,EMAIL,NAME,ISVERIFIED)values(?,?,?,?,?,?)";
@@ -124,9 +131,6 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
             }
             break;
         case "student":
-            echo("<script>
-                    alert('dpt');
-                    </script>");
             $register_query = $con->prepare("INSERT INTO Student (STUDENT_ID,PASSWORD,AGE,EMAIL,NAME,ISVERIFIED)values(?,?,?,?,?,?)");
 
             try {
