@@ -2,7 +2,7 @@
 
     function getStudentDatabyStudentID($con,$studentID){
 
-        $getStudentName_query = $con->prepare("SELECT * FROM student where STUDENT_ID = ?");
+        $getStudentName_query = $con->prepare("SELECT * FROM Student where STUDENT_ID = ?");
         $getStudentName_query->bind_param("s",$studentID);
         $getStudentName_query->execute();
         $getStudentName_query_result = $getStudentName_query->get_result();

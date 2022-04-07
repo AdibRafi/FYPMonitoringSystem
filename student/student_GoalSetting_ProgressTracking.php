@@ -6,11 +6,11 @@
 
     $user_data = checkLogin($con);
 
-    $queryProj = $con->prepare("SELECT PROJ_ID,NAME FROM PROJECT");
+    $queryProj = $con->prepare("SELECT PROJ_ID,NAME FROM Project");
     $queryProj->execute();
     $queryProj_result = $queryProj->get_result();
 
-    $queryGoal = $con->prepare("SELECT * FROM GOAL");
+    $queryGoal = $con->prepare("SELECT * FROM Goal");
     $queryGoal->execute();
     $queryGoal_result = $queryGoal->get_result();
 ?>
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/student_GoalSetting_PlanningTracking.css">
     <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
     <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
+    <script type="text/javascript" src="js/goalManage.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -42,7 +43,7 @@
                         <a><img class="sidebar-item selected" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
-                        <a href="../student/student_ProjectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a href="../student/student_projectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
                         <a href="../student/student_meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="project planning icon" title="Meeting Management"></a>
@@ -104,14 +105,33 @@
             <div class = "currentGoal">
                 <section>
                     <?php
+                    if ($queryGoal_result && mysqli_num_rows($queryGoal_result) > 0) {
                         while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
-                            echo '<p class="fontsizeGoal">'.$goal_arr['NAME'].'<a href="#"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
-                                                                               <a href="#"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>';
+                            echo '<p class="fontsizeGoal">'.$goal_arr['NAME'].'<a href="#" onclick="openGoalRemove()"><img class="deleteIcon " src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
+                                                                               <a href="#" onclick="openGoalEdit()"><img class="editIcon" width="20" height="20" src="../src/icon/edit.png" alt="edit icon" title="Edit Goal"></a></p>';
                         }
+                    } else{
+                        echo '<h2>No goals are currently set</h2>';
+                    }
                     ?>
                     
                 </section>
             </div>
+        </div>
+        <div class="popupEdit">
+            <div class ="popup-content">
+                <h2><label>Change Percentage</label></h2>
+                <a href="#" onclick="closeGoalEdit()"><img class="closeBtn" src="../src/icon/exitIcon.png" style="width: 42px; height: 42px;" alt="exit"></a>
+                <input type="text" class="popupInput" placeholder="New Percentage">
+                <a href="#" class="button">Save Changes</a>            
+        </div>
+
+        <div class="popupRemove">
+            <div class ="popup-content">
+                <h2><label>Are you sure you want to remove this goal?</label></h2>
+                <a href="#" onclick="closeGoalRemove()"><img class="closeBtn" src="../src/icon/exitIcon.png" style="width: 42px; height: 42px;" alt="exit"></a>
+                <a href="#" class="button">Yes</a>
+                <a href="#" class="button">No</a>               
         </div>
     </div>
 </body>
