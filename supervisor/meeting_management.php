@@ -1,15 +1,16 @@
 <?php
 session_start();
 
-    require ("../src/functions.php");
-    require ("../src/database.php");
+require("../src/functions.php");
+require("../src/database.php");
 
-    $user_data = checkLogin($con);
+$user_data = checkLogin($con);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +28,7 @@ session_start();
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['NAME']?>.
+            Welcome, <?php echo $user_data['NAME'] ?>.
         </div>
     </header>
     <div class="container">
@@ -65,52 +66,55 @@ session_start();
         <div class="content">
             <div class="meeting-management-box">
                 <h1 class="center">Welcome to Meeting Management</h1>
-                <div class="meeting-list-box">               
-                    <span><h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button></span>
+                <div class="meeting-list-box">
+                    <span>
+                        <h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button>
+                    </span>
                     <?php
-                        require ("../src/database.php");
+                    require("../src/database.php");
 
-                        $getMeetingList_query = $con->prepare("SELECT * FROM meeting where SUPERVISOR_ID = ?");
-                        $getMeetingList_query->bind_param("s",$_SESSION['SUPERVISOR_ID']);
-                        $getMeetingList_query->execute();
-                        $getMeetingList_query_result = $getMeetingList_query->get_result();
+                    $getMeetingList_query = $con->prepare("SELECT * FROM meeting where SUPERVISOR_ID = ?");
+                    $getMeetingList_query->bind_param("s", $_SESSION['SUPERVISOR_ID']);
+                    $getMeetingList_query->execute();
+                    $getMeetingList_query_result = $getMeetingList_query->get_result();
 
-                        $getMeetingList_query->close();
-                        $con->next_result();
-                        
-                        if($getMeetingList_query_result && mysqli_num_rows($getMeetingList_query_result) > 0){
-                            while($row = $getMeetingList_query_result->fetch_assoc()){
-                                
-                                $studentData = getStudentDatabyStudentID($con,$row['STUDENT_ID']);
-                                $supervisorData = getSupervisorDatabySupervisorID($con,$row['SUPERVISOR_ID']);
+                    $getMeetingList_query->close();
+                    $con->next_result();
 
-                                echo '
+                    if ($getMeetingList_query_result && mysqli_num_rows($getMeetingList_query_result) > 0) {
+                        while ($row = $getMeetingList_query_result->fetch_assoc()) {
+
+                            $studentData = getStudentDatabyStudentID($con, $row['STUDENT_ID']);
+                            $supervisorData = getSupervisorDatabySupervisorID($con, $row['SUPERVISOR_ID']);
+
+                            echo '
                                 <div class="meeting-box">
-                                    <div> <b>Meeting ID:</b> '.$row['MEET_ID'].'</div>'.
-                                    '<div> <b>Meeting Name:</b> '.$row['NAME'].'</div>'.
-                                    '<div> <b>Meeting Time:</b> '.$row['TIME'].'</div>'.
-                                    '<div> <b>Meeting Duration:</b> '.$row['DURATION'].' minutes'.'</div>'.
-                                    '<div> <b>Meeting Place:</b> '.$row['PLACE'].'</div>'.
-                                    '<div> <b>Meeting Participant:</b><br> 
+                                    <span class="remove-meeting-btn" onclick="removeMeetingBtn(this)">&times;</span>
+                                    <div id="meeting-id"> <b>Meeting ID:</b> ' . $row['MEET_ID'] . '</div>' .
+                                '<div> <b>Meeting Name:</b> ' . $row['NAME'] . '</div>' .
+                                '<div> <b>Meeting Time:</b> ' . $row['TIME'] . '</div>' .
+                                '<div> <b>Meeting Duration:</b> ' . $row['DURATION'] . ' minutes' . '</div>' .
+                                '<div> <b>Meeting Place:</b> ' . $row['PLACE'] . '</div>' .
+                                '<div> <b>Meeting Participant:</b><br> 
                                         <div>
-                                            <b>Student:</b> '.$studentData['NAME']. '<br>
-                                            <b>Supervisor:</b> '.$supervisorData['NAME'].'
+                                            <b>Student:</b> ' . $studentData['NAME'] . '<br>
+                                            <b>Supervisor:</b> ' . $supervisorData['NAME'] . '
                                         </div>
                                     </div>
                                 </div>
                                 ';
-                            }
-                        }else{
-                            echo("
+                        }
+                    } else {
+                        echo ("
                             <h2>THERE IS CURRENTLY NO MEETING</h2>
                         ");
-                        }
+                    }
 
                     ?>
                 </div>
                 <div class="popup-box">
                     <div class="add-meet-box">
-                        <form method="get" id="mainForm" action="../src/addMeeting.php"> 
+                        <form method="get" id="mainForm" action="../src/addMeeting.php">
                             <span class="close-btn">&times;</span>
                             <h1>Add meeting</h1>
                             <div class="name-box">
@@ -144,33 +148,34 @@ session_start();
                                     <td class="student">
                                         <select class="required" title="Student name" id="student-name" name="student_id">
                                             <?php
-                                                require ("../src/database.php");
+                                            require("../src/database.php");
 
-                                                $getStudentList_query = $con->prepare("SELECT * FROM student");
-                                                $getStudentList_query->execute();
-                                                $result = $getStudentList_query->get_result();
+                                            $getStudentList_query = $con->prepare("SELECT * FROM student");
+                                            $getStudentList_query->execute();
+                                            $result = $getStudentList_query->get_result();
 
-                                                while($row = $result->fetch_assoc()){
-                                                    echo '<option value='. $row['STUDENT_ID'] .'>'.$row['NAME'].'</option>';
-                                                }
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo '<option value=' . $row['STUDENT_ID'] . '>' . $row['NAME'] . '</option>';
+                                            }
 
                                             ?>
                                         </select>
                                     </td>
                                     <td class="supervisor">
                                         <select title="Supervisor name" id="supervisor-name" name="supervisor_id">
-                                            <option value="<?=$user_data['SUPERVISOR_ID']?>"><?=$user_data['NAME']?></option>';                                    
+                                            <option value="<?= $user_data['SUPERVISOR_ID'] ?>"><?= $user_data['NAME'] ?></option>';
                                         </select>
                                     </td>
                                 </tr>
                             </table>
-                            <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
+                            <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                             <input type="submit" value="Add Meeting">
                         </form>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </body>
+
 </html>

@@ -135,6 +135,20 @@ h2 {
   cursor: pointer;
 }
 
+.remove-meeting-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.remove-meeting-btn:hover,
+.remove-meeting-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 span {
   display: flex;
   justify-content: center;
