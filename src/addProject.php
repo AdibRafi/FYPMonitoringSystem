@@ -10,6 +10,14 @@
     $project_backup = $_GET['plan_backup'];
     $student_name = $_GET['student_id'];
 
+    //Ensure length is not more than 1000
+    if (strlen($project_description) > 1000) {
+        echo("<script>
+        alert('Project description is too long!');
+        window.location.href='../student/student_projectPlanning.php';
+        </script>");
+    }
+
     //Append 1 to ID
     $project_id = getID($con,"project");
     if($project_id === "invalid"){

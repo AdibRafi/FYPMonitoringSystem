@@ -65,12 +65,22 @@
         <div class="content">
             <div class = "banner">
                 <h1 class = "student">Welcome to Student Dashboard</h1>
-                <div class = "projectBox">
-                    <h2>Current Project Display Here</h2>
+                
                     <?php
                         //Insert project data here
+                        if ($queryProj_result && mysqli_num_rows($queryGoal_result) > 0) {
+                            while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
+                                echo '<div class = "projectBox">';
+                                echo '<div> <b>Project ID:</b> '.$project_arr['PROJ_ID'].'</div>';
+                                echo '<div> <b>Project Name:</b> '.$project_arr['NAME'].'</div>';
+                                echo '</div>';
+                            }
+                        } else {
+                            echo '<h2>There are no projects at the moment</h2>';
+                        }
+                        
                     ?>
-                </div> 
+                 
             </div> 
             <div class="skill-bars">
                 <div class = "goal">

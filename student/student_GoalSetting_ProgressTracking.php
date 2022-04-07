@@ -99,7 +99,7 @@
                         ?>
                 </div>
                 <p class = "addgoal"><input type = "Submit" value = "Add Goal" ></p>
-                
+                </form>
             </div>
 
             <div class = "currentGoal">
@@ -120,18 +120,24 @@
         </div>
         <div class="popupEdit">
             <div class ="popup-content">
+                <form method= "get" action = "../src/modifyGoal.php">
                 <h2><label>Change Percentage</label></h2>
                 <a href="#" onclick="closeGoalEdit()"><img class="closeBtn" src="../src/icon/exitIcon.png" style="width: 42px; height: 42px;" alt="exit"></a>
                 <input type="text" class="popupInput" placeholder="New Percentage">
-                <a href="#" class="button">Save Changes</a>            
+                <?php
+                    echo '<input type="hidden" name ="goal_id" value="">';
+                ?>
+                <p class="button"><input type = "Submit" value = "Save Changes"></p>
+                </form>            
         </div>
 
         <div class="popupRemove">
             <div class ="popup-content">
                 <h2><label>Are you sure you want to remove this goal?</label></h2>
                 <a href="#" onclick="closeGoalRemove()"><img class="closeBtn" src="../src/icon/exitIcon.png" style="width: 42px; height: 42px;" alt="exit"></a>
-                <a href="#" class="button">Yes</a>
-                <a href="#" class="button">No</a>               
+                <a href="../src/removeGoal.php" class="button">Yes</a>
+                <a href="#" onclick="closeGoalRemove()" class="button">No</a>
+                </form>               
         </div>
     </div>
 </body>

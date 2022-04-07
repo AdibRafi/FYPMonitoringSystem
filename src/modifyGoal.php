@@ -8,7 +8,7 @@
     //Handle percentage offset
     if ($goal_percentage > 100 || $goal_percentage < 1) {
         echo("<script>
-        alert('Goal percentage invalid');
+        alert('Goal percentage invalid".$goal_percentage."');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
         die();
@@ -18,7 +18,7 @@
 
     //Prepare query
     $modify_goal = $con->prepare('UPDATE GOAL SET PERCENTAGE='.$goal_percentage.'WHERE ID='.$goal_id.'');
-    $modify_goal_result = $modify_goal.execute()
+    $modify_goal_result = $modify_goal.execute();
 
     $modify_goal->close();
     $con->next_result();
