@@ -41,7 +41,7 @@ session_start();
                         <a href="../student/student_GoalSetting_ProgressTracking.php"><img class="sidebar-item" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
-                        <a href="../student/student_ProjectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a href="../student/student_projectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
                         <a><img class="sidebar-item selected" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
@@ -65,7 +65,7 @@ session_start();
                 <div class="meeting-list-box">               
                     <span><h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button></span>
                     <?php
-                        $getMeetingList_query = $con->prepare("SELECT * FROM meeting where STUDENT_ID = ?");
+                        $getMeetingList_query = $con->prepare("SELECT * FROM Meeting where STUDENT_ID = ?");
                         $getMeetingList_query->bind_param("s",$_SESSION['STUDENT_ID']);
                         $getMeetingList_query->execute();
                         $getMeetingList_query_result = $getMeetingList_query->get_result();
