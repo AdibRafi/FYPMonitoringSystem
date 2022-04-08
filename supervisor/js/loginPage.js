@@ -13,8 +13,12 @@ function isBlank(inputField) {
 function professionCheck(that) {
     if (that.value === "supervisor"){
         document.getElementById("professionInput").style.display = "block";
+        document.getElementById("registerTitle").innerHTML = "Register as Supervisor";
     }
-    else document.getElementById("professionInput").style.display = "none";
+    else {
+        document.getElementById("professionInput").style.display = "none";
+        document.getElementById("registerTitle").innerHTML = "Register as Student";
+    }
 
 }
 
