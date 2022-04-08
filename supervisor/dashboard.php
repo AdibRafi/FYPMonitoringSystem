@@ -69,7 +69,7 @@ $user_data = checkLogin($con);
                 $supervisorID = $_SESSION['SUPERVISOR_ID'];
                 $index = 0;
 
-                $query = "SELECT student.STUDENT_ID,student.NAME as SName,project.NAME as PName from student join project where project.STUDENT_ID = student.STUDENT_ID and project.SUPERVISOR_ID = ?";
+                $query = "SELECT student.STUDENT_ID,student.PROJ_ID,student.NAME as SName,project.NAME as PName from student join project where project.STUDENT_ID = student.STUDENT_ID and project.SUPERVISOR_ID = ?";
                 $getStudentList_query = $con->prepare($query);
                 $getStudentList_query->bind_param("s", $supervisorID);
                 $getStudentList_query->execute();
@@ -91,11 +91,12 @@ $user_data = checkLogin($con);
                         // $studentData = getStudentDatabyStudentID($con,$studentList['STUDENT_ID']);
                         $studentName = $studentList['SName'];
                         $projectName = $studentList['PName'];
+                        $projectID = $studentList['PROJ_ID'];
 
                         echo (" 
                             <h2>
                                 " . $studentName . "<br>
-                                Project Name: " . $projectName . "
+                                Project Name: " . $projectName . " (" . $projectID . ")
                             </h2>
                         ");
                         if ($getStudentGoals_query_result && mysqli_num_rows($getStudentGoals_query_result) > 0) {

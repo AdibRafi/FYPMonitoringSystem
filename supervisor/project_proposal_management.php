@@ -1,15 +1,16 @@
 <?php
 session_start();
 
-    require ("../src/functions.php");
-    require ("../src/database.php");
+require("../src/functions.php");
+require("../src/database.php");
 
-    $user_data = checkLogin($con);
+$user_data = checkLogin($con);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,11 +23,12 @@ session_start();
     <script type="text/javascript" src="js/loginPage.js" defer></script>
     <script type="text/javascript" src="js/projectProposal.js" defer></script>
 </head>
+
 <body>
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['NAME']?>.
+            Welcome, <?php echo $user_data['NAME'] ?>.
         </div>
     </header>
     <div class="container">
@@ -65,39 +67,37 @@ session_start();
             <div class="proposal-management-box">
                 <h1 class="center">Welcome to Project Proposal Management</h1>
                 <div class="proposed-project-list">
-                    <span><h1>Proposed project by you</h1><button class="propose-project-btn">Propose Project</button></span>
-                        <?php
+                    <span class="titlespan">
+                        <h1>Proposed project by you</h1><button class="propose-project-btn">Propose Project</button>
+                        <div style="display: flex;"></div>
+                    </span>
+                    <?php
 
-                            $sql = "select * from project where supervisor_id = ?";
-                            $getProjectList_query = $con->prepare($sql);
-                            $getProjectList_query->bind_param("s",$_SESSION['SUPERVISOR_ID']);
-                            $getProjectList_query->execute();
+                    $sql = "select * from project where supervisor_id = ? and student_id is null";
+                    $getProjectList_query = $con->prepare($sql);
+                    $getProjectList_query->bind_param("s", $_SESSION['SUPERVISOR_ID']);
+                    $getProjectList_query->execute();
 
-                            $getProjectList_query_result = $getProjectList_query->get_result();
+                    $getProjectList_query_result = $getProjectList_query->get_result();
 
-                            if($getProjectList_query_result){
-                              while($row = $getProjectList_query_result->fetch_assoc()){
-                                    $isApproved = ($row['IS_APPROVED']==0)?"Not Approved":"Approved";
+                    if ($getProjectList_query_result) {
+                        while ($row = $getProjectList_query_result->fetch_assoc()) {
+                            $isApproved = ($row['IS_APPROVED'] == 0) ? "Not Approved" : "Approved";
+                            $statusCSS = ($row['IS_APPROVED'] == 0) ? "redFont" : "greenFont";
 
-                                echo("
-                                    <div class='project-box'>
-                                        
-                                        <div>Project ID:".$row['PROJ_ID']."</div>
-                                        <div>Project Name:". $row['NAME']."</div>
-                                        <div>Project Description:". $row['DESCRIPTION']."</div>
-                                        <div>Proposed by:". $user_data['NAME']."</div>
-                                        <div>Approved:". $isApproved."</div>
-                                    </div>    
-                                ");
-                              }
-                               
-                            }else{
-                                echo("
-                                <h2 style='margin: top 20px;'>There is no proposed project by you</h2>
-                                ");
-                            }
+                            echo "<div class='project-box'>";
+                            echo "<div style='display: flex;align-items: center;'>Project ID: " . $row['PROJ_ID'] . "<span class='remove-project-btn'>&times;</span></div>";
+                            echo "<div>Project Name: " . $row['NAME'] . "</div>";
+                            echo "<div>Project Description: " . $row['DESCRIPTION'] . "</div>";
+                            echo "<div>Proposed by: " . $user_data['NAME'] . "</div>";
+                            echo "<div>Approved: " . "<span class='" . $statusCSS . "'>" . $isApproved . "</span></div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<h2 style='margin: top 20px;'>There is no proposed project by you</h2>";
+                    }
 
-                        ?>
+                    ?>
                 </div>
                 <div class="popup-box">
                     <div class="project-propose-box">
@@ -105,13 +105,13 @@ session_start();
                         <h2>Propose a project</h2>
                         <form method="get" action="../src/proposeProject.php" id="mainForm">
                             <div class="project-name-box">
-                                <h2>Project Name:</h2><input name="projectName"type="text" placeholder="Project Name" class="required">
+                                <h2>Project Name:</h2><input name="projectName" type="text" placeholder="Project Name" class="required">
                             </div>
                             <div class="project-description-box">
                                 <h2>Project Description:</h2><textarea name="projectDescription" title="Project Description" placeholder="Project Description" class="required"></textarea>
                             </div>
                             <div class="propose-btn-box">
-                                <input type="hidden" value="<?=$_SESSION['token']?>" name="token">
+                                <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                                 <input class="submit-btn" type="submit" value="Propose Project">
                             </div>
                         </form>
@@ -121,4 +121,5 @@ session_start();
         </div>
     </div>
 </body>
+
 </html>
