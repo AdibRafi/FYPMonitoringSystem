@@ -17,7 +17,9 @@
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
         die();
-    }
+    } 
+
+    $goal_percentage = $goal_percentage / 100;
     
     //Get ID of latest data entry
     $get_check_query = "SELECT GOAL_ID FROM Goal";
