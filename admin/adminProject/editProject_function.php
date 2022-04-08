@@ -4,6 +4,7 @@ require('../../src/database.php');
 
 $newName = $_POST['name'];
 $newDescription = $_POST['description'];
+$newBackupDescription = $_POST['backup_description'];
 $oldProjectID = $_SESSION['passedProjectParameter'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $getProject = $getSql->fetch_assoc();
 
     $updateSql = "UPDATE Project Set NAME = '" . $newName . "', DESCRIPTION = '" . $newDescription . "',
-    IS_APPROVED = b'1' WHERE Project.PROJ_ID = '" . $oldProjectID . "'";
+    BACKUP_DESCRIPTION = '" . $newBackupDescription . "',IS_APPROVED = b'1' WHERE Project.PROJ_ID = '" . $oldProjectID . "'";
 
 
     if ($con->query($updateSql) === TRUE) {

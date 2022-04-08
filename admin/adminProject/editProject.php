@@ -99,6 +99,10 @@ require('../../src/database.php');
                     <label> Description
                         <input placeholder="Description" type="text" name="description" value="' . $project["DESCRIPTION"] . '">
                     </label>
+                </div><div class="register-inputfield">
+                    <label> Backup Description
+                        <input placeholder="Backup_Description" type="text" name="backup_description" value="' . $project["BACKUP_DESCRIPTION"] . '">
+                    </label>
                 </div>
                 <div class="register-inputfield">
                     <label>

@@ -87,6 +87,7 @@ require('../../src/database.php');
                         <th>Project ID</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Backup Description</th>
                         <th>Student ID</th>
                         <th>Supervisor ID</th>
                     </tr>
@@ -100,6 +101,7 @@ require('../../src/database.php');
                         <td>' . $row["PROJ_ID"] . '</td>
                         <td>' . $row["NAME"] . '</td>
                         <td>' . $row["DESCRIPTION"] . '</td>
+                        <td>' . $row["BACKUP_DESCRIPTION"] . '</td>
                         <td>' . $row["STUDENT_ID"] . '</td>
                         <td>' . $row["SUPERVISOR_ID"] . '</td>
                        </tr>';
