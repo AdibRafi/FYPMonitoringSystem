@@ -8,10 +8,10 @@ require("database.php");
 function checkingInfoValidation($username, $age, $fullname, $email)
 {
 
-    //only allowing user to enter pattern [a-zA-Z0-9] regular expression for username
+    //only allowing user to enter pattern [a-zA-Z0-9] regular expression
     if (!preg_match("/^[a-zA-z0-9]+$/", $username)) {
         $register_data = 'fullname=' . $fullname . '&age=' . $age . '&email=' . $email;
-        echo ("<script>
+        echo("<script>
             alert('Invalid username, please try again!');
             window.location.href='../registerPage.php?$register_data';
             </script>");
@@ -20,7 +20,7 @@ function checkingInfoValidation($username, $age, $fullname, $email)
     //if username contain space, return error and send user back to register
     if (str_contains($username, " ")) {
         $register_data = 'fullname=' . $fullname . '&age=' . $age . '&email=' . $email;
-        echo ("<script>
+        echo("<script>
                 alert('Spaces are not allowed in username, please try again!');
                 window.location.href='../registerPage.php?$register_data';
                 </script>");
@@ -29,11 +29,12 @@ function checkingInfoValidation($username, $age, $fullname, $email)
     //invalid age
     if ($age > 100) {
         $register_data = 'fullname=' . $fullname . '&username=' . $username . '&email=' . $email;
-        echo ("<script>
+        echo("<script>
                     alert('Invalid age, please try again!');
                     window.location.href='../registerPage.php?$register_data';
                     </script>");
     }
+
 }
 
 function checkingAccountDuplication($con, $username, $email, $usertype): bool
@@ -52,6 +53,7 @@ function checkingAccountDuplication($con, $username, $email, $usertype): bool
         if ($duplicate_query_result && mysqli_num_rows($duplicate_query_result) > 0) {
             $duplicate = true;
         }
+
     }
 
     if (strtolower($usertype) === "student") {
@@ -65,9 +67,11 @@ function checkingAccountDuplication($con, $username, $email, $usertype): bool
         if ($duplicate_query_result && mysqli_num_rows($duplicate_query_result) > 0) {
             $duplicate = true;
         }
+
     }
 
     return $duplicate;
+
 }
 
 $form_token = $_GET['token'];
@@ -85,12 +89,12 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
 
     if (checkingAccountDuplication($con, $username, $email, $usertype)) {
         $register_data = 'fullname=' . $fullname . '&age=' . $age;
-        echo ("<script>
+        echo("<script>
                 alert('Email or Username taken, please try again!');
                 window.location.href='../registerPage.php?$register_data';
                 </script>");
     } else if ($password !== $confirmpassword) {
-        echo ("<script>
+        echo("<script>
                 alert('Password Not Match With Confirm Password');
                 window.location.href='../registerPage.php?';
                 </script>");
@@ -108,7 +112,7 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
                 $register_query->close();
                 $con->next_result();
                 if ($register_query_result) {
-                    echo ("<script>
+                    echo("<script>
                         alert('Registration Successful!');
                         window.location.href='../loginPage.php';
                         </script>");
@@ -119,7 +123,7 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
                 $con->next_result();
 
                 $register_data = 'fullname=' . $fullname . '&age=' . $age . '&email=' . $email . "&username=" . $username;
-                echo ("<script>
+                echo("<script>
                     alert('Something went wrong, please try again!');
                     window.location.href='../registerPage.php?$register_data';
                     </script>");
@@ -135,7 +139,7 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
                 $con->next_result();
                 if ($register_query_result) {
 
-                    echo ("<script>
+                    echo("<script>
                         alert('Registration Successful!');
                         window.location.href='../loginPage.php';
                         </script>");
@@ -146,7 +150,7 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
                 $con->next_result();
 
                 $register_data = 'fullname=' . $fullname . '&age=' . $age . '&email=' . $email . "&username=" . $username;
-                echo ("<script>
+                echo("<script>
                     alert('Something went wrong, please try again!');
                     window.location.href='../registerPage.php?$register_data';
                     </script>");
@@ -154,12 +158,14 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
             break;
         default:
             $register_data = 'fullname=' . $fullname . '&age=' . $age . '&email=' . $email . "&username=" . $username;
-            echo ("<script>
+            echo("<script>
                     alert('Invalid user type, please try again!');
                     window.location.href='../registerPage.php?$register_data';
                     </script>");
     }
+
+
 } else {
     //if token is invalid, malicious site trying to access form, do nothing
-    echo ("<script>window.location.href='../registerPage.php';</script>");
+    echo("<script>window.location.href='../registerPage.php';</script>");
 }
