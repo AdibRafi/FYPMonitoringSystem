@@ -5,7 +5,7 @@ session_start();
 require("functions.php");
 require("database.php");
 
-function checkingInfoValidation($username, $age, $fullname, $email)
+function checkingInfoValidation($username, $age, $fullname, $email, $pass, $confirmPass)
 {
 
     //only allowing user to enter pattern [a-zA-Z0-9] regular expression
@@ -31,6 +31,13 @@ function checkingInfoValidation($username, $age, $fullname, $email)
         $register_data = 'fullname=' . $fullname . '&username=' . $username . '&email=' . $email;
         echo("<script>
                     alert('Invalid age, please try again!');
+                    window.location.href='../registerPage.php?$register_data';
+                    </script>");
+    }
+    if ($pass !== $confirmPass) {
+        $register_data = 'fullname=' . $fullname . '&username=' . $username . '&email=' . $email;
+        echo("<script>
+                    alert('Password Not Match');
                     window.location.href='../registerPage.php?$register_data';
                     </script>");
     }
@@ -93,12 +100,8 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
                 alert('Email or Username taken, please try again!');
                 window.location.href='../registerPage.php?$register_data';
                 </script>");
-    } else if ($password !== $confirmpassword) {
-        echo("<script>
-                alert('Password Not Match With Confirm Password');
-                window.location.href='../registerPage.php?';
-                </script>");
     }
+    checkingInfoValidation($username, $age, $fullname, $email, $password, $confirmpassword);
 
     switch ($usertype) {
         case "supervisor":
