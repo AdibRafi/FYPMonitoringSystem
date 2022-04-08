@@ -104,7 +104,7 @@ $queryGoal_result = $queryGoal->get_result();
                 <div class="percentage inputTextField">
                     <h2><label>Percentage:</label>
                         <h2>
-                            <input type="text" name="goal_percentage" placeholder="Enter Percentage (Ex.: 30%)">
+                            <input type="text" name="goal_percentage" placeholder="Enter Percentage (Ex.: 30)">
                 </div>
 
                 <div class="student">

@@ -87,14 +87,15 @@ function openGoalRemove(id) {
     var closeBtn = document.createElement('a');
     var closeBtnImg = document.createElement('img');
     var inputHiddenValue = document.createElement('input');
-    var yesBtn = document.createElement('a');
-    var noBtn = document.createElement('a');
+    var yesBtn = document.createElement('p');
+    var submitInput = document.createElement('input');
+    var noBtn = document.createElement('p');
 
     popupDiv.setAttribute('class','popup-content');
     popupDiv.setAttribute('id','popupContent');
 
     popupForm.setAttribute('method', 'get');
-    popupForm.setAttribute('action', '../src/modifyGoal.php');
+    popupForm.setAttribute('action', '../src/removeGoal.php');
 
     labelTag.textContent = "Are you sure that you want to remove this goal?";
 
@@ -111,21 +112,17 @@ function openGoalRemove(id) {
     inputHiddenValue.setAttribute('value', id);
 
     yesBtn.setAttribute('class', 'button');
-    yesBtn.setAttribute('href', '../src/removeGoal.php');
-    yesBtn.innerText = "Yes";
-
-    noBtn.setAttribute('class', 'button');
-    noBtn.setAttribute('href', '#');
-    noBtn.setAttribute('onClick', 'closeGoalRemove()');
-    noBtn.innerText = "No";
+    submitInput.setAttribute('type', 'Submit');
+    submitInput.setAttribute('value', 'Yes');
 
     label.appendChild(labelTag);
     closeBtn.appendChild(closeBtnImg);
+    yesBtn.appendChild(submitInput);
 
     popupForm.appendChild(label);
     popupForm.appendChild(closeBtn);
+    popupForm.appendChild(inputHiddenValue);
     popupForm.appendChild(yesBtn);
-    popupForm.appendChild(noBtn);
 
     popupDiv.appendChild(popupForm);
 
@@ -145,12 +142,4 @@ function closeGoalRemove() {
 
     //Change style back to none
     document.querySelector(".popupRemove").style.display = "none";
-}
-
-function editGoal() {
-
-}
-
-function deleteGoal() {
-
 }
