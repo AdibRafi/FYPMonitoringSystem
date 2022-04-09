@@ -119,7 +119,7 @@ $user_data = checkLogin($con);
                             <div class="name-box">
                                 <h2>Meeting Name</h2>
                                 <p><mark>**Default meeting name will be [Student Username] and [Supervisor Username] meeting.</mark></p>
-                                <input class="required" type="text" name="name" placeholder="Insert meeting name here">
+                                <input type="text" name="name" placeholder="Insert meeting name here">
                             </div>
                             <div class="place-box">
                                 <h2>Meeting Place</h2>
