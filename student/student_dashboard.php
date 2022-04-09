@@ -70,10 +70,12 @@
                         //Insert project data here
                         if ($queryProj_result && mysqli_num_rows($queryGoal_result) > 0) {
                             while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
-                                echo '<div class = "projectBox">';
-                                echo '<div> <b>Project ID:</b> '.$project_arr['PROJ_ID'].'</div>';
-                                echo '<div> <b>Project Name:</b> '.$project_arr['NAME'].'</div>';
-                                echo '</div>';
+                                if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {  
+                                    echo '<div class = "projectBox">';
+                                    echo '<div> <b>Project ID:</b> '.$project_arr['PROJ_ID'].'</div>';
+                                    echo '<div> <b>Project Name:</b> '.$project_arr['NAME'].'</div>';
+                                    echo '</div>';
+                                }
                             }
                         } else {
                             echo '<h2>There are no projects at the moment</h2>';
@@ -87,15 +89,19 @@
                     <span>Goal</span>
                 </div>
                 <?php
-                    while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
-                        echo '<div class="bar">';
-                            echo '<div class="info">';
-                            echo '<span>'.$goal_arr['NAME'].'</span>';
+                    if ($queryGoal_result && mysqli_num_rows($queryGoal_result) > 0) {
+                        while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
+                            echo '<div class="bar">';
+                                echo '<div class="info">';
+                                echo '<span>'.$goal_arr['NAME'].'</span>';
+                                echo '</div>';
+                                echo '<div class="progress-line '.$goal_arr['NAME'].'">';
+                                echo '<span style="width:'.($goal_arr['PERCENTAGE']*100).'%;"></span>';
+                                echo '</div>';
                             echo '</div>';
-                            echo '<div class="progress-line '.$goal_arr['NAME'].'">';
-                            echo '<span style="width:'.($goal_arr['PERCENTAGE']*100).'%;"></span>';
-                            echo '</div>';
-                        echo '</div>';
+                        }
+                    } else {
+                        echo '<h2>There are no goals set at the moment</h2>';
                     }
                 ?>
             </div>
