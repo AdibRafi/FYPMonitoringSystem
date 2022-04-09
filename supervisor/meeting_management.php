@@ -67,9 +67,8 @@ $user_data = checkLogin($con);
             <div class="meeting-management-box">
                 <h1 class="center">Welcome to Meeting Management</h1>
                 <div class="meeting-list-box">
-                    <span>
-                        <h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button>
-                    </span>
+                    <h1>Meeting List</h1>
+                    <button class="addMeet-btn">Add Meeting</button>
                     <?php
                     require("../src/database.php");
 
@@ -81,7 +80,7 @@ $user_data = checkLogin($con);
                     $getMeetingList_query->close();
                     $con->next_result();
 
-                    if ($getMeetingList_query_result && mysqli_num_rows($getMeetingList_query_result) > 0) {
+                    if (mysqli_num_rows($getMeetingList_query_result) > 0) {
                         while ($row = $getMeetingList_query_result->fetch_assoc()) {
 
                             $studentData = getStudentDatabyStudentID($con, $row['STUDENT_ID']);
@@ -105,9 +104,9 @@ $user_data = checkLogin($con);
                                 ';
                         }
                     } else {
-                        echo ("
-                            <h2>THERE IS CURRENTLY NO MEETING</h2>
-                        ");
+                        echo "<div class='meeting-box'>";
+                        echo "<h2>THERE IS CURRENTLY NO MEETING</h2>";
+                        echo "</div>";
                     }
 
                     ?>

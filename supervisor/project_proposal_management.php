@@ -67,10 +67,8 @@ $user_data = checkLogin($con);
             <div class="proposal-management-box">
                 <h1 class="center">Welcome to Project Proposal Management</h1>
                 <div class="proposed-project-list">
-                    <span class="titlespan">
-                        <h1>Proposed project by you</h1><button class="propose-project-btn">Propose Project</button>
-                        <div style="display: flex;"></div>
-                    </span>
+                    <h1>Proposed Project By You</h1>
+                    <button class="propose-project-btn">Propose Project</button>
                     <?php
 
                     $sql = "select * from project where supervisor_id = ? and student_id is null";
@@ -80,7 +78,7 @@ $user_data = checkLogin($con);
 
                     $getProjectList_query_result = $getProjectList_query->get_result();
 
-                    if ($getProjectList_query_result) {
+                    if (mysqli_num_rows($getProjectList_query_result) > 0) {
                         while ($row = $getProjectList_query_result->fetch_assoc()) {
                             $isApproved = ($row['IS_APPROVED'] == 0) ? "Not Approved" : "Approved";
                             $statusCSS = ($row['IS_APPROVED'] == 0) ? "redFont" : "greenFont";
@@ -94,7 +92,9 @@ $user_data = checkLogin($con);
                             echo "</div>";
                         }
                     } else {
-                        echo "<h2 style='margin: top 20px;'>There is no proposed project by you</h2>";
+                        echo "<div style='width:fit-content;'class='project-box'>";
+                        echo "<h2 style='text-align:center;'>THERE IS NO PROPOSED PROJECT BY YOU</h2>";
+                        echo "</div>";
                     }
 
                     ?>

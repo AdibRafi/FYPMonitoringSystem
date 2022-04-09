@@ -114,3 +114,7 @@
   border: 1px solid black;
   cursor: pointer;
 }
+
+.student-to-project-assignment-box h1 {
+  text-align: center;
+}

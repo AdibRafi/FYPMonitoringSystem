@@ -79,17 +79,17 @@
 }
 
 .propose-project-btn {
-  margin-left: 20px;
   background-color: var(--containerColour);
   border-radius: 10px;
   border-width: 0;
   width: 100px;
-  height: 40px;
+  height: 50px;
   color: white;
+  opacity: 50%;
 }
 
 .propose-project-btn:hover {
-  opacity: 50%;
+  opacity: 100%;
   border: 1px solid black;
   cursor: pointer;
 }
@@ -117,13 +117,6 @@
   background: #ffcdd2 url(error.png) no-repeat 98% center;
   box-shadow: 0 0 5px #ff5252;
   border-color: #ff1744;
-}
-
-.titlespan {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0;
 }
 
 .hidden {

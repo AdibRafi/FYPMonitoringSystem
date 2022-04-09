@@ -13,6 +13,10 @@
   align-content: center;
 }
 
+.goal-progress-box h1 {
+  text-align: center;
+}
+
 .goal-progress-box .bar {
   margin: 20px 0;
 }
