@@ -68,7 +68,7 @@ $user_data = checkLogin($con);
                     <h1>Project Planning List</h1>
                     <?php
 
-                    $sql = "SELECT * FROM Project where Supervisor_ID = ?";
+                    $sql = "SELECT * FROM Project where Supervisor_ID = ? and Student_ID is not null";
                     $getProject_query = $con->prepare($sql);
                     $getProject_query->bind_param("s", $user_data['SUPERVISOR_ID']);
                     $getProject_query->execute();

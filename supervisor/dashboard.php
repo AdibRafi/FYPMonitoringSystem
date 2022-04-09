@@ -16,8 +16,8 @@ $user_data = checkLogin($con);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Supervisor Dashboard</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="css/supervisor_dashboard.css" />
     <link rel="stylesheet" href="css/sidebar_header.css" />
+    <link rel="stylesheet" href="css/supervisor_dashboard.css" />
     <!-- Javascript -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
 </head>

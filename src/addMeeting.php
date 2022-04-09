@@ -75,6 +75,14 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
         die;
     }
 
+    if ($start > $end) {
+        echo ("<script>
+            alert('Invalid meeting time, please try again');
+            window.location.href='../supervisor/meeting_management.php';
+            </script>");
+        die;
+    }
+
     //checking if supervisor is occupied
     $dateTime_check_query = $con->prepare("SELECT * FROM Meeting WHERE SUPERVISOR_ID = ?");
     $dateTime_check_query->bind_param("s", $supervisor_user);

@@ -42,8 +42,7 @@ $addGoal_query_result = $addGoal_query->get_result();
 $addGoal_query->close();
 $con->next_result();
 
-if (mysqli_num_rows($$addGoal_query_result) > 0) {
-
+if (mysqli_affected_rows($con)) {
     echo ("<script>
         alert('Goal successfully added!');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';

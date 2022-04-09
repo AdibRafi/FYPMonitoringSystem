@@ -120,6 +120,7 @@ h2 {
   border-width: 2px;
   text-align: center;
   padding: 10px;
+  background-color: var(--containerColour);
 }
 
 .goal {
