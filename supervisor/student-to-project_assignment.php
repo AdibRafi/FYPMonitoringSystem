@@ -1,15 +1,14 @@
 <?php
 session_start();
 
-require("../src/functions.php");
-require("../src/database.php");
+    require ("../src/functions.php");
+    require ("../src/database.php");
 
-$user_data = checkLogin($con);
+    $user_data = checkLogin($con);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,12 +20,11 @@ $user_data = checkLogin($con);
     <script type="text/javascript" src="js/sidebar.js" defer></script>
     <script type="text/javascript" src="js/assignProject.js" defer></script>
 </head>
-
 <body>
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['NAME'] ?>.
+            Welcome, <?php echo $user_data['NAME']?>.
         </div>
     </header>
     <div class="container">
@@ -64,51 +62,47 @@ $user_data = checkLogin($con);
         <div class="content">
             <div class="student-to-project-assignment-box">
                 <h1>Welcome to Student-to-Project Assginment</h1>
-                <div class="approved-project-list-box">
+                <div class="approved-project-list-box" >  
                     <h1>Approved Project List</h1>
-                    <?php
-                    $sql = "SELECT * FROM project WHERE IS_APPROVED = 1 and SUPERVISOR_ID = ? and STUDENT_ID is NULL";
-                    $getApprovedProject_query = $con->prepare($sql);
-                    $getApprovedProject_query->execute([$user_data['SUPERVISOR_ID']]);
-                    $getApprovedProject_query_result = $getApprovedProject_query->get_result();
-                    if (mysqli_num_rows($getApprovedProject_query_result) > 0) {
-                        while ($row = mysqli_fetch_assoc($getApprovedProject_query_result)) {
-                            echo "<div class='approved-project-box' onclick='clickedProject(this)'>";
-                            echo "<div class='approved-project-header'>";
-                            echo $row['PROJ_ID'];
-                            echo "<br>";
-                            echo $row['NAME'];
-                            echo "</div>";
-                            echo "<div class='approved-project-body'>";
-                            echo $row['DESCRIPTION'];
-                            echo "</div>";
-                            echo "</div>";
-                        }
-                    } else {
-                        echo "<div style='width:fit-content;pointer-events: none;'class='approved-project-box'>";
-                        echo "<h2 style='text-align:center;padding:10px;'>THERE IS NO APPROVED PROPOSED PROJECT BY YOU</h2>";
-                        echo "</div>";
-                    }
-                    ?>
+                            <?php
+                                $sql = "SELECT * FROM Project WHERE IS_APPROVED = 1 and SUPERVISOR_ID = ? and STUDENT_ID is NULL";
+                                $getApprovedProject_query = $con->prepare($sql);
+                                $getApprovedProject_query->execute([$user_data['SUPERVISOR_ID']]);
+                                $getApprovedProject_query_result = $getApprovedProject_query->get_result();
+                                if (mysqli_num_rows($getApprovedProject_query_result) > 0) {
+                                    while($row = mysqli_fetch_assoc($getApprovedProject_query_result)) {
+                                        echo "<div class='approved-project-box' onclick='clickedProject(this)'>";
+                                        echo "<div class='approved-project-header'>";
+                                        echo $row['PROJ_ID'];
+                                        echo "<br>";
+                                        echo $row['NAME'];
+                                        echo "</div>";
+                                        echo "<div class='approved-project-body'>";
+                                        echo $row['DESCRIPTION'];
+                                        echo "</div>";
+                                        echo "</div>";
+                                    }
+                                }
+                            ?>
                 </div>
                 <div class="select-student-box">
                     <span class="close-btn">&times;</span>
                     <h1>Select Student</h1>
                     <div class="select-student">
                         <select required title='Student name' id='student-id' name='student_id'>
-                            <?php
-                            $sql = "SELECT * FROM student WHERE PROJ_ID is NULL";
+                        <?php
+                            $sql = "SELECT * FROM Student WHERE PROJ_ID is NULL";
                             $getStudent_query = $con->prepare($sql);
                             $getStudent_query->execute();
                             $getStudent_query_result = $getStudent_query->get_result();
                             if (mysqli_num_rows($getStudent_query_result) > 0) {
-                                while ($row = mysqli_fetch_assoc($getStudent_query_result)) {
-                                    echo '<option value=' . $row['STUDENT_ID'] . '>' . $row['NAME'] . '</option>';
+                                while($row = mysqli_fetch_assoc($getStudent_query_result)) {
+                                    echo '<option value='. $row['STUDENT_ID'] .'>'.$row['NAME'].'</option>';
                                 }
                             }
-                            ?>
+                        ?>
                         </select>
-                        <input type="hidden" value="<?= $_SESSION['token'] ?>" id="token">
+                        <input type="hidden" value="<?=$_SESSION['token']?>" id="token">
                         <button class="assign-btn">Assign project to student</button>
                     </div>
                 </div>
@@ -116,5 +110,4 @@ $user_data = checkLogin($con);
         </div>
     </div>
 </body>
-
 </html>

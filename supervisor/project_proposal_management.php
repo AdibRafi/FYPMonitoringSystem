@@ -71,7 +71,7 @@ $user_data = checkLogin($con);
                     <button class="propose-project-btn">Propose Project</button>
                     <?php
 
-                    $sql = "select * from project where supervisor_id = ? and student_id is null";
+                    $sql = "select * from Project where SUPERVISOR_ID = ? and STUDENT_ID is null";
                     $getProjectList_query = $con->prepare($sql);
                     $getProjectList_query->bind_param("s", $_SESSION['SUPERVISOR_ID']);
                     $getProjectList_query->execute();

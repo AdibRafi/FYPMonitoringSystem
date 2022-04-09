@@ -63,13 +63,13 @@
     function checkUsername($user_id, $user_type) {
         if ($user_type == "student") {
             //Student
-            $query = $con->prepare("SELECT STUDENT_ID FROM STUDENT WHERE STUDENT_ID == ".$user_id);
+            $query = $con->prepare("SELECT STUDENT_ID FROM Student WHERE STUDENT_ID == ".$user_id);
             $query->bind_param("s", $user_id);
             $query->execute();
             $query_result = $query->get_result();
         } else {
             //Supervisor
-            $query = $con->prepare("SELECT USER_ID FROM SUPERVISOR WHERE SUPERVISOR_ID == ?");
+            $query = $con->prepare("SELECT USER_ID FROM Supervisor WHERE SUPERVISOR_ID == ?");
             $query->bind_param("s", $user_id);
             $query->execute();
             $query_result = $query->get_result();
@@ -101,7 +101,7 @@
 
         switch(strtolower($type)){
             case "meeting":
-                $query = $con->prepare("select * from meeting ORDER BY MEET_ID DESC LIMIT 1");
+                $query = $con->prepare("select * from Meeting ORDER BY MEET_ID DESC LIMIT 1");
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
@@ -113,7 +113,7 @@
                 }
                 break;
             case "goal":
-                $query = $con->prepare("select * from goal ORDER BY GOAL_ID DESC LIMIT 1");
+                $query = $con->prepare("select * from Goal ORDER BY GOAL_ID DESC LIMIT 1");
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
@@ -125,7 +125,7 @@
                 }
                 break;
             case "mark":
-                $query = $con->prepare("select * from mark ORDER BY MARK_ID DESC LIMIT 1");
+                $query = $con->prepare("select * from Mark ORDER BY MARK_ID DESC LIMIT 1");
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
@@ -137,7 +137,7 @@
                 }
                 break;
             case "project":
-                $query = $con->prepare("select * from project ORDER BY PROJ_ID DESC LIMIT 1");
+                $query = $con->prepare("select * from Project ORDER BY PROJ_ID DESC LIMIT 1");
                 $query->execute();
                 $query_result = $query->get_result();
                 $lastrow = $query_result->fetch_assoc();
@@ -159,27 +159,27 @@
     function getNameFromID($con, $id, $type):string {
         switch(strtolower($type)) {      
             case "student":
-                $query = $con->prepare("SELECT NAME FROM STUDENT HAVING STUDENT_ID=".$id."");        
+                $query = $con->prepare("SELECT NAME FROM Student HAVING STUDENT_ID=".$id."");
                 break;
 
             case "supervisor":
-                $query = $con->prepare('SELECT NAME FROM SUPERVISOR WHERE SUPERVISOR_ID="'.$id.'"');
+                $query = $con->prepare('SELECT NAME FROM Supervisor WHERE SUPERVISOR_ID="'.$id.'"');
                 break;
 
             case "meeting":
-                $query = $con->prepare("SELECT NAME FROM MEETING WHERE MEETING_ID=".$id."");
+                $query = $con->prepare("SELECT NAME FROM Meeting WHERE MEETING_ID=".$id."");
                 break;
 
             case "goal":
-                $query = $con->prepare("SELECT NAME FROM GOAL WHERE GOAL_ID=".$id."");
+                $query = $con->prepare("SELECT NAME FROM Goal WHERE GOAL_ID=".$id."");
                 break;
 
             case "mark":
-                $query = $con->prepare("SELECT NAME FROM MARK WHERE MARK_ID=".$id."");
+                $query = $con->prepare("SELECT NAME FROM Mark WHERE MARK_ID=".$id."");
                 break;
 
             case "project":
-                $query = $con->prepare('SELECT NAME FROM PROJECT HAVING PROJ_ID='.$id.'');
+                $query = $con->prepare('SELECT NAME FROM Project HAVING PROJ_ID='.$id.'');
                 break;
 
             default:
