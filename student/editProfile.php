@@ -75,7 +75,7 @@ $user_data = checkLogin($con);
                         echo (str_repeat("*", $passwordLen));
                         ?></span>
                     <div class="button-box">
-                        <button id="<?= $user_data['PASSWORD'] ?>" onclick=changePassword(this)class="passwordChange" role="button">Change Password</button>
+                        <button id="<?= $user_data['PASSWORD'] ?>" onclick=changePassword(this) class="passwordChange" role="button">Change Password</button>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ require("../src/database.php");
 
 $user_data = checkLogin($con);
 
-$queryProj = $con->prepare("SELECT PROJ_ID,NAME FROM Project");
+$queryProj = $con->prepare("SELECT PROJ_ID,NAME,STUDENT_ID FROM Project");
 $queryProj->execute();
 $queryProj_result = $queryProj->get_result();
 
@@ -95,7 +95,9 @@ $queryGoal_result = $queryGoal->get_result();
                                 <?php
                                 //Foreach loop to send the id values and the option
                                 while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
-                                    echo '<option value="' . $project_arr['PROJ_ID']. '">' . $project_arr['NAME'] . '</option>';
+                                    if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {                              
+                                        echo '<option value="' . $project_arr['PROJ_ID']. '">' . $project_arr['NAME'] . '</option>';
+                                    }
                                 }
                                 ?>
                             </select>
