@@ -114,18 +114,19 @@
 }
 
 h2 {
+  border-radius: 10px;
   font-size: large;
   margin-bottom: 10px;
-  border-style: solid;
-  border-width: 2px;
   text-align: center;
   padding: 10px;
   background-color: var(--containerColour);
+  color: white;
 }
 
 .goal {
-  border: 1px solid black;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 10px;
+  background-color: var(--containerColour);
+  color: white;
 }
