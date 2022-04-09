@@ -93,12 +93,7 @@ $user_data = checkLogin($con);
                         $projectName = $studentList['PName'];
                         $projectID = $studentList['PROJ_ID'];
 
-                        echo (" 
-                            <h2>
-                                " . $studentName . "<br>
-                                Project Name: " . $projectName . " (" . $projectID . ")
-                            </h2>
-                        ");
+                        echo "<h2>" . $studentName . "<br> Project Name: " . $projectName . " (" . $projectID . ")</h2>";
                         if ($getStudentGoals_query_result && mysqli_num_rows($getStudentGoals_query_result) > 0) {
                             while ($goalList = $getStudentGoals_query_result->fetch_assoc()) {
 

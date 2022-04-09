@@ -21,6 +21,6 @@ function removeMeetingBtn(clicked) {
   const meetID = meetID_HTML.substr(meetID_HTML.length - 5);
 
   if (confirm("Are you sure you want to delete this meeting?")) {
-    window.location.href = "../src/removeMeeting.php?meetID=" + meetID;
+    window.location.href = "../src/removeMeeting.php? =" + meetID;
   }
 }

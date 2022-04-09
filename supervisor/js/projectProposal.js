@@ -22,4 +22,11 @@ closeBtn.addEventListener("click", () => {
   projectListBox.classList.toggle("hidden");
 });
 
-submitProposalBtn.addEventListener("click", () => {});
+function removeProjectBtn(clicked) {
+  const projectID = clicked.parentNode.id;
+
+  if (confirm("Are you sure you want to delete this proposed project?")) {
+    window.location.href =
+      "../src/removeProsedProject.php?projectID=" + projectID;
+  }
+}

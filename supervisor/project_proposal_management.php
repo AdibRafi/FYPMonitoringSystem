@@ -86,7 +86,7 @@ $user_data = checkLogin($con);
                             $statusCSS = ($row['IS_APPROVED'] == 0) ? "redFont" : "greenFont";
 
                             echo "<div class='project-box'>";
-                            echo "<div style='display: flex;align-items: center;'>Project ID: " . $row['PROJ_ID'] . "<span class='remove-project-btn'>&times;</span></div>";
+                            echo "<div id=" . $row['PROJ_ID'] . " style='display: flex;align-items: center;'>Project ID: " . $row['PROJ_ID'] . "<span class='remove-project-btn' onclick='removeProjectBtn(this)'>&times;</span></div>";
                             echo "<div>Project Name: " . $row['NAME'] . "</div>";
                             echo "<div>Project Description: " . $row['DESCRIPTION'] . "</div>";
                             echo "<div>Proposed by: " . $user_data['NAME'] . "</div>";

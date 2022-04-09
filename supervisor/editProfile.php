@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require ("../src/functions.php");
-require ("../src/database.php");
+require("../src/functions.php");
+require("../src/database.php");
 
 $user_data = checkLogin($con);
 
@@ -10,22 +10,24 @@ $user_data = checkLogin($con);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit Profile</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="css/sidebar_header.css"/>
-    <link rel="stylesheet" href="css/editProfile.css"/>
+    <link rel="stylesheet" href="css/sidebar_header.css" />
+    <link rel="stylesheet" href="css/editProfile.css" />
     <!-- Javascripts -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
     <script type="text/javascript" src="js/editProfile.js" defer></script>
 </head>
+
 <body>
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['NAME']?>.
+            Welcome, <?php echo $user_data['NAME'] ?>.
         </div>
     </header>
     <div class="container">
@@ -64,23 +66,24 @@ $user_data = checkLogin($con);
             <div class="edit-profile-box">
                 <h1>Edit Profile</h1>
                 <div class="email-row">
-                    <span>Email:<?php echo(" ".$user_data['EMAIL'])?></span>
+                    <span>Email:<?php echo (" " . $user_data['EMAIL']) ?></span>
                     <div class="button-box">
-                        <button onclick=changeEmail(<?=$user_data['PASSWORD']?>) class="emailChange" role="button">Change Email</button>
+                        <button id="<?= $user_data['PASSWORD'] ?>" onclick=changeEmail(this) class="emailChange" role="button">Change Email</button>
                     </div>
                 </div>
                 <div class="password-row">
                     <span>Password:
                         <?php
-                            $passwordLen = strlen($user_data['PASSWORD']);
-                            echo(str_repeat("*",$passwordLen));
+                        $passwordLen = strlen($user_data['PASSWORD']);
+                        echo (str_repeat("*", $passwordLen));
                         ?></span>
                     <div class="button-box">
-                        <button onclick=changePassword(<?=$user_data['PASSWORD']?>) class="passwordChange" role="button">Change Password</button>
+                        <button id="<?= $user_data['PASSWORD'] ?>" onclick=changePassword(this) class="passwordChange" role="button">Change Password</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
