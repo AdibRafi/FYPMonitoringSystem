@@ -35,26 +35,23 @@ $user_data = checkLogin($con);
             <div class="middle-sidebar">
                 <ul class="sidebar-item-list">
                     <li>
-                        <a href="dashboard.php"><img class="sidebar-item" src="../src/icon/goal_progress_128px.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
+                        <a href="student_dashboard.php"><img class="sidebar-item" src="../src/icon/studentDashboard.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
-                        <a><img class="sidebar-item selected" src="../src/icon/project_proposal_management_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
+                        <a  href="student_GoalSetting_ProgressTracking.php"><img class="sidebar-item" src="../src/icon/goal_progress_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
                     </li>
                     <li>
-                        <a href="project_planning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a href="student_projectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
-                        <a href="student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
-                    </li>
-                    <li>
-                        <a href="meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
+                        <a href="student_meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
                     </li>
                 </ul>
             </div>
             <div class="bottom-sidebar">
                 <ul class="sidebar-item-list">
                     <li>
-                        <a href="editProfile.php"><img class="sidebar-item" src="../src/icon/edit_profile_128px.png" alt="edit profile icon" title="Edit Profile"></a>
+                        <a><img class="sidebar-item selected" src="../src/icon/edit_profile_128px.png" alt="edit profile icon" title="Edit Profile"></a>
                     </li>
                     <li>
                         <a href="../src/logout.php"><img class="sidebar-item" src="../src/icon/logout_128px.png" alt="logout icon" title="Logout"></a>
