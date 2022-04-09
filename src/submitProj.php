@@ -17,7 +17,7 @@
 
     $addMark_query = $con->prepare("INSERT INTO Mark (MARK_ID, NAME, PATH, PERCENTAGE, IS_MARKED, SUPERVISOR_ID, STUDENT_ID) values(?,?,?,?,?,?,?)");
     $addMark_query->execute([$mark_id, $mark_name, $mark_path, 0.01, 0, $supervisor_id, $student_id]);
-    $addMark_query_result = $addGoal_query->get_result();
+    $addMark_query_result = $addMark_query->get_result();
 
     $addMark_query->close();
     $con->next_result();
