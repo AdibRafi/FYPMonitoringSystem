@@ -108,12 +108,8 @@
   }
 }
 
-.progress-line.GoalDescription1 span::after{
-  content: "90%";
-}
-
-.progress-line.GoalDescription2 span::after{
-  content: "50%";
+.progress-line.GoalDescription span::after {
+  content: attr(afterBack);
 }
 
 .goal{

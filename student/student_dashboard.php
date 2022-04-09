@@ -85,18 +85,21 @@
                  
             </div> 
             <div class="skill-bars">
-                <div class = "goal">
+                <div class="goal">
                     <span>Goal</span>
                 </div>
                 <?php
                     if ($queryGoal_result && mysqli_num_rows($queryGoal_result) > 0) {
                         while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
+                            $goal_percentage = $goal_arr['PERCENTAGE']*100;
+                            $goal_percentage .= "%";
                             echo '<div class="bar">';
+                            
                                 echo '<div class="info">';
                                 echo '<span>'.$goal_arr['NAME'].'</span>';
                                 echo '</div>';
-                                echo '<div class="progress-line '.$goal_arr['NAME'].'">';
-                                echo '<span style="width:'.($goal_arr['PERCENTAGE']*100).'%;"></span>';
+                                echo "<div class='progress-line GoalDescription'>";
+                                echo '<span style="width:'.$goal_percentage.'" afterback="'.$goal_percentage.'"></span>';
                                 echo '</div>';
                             echo '</div>';
                         }
