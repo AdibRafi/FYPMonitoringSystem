@@ -28,7 +28,7 @@
         }
 
         //Check if student is in database
-        $student_check_query = $con ->prepare("SELECT * FROM student WHERE STUDENT_ID = ?");
+        $student_check_query = $con ->prepare("SELECT * FROM Student WHERE STUDENT_ID = ?");
         $student_check_query->bind_param("s",$student_user);
         $student_check_query->execute();
         $result_query = $student_check_query->get_result();
@@ -45,7 +45,7 @@
         }
         
         //Check if supervisor is in database
-        $supervisor_check_query = $con ->prepare("SELECT * FROM supervisor WHERE SUPERVISOR_ID = ?");
+        $supervisor_check_query = $con ->prepare("SELECT * FROM Supervisor WHERE SUPERVISOR_ID = ?");
         $supervisor_check_query->bind_param("s",$supervisor_user);
         $supervisor_check_query->execute();
         $result_query = $supervisor_check_query->get_result();
@@ -64,7 +64,7 @@
         //Check table to ensure no conflict
 
         //checking if supervisor is occupied
-        $dateTime_check_query = $con ->prepare("SELECT * FROM meeting WHERE SUPERVISOR_ID = ?");
+        $dateTime_check_query = $con ->prepare("SELECT * FROM Meeting WHERE SUPERVISOR_ID = ?");
         $dateTime_check_query->bind_param("s",$supervisor_user);
         $dateTime_check_query->execute();
         $dateTime_query_result = $dateTime_check_query->get_result();
@@ -99,7 +99,7 @@
        
 
         //checking if Student is occupied
-        $dateTime_check_query = $con ->prepare("SELECT * FROM meeting WHERE STUDENT_ID = ?");
+        $dateTime_check_query = $con ->prepare("SELECT * FROM Meeting WHERE STUDENT_ID = ?");
         $dateTime_check_query->bind_param("s",$student_users);
         $dateTime_check_query->execute();
         $dateTime_query_result = $dateTime_check_query->get_result();
@@ -139,7 +139,7 @@
         }
 
         //Insert data into database accordingly
-        $addMeet_query = $con->prepare("INSERT INTO meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,SUPERVISOR_ID) values(?,?,?,?,?,?,?)");
+        $addMeet_query = $con->prepare("INSERT INTO Meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,SUPERVISOR_ID) values(?,?,?,?,?,?,?)");
         $addMeet_query_result = $addMeet_query->execute([$meeting_id,$meeting_name, $place, $start_string, $duration, $student_user,$supervisor_user]);
 
         $addMeet_query->close();

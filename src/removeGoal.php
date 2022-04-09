@@ -5,7 +5,7 @@ require("functions.php");
 $goal_id = $_GET['goal_id'];
 echo '<script>alert(' . $goal_id . ')</script>';
 //Prepare query
-$delete_goal = $con->prepare('DELETE FROM GOAL WHERE GOAL_ID="' . $goal_id . '"');
+$delete_goal = $con->prepare('DELETE FROM Goal WHERE GOAL_ID="' . $goal_id . '"');
 $delete_goal_result = $delete_goal->execute();
 
 $delete_goal->close();
