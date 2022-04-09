@@ -15,9 +15,11 @@ if (mysqli_affected_rows($con)) {
     alert('Proposed project successfully removed!');
     window.location.href='../supervisor/project_proposal_management.php';
     </script>");
+    die;
 } else {
     echo ("<script>
     alert('Something went wrong!');
     window.location.href='../supervisor/project_proposal_management.php';
     </script>");
+    die;
 }

@@ -208,7 +208,3 @@
             return sprintf("%0".$length."d", ++$matches[1]);
         }    
     }
-    
-    
-
-?>

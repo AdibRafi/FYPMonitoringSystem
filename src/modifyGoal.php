@@ -37,8 +37,5 @@
         alert('Something went wrong! Please try again');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
+        die;
     }
-
-
-
-?>

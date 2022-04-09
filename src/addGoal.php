@@ -16,7 +16,7 @@ if ($goal_percentage > 100 || $goal_percentage < 1) {
         alert('Goal percentage invalid');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
-    die();
+    die;
 }
 
 $goal_percentage = $goal_percentage / 100;
@@ -31,6 +31,7 @@ if ($goal_id === "invalid") {
         alert('invalid ID, please try again');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
+    die;
 }
 
 //Insert data into database accordingly
@@ -47,9 +48,11 @@ if (mysqli_num_rows($$addGoal_query_result) > 0) {
         alert('Goal successfully added!');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
+    die;
 } else {
     echo ("<script>
         alert('Something went wrong!');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
+    die;
 }
