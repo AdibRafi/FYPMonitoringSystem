@@ -78,7 +78,7 @@ require('../../src/database.php');
         <div class="verify-box">
             <h1>Verify Student</h1>
             <h2>Click row to checked</h2>
-            <form action="verifyStudent_fucntion.php" method="post">
+            <form action="verifyStudent_function.php" method="post">
                 <table>
                     <tr>
                         <th></th>
