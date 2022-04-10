@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $loop = 0;
             if ($select == "verify") {
                 for ($i = 0; $i < count($project); $i++) {
-                    $verifySQL = "UPDATE Project SET IS_APPROVED=1 WHERE PROJ_ID = '" . $project[$i] . "'";
+                    $verifySQL = "UPDATE Project SET APPROVED_ADMIN = 1 WHERE PROJ_ID = '" . $project[$i] . "'";
                     if ($con->query($verifySQL) === TRUE) {
                         $loop++;
                     }

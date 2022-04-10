@@ -72,7 +72,7 @@ $user_data = checkLogin($con);
                 $supervisorID = $_SESSION['SUPERVISOR_ID'];
                 $index = 0;
 
-                $query = "SELECT Student.STUDENT_ID,Student.PROJ_ID,Student.NAME as SName,Project.NAME as PName from Student join Project where Project.STUDENT_ID = Student.STUDENT_ID and Project.SUPERVISOR_ID = ?";
+                $query = "SELECT Student.STUDENT_ID,Project.PROJ_ID,Student.NAME as SName,Project.NAME as PName from Student join Project where Project.STUDENT_ID = Student.STUDENT_ID and Project.SUPERVISOR_ID = ?";
                 $getStudentList_query = $con->prepare($query);
                 $getStudentList_query->bind_param("s", $supervisorID);
                 $getStudentList_query->execute();

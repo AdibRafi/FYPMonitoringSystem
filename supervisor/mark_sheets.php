@@ -102,7 +102,7 @@ function generateRow($markName, $weightAge, $descriptionID, $radioName, $jsFunct
                         <select name="studentId" id="studentType" onchange="studentProject(this)">
                             <?php
                             //GET THE LIST OF STUDENT WITH NO MARK AND HAVE A PROJECT ASSIGNED TO THEM
-                            $sql = "SELECT * FROM Student WHERE MARK_ID IS NULL and PROJ_ID IS NOT NULL";
+                            $sql = "SELECT * FROM Student WHERE NOT EXISTS(SELECT STUDENT_ID FROM Mark WHERE Mark.STUDENT_ID=Mark.STUDENT_ID) and STUDENT_ID in (SELECT STUDENT_ID FROM Project WHERE STUDENT_ID is NOT NULL);";
                             $result = $con->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {

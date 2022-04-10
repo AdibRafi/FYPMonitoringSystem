@@ -56,20 +56,30 @@ if (isset($studentId) && isset($abstractScore) && isset($problemStatementScore) 
         die;
     }
 
-    //Get ID of latest data entry
-    $get_check_query = "SELECT MARK_ID FROM Mark";
-
-    //Append 1 to ID
     $markId = getID($con, "mark");
 
     //Insert data into database accordingly
     $sql = "INSERT INTO Mark (MARK_ID,NAME,PATH,PERCENTAGE,IS_MARKED,SUPERVISOR_ID,STUDENT_ID) values (?,?,?,?,?,?,?)";
-    $addMeet_query = $con->prepare($sql);
-    $addMeet_query->bind_param("sssssss", $markId, $studentData["NAME"] . " Mark", $PATH, $totalScore / 100, 1, $_SESSION["SUPERVISOR_ID"], $studentData["STUDENT_ID"]);
+    $addMark_query = $con->prepare($sql);
+    $addMark_query->execute([$markId, $studentData["NAME"] . " Mark", $PATH, $totalScore / 100, 1, $_SESSION["SUPERVISOR_ID"], $studentData["STUDENT_ID"]]);
+    $addMark_query_result = $addMark_query->get_result();
 
-    //Insert into table
+    $addMark_query->close();
+    $con->next_result();
 
-
+    if (mysqli_affected_rows($con)) {
+        echo ("<script>
+        alert('Successfully added mark!');
+        window.location.href='../supervisor/mark_sheets.php';
+        </script>");
+        die;
+    } else {
+        echo ("<script>
+        alert('Error inserting mark!');
+        window.location.href='../supervisor/mark_sheets.php';
+        </script>");
+        die;
+    }
 } else {
     echo "<script>";
     echo "alert('Please fill in all the fields');";

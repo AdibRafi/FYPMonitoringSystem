@@ -18,29 +18,11 @@ if (mysqli_affected_rows($con) > 0) {
     $approveProject_query->close();
     $con->next_result();
 
-    $studentID = getStudentIDByProjectID($con, $projectID);
-
-    $sql = "UPDATE Student SET PROJ_ID = ? WHERE STUDENT_ID = ?";
-    $updateStudent_query = $con->prepare($sql);
-    $updateStudent_query->execute([$projectID, $studentID]);
-    $updateStudent_query_result = $updateStudent_query->get_result();
-
-    if (mysqli_affected_rows($con) > 0) {
-        $updateStudent_query->close();
-        $con->next_result();
-
-        echo ("<script>
+    echo ("<script>
         alert('Project successfully approved!');
         window.location.href='../supervisor/project_proposal_management.php';
         </script>");
-        die;
-    } else {
-        echo ("<script>
-        alert('Something went wrong!');
-        window.location.href='../supervisor/project_proposal_management.php';
-        </script>");
-        die;
-    }
+    die;
 } else {
     echo ("
         <script>

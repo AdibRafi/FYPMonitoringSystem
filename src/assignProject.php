@@ -21,38 +21,22 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
         $con->next_result();
 
         if (mysqli_affected_rows($con)) {
-            $sql = "UPDATE Student set PROJ_ID = ? where STUDENT_ID = ?";
-            $updateStudent_query = $con->prepare($sql);
-            $updateStudent_query->execute([$projectID, $studentID]);
-            $updateStudent_query_result = $updateStudent_query->get_result();
 
-            $updateStudent_query->close();
-            $con->next_result();
-
-            if (mysqli_affected_rows($con)) {
-                echo ("<script>
+            echo ("<script>
                     alert('Project successfully assigned to " . $studentData['NAME'] . "!');
                     window.location.href='../supervisor/student-to-project_assignment.php';
                     </script>");
-            } else {
-                echo ("<script>
-                    alert('Project assignment failed!');
-                    window.location.href='../supervisor/student-to-project_assignment.php';
-                    </script>");
-                die;
-            }
         } else {
             echo ("<script>
-                alert('Something went wrong!');
-                window.location.href='../supervisor/student-to-project_assignment.php';
-                </script>");
-            die;
+                    alert('Project not assigned!');
+                    window.location.href='../supervisor/student-to-project_assignment.php';
+                    </script>");
         }
     } else {
         echo ("<script>
-            alert('Please select a student!');
-            window.location.href='../supervisor/student-to-project_assignment.php';
-            </script>");
+                alert('Please select a student!');
+                window.location.href='../supervisor/student-to-project_assignment.php';
+                </script>");
         die;
     }
 } else {
