@@ -46,6 +46,9 @@ $user_data = checkLogin($con);
                     <li>
                         <a href="student_meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
                     </li>
+                    <li>
+                        <a href="../student/submitProject.php"><img class="sidebar-item" src="../src/icon/submit_project.png" alt="project submission icon" title="Project Submission"></a>
+                    </li>  
                 </ul>
             </div>
             <div class="bottom-sidebar">

@@ -58,6 +58,12 @@ $queryGoal_result = $queryGoal->get_result();
                                                                              alt="project planning icon"
                                                                              title="Meeting Management"></a>
                 </li>
+                <li>
+                        <a href="../student/submitProject.php"><img class="sidebar-item" 
+                                                                    src="../src/icon/submit_project.png" 
+                                                                    alt="project submission icon" 
+                                                                    title="Project Submission"></a>
+                </li>  
             </ul>
         </div>
         <div class="bottom-sidebar">
