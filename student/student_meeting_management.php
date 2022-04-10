@@ -63,7 +63,6 @@ session_start();
             <div class="meeting-management-box">
                 <h1 class="center">Welcome to Meeting Management</h1>
                 <div class="meeting-list-box">               
-                    <span><h1>Meeting List</h1><button class="addMeet-btn">Add Meeting</button></span>
                     <?php
                         $getMeetingList_query = $con->prepare("SELECT * FROM Meeting where STUDENT_ID = ?");
                         $getMeetingList_query->bind_param("s",$_SESSION['STUDENT_ID']);
@@ -97,7 +96,7 @@ session_start();
                             }
                         }else{
                             echo("
-                            <h2>THERE IS CURRENTLY NO MEETING</h2>
+                            <h2>There's currently no meeting, come again next time</h2>
                         ");
                         }
 

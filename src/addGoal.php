@@ -19,6 +19,7 @@ if ($goal_percentage > 100 || $goal_percentage < 1) {
     die;
 }
 
+
 $goal_percentage = $goal_percentage / 100;
 
 //Get ID of latest data entry
