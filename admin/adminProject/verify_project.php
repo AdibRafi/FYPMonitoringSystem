@@ -21,7 +21,7 @@ require('../../src/database.php');
     <header class="header">
         <img class="menu-icon" src="../../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, Gaylord.
+            Welcome, Admin.
         </div>
     </header>
     <div class="container">
