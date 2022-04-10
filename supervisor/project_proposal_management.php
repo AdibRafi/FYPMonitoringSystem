@@ -51,9 +51,7 @@ $user_data = checkLogin($con);
                         <a href="meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
                     </li>
                     <li>
-                        <a href="mark_sheets.php"><img class="sidebar-item"
-                                                       src="../src/icon/marking_128px.png"
-                                                       alt="marking icon" title="Mark Sheets"></a>
+                        <a href="mark_sheets.php"><img class="sidebar-item" src="../src/icon/marking_128px.png" alt="marking icon" title="Mark Sheets"></a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +99,7 @@ $user_data = checkLogin($con);
                         }
                     } else {
                         echo "<div style='width:fit-content;'class='project-box'>";
-                        echo "<h2 style='text-align:center;'>THERE IS NO PROPOSED PROJECT BY YOU</h2>";
+                        echo "<h2 style='text-align:center;'>NO PROPOSED PROJECT</h2>";
                         echo "</div>";
                     }
 
