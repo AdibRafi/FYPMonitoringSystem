@@ -64,13 +64,12 @@ $user_data = checkLogin($con);
         <div class="content">
             <div class="project-planning-box">
                 <h1 style="text-align: center;">Welcome to Project Planning</h1>
-                <div class=project-planning-list>
+                <div class="project-planning-list hidden">
                     <h1>Project Planning List</h1>
                     <?php
 
-                    $sql = "SELECT * FROM Project where Supervisor_ID = ? and Student_ID is not null";
+                    $sql = "SELECT * FROM Project where STUDENT_ID is not null and APPROVED_SUPERVISOR = 0 ";
                     $getProject_query = $con->prepare($sql);
-                    $getProject_query->bind_param("s", $user_data['SUPERVISOR_ID']);
                     $getProject_query->execute();
                     $getProject_query_result = $getProject_query->get_result();
                     $getProject_query->close();
@@ -105,7 +104,12 @@ $user_data = checkLogin($con);
                     }
                     ?>
                 </div>
+                <div class="approve-project-box">
+                    <button> Approve </button>
+                    <button> Reject </button>
+                </div>
             </div>
+
         </div>
 </body>
 
