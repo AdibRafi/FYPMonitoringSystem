@@ -50,6 +50,11 @@ $user_data = checkLogin($con);
                     <li>
                         <a><img class="sidebar-item selected" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
                     </li>
+                    <li>
+                        <a href="mark_sheets.php"><img class="sidebar-item"
+                                                       src="../src/icon/marking_128px.png"
+                                                       alt="marking icon" title="Mark Sheets"></a>
+                    </li>
                 </ul>
             </div>
             <div class="bottom-sidebar">
