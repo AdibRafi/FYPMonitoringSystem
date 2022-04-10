@@ -42,7 +42,7 @@
             }
 
             //Do query to update database
-            $sql = "UPDATE supervisor set PASSWORD = ? where SUPERVISOR_ID = ?";
+            $sql = "UPDATE Supervisor set PASSWORD = ? where SUPERVISOR_ID = ?";
             $changePassword_query = $con->prepare($sql);
             $changePassword_query->bind_param("ss",$changePassword,$_SESSION['SUPERVISOR_ID']);
             $changePassword_query->execute();
@@ -79,7 +79,7 @@
             }
     
             //IF PASSED BOTH TEST ABOVE, DO QUERY UPDATE DATABASE
-            $sql = "UPDATE supervisor set EMAIL = ? where SUPERVISOR_ID = ?";
+            $sql = "UPDATE Supervisor set EMAIL = ? where SUPERVISOR_ID = ?";
             $changeEmail_query = $con->prepare($sql);
             $changeEmail_query->bind_param("ss",$changeEmail,$_SESSION['SUPERVISOR_ID']);
             $changeEmail_query->execute();
@@ -121,7 +121,7 @@
             }
         
             //IF PASSED BOTH TEST ABOVE, DO QUERY UPDATE DATABASE
-            $sql = "UPDATE student set PASSWORD = ? where STUDENT_ID = ?";
+            $sql = "UPDATE Student set PASSWORD = ? where STUDENT_ID = ?";
             $changePassword_query = $con->prepare($sql);
             $changePassword_query->bind_param("ss",$changePassword,$_SESSION['STUDENT_ID']);
             $changePassword_query->execute();
@@ -159,7 +159,11 @@
             }
 
             //IF PASSED BOTH TEST ABOVE, DO QUERY UPDATE DATABASE
+<<<<<<< HEAD
             $sql = "UPDATE Student set EMAIL = ? where STUDENT_ID = ?";
+=======
+            $sql = "UPDATE Student set email = ? where STUDENT_ID = ?";
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
             $changePassword_query = $con->prepare($sql);
             $changePassword_query->bind_param("ss",$changePassword,$_SESSION['STUDENT_ID']);
             $changePassword_query->execute();

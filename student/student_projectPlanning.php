@@ -76,12 +76,14 @@
 		        <?php
                     if ($queryProj_result && mysqli_num_rows($queryProj_result) > 0) {
                         while ($proj_arr = mysqli_fetch_assoc($queryProj_result)) {
-                            echo '<tr>'; 
-                            echo '<td>'.$proj_arr['NAME'].'</td>';
-                            echo '<td>'.$proj_arr['DESCRIPTION'].'</td>';
-                            echo '<td>'.getNameFromID($con, $proj_arr['SUPERVISOR_ID'], "supervisor").'</td>';
-                            echo '<td>'.isApproved($proj_arr['IS_APPROVED']).'</td>';
-                            echo '</tr>';
+                            if ($proj_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {
+                                echo '<tr>'; 
+                                echo '<td>'.$proj_arr['NAME'].'</td>';
+                                echo '<td>'.$proj_arr['DESCRIPTION'].'</td>';
+                                echo '<td>'.getNameFromID($con, $proj_arr['SUPERVISOR_ID'], "supervisor").'</td>';
+                                echo '<td>'.isApproved($proj_arr['IS_APPROVED']).'</td>';
+                                echo '</tr>';
+                            }
                         }
                     } else {
                         echo '<h2>No goals are currently set</h2>';

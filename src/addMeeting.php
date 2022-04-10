@@ -1,20 +1,40 @@
 <?php
 
-session_start();
+    session_start();
 
-require("database.php");
-require("functions.php");
+    require("database.php");
+    require("functions.php");
 
-//Get data required to insert into the table
+    //Get data required to insert into the table
+    
+    $form_token = $_GET['token'];
+    
+    //echo "<script>console.log('".$start->format('Y-m-d H:i')."')</script>";
 
-$form_token = $_GET['token'];
+    if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token){
 
-//echo "<script>console.log('".$start->format('Y-m-d H:i')."')</script>";
+        $student_user = $_GET['student_id'];
+        $supervisor_user = $_GET['supervisor_id'];
+        $start = new DateTime($_GET['date'].' '.$_GET['start_time']);
+        $start_string = $start->format('Y-m-d H:i');
+        $end = new DateTime($_GET['date']." ".$_GET['end_time']); 
+        $end_string = $end->format('Y-m-d H:i');
+        $place = $_GET['place'];
+        $duration = abs($start->getTimestamp() - $end->getTimestamp()) / 60; //duration in minutes
+        $meeting_name = $_GET['name'];
 
-if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $form_token) {
+        if (empty($meeting_name)){
+            $meeting_name = $student_user." and ". $supervisor_user." meeting";
+        }
 
-    date_default_timezone_set('Asia/Singapore');
+        //Check if student is in database
+        $student_check_query = $con ->prepare("SELECT * FROM Student WHERE STUDENT_ID = ?");
+        $student_check_query->bind_param("s",$student_user);
+        $student_check_query->execute();
+        $result_query = $student_check_query->get_result();
+        $student = $result_query->fetch_assoc();
 
+<<<<<<< HEAD
     $student_user = $_GET['student_id'];
     $supervisor_user = $_GET['supervisor_id'];
     $start = new DateTime($_GET['date'] . ' ' . $_GET['start_time']);
@@ -41,12 +61,26 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
 
     if (!$student) {
         echo ("<script>
+=======
+        $student_check_query->close();
+        $con->next_result();
+        
+        if (!$student){
+            echo ("<script>
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
             alert('Student is not in the database, please try again');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
-        die;
-    }
+        }
+        
+        //Check if supervisor is in database
+        $supervisor_check_query = $con ->prepare("SELECT * FROM Supervisor WHERE SUPERVISOR_ID = ?");
+        $supervisor_check_query->bind_param("s",$supervisor_user);
+        $supervisor_check_query->execute();
+        $result_query = $supervisor_check_query->get_result();
+        $supervisor = $result_query->fetch_assoc();
 
+<<<<<<< HEAD
     //Check if supervisor is in database
     $supervisor_check_query = $con->prepare("SELECT * FROM Supervisor WHERE SUPERVISOR_ID = ?");
     $supervisor_check_query->bind_param("s", $supervisor_user);
@@ -59,136 +93,138 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
 
     if (!$supervisor) {
         echo ("<script>
+=======
+        $supervisor_check_query->close();
+        $con->next_result();
+        
+        if (!$supervisor){
+            echo ("<script>
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
             alert('Supervisor is not in the database, please try again');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
-        die;
-    }
-
-    //Checking if selected datetime is valid
-    $datetime_now = new DateTime();
-    if ($start < $datetime_now) {
-        echo ("<script>
-            alert('Invalid meeting time, please try again');
-            window.location.href='../supervisor/meeting_management.php';
-            </script>");
-        die;
-    }
-
-    if ($start > $end) {
-        echo ("<script>
-            alert('Invalid meeting time, please try again');
-            window.location.href='../supervisor/meeting_management.php';
-            </script>");
-        die;
-    }
-
-    //checking if supervisor is occupied
-    $dateTime_check_query = $con->prepare("SELECT * FROM Meeting WHERE SUPERVISOR_ID = ?");
-    $dateTime_check_query->bind_param("s", $supervisor_user);
-    $dateTime_check_query->execute();
-    $dateTime_query_result = $dateTime_check_query->get_result();
-
-    $dateTime_check_query->close();
-    $con->next_result();
-
-    while ($row = $dateTime_query_result->fetch_assoc()) {
-        $start_datetime = new DateTime($row['TIME']);
-        $end_datetime = new DateTime($row['TIME']);
-        $end_datetime->add(new DateInterval('PT' . $row['DURATION'] . 'M'));
-
-
-        if ($start_datetime === $start) {
-            echo ("<script>
-                alert('Supervisor is occupied at " . $start_string . " , please try again');
-                window.location.href='../supervisor/meeting_management.php';
-                </script>");
-            die;
-        } else if ($end_datetime === $start) {
-            echo ("<script>
-                alert('Supervisor is occupied at " . $start_string . " , please try again');
-                window.location.href='../supervisor/meeting_management.php';
-                </script>");
-            die;
-        } else if ($start >= $start_datetime && $start <= $end_datetime) {
-            echo ("<script>
-                alert('Supervisor is occupied at " . $start_string . " , please try again');
-                window.location.href='../supervisor/meeting_management.php';
-                </script>");
-            die;
         }
-    }
 
+<<<<<<< HEAD
     //checking if Student is occupied
     $dateTime_check_query = $con->prepare("SELECT * FROM Meeting WHERE STUDENT_ID = ?");
     $dateTime_check_query->bind_param("s", $student_users);
     $dateTime_check_query->execute();
     $dateTime_query_result = $dateTime_check_query->get_result();
+=======
+        //Check table to ensure no conflict
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
 
-    $dateTime_check_query->close();
-    $con->next_result();
+        //checking if supervisor is occupied
+        $dateTime_check_query = $con ->prepare("SELECT * FROM Meeting WHERE SUPERVISOR_ID = ?");
+        $dateTime_check_query->bind_param("s",$supervisor_user);
+        $dateTime_check_query->execute();
+        $dateTime_query_result = $dateTime_check_query->get_result();
 
-    while ($row = $dateTime_query_result->fetch_assoc()) {
-        $start_datetime = new DateTime($row['TIME']);
-        $end_datetime = new DateTime($row['TIME']);
-        $end_datetime->add(new DateInterval('PT' . $row['DURATION'] . 'M'));
+        $dateTime_check_query->close();
+        $con->next_result();
 
-        if ($start_datetime === $start) {
-            echo ("<script>
-                alert('Student is occupied at" . $start_string . ", please try again'" . $end_datetime . ");
+        while($row = $dateTime_query_result->fetch_assoc()){
+            $start_datetime = new DateTime($row['TIME']);
+            $end_datetime = new DateTime($row['TIME']);
+            $end_datetime->add(new DateInterval('PT' . $row['DURATION'] . 'M'));
+            
+
+            if($start_datetime === $start){
+                echo ("<script>
+                alert('Supervisor is occupied at ".$start_string. " , please try again');
                 window.location.href='../supervisor/meeting_management.php';
                 </script>");
-            die;
-        } else if ($end_datetime === $start) {
-            echo ("<script>
-                alert('Student is occupied at" . $start_string . ", please try again'" . $end_datetime . ");
+            }else if($end_datetime === $start){
+                echo ("<script>
+                alert('Supervisor is occupied at ".$start_string. " , please try again');
                 window.location.href='../supervisor/meeting_management.php';
                 </script>");
-            die;
-        } else if ($start >= $start_datetime && $start <= $end_datetime) {
-            echo ("<script>
-                alert('Student is occupied at" . $start_string . ", please try again'" . $end_datetime . ");
+            }else if($start>=$start_datetime && $start<=$end_datetime){
+                echo ("<script>
+                alert('Supervisor is occupied at ".$start_string. " , please try again');
                 window.location.href='../supervisor/meeting_management.php';
                 </script>");
-            die;
+            }
         }
-    }
 
-    //Append 1 to ID
-    $meeting_id = getID($con, "meeting");
-    if ($meeting_id === "invalid") {
-        echo ("<script>
+       
+
+        //checking if Student is occupied
+        $dateTime_check_query = $con ->prepare("SELECT * FROM Meeting WHERE STUDENT_ID = ?");
+        $dateTime_check_query->bind_param("s",$student_users);
+        $dateTime_check_query->execute();
+        $dateTime_query_result = $dateTime_check_query->get_result();
+
+        $dateTime_check_query->close();
+        $con->next_result();
+        
+        while($row = $dateTime_query_result->fetch_assoc()){
+            $start_datetime = new DateTime($row['TIME']);
+            $end_datetime = new DateTime($start_datetime->add(new DateInterval('PT' . $row['DURATION'] . 'M')));
+
+            if($start_datetime === $start){
+                echo ("<script>
+                alert('Student is occupied at".$start_string. ", please try again');
+                window.location.href='../supervisor/meeting_management.php';
+                </script>");
+            }else if($end_datetime === $start){
+                echo ("<script>
+                alert('Student is occupied at".$start_string. ", please try again');
+                window.location.href='../supervisor/meeting_management.php';
+                </script>");
+            }else if($start>=$start_datetime && $start<=$end_datetime){
+                echo ("<script>
+                alert('Student is occupied at".$start_string. ", please try again');
+                window.location.href='../supervisor/meeting_management.php';
+                </script>");
+            }
+        }
+
+        //Append 1 to ID
+        $meeting_id = getID($con,"meeting");
+        if($meeting_id === "invalid"){
+            echo("<script>
             alert('invalid ID, please try again');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
-        die;
-    }
+        }
 
+<<<<<<< HEAD
     //Insert data into database accordingly
     $addMeet_query = $con->prepare("INSERT INTO Meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,SUPERVISOR_ID) values(?,?,?,?,?,?,?)");
     $addMeet_query_result = $addMeet_query->execute([$meeting_id, $meeting_name, $place, $start_string, $duration, $student_user, $supervisor_user]);
+=======
+        //Insert data into database accordingly
+        $addMeet_query = $con->prepare("INSERT INTO Meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,SUPERVISOR_ID) values(?,?,?,?,?,?,?)");
+        $addMeet_query_result = $addMeet_query->execute([$meeting_id,$meeting_name, $place, $start_string, $duration, $student_user,$supervisor_user]);
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
 
-    $addMeet_query->close();
-    $con->next_result();
+        $addMeet_query->close();
+        $con->next_result();
 
-    if ($addMeet_query_result) {
+        if($addMeet_query_result){
 
-        echo ("<script>
+            echo("<script>
             alert('Meeting successfully added!');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
-        die;
-    } else {
-        echo ("<script>
+
+
+        }else{
+            echo("<script>
             alert('Something went wrong!');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
-        die;
-    }
-} else {
+        }
 
-    echo ("<script>
+    }else{
+
+        echo ("<script>
             window.location.href='../supervisor/meeting_management.php';
             </script>");
-    die;
-}
+    }
+
+    //Insert into table
+
+?>

@@ -16,9 +16,15 @@ if ($goal_percentage > 100 || $goal_percentage < 1) {
 
 $goal_percentage = $goal_percentage / 100;
 
+<<<<<<< HEAD
 //Prepare query
 $modify_goal = $con->prepare('UPDATE Goal SET PERCENTAGE=' . $goal_percentage . ' WHERE GOAL_ID="' . $goal_id . '"');
 $modify_goal_result = $modify_goal->execute();
+=======
+    //Prepare query
+    $modify_goal = $con->prepare('UPDATE Goal SET PERCENTAGE='.$goal_percentage.' WHERE GOAL_ID="'.$goal_id.'"');
+    $modify_goal_result = $modify_goal->execute();
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
 
 $modify_goal->close();
 $con->next_result();

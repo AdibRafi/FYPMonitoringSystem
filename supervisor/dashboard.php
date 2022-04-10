@@ -16,8 +16,8 @@ $user_data = checkLogin($con);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Supervisor Dashboard</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="css/sidebar_header.css" />
     <link rel="stylesheet" href="css/supervisor_dashboard.css" />
+    <link rel="stylesheet" href="css/sidebar_header.css" />
     <!-- Javascript -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
 </head>
@@ -93,7 +93,12 @@ $user_data = checkLogin($con);
                         $projectName = $studentList['PName'];
                         $projectID = $studentList['PROJ_ID'];
 
-                        echo "<h2>" . $studentName . "<br> Project Name: " . $projectName . " (" . $projectID . ")</h2>";
+                        echo (" 
+                            <h2>
+                                " . $studentName . "<br>
+                                Project Name: " . $projectName . " (" . $projectID . ")
+                            </h2>
+                        ");
                         if ($getStudentGoals_query_result && mysqli_num_rows($getStudentGoals_query_result) > 0) {
                             while ($goalList = $getStudentGoals_query_result->fetch_assoc()) {
 

@@ -76,6 +76,25 @@ function checkUsername($user_id, $user_type)
         $query->execute();
         $query_result = $query->get_result();
     }
+<<<<<<< HEAD
+=======
+ 
+    
+    function checkUsername($user_id, $user_type) {
+        if ($user_type == "student") {
+            //Student
+            $query = $con->prepare("SELECT STUDENT_ID FROM Student WHERE STUDENT_ID == ".$user_id);
+            $query->bind_param("s", $user_id);
+            $query->execute();
+            $query_result = $query->get_result();
+        } else {
+            //Supervisor
+            $query = $con->prepare("SELECT USER_ID FROM Supervisor WHERE SUPERVISOR_ID == ?");
+            $query->bind_param("s", $user_id);
+            $query->execute();
+            $query_result = $query->get_result();
+        }
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
 
     if ($query_result && mysqli_num_rows($query_result) > 0) {
 
@@ -152,6 +171,7 @@ function getID($con, $type): string
     return $id;
 }
 
+<<<<<<< HEAD
 function getNameFromID($con, $id, $type): string
 {
     switch (strtolower($type)) {
@@ -159,6 +179,59 @@ function getNameFromID($con, $id, $type): string
             $query = $con->prepare("SELECT NAME FROM Student HAVING STUDENT_ID = ?");
             $query->bind_param("s", $id);
             break;
+=======
+        switch(strtolower($type)){
+            case "meeting":
+                $query = $con->prepare("select * from Meeting ORDER BY MEET_ID DESC LIMIT 1");
+                $query->execute();
+                $query_result = $query->get_result();
+                $lastrow = $query_result->fetch_assoc();
+                if ($query_result && mysqli_num_rows($query_result)>0){
+                    $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['MEET_ID']);
+        
+                }else{
+                    $id = "MT001";
+                }
+                break;
+            case "goal":
+                $query = $con->prepare("select * from Goal ORDER BY GOAL_ID DESC LIMIT 1");
+                $query->execute();
+                $query_result = $query->get_result();
+                $lastrow = $query_result->fetch_assoc();
+                if ($query_result && mysqli_num_rows($query_result)>0){
+                    $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['GOAL_ID']);
+        
+                }else{
+                    $id = "GO001";
+                }
+                break;
+            case "mark":
+                $query = $con->prepare("select * from Mark ORDER BY MARK_ID DESC LIMIT 1");
+                $query->execute();
+                $query_result = $query->get_result();
+                $lastrow = $query_result->fetch_assoc();
+                if ($query_result && mysqli_num_rows($query_result)>0){
+                    $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['MARK_ID']);
+        
+                }else{
+                    $id = "MK001";
+                }
+                break;
+            case "project":
+                $query = $con->prepare("select * from Project ORDER BY PROJ_ID DESC LIMIT 1");
+                $query->execute();
+                $query_result = $query->get_result();
+                $lastrow = $query_result->fetch_assoc();
+                if ($query_result && mysqli_num_rows($query_result)>0){
+                    $id = preg_replace_callback( "|(\d+)|", "increment", $lastrow['PROJ_ID']);
+        
+                }else{
+                    $id = "PR001";
+                }
+                break;
+            default:
+                $id ="invalid";
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
 
         case "supervisor":
             $query = $con->prepare("SELECT NAME FROM Supervisor WHERE SUPERVISOR_ID=?");
@@ -189,10 +262,49 @@ function getNameFromID($con, $id, $type): string
             $name = "invalid";
     }
 
+<<<<<<< HEAD
     $query->execute();
     $query_result = $query->get_result();
     while ($query_arr = mysqli_fetch_assoc($query_result)) {
         $name = $query_arr['NAME'];
+=======
+    function getNameFromID($con, $id, $type):string {
+        switch(strtolower($type)) {      
+            case "student":
+                $query = $con->prepare("SELECT NAME FROM Student HAVING STUDENT_ID=".$id."");
+                break;
+
+            case "supervisor":
+                $query = $con->prepare('SELECT NAME FROM Supervisor WHERE SUPERVISOR_ID="'.$id.'"');
+                break;
+
+            case "meeting":
+                $query = $con->prepare("SELECT NAME FROM Meeting WHERE MEETING_ID=".$id."");
+                break;
+
+            case "goal":
+                $query = $con->prepare("SELECT NAME FROM Goal WHERE GOAL_ID=".$id."");
+                break;
+
+            case "mark":
+                $query = $con->prepare("SELECT NAME FROM Mark WHERE MARK_ID=".$id."");
+                break;
+
+            case "project":
+                $query = $con->prepare('SELECT NAME FROM Project HAVING PROJ_ID='.$id.'');
+                break;
+
+            default:
+                $name ="invalid";
+        }
+
+        $query->execute();
+        $query_result = $query->get_result();
+        while ($query_arr = mysqli_fetch_assoc($query_result)) {
+            $name = $query_arr['NAME'];
+        }
+        return $name;
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
     }
     return $name;
 }
