@@ -154,6 +154,7 @@ function getID($con, $type): string
 
 function getNameFromID($con, $id, $type): string
 {
+    $name = "";
     switch (strtolower($type)) {
         case "student":
             $query = $con->prepare("SELECT NAME FROM Student HAVING STUDENT_ID = ?");
@@ -194,15 +195,16 @@ function getNameFromID($con, $id, $type): string
     while ($query_arr = mysqli_fetch_assoc($query_result)) {
         $name = $query_arr['NAME'];
     }
+
     return $name;
 }
 
-function isApproved($bit)
+function isApproved($APPROVED_SUPERVISOR, $APPROVED_ADMIN)
 {
-    if ($bit == '0') {
-        return 'Pending';
-    } else {
+    if ($APPROVED_SUPERVISOR == "1" && $APPROVED_ADMIN == "1") {
         return 'Approved';
+    } else {
+        return 'Pending';
     }
 }
 

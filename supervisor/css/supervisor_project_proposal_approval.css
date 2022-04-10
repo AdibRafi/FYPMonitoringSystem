@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.project-planning-list {
+.student-proposed-project-list {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +19,10 @@
   justify-content: center;
   word-break: break-word;
   margin: 2rem 5rem 0 5rem;
+}
+
+.planning-box:hover {
+  cursor: pointer;
 }
 
 .planning-box .planning-header {
@@ -46,13 +50,38 @@
   padding: 5px;
 }
 
-/* .approve-project-box {
+.approve-project-box {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+  opacity: 0;
+}
+
+.approve-project-box button {
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  background-color: var(--containerColour);
+  border-radius: 10px;
+  border-width: 0;
+  width: 100px;
+  height: 50px;
+  color: white;
+  opacity: 50%;
+  margin-right: 20px;
+}
+
+.approve-project-box button:hover {
+  opacity: 100%;
+  cursor: pointer;
+}
+
+.btn-box {
   display: flex;
-} */
+  flex-direction: row;
+}
 
 .hidden {
   opacity: 0;
-  width: 0;
   height: 0;
   display: none;
 }
@@ -60,6 +89,5 @@
 .visible {
   opacity: 100%;
   width: 100%;
-  height: 100%;
-  display: block;
+  display: flex;
 }

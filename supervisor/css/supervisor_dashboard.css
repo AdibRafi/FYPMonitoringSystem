@@ -113,16 +113,6 @@
   content: attr(afterBack);
 }
 
-h2 {
-  border-radius: 10px;
-  font-size: large;
-  margin-bottom: 10px;
-  text-align: center;
-  padding: 10px;
-  background-color: var(--containerColour);
-  color: white;
-}
-
 .goal {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
