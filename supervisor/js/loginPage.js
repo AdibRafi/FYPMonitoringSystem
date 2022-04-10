@@ -19,7 +19,6 @@ function professionCheck(that) {
         document.getElementById("professionInput").style.display = "none";
         document.getElementById("registerTitle").innerHTML = "Register as Student";
     }
-
 }
 
 // wait until the window load before executing the function

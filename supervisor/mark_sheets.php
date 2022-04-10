@@ -6,6 +6,31 @@ require("../src/database.php");
 
 $user_data = checkLogin($con);
 
+function generateRow($markName, $weightAge, $descriptionID, $radioName, $jsFunction)
+{
+    echo '<tr>
+           <td>' . $markName . '</td>
+                    <td>' . $weightAge . '</td>
+                    <td>
+                    <div style="width: 300px">
+                        <p id="' . $descriptionID . '">
+                        Press Button to Display Description
+                        </p>
+                    </div>
+                    </td>
+                    <td>
+                        <div class="scoreColumn" onload="' . $jsFunction . '" onclick="' . $jsFunction . '">
+                            <input type="radio" name="' . $radioName . '" value="0">
+                            <input type="radio" name="' . $radioName . '" value="1">
+                            <input type="radio" name="' . $radioName . '" value="2">
+                            <input type="radio" name="' . $radioName . '" value="3">
+                            <input type="radio" name="' . $radioName . '" value="4">
+                            <input type="radio" name="' . $radioName . '" value="5">
+                        </div>
+                    </td>
+                </tr>';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +42,10 @@ $user_data = checkLogin($con);
     <title>Edit Profile</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css"/>
-    <link rel="stylesheet" href="css/editProfile.css"/>
+    <link rel="stylesheet" href="css/markSheet.css"/>
     <!-- Javascripts -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
-    <script type="text/javascript" src="js/editProfile.js" defer></script>
+    <script type="text/javascript" src="js/markSheet.js" defer></script>
 </head>
 
 <body>
@@ -80,28 +105,54 @@ $user_data = checkLogin($con);
         </div>
     </div>
     <div class="content">
-        <div class="edit-profile-box">
-            <h1>Edit Profile</h1>
-            <div class="email-row">
-                <span>Email:<?php echo(" " . $user_data['EMAIL']) ?></span>
-                <div class="button-box">
-                    <button id="<?= $user_data['PASSWORD'] ?>" onclick=changeEmail(this) class="emailChange"
-                            role="button">Change Email
-                    </button>
-                </div>
-            </div>
-            <div class="password-row">
-                    <span>Password:
+        <div class="content-box">
+            <h1>Mark Sheets</h1>
+            <div style="display: inline-block;padding-bottom: 20px">
+                <label>
+                    Select Students:
+                    <select name="studentName" id="studentType" onchange="studentProject(this)">
                         <?php
-                        $passwordLen = strlen($user_data['PASSWORD']);
-                        echo(str_repeat("*", $passwordLen));
-                        ?></span>
-                <div class="button-box">
-                    <button id="<?= $user_data['PASSWORD'] ?>" onclick=changePassword(this) class="passwordChange"
-                            role="button">Change Password
-                    </button>
-                </div>
+                        $sql = "SELECT * FROM Student WHERE MARK_ID IS NULL";
+                        $result = $con->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<option value="' . $row["STUDENT_ID"] . '">'
+                                    . $row["NAME"] . '</option>';
+                            }
+                        }
+                        //todo: find ways to display project name (JS inside php)
+                        //                        $projectName = getNameFromID($con,$row["STUDENT_ID"],"project")
+                        ?>
+                    </select>
+                </label>
             </div>
+            <table>
+                <tr>
+                    <th>Area of Assessment</th>
+                    <th>Weightage</th>
+                    <th>Description</th>
+                    <th>Score</th>
+                </tr>
+                <?php
+                generateRow("Abstract", 3, "abstractDesc",
+                    "abstractScore","abstractJS()");
+                generateRow("Problem Statement", 5, "problemStatementDesc",
+                    "problemStatementScore","problemJS()");
+                generateRow("Literature Review", 10, "literatureReviewDesc",
+                    "literatureScore","literatureJS()");
+                generateRow("Proposed Solution", 20, "proposedSolutionDesc",
+                    "proposeSolutionScore","proposeSolutionJS()");
+                generateRow("Spelling", 3, "spellingDesc",
+                    "spellingScore","spellingJS()");
+                generateRow("Writing Style", 3, "writeStyleDesc",
+                    "writeStyleScore","writeStyleJS()");
+                generateRow("Figures,Tables,Graph", 3, "figureDesc",
+                    "figureScore","figureJS()");
+                generateRow("Abbreviations,Bibliography and Appendices", 3, "abbreviationsDesc",
+                    "abbreviationScore","abbreviationJS()");
+                ?>
+            </table>
+            <input type="submit" name="submit" value="Add Mark">
         </div>
     </div>
 </div>

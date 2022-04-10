@@ -1,0 +1,106 @@
+:root {
+    --bodyColour: #ffdac4;
+    --containerColour: #f6b98e;
+}
+
+
+body {
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    font-size: 100%;
+    background-color: var(--bodyColour);
+    text-align: center;
+}
+
+/* Font Smoothing */
+font{
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+.error{
+    background: #FFCDD2 url(error.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #FF5252;
+    border-color: #FF1744;
+}
+
+.content-box{
+    margin: 5% 50% 5% 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-inputField{
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.content-inputField ::placeholder{
+    font-size: 120%;
+}
+
+/* Register input field styling*/
+.content-inputField input{
+    font-size: 120%;
+    background: transparent;
+    color: black;
+    border-width: 0 0 2px 0;
+    border-color: var(--containerColour);
+    width: 100%;
+    height: 3em;
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    text-align: center;
+}
+
+/* Register Button Styling*/
+.content-box [type=submit] {
+    background-color: var(--containerColour);
+    color: white;
+    height: 5em;
+    width: 50%;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+select:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.content-box [type=submit]:hover{
+    opacity: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.content-inputField select{
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid;
+    border-spacing: 10px;
+    width: 100%;
+}
+
+th, td {
+    padding: 30px;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+input[type='radio'] {
+    transform: scale(1.5);
+}
+
+.scoreColumn{
+    width: 200px;
+}
