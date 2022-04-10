@@ -20,6 +20,7 @@ $user_data = checkLogin($con);
     <link rel="stylesheet" href="css/supervisor_projectPlanning.css">
     <!-- Javascript -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
+    <script type="text/javascript" src="js/approveProject.js" defer></script>
 </head>
 
 <body>
@@ -40,7 +41,7 @@ $user_data = checkLogin($con);
                         <a href="project_proposal_management.php"><img class="sidebar-item" src="../src/icon/project_proposal_management_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
                     </li>
                     <li>
-                        <a><img class="sidebar-item selected" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a><img class="sidebar-item selected" src="../src/icon/approve_student_project.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
                         <a href="student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
@@ -49,9 +50,7 @@ $user_data = checkLogin($con);
                         <a href="meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
                     </li>
                     <li>
-                        <a href="mark_sheets.php"><img class="sidebar-item"
-                                                       src="../src/icon/marking_128px.png"
-                                                       alt="marking icon" title="Mark Sheets"></a>
+                        <a href="mark_sheets.php"><img class="sidebar-item" src="../src/icon/marking_128px.png" alt="marking icon" title="Mark Sheets"></a>
                     </li>
                 </ul>
             </div>
@@ -69,8 +68,8 @@ $user_data = checkLogin($con);
         <div class="content">
             <div class="project-planning-box">
                 <h1 style="text-align: center;">Welcome to Project Planning</h1>
-                <div class="project-planning-list hidden">
-                    <h1>Project Planning List</h1>
+                <div class="student-proposed-project-list">
+                    <h1>Student Proposed Project List</h1>
                     <?php
 
                     $sql = "SELECT * FROM Project where STUDENT_ID is not null and APPROVED_SUPERVISOR = 0 ";
@@ -83,8 +82,8 @@ $user_data = checkLogin($con);
                     if (mysqli_num_rows($getProject_query_result) > 0) {
                         while ($row = mysqli_fetch_assoc($getProject_query_result)) {
                             $studentData = getStudentDatabyStudentID($con, $row['STUDENT_ID']);
-                            echo "<div class='planning-box'>";
-                            echo "<div class='planning-header'>";
+                            echo "<div class='planning-box' onclick='clickedProject(this)'>";
+                            echo "<div class='planning-header' id='" . $row["PROJ_ID"] . "'>";
                             echo "<h2>" . $row["PROJ_ID"] . "<br>" . $row["NAME"] . "</h2>";
                             echo "</div>";
                             echo "<div class='planing-body'>";
@@ -103,15 +102,18 @@ $user_data = checkLogin($con);
                             echo "</div>";
                         }
                     } else {
-                        echo "<div style='padding:10px' class='planning-box'>";
-                        echo "<h2>THERE IS NO PROJECT PLANNING</h2>";
+                        echo "<div style='padding:10px;pointer-events: none;' class='planning-box'>";
+                        echo "<h2>NO STUDENT PROPOSED PROJECT</h2>";
                         echo "</div>";
                     }
                     ?>
                 </div>
                 <div class="approve-project-box">
-                    <button> Approve </button>
-                    <button> Reject </button>
+                    <h1 class="approve-project-box-title">Approve project</h1>
+                    <div class="btn-box">
+                        <button class="approve-btn"> Approve </button>
+                        <button class="close-btn"> Close </button>
+                    </div>
                 </div>
             </div>
 

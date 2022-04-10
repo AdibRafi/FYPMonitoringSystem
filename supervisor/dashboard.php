@@ -40,7 +40,7 @@ $user_data = checkLogin($con);
                         <a href="project_proposal_management.php"><img class="sidebar-item" src="../src/icon/project_proposal_management_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
                     </li>
                     <li>
-                        <a href="project_planning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
+                        <a href="project_planning.php"><img class="sidebar-item" src="../src/icon/approve_student_project.png" alt="project planning icon" title="Project Planning"></a>
                     </li>
                     <li>
                         <a href="student-to-project_assignment.php"><img class="sidebar-item" src="../src/icon/student-to-project_assignment_128px.png" alt="student-to-project assignment icon" title="Student-To-Project Assignment"></a>
@@ -49,9 +49,7 @@ $user_data = checkLogin($con);
                         <a href="meeting_management.php"><img class="sidebar-item" src="../src/icon/meeting_management_128px.png" alt="meeting management icon" title="Meeting Management"></a>
                     </li>
                     <li>
-                        <a href="mark_sheets.php"><img class="sidebar-item"
-                                                       src="../src/icon/marking_128px.png"
-                                                       alt="marking icon" title="Mark Sheets"></a>
+                        <a href="mark_sheets.php"><img class="sidebar-item" src="../src/icon/marking_128px.png" alt="marking icon" title="Mark Sheets"></a>
                     </li>
                 </ul>
             </div>
@@ -74,7 +72,7 @@ $user_data = checkLogin($con);
                 $supervisorID = $_SESSION['SUPERVISOR_ID'];
                 $index = 0;
 
-                $query = "SELECT Student.STUDENT_ID,Student.PROJ_ID,Student.NAME as SName,Project.NAME as PName from Student join Project where Project.STUDENT_ID = Student.STUDENT_ID and Project.SUPERVISOR_ID = ?";
+                $query = "SELECT Student.STUDENT_ID,Student.NAME as SName,Project.NAME as PName,Project.PROJ_ID from Student join Project where Project.STUDENT_ID = Student.STUDENT_ID and Project.SUPERVISOR_ID = ?";
                 $getStudentList_query = $con->prepare($query);
                 $getStudentList_query->bind_param("s", $supervisorID);
                 $getStudentList_query->execute();
