@@ -88,19 +88,19 @@ $querySup_result = $querySup->get_result();
                             }
                         }
                     } else {
-                        echo '<h2>No goals are currently set</h2>';
+                        echo '<h2>No projects are currently set</h2>';
                     }
                     ?>
                 </table>
             </div>
             <div class="planInfo">
                 <form method="get" action="../src/addProject.php">
-                    <div class="plan">
+                    <div class="plan inputTextField">
                         <h2><label>Plan</label></h2>
                         <input type="text" name="plan_name" placeholder="Enter Your Plan" required>
                     </div>
 
-                    <div class="planDesc">
+                    <div class="planDesc inputTextField">
                         <h2><label>Plan Description</label></h2>
                         <input type="text" name="plan_desc" placeholder="Enter Plan Description" required>
                     </div>
@@ -117,15 +117,17 @@ $querySup_result = $querySup->get_result();
                             ?>
                     </div>
 
-                    <div class="backupPlan">
-                        <h2><label>Backup Plan</label></h2>
-                        <input type="text" name="plan_backup" placeholder="Enter Your Backup Plan" required>
-                    </div>
+                   
 
-                    <div class="student">
+                    <div class="studentHiddenValue ">
                         <?php
                         echo '<input type="hidden" name ="student_id" value="' . $_SESSION['STUDENT_ID'] . '">';
                         ?>
+                    </div>
+
+                    <div class="backupPlan inputTextField">
+                        <h2><label>Backup Plan</label></h2>
+                        <input type="text" name="plan_backup" placeholder="Enter Your Backup Plan" required>
                     </div>
 
                     <p class="addPlan"><input type="Submit" value="Add Plan"></p>

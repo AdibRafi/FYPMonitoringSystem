@@ -11,7 +11,7 @@
 
 .student {
   text-align: center;
-  border-style: solid;
+  border-style: none;
   padding: 10px;
 }
 
@@ -140,4 +140,16 @@ td {
 
 .tableSize {
   width: 100%;
+}
+
+.inputTextField input{
+  font-size: 100%;
+  background: transparent;
+  color: black;
+  border-width: 0 0 2px 0;
+  border-color: var(--containerColour);
+  width: 75%;
+  height: 3em;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  text-align: center;
 }

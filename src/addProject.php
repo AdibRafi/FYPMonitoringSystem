@@ -32,9 +32,9 @@ if ($project_id === "invalid") {
 
 //Insert data into database accordingly
 echo '<script>console.log("'.$project_id.'")</script>';
-$addProject_query = $con->prepare("INSERT INTO Project (PROJ_ID, NAME, DESCRIPTION, STUDENT_ID, SUPERVISOR_ID, BACKUP_DESCRIPTION, IS_APPROVED) values(?,?,?,?,?,?,?)");
+$addProject_query = $con->prepare("INSERT INTO Project (PROJ_ID, NAME, DESCRIPTION, STUDENT_ID, SUPERVISOR_ID, BACKUP_DESCRIPTION, APPROVED_SUPERVISOR,APPROVED_ADMIN) values(?,?,?,?,?,?,?,?)");
 
-$addProject_query_result = $addProject_query->execute([$project_id, $project_name, $project_description, $student_id, $supervisor_id, $project_backup, false]);
+$addProject_query_result = $addProject_query->execute([$project_id, $project_name, $project_description, $student_id, $supervisor_id, $project_backup, false, false]);
 
 $addProject_query->close();
 $con->next_result();
