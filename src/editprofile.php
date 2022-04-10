@@ -159,7 +159,11 @@
             }
 
             //IF PASSED BOTH TEST ABOVE, DO QUERY UPDATE DATABASE
+<<<<<<< HEAD
+            $sql = "UPDATE Student set EMAIL = ? where STUDENT_ID = ?";
+=======
             $sql = "UPDATE Student set email = ? where STUDENT_ID = ?";
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
             $changePassword_query = $con->prepare($sql);
             $changePassword_query->bind_param("ss",$changePassword,$_SESSION['STUDENT_ID']);
             $changePassword_query->execute();
@@ -173,5 +177,3 @@
         }
 
     }
-
-?>

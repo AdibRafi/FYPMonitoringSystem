@@ -34,11 +34,40 @@
         $result_query = $student_check_query->get_result();
         $student = $result_query->fetch_assoc();
 
+<<<<<<< HEAD
+    $student_user = $_GET['student_id'];
+    $supervisor_user = $_GET['supervisor_id'];
+    $start = new DateTime($_GET['date'] . ' ' . $_GET['start_time']);
+    $start_string = $start->format('Y-m-d H:i');
+    $end = new DateTime($_GET['date'] . " " . $_GET['end_time']);
+    $end_string = $end->format('Y-m-d H:i');
+    $place = $_GET['place'];
+    $duration = abs($start->getTimestamp() - $end->getTimestamp()) / 60; //duration in minutes
+    $meeting_name = $_GET['name'];
+
+    if (empty($meeting_name)) {
+        $meeting_name = $student_user . " and " . $supervisor_user . " meeting";
+    }
+
+    //Check if student is in database
+    $student_check_query = $con->prepare("SELECT * FROM Student WHERE STUDENT_ID = ?");
+    $student_check_query->bind_param("s", $student_user);
+    $student_check_query->execute();
+    $result_query = $student_check_query->get_result();
+    $student = $result_query->fetch_assoc();
+
+    $student_check_query->close();
+    $con->next_result();
+
+    if (!$student) {
+        echo ("<script>
+=======
         $student_check_query->close();
         $con->next_result();
         
         if (!$student){
             echo ("<script>
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
             alert('Student is not in the database, please try again');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
@@ -51,17 +80,40 @@
         $result_query = $supervisor_check_query->get_result();
         $supervisor = $result_query->fetch_assoc();
 
+<<<<<<< HEAD
+    //Check if supervisor is in database
+    $supervisor_check_query = $con->prepare("SELECT * FROM Supervisor WHERE SUPERVISOR_ID = ?");
+    $supervisor_check_query->bind_param("s", $supervisor_user);
+    $supervisor_check_query->execute();
+    $result_query = $supervisor_check_query->get_result();
+    $supervisor = $result_query->fetch_assoc();
+
+    $supervisor_check_query->close();
+    $con->next_result();
+
+    if (!$supervisor) {
+        echo ("<script>
+=======
         $supervisor_check_query->close();
         $con->next_result();
         
         if (!$supervisor){
             echo ("<script>
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
             alert('Supervisor is not in the database, please try again');
             window.location.href='../supervisor/meeting_management.php';
             </script>");
         }
 
+<<<<<<< HEAD
+    //checking if Student is occupied
+    $dateTime_check_query = $con->prepare("SELECT * FROM Meeting WHERE STUDENT_ID = ?");
+    $dateTime_check_query->bind_param("s", $student_users);
+    $dateTime_check_query->execute();
+    $dateTime_query_result = $dateTime_check_query->get_result();
+=======
         //Check table to ensure no conflict
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
 
         //checking if supervisor is occupied
         $dateTime_check_query = $con ->prepare("SELECT * FROM Meeting WHERE SUPERVISOR_ID = ?");
@@ -138,9 +190,15 @@
             </script>");
         }
 
+<<<<<<< HEAD
+    //Insert data into database accordingly
+    $addMeet_query = $con->prepare("INSERT INTO Meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,SUPERVISOR_ID) values(?,?,?,?,?,?,?)");
+    $addMeet_query_result = $addMeet_query->execute([$meeting_id, $meeting_name, $place, $start_string, $duration, $student_user, $supervisor_user]);
+=======
         //Insert data into database accordingly
         $addMeet_query = $con->prepare("INSERT INTO Meeting (MEET_ID,NAME,PLACE,TIME,DURATION,STUDENT_ID,SUPERVISOR_ID) values(?,?,?,?,?,?,?)");
         $addMeet_query_result = $addMeet_query->execute([$meeting_id,$meeting_name, $place, $start_string, $duration, $student_user,$supervisor_user]);
+>>>>>>> 5ba7d2f2a37ff04aa6f7f079acafc58b35440315
 
         $addMeet_query->close();
         $con->next_result();

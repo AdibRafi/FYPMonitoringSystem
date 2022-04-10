@@ -85,15 +85,18 @@ $user_data = checkLogin($con);
 
                     if (mysqli_num_rows($getProjectList_query_result) > 0) {
                         while ($row = $getProjectList_query_result->fetch_assoc()) {
-                            $isApproved = ($row['IS_APPROVED'] == 0) ? "Not Approved" : "Approved";
-                            $statusCSS = ($row['IS_APPROVED'] == 0) ? "redFont" : "greenFont";
+                            $isApprovedbyAdmin = ($row['APPROVED_ADMIN'] == 0) ? "Not Approved" : "Approved";
+                            $isApprovedbySupervisor = ($row['APPROVED_SUPERVISOR'] == 0) ? "Not Approved" : "Approved";
+                            $statusCSS_isApprovedbyAdmin = ($row['APPROVED_ADMIN'] == 0) ? "redFont" : "greenFont";
+                            $statusCSS_isApprovedbySupervisor = ($row['APPROVED_SUPERVISOR'] == 0) ? "redFont" : "greenFont";
 
                             echo "<div class='project-box'>";
                             echo "<div id=" . $row['PROJ_ID'] . " style='display: flex;align-items: center;'>Project ID: " . $row['PROJ_ID'] . "<span class='remove-project-btn' onclick='removeProjectBtn(this)'>&times;</span></div>";
                             echo "<div>Project Name: " . $row['NAME'] . "</div>";
                             echo "<div>Project Description: " . $row['DESCRIPTION'] . "</div>";
                             echo "<div>Proposed by: " . $user_data['NAME'] . "</div>";
-                            echo "<div>Approved: " . "<span class='" . $statusCSS . "'>" . $isApproved . "</span></div>";
+                            echo "<div>Approved by Admin: " . "<span class='" . $statusCSS_isApprovedbyAdmin . "'>" . $isApprovedbyAdmin . "</span></div>";
+                            echo "<div>Approved by Supervisor: " . "<span class='" . $statusCSS_isApprovedbySupervisor . "'>" . $isApprovedbySupervisor . "</span></div>";
                             echo "</div>";
                         }
                     } else {
