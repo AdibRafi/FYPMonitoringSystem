@@ -138,14 +138,16 @@ $user_data = checkLogin($con);
                         } else {
                             echo ("
                                 <div class = 'goal'>
-                                    <h2>THERE IS NO GOAL SET FROM THIS STUDENT</h2>
+                                    <h2 style='text-align:center'>NO GOALS</h2>
                                 </div>
                             ");
                         }
                     }
                 } else {
                     echo ("
-                        <h2>THERE IS NO STUDENT UNDER YOU CURRENTLY</h2>
+                    <div class = 'goal' style='box-shadow:none'>
+                        <h2 style='text-align:center'>NO PROJECTS/GOALS</h2>
+                        </div>
                     ");
                 }
 
