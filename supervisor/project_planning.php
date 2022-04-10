@@ -67,7 +67,7 @@ $user_data = checkLogin($con);
         </div>
         <div class="content">
             <div class="project-planning-box">
-                <h1 style="text-align: center;">Welcome to Project Planning</h1>
+                <h1 style="text-align: center;">Welcome to Project Proposal Approval</h1>
                 <div class="student-proposed-project-list">
                     <h1>Student Proposed Project List</h1>
                     <?php
