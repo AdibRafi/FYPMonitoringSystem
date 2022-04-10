@@ -17,7 +17,7 @@ $user_data = checkLogin($con);
     <title>Project Planning</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css">
-    <link rel="stylesheet" href="css/supervisor_projectPlanning.css">
+    <link rel="stylesheet" href="css/supervisor_project_proposal_approval.css">
     <!-- Javascript -->
     <script type="text/javascript" src="js/sidebar.js" defer></script>
 </head>
