@@ -60,6 +60,18 @@ function getToken($length): string
     return substr(md5(rand()), 0, $length);
 }
 
+function getStudentIDByProjectID($con, $projectID)
+{
+    $getStudentID_query = $con->prepare("SELECT STUDENT_ID FROM Project WHERE PROJ_ID = ?");
+    $getStudentID_query->bind_param("s", $projectID);
+    $getStudentID_query->execute();
+    $getStudentID_query_result = $getStudentID_query->get_result();
+
+    $getStudentID_query->close();
+    $con->next_result();
+
+    return mysqli_fetch_assoc($getStudentID_query_result)['STUDENT_ID'];
+}
 
 function checkUsername($user_id, $user_type)
 {
