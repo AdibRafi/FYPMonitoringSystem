@@ -12,7 +12,7 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
     if (!(empty($projectID)) && !(empty($studentID))) {
         $studentData = getStudentDatabyStudentID($con, $studentID);
 
-        $sql = "UPDATE project set STUDENT_ID = ? WHERE PROJ_ID = ?";
+        $sql = "UPDATE Project set STUDENT_ID = ? WHERE PROJ_ID = ?";
         $updateProject_query = $con->prepare($sql);
         $updateProject_query->execute([$studentID, $projectID]);
         $updateProject_query_result = $updateProject_query->get_result();
@@ -21,7 +21,7 @@ if (isset($_SESSION['token']) && isset($form_token) && $_SESSION['token'] === $f
         $con->next_result();
 
         if (mysqli_affected_rows($con)) {
-            $sql = "UPDATE student set PROJ_ID = ? where STUDENT_ID = ?";
+            $sql = "UPDATE Student set PROJ_ID = ? where STUDENT_ID = ?";
             $updateStudent_query = $con->prepare($sql);
             $updateStudent_query->execute([$projectID, $studentID]);
             $updateStudent_query_result = $updateStudent_query->get_result();

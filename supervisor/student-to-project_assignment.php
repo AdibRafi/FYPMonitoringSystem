@@ -67,7 +67,7 @@ $user_data = checkLogin($con);
                 <div class="approved-project-list-box">
                     <h1>Approved Project List</h1>
                     <?php
-                    $sql = "SELECT * FROM project WHERE IS_APPROVED = 1 and SUPERVISOR_ID = ? and STUDENT_ID is NULL";
+                    $sql = "SELECT * FROM project WHERE APPROVED_SUPERVISOR = 1 and SUPERVISOR_ID = ? and STUDENT_ID is NULL";
                     $getApprovedProject_query = $con->prepare($sql);
                     $getApprovedProject_query->execute([$user_data['SUPERVISOR_ID']]);
                     $getApprovedProject_query_result = $getApprovedProject_query->get_result();

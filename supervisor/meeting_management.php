@@ -72,7 +72,7 @@ $user_data = checkLogin($con);
                     <?php
                     require("../src/database.php");
 
-                    $getMeetingList_query = $con->prepare("SELECT * FROM meeting where SUPERVISOR_ID = ?");
+                    $getMeetingList_query = $con->prepare("SELECT * FROM Meeting where SUPERVISOR_ID = ?");
                     $getMeetingList_query->bind_param("s", $_SESSION['SUPERVISOR_ID']);
                     $getMeetingList_query->execute();
                     $getMeetingList_query_result = $getMeetingList_query->get_result();

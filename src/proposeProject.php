@@ -13,7 +13,7 @@ if (isset($_SESSION['token']) && isset($token) && $_SESSION['token'] === $token)
     $projectID = getID($con, "project");
     $supervisor_id = $_SESSION['SUPERVISOR_ID'];
 
-    $sql = "insert into project (PROJ_ID,NAME,DESCRIPTION,SUPERVISOR_ID,IS_APPROVED)values(?,?,?,?,0)";
+    $sql = "insert into Project (PROJ_ID,NAME,DESCRIPTION,SUPERVISOR_ID,APPROVED_SUPERVISOR,APPROVED_ADMIN)values(?,?,?,?,1,0)";
     $addProject_query = $con->prepare($sql);
     $addProject_query->bind_param("ssss", $projectID, $projectName, $projectDescription, $supervisor_id);
     $addProject_query->execute();

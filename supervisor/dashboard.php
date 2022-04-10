@@ -69,7 +69,7 @@ $user_data = checkLogin($con);
                 $supervisorID = $_SESSION['SUPERVISOR_ID'];
                 $index = 0;
 
-                $query = "SELECT student.STUDENT_ID,student.PROJ_ID,student.NAME as SName,project.NAME as PName from student join project where project.STUDENT_ID = student.STUDENT_ID and project.SUPERVISOR_ID = ?";
+                $query = "SELECT Student.STUDENT_ID,Student.PROJ_ID,Student.NAME as SName,Project.NAME as PName from Student join Project where Project.STUDENT_ID = Student.STUDENT_ID and Project.SUPERVISOR_ID = ?";
                 $getStudentList_query = $con->prepare($query);
                 $getStudentList_query->bind_param("s", $supervisorID);
                 $getStudentList_query->execute();
@@ -80,7 +80,7 @@ $user_data = checkLogin($con);
                 if ($getStudentList_query_result && mysqli_num_rows($getStudentList_query_result) > 0) {
                     while ($studentList = $getStudentList_query_result->fetch_assoc()) {
 
-                        $query = "SELECT *,Goal.NAME as GNAME,Project.NAME as PNAME FROM Goal JOIN Project on Goal.Proj_id = Project.Proj_id where SUPERVISOR_ID = ? and goal.STUDENT_ID = ? order by goal.STUDENT_ID;";
+                        $query = "SELECT *,Goal.NAME as GNAME,Project.NAME as PNAME FROM Goal JOIN Project on Goal.Proj_id = Project.Proj_id where SUPERVISOR_ID = ? and Goal.STUDENT_ID = ? order by Goal.STUDENT_ID;";
                         $getStudentGoals_query = $con->prepare($query);
                         $getStudentGoals_query->bind_param("ss", $supervisorID, $studentList['STUDENT_ID']);
                         $getStudentGoals_query->execute();

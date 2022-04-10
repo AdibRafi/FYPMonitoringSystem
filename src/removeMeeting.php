@@ -4,7 +4,7 @@ require('database.php');
 
 $meetID = $_GET['meetID'];
 
-$sql = "DELETE FROM meeting WHERE MEET_ID = ?";
+$sql = "DELETE FROM Meeting WHERE MEET_ID = ?";
 $removeMeet_query = $con->prepare($sql);
 $removeMeet_query->bind_param("s", $meetID);
 $removeMeet_query->execute();
