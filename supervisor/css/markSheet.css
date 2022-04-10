@@ -105,8 +105,10 @@ td {
 tr:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
+
 input[type="radio"] {
   transform: scale(1.5);
+  z-index: 1;
 }
 
 .scoreColumn {

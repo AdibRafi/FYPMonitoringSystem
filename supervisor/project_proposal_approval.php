@@ -14,7 +14,7 @@ $user_data = checkLogin($con);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Project Planning</title>
+    <title>Project Proposal Approval</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/sidebar_header.css">
     <link rel="stylesheet" href="css/supervisor_project_proposal_approval.css">
