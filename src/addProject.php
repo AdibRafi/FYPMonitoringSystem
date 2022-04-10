@@ -8,7 +8,7 @@ $project_name = $_GET['plan_name'];
 $project_description = $_GET['plan_desc'];
 $supervisor_id = $_GET['supervisor_id'];
 $project_backup = $_GET['plan_backup'];
-$student_name = $_GET['student_id'];
+$student_id = $_GET['student_id'];
 
 //Ensure length is not more than 1000
 if (strlen($project_description) > 1000) {
