@@ -20,7 +20,7 @@ $queryProj_supervisorID = "";
 
 if ($queryProj_result && mysqli_num_rows($queryProj_result) > 0) {
     while ($proj_arr = mysqli_fetch_assoc($queryProj_result)) {
-        if (isApproved($proj_arr['APPROVED_SUPERVISOR'], $proj_arr['APPROVED_ADMIN'])) {
+        if (isApproved($proj_arr['APPROVED_SUPERVISOR'], $proj_arr['APPROVED_ADMIN']) === "Approved") {
             $queryProj_ID = $proj_arr['PROJ_ID'];
             $queryProj_Name = $proj_arr['NAME'];
             $queryProj_supervisorID = $proj_arr['SUPERVISOR_ID'];
@@ -93,6 +93,7 @@ if ($queryProj_result && mysqli_num_rows($queryProj_result) > 0) {
                             }
                             ?>
                         </div>
+                        <p>NOTE: Only most recent approved project can be submitted</p>
                         <div class="name">
                         </div>
                         <?php

@@ -6,6 +6,19 @@
   height: 0;
 }
 
+.dropdown option{
+  color: #fff;
+  padding: 0 10px;
+}
+
+.dropdown {
+    background: #f6b98e;
+    color: #000;
+    padding: 0 10px;
+    font-size: 22px;
+    border-radius: 5px;
+}
+
 .goalName,
 .goalDescription {
   padding-top: 25px;

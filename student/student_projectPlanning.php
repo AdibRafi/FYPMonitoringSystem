@@ -110,7 +110,7 @@ $querySup_result = $querySup->get_result();
 
                     <div class="supervisorDropDown">
                         <h2><label>Supervisor</label></h2>
-                        <select name="supervisor_id">
+                        <select name="supervisor_id" class="dropdown">
                             <option value="SNULL">Select Supervisor</option>
                             <?php
                             //Foreach loop to send the id values and the option

@@ -1,11 +1,16 @@
 #mark-box {
   justify-content: center;
   /* border: 1px solid black; */
-  padding: 1rem;
+  padding: 1.2rem;
+  background: rgba(235, 168, 86, 0.769);
   border-radius: 10px;
+  height: fit-content;
+  width: 60%;
+  padding: 20px;
   margin-top: 2rem;
-  width: 50%;
-  color: white;
+  margin-left: 20%;
+  margin-right: 10px;
+  color: black;
 }
 
 .skill-bars {

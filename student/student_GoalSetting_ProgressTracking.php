@@ -83,7 +83,7 @@ $queryGoal_result = $queryGoal->get_result();
                     <div class="projectDropDown">
                         <h2><label>Select Project:</label>
                             <h2>
-                                <select name="project_id">
+                                <select name="project_id" class="dropdown">
                                     <option value="PRNUL">Select Project</option>
                                     <?php
                                     //Foreach loop to send the id values and the option
