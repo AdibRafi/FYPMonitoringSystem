@@ -10,10 +10,26 @@ $supervisor_id = $_GET['supervisor_id'];
 $project_backup = $_GET['plan_backup'];
 $student_id = $_GET['student_id'];
 
-//Ensure length is not more than 1000
+//Ensure length has not exceeded db limit
+if (strlen($project_name) > 90) {
+    echo ("<script>
+        alert('Project name is too long!');
+        window.location.href='../student/student_projectPlanning.php';
+        </script>");
+    die;
+}
+
 if (strlen($project_description) > 1000) {
     echo ("<script>
         alert('Project description is too long!');
+        window.location.href='../student/student_projectPlanning.php';
+        </script>");
+    die;
+}
+
+if (strlen($project_backup) > 1000) {
+    echo ("<script>
+        alert('Project backup description is too long!');
         window.location.href='../student/student_projectPlanning.php';
         </script>");
     die;

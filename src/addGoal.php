@@ -11,7 +11,7 @@ $goal_percentage = $_GET['goal_percentage'];
 $student_name = $_GET['student_id'];
 
 //Handle percentage offset
-if ($goal_percentage > 100 || $goal_percentage < 1) {
+if ($goal_percentage > 100 || $goal_percentage < 0.01) {
     echo("<script>
         alert('Goal percentage invalid');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
@@ -25,8 +25,24 @@ if ($project_id === "PRNUL") {
     die;
 }
 
+//Handle long entry
+if (strlen($goal_name) > 90) {
+    echo "<script>alert('Goal name is too long!');
+        window.location.href='../student/student_GoalSetting_ProgressTracking.php';
+        </script>";
+    die;
+}
 
-$goal_percentage = $goal_percentage / 100;
+if (strlen($goal_description) > 1000) {
+    echo "<script>alert('Goal description is too long!');
+        window.location.href='../student/student_GoalSetting_ProgressTracking.php';
+        </script>";
+    die;
+}
+
+if ($goal_percentage > 1) {
+    $goal_percentage = $goal_percentage / 100;
+}
 
 //Get ID of latest data entry
 $get_check_query = "SELECT GOAL_ID FROM Goal";

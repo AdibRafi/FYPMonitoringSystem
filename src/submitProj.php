@@ -14,9 +14,16 @@
     if ($mark_id === "invalid") {
         echo ("<script>
             alert('invalid ID, please try again');
-            window.location.href='../student/student_GoalSetting_ProgressTracking.php';
+            window.location.href='../student/submitProj.php';
             </script>");
         die;
+    }
+
+    if(strlen($mark_path) > 1000) {
+        echo ("<script>
+            alert('Link is too long, please send a shorter link');
+            window.location.href='../student/submitProj.php';
+            </script>");
     }
 
     $addMark_query = $con->prepare("INSERT INTO Mark (MARK_ID, NAME, PATH, PERCENTAGE, IS_MARKED, SUPERVISOR_ID, STUDENT_ID) values(?,?,?,?,?,?,?)");

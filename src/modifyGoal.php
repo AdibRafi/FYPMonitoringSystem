@@ -6,15 +6,16 @@ $goal_id = $_GET['goal_id'];
 $goal_percentage = $_GET['goal_percentage'];
 
 //Handle percentage offset
-if ($goal_percentage > 100 || $goal_percentage < 1) {
+if ($goal_percentage > 100 || $goal_percentage < 0.01) {
     echo ("<script>
         alert('Goal percentage invalid" . $goal_percentage . "');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
     die();
 }
-
-$goal_percentage = $goal_percentage / 100;
+if ($goal_percentage > 1) {
+    $goal_percentage = $goal_percentage / 100;
+}
 
 //Prepare query
 $modify_goal = $con->prepare('UPDATE Goal SET PERCENTAGE=' . $goal_percentage . ' WHERE GOAL_ID="' . $goal_id . '"');
