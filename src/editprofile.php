@@ -158,9 +158,9 @@ if (isset($_SESSION['STUDENT_ID'])) {
 
         //IF PASSED BOTH TEST ABOVE, DO QUERY UPDATE DATABASE
         $sql = "UPDATE Student set EMAIL = ? where STUDENT_ID = ?";
-        $changePassword_query = $con->prepare($sql);
-        $changePassword_query->bind_param("ss", $changePassword, $_SESSION['STUDENT_ID']);
-        $changePassword_query->execute();
+        $changeEmail_query = $con->prepare($sql);
+        $changeEmail_query->bind_param("ss", $changeEmail, $_SESSION['STUDENT_ID']);
+        $changeEmail_query->execute();
         //CHANGE TO STUDENT'S EDIT PROFILE PAGE
         echo ("
             <script>

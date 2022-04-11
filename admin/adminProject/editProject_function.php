@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $getProject = $getSql->fetch_assoc();
 
     $updateSql = "UPDATE Project Set NAME = '" . $newName . "', DESCRIPTION = '" . $newDescription . "',
-    BACKUP_DESCRIPTION = '" . $newBackupDescription . "',IS_APPROVED = b'1' WHERE Project.PROJ_ID = '" . $oldProjectID . "'";
+    BACKUP_DESCRIPTION = '" . $newBackupDescription . "' WHERE Project.PROJ_ID = '" . $oldProjectID . "'";
 
 
     if ($con->query($updateSql) === TRUE) {
