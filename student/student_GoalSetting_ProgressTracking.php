@@ -104,7 +104,7 @@ $queryGoal_result = $queryGoal->get_result();
                                 while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
                                     if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']
                                         && $project_arr['APPROVED_SUPERVISOR'] === 1
-                                        && $project_arr['APPROVED_ADMIN'] === 0) {
+                                        && $project_arr['APPROVED_ADMIN'] === 1) {
                                         echo '<option value="' . $project_arr['PROJ_ID'] . '">' . $project_arr['NAME'] . '</option>';
                                     }
                                 }
