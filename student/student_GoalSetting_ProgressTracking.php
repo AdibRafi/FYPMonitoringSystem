@@ -6,7 +6,7 @@ require("../src/database.php");
 
 $user_data = checkLogin($con);
 
-$queryProj = $con->prepare("SELECT PROJ_ID,NAME,STUDENT_ID FROM Project");
+$queryProj = $con->prepare('SELECT * FROM Project WHERE STUDENT_ID = "' . $user_data["STUDENT_ID"] . '"');
 $queryProj->execute();
 $queryProj_result = $queryProj->get_result();
 
@@ -102,7 +102,9 @@ $queryGoal_result = $queryGoal->get_result();
                                 <?php
                                 //Foreach loop to send the id values and the option
                                 while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
-                                    if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {
+                                    if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']
+                                        && $project_arr['APPROVED_SUPERVISOR'] === 1
+                                        && $project_arr['APPROVED_ADMIN'] === 0) {
                                         echo '<option value="' . $project_arr['PROJ_ID'] . '">' . $project_arr['NAME'] . '</option>';
                                     }
                                 }
@@ -128,10 +130,6 @@ $queryGoal_result = $queryGoal->get_result();
         <div class="currentGoal">
             <section>
                 <?php
-                $queryGoal = $con->prepare('SELECT * FROM Goal WHERE STUDENT_ID = "' . $user_data["STUDENT_ID"] . '"');
-                $queryGoal->execute();
-                $queryGoal_result = $queryGoal->get_result();
-
                 if ($queryGoal_result && mysqli_num_rows($queryGoal_result) > 0) {
                     while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
                         echo '<p class="fontsizeGoal">' . $goal_arr['NAME'] . '
