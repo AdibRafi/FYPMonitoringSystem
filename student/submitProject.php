@@ -6,11 +6,11 @@
 
     $user_data = checkLogin($con);
 
-    $queryGoal = $con->prepare("SELECT * FROM Goal");
+    $queryGoal = $con->prepare('SELECT * FROM Goal WHERE STUDENT_ID = "' . $user_data["STUDENT_ID"] . '"');
     $queryGoal->execute();
     $queryGoal_result = $queryGoal->get_result();
 
-    $queryProj = $con->prepare("SELECT * FROM Project");
+    $queryProj = $con->prepare('SELECT * FROM Project WHERE STUDENT_ID = "' . $user_data["STUDENT_ID"] . '"');
     $queryProj->execute();
     $queryProj_result = $queryProj->get_result();
 
