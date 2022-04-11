@@ -105,7 +105,7 @@
                             echo '<input type="hidden" name="supervisor_id" value="'.$queryProj_supervisorID.'" required>';
                         ?>
 
-                        <p class="addPlan"><input type="Submit" value="Submit Project"></p>
+                        <p class="submitProject"><input type="Submit" value="Submit Project"></p>
                     </form>
                 </div>
             </div>

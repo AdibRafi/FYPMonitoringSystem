@@ -15,12 +15,6 @@
   padding: 10px;
 }
 
-/* .plan {
-}
-
-.addPlan {
-} */
-
 .planInfo {
   border-left: 5px solid;
   align-items: center;
@@ -40,12 +34,6 @@
   padding-top: 15px;
   padding-bottom: 15px;
 }
-
-/* * {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-} */
 
 body {
   font-family: Helvetica;
@@ -149,8 +137,28 @@ td {
   color: black;
   border-width: 0 0 2px 0;
   border-color: var(--containerColour);
-  width: 75%;
+  width: 100%;
   height: 3em;
   font-family: "Roboto", Verdana, Arial, sans-serif;
   text-align: center;
+}
+
+.addPlan {
+  display: flex;
+  justify-content: center;
+}
+
+.addPlan input[type="submit"] {
+  background-color: var(--containerColour);
+  color: white;
+  border-style: none;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 15px;
+  opacity: 50%;
+}
+
+.addPlan input[type="submit"]:hover {
+  opacity: 100%;
+  cursor: pointer;
 }

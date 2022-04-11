@@ -1,110 +1,136 @@
-.banner{
-    padding-left: 30px;
+.banner {
+  padding-left: 30px;
 }
-  
-.student{
-    text-align: center;
-    border-style:solid;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-}
-  
 
-.goalName, .goalDescription {
-    padding-top: 25px;
+.student {
+  height: 0;
+}
+
+.goalName,
+.goalDescription {
+  padding-top: 25px;
 }
 
 .addgoal {
-    padding-top: 50px;
 }
 
 .currentGoal {
-    margin-left: 10px;
-    padding-left: 20px;
-    padding-top: 100px;
-    border-left : 5px solid;
+  margin-left: 10px;
+  padding-left: 20px;
+  padding-top: 100px;
+  border-left: 5px solid;
 }
 
 .deleteIcon {
-    padding-left: 60px;
-    width: 20px;
-    height: 20px;
-    margin-top: 1rem;
+  padding-left: 60px;
+  width: 20px;
+  height: 20px;
+  margin-top: 1rem;
 }
 
 .fontsizeGoal {
-    font-size: 25px;
+  font-size: 25px;
 }
 
-.popupEdit{
-    background: rgba(0,0,0,0.6);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.popupEdit {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .popupRemove {
-    background: rgba(0,0,0,0.6);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;  
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .popup-content {
-    height: 250px;
-    width: 500px;
-    background: #ffff;
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-    display: block;
+  height: 250px;
+  width: 500px;
+  background: #ffff;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  display: block;
 }
 
-
 .closeBtn {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 30%;
-    padding: 10px;
-    background: #fff;
-    border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 30%;
+  padding: 10px;
+  background: #fff;
+  border-radius: 50%;
 }
 
 .popupInput {
-    margin: 20px auto;
-    display: block;
-    border-radius: 5px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 5px;
 }
 
 .button {
-    background: burlywood;
-    padding: 10px 15px;
-    margin-bottom: 40px;
-    border-radius: 5px;
-    text-decoration: none;
+  background: var(--containerColour);
+  padding: 10px 15px;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  text-decoration: none;
+  opacity: 50%;
 }
 
-.inputTextField input{
-    font-size: 100%;
-    background: transparent;
-    color: black;
-    border-width: 0 0 2px 0;
-    border-color: var(--containerColour);
-    width: 75%;
-    height: 3em;
-    font-family: "Roboto", Verdana, Arial, sans-serif;
-    text-align: center;
+.button:hover {
+  opacity: 100%;
+  cursor: pointer;
+}
+
+.button input[type="submit"] {
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  background: var(--containerColour);
+  border: none;
+  font-size: 30px;
+  color: white;
+}
+
+.button input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.inputTextField input {
+  font-size: 100%;
+  background: transparent;
+  color: black;
+  border-width: 0 0 2px 0;
+  border-color: var(--containerColour);
+  width: 75%;
+  height: 3em;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  text-align: center;
+}
+
+.addgoal input[type="submit"] {
+  background-color: var(--containerColour);
+  color: white;
+  border-style: none;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 15px;
+  opacity: 50%;
+}
+
+.addgoal input[type="submit"]:hover {
+  opacity: 100%;
+  cursor: pointer;
 }

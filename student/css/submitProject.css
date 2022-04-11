@@ -1,20 +1,35 @@
-.title{
-    text-align: center;
-    border-style:solid;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-  }
+.title {
+  text-align: center;
+  border-style: solid;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
 
-.inputTextField input{
-    font-size: 100%;
-    background: transparent;
-    color: black;
-    border-width: 0 0 2px 0;
-    border-color: var(--containerColour);
-    width: 75%;
-    height: 3em;
-    font-family: "Roboto", Verdana, Arial, sans-serif;
-    text-align: center;
+.inputTextField input {
+  font-size: 100%;
+  background: transparent;
+  color: black;
+  border-width: 0 0 2px 0;
+  border-color: var(--containerColour);
+  width: 75%;
+  height: 3em;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  text-align: center;
+}
+
+.submitProject input[type="submit"] {
+  background-color: var(--containerColour);
+  color: white;
+  border-style: none;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 15px;
+  opacity: 50%;
+}
+
+.submitProject input[type="submit"]:hover {
+  opacity: 100%;
+  cursor: pointer;
 }
