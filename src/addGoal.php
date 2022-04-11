@@ -12,10 +12,16 @@ $student_name = $_GET['student_id'];
 
 //Handle percentage offset
 if ($goal_percentage > 100 || $goal_percentage < 1) {
-    echo ("<script>
+    echo("<script>
         alert('Goal percentage invalid');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
+    die;
+}
+if ($project_id === "PRNUL") {
+    echo "<script>alert('No project selected');
+        window.location.href='../student/student_GoalSetting_ProgressTracking.php';
+        </script>";
     die;
 }
 
@@ -28,7 +34,7 @@ $get_check_query = "SELECT GOAL_ID FROM Goal";
 //Append 1 to ID
 $goal_id = getID($con, "goal");
 if ($goal_id === "invalid") {
-    echo ("<script>
+    echo("<script>
         alert('invalid ID, please try again');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
@@ -44,13 +50,13 @@ $addGoal_query->close();
 $con->next_result();
 
 if (mysqli_affected_rows($con)) {
-    echo ("<script>
+    echo("<script>
         alert('Goal successfully added!');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
     die;
 } else {
-    echo ("<script>
+    echo("<script>
         alert('Something went wrong!');
         window.location.href='../student/student_GoalSetting_ProgressTracking.php';
         </script>");
