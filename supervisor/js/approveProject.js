@@ -18,6 +18,7 @@ const approveBtn = document.getElementsByClassName("approve-btn").item(0);
 var projectID;
 
 closeBtn.addEventListener("click", () => {
+  title.innerHTML = "Approve project";
   approveProjectBox.classList.toggle("visible");
   studentProposedProjectListBox.classList.toggle("hidden");
 });
