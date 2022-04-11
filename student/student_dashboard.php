@@ -14,6 +14,12 @@ $queryProj = $con->prepare('SELECT * FROM Project WHERE STUDENT_ID = "' . $user_
 $queryProj->execute();
 $queryProj_result = $queryProj->get_result();
 
+$queryMark = $con->prepare('SELECT * FROM Mark WHERE STUDENT_ID = "' . $user_data["STUDENT_ID"] . '"');
+$queryMark->execute();
+$queryMark_result = $queryMark->get_result();
+
+
+
 ?>
 
 
@@ -23,7 +29,7 @@ $queryProj_result = $queryProj->get_result();
 <head>
     <meta charset="UTF-8">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="css/student_dashboard.css">
+    <link rel="stylesheet" href="../student/css/student_dashboard.css">
     <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
     <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
 </head>
@@ -128,6 +134,24 @@ $queryProj_result = $queryProj->get_result();
             } else {
                 echo '<h2>There are no goals set at the moment</h2>';
             }
+            ?>
+        </div>
+        <div id="mark-box">
+            <?php
+                 if ($queryMark_result && mysqli_num_rows($queryMark_result) > 0) {
+                    echo '<h3>Mark Submission Status</h3>';
+                    while ($mark_arr = mysqli_fetch_assoc($queryMark_result)) {
+                        echo '<div><b>Project Name:</b> '.$mark_arr['NAME'].'</div>';
+                        echo '<div><b>Supervisor:</b> '.$mark_arr['SUPERVISOR_ID'].'</div>';
+                        if ($mark_arr['IS_MARKED'] === 0) {
+                            echo '<div><b>Mark Status:</b>Pending</div>';
+                        } else {
+                            echo '<div><b>Mark Status:</b>Completed</div>';
+                            echo '<div><b>Marks Given:</b>'.($mark_arr['PERCENTAGE']*100).'</div>';
+                        }
+                        
+                    }
+                }
             ?>
         </div>
     </div>
