@@ -72,9 +72,9 @@ $user_data = checkLogin($con);
                     <h1>Student Proposed Project List</h1>
                     <?php
 
-                    $sql = "SELECT * FROM Project where STUDENT_ID is not null and APPROVED_SUPERVISOR = 0 ";
+                    $sql = "SELECT * FROM Project where STUDENT_ID is not null and SUPERVISOR_ID = ? and APPROVED_SUPERVISOR = 0";
                     $getProject_query = $con->prepare($sql);
-                    $getProject_query->execute();
+                    $getProject_query->execute([$user_data['SUPERVISOR_ID']]);
                     $getProject_query_result = $getProject_query->get_result();
                     $getProject_query->close();
                     $con->next_result();
