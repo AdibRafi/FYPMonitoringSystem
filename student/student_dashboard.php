@@ -1,24 +1,25 @@
 <?php
-    session_start();
+session_start();
 
-    require ("../src/functions.php");
-    require ("../src/database.php");
+require("../src/functions.php");
+require("../src/database.php");
 
-    $user_data = checkLogin($con);
+$user_data = checkLogin($con);
 
-    $queryGoal = $con->prepare("SELECT * FROM Goal");
-    $queryGoal->execute();
-    $queryGoal_result = $queryGoal->get_result();
+$queryGoal = $con->prepare("SELECT * FROM Goal");
+$queryGoal->execute();
+$queryGoal_result = $queryGoal->get_result();
 
-    $queryProj = $con->prepare("SELECT * FROM Project");
-    $queryProj->execute();
-    $queryProj_result = $queryProj->get_result();
+$queryProj = $con->prepare("SELECT * FROM Project");
+$queryProj->execute();
+$queryProj_result = $queryProj->get_result();
 
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Student Dashboard</title>
@@ -26,11 +27,12 @@
     <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
     <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
 </head>
+
 <body>
     <header class="header">
         <img class="menu-icon" src="../src/icon/menu_128px.png" alt="menu icon" title="Menu">
         <div class="welcome-msg">
-            Welcome, <?php echo $user_data['NAME']?>.
+            Welcome, <?php echo $user_data['NAME'] ?>.
         </div>
     </header>
     <div class="container">
@@ -51,7 +53,7 @@
                     </li>
                     <li>
                         <a href="../student/submitProject.php"><img class="sidebar-item" src="../src/icon/submit_project.png" alt="project submission icon" title="Project Submission"></a>
-                    </li>                    
+                    </li>
                 </ul>
             </div>
             <div class="bottom-sidebar">
@@ -66,52 +68,53 @@
             </div>
         </div>
         <div class="content">
-            <div class = "banner">
-                <h1 class = "student">Welcome to Student Dashboard</h1>
-                
-                    <?php
-                        //Insert project data here
-                        if ($queryProj_result && mysqli_num_rows($queryGoal_result) > 0) {
-                            while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
-                                if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {  
-                                    echo '<div class = "projectBox">';
-                                    echo '<div> <b>Project ID:</b> '.$project_arr['PROJ_ID'].'</div>';
-                                    echo '<div> <b>Project Name:</b> '.$project_arr['NAME'].'</div>';
-                                    echo '</div>';
-                                }
-                            }
-                        } else {
-                            echo '<h2>There are no projects at the moment</h2>';
+            <div class="banner">
+                <h1 class="student">Welcome to Student Dashboard</h1>
+
+                <?php
+                //Insert project data here
+                if ($queryProj_result && mysqli_num_rows($queryProj_result) > 0) {
+                    while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
+                        if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {
+                            echo '<div class = "projectBox">';
+                            echo '<div> <b>Project ID:</b> ' . $project_arr['PROJ_ID'] . '</div>';
+                            echo '<div> <b>Project Name:</b> ' . $project_arr['NAME'] . '</div>';
+                            echo '</div>';
                         }
-                        
-                    ?>
-                 
-            </div> 
+                    }
+                } else {
+                    echo '<h2>There are no projects at the moment</h2>';
+                }
+
+                ?>
+
+            </div>
             <div class="skill-bars">
                 <div class="goal">
                     <span>Goal</span>
                 </div>
                 <?php
-                    if ($queryGoal_result && mysqli_num_rows($queryGoal_result) > 0) {
-                        while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
-                            $goal_percentage = $goal_arr['PERCENTAGE']*100;
-                            $goal_percentage .= "%";
-                            echo '<div class="bar">';
-                            
-                                echo '<div class="info">';
-                                echo '<span>'.$goal_arr['NAME'].'</span>';
-                                echo '</div>';
-                                echo "<div class='progress-line GoalDescription'>";
-                                echo '<span style="width:'.$goal_percentage.'" afterback="'.$goal_percentage.'"></span>';
-                                echo '</div>';
-                            echo '</div>';
-                        }
-                    } else {
-                        echo '<h2>There are no goals set at the moment</h2>';
+                if ($queryGoal_result && mysqli_num_rows($queryGoal_result) > 0) {
+                    while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
+                        $goal_percentage = $goal_arr['PERCENTAGE'] * 100;
+                        $goal_percentage .= "%";
+                        echo '<div class="bar">';
+
+                        echo '<div class="info">';
+                        echo '<span>' . $goal_arr['NAME'] . '</span>';
+                        echo '</div>';
+                        echo "<div class='progress-line GoalDescription'>";
+                        echo '<span style="width:' . $goal_percentage . '" afterback="' . $goal_percentage . '"></span>';
+                        echo '</div>';
+                        echo '</div>';
                     }
+                } else {
+                    echo '<h2>There are no goals set at the moment</h2>';
+                }
                 ?>
             </div>
         </div>
     </div>
 </body>
+
 </html>

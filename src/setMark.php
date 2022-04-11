@@ -28,7 +28,6 @@ $writeStyleScore = $_GET["writeStyleScore"];
 $figureScore = $_GET["figureScore"];
 $abbreviationScore = $_GET["abbreviationScore"];
 $studentId = $_GET["studentId"];
-$PATH = "";
 
 if (isset($studentId) && isset($abstractScore) && isset($problemStatementScore) && isset($literatureReviewScore) && isset($proposeSolutionScore) && isset($spellingScore) && isset($writeStyleScore) && isset($figureScore) && isset($abbreviationScore)) {
 
@@ -56,12 +55,10 @@ if (isset($studentId) && isset($abstractScore) && isset($problemStatementScore) 
         die;
     }
 
-    $markId = getID($con, "mark");
-
     //Insert data into database accordingly
-    $sql = "INSERT INTO Mark (MARK_ID,NAME,PATH,PERCENTAGE,IS_MARKED,SUPERVISOR_ID,STUDENT_ID) values (?,?,?,?,?,?,?)";
+    $sql = "UPDATE Mark SET PERCENTAGE = ?, IS_MARKED = 1 WHERE STUDENT_ID = ?";
     $addMark_query = $con->prepare($sql);
-    $addMark_query->execute([$markId, $studentData["NAME"] . " Mark", $PATH, $totalScore / 100, 1, $_SESSION["SUPERVISOR_ID"], $studentData["STUDENT_ID"]]);
+    $addMark_query->execute([$totalScore / 100, $studentId]);
     $addMark_query_result = $addMark_query->get_result();
 
     $addMark_query->close();

@@ -96,13 +96,13 @@ function generateRow($markName, $weightAge, $descriptionID, $radioName, $jsFunct
             <form action="../src/setMark.php" method="get" id="mainForm">
 
                 <div class="marksheet-box">
-                    <h1>Mark Sheets</h1>
+                    <h1>Welcome to Supervisor Mark Sheets</h1>
                     <div style="padding-bottom: 20px">
                         Select Students:
                         <select name="studentId" id="studentType" onchange="studentProject(this)">
                             <?php
                             //GET THE LIST OF STUDENT WITH NO MARK AND HAVE A PROJECT ASSIGNED TO THEM
-                            $sql = "SELECT * FROM Student WHERE NOT EXISTS(SELECT STUDENT_ID FROM Mark WHERE Mark.STUDENT_ID=Mark.STUDENT_ID) and STUDENT_ID in (SELECT STUDENT_ID FROM Project WHERE STUDENT_ID is NOT NULL);";
+                            $sql = "SELECT Student.NAME,Student.STUDENT_ID FROM Student,Mark WHERE Student.STUDENT_ID = Mark.STUDENT_ID and Mark.PATH is not null and Mark.PERCENTAGE = 0.01";
                             $result = $con->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
