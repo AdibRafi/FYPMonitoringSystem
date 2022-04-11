@@ -69,7 +69,7 @@ $queryGoal_result = $queryGoal->get_result();
         <div class="bottom-sidebar">
             <ul class="sidebar-item-list">
                 <li>
-                    <img class="sidebar-item" src="../src/icon/edit_profile_128px.png" alt="edit profile icon"
+                    <a href="editProfile.php"><img class="sidebar-item" src="../src/icon/edit_profile_128px.png" alt="edit profile icon"
                          title="Edit Profile">
                 </li>
                 <li>

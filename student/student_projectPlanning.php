@@ -58,7 +58,7 @@ $querySup_result = $querySup->get_result();
             <div class="bottom-sidebar">
                 <ul class="sidebar-item-list">
                     <li>
-                        <img class="sidebar-item" src="../src/icon/edit_profile_128px.png" alt="edit profile icon" title="Edit Profile">
+                        <a href="editProfile.php"><img class="sidebar-item" src="../src/icon/edit_profile_128px.png" alt="edit profile icon" title="Edit Profile">
                     </li>
                     <li>
                         <a href="../src/logout.php"><img class="sidebar-item" src="../src/icon/logout_128px.png" alt="logout icon" title="Logout"></a>

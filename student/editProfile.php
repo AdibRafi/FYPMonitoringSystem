@@ -16,10 +16,10 @@ $user_data = checkLogin($con);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Proposal Management</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="css/sidebarStudent_header.css">
+    <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
     <link rel="stylesheet" href="css/editProfile.css">
     <!-- Javascipts -->
-    <script type="text/javascript" src="js/sidebar.js" defer></script>
+    <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
     <script type="text/javascript" src="js/editProfile.js" defer></script>
 </head>
 
