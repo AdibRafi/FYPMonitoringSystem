@@ -10,7 +10,7 @@ $queryProj = $con->prepare("SELECT PROJ_ID,NAME,STUDENT_ID FROM Project");
 $queryProj->execute();
 $queryProj_result = $queryProj->get_result();
 
-$queryGoal = $con->prepare("SELECT * FROM Goal");
+$queryGoal = $con->prepare('SELECT * FROM Goal WHERE STUDENT_ID = "' . $user_data["STUDENT_ID"] . '"');
 $queryGoal->execute();
 $queryGoal_result = $queryGoal->get_result();
 ?>
@@ -59,18 +59,19 @@ $queryGoal_result = $queryGoal->get_result();
                                                                              title="Meeting Management"></a>
                 </li>
                 <li>
-                        <a href="../student/submitProject.php"><img class="sidebar-item" 
-                                                                    src="../src/icon/submit_project.png" 
-                                                                    alt="project submission icon" 
-                                                                    title="Project Submission"></a>
-                </li>  
+                    <a href="../student/submitProject.php"><img class="sidebar-item"
+                                                                src="../src/icon/submit_project.png"
+                                                                alt="project submission icon"
+                                                                title="Project Submission"></a>
+                </li>
             </ul>
         </div>
         <div class="bottom-sidebar">
             <ul class="sidebar-item-list">
                 <li>
-                    <a href="editProfile.php"><img class="sidebar-item" src="../src/icon/edit_profile_128px.png" alt="edit profile icon"
-                         title="Edit Profile">
+                    <a href="editProfile.php"><img class="sidebar-item" src="../src/icon/edit_profile_128px.png"
+                                                   alt="edit profile icon"
+                                                   title="Edit Profile">
                 </li>
                 <li>
                     <a href="../src/logout.php"><img class="sidebar-item" src="../src/icon/logout_128px.png"
@@ -101,8 +102,8 @@ $queryGoal_result = $queryGoal->get_result();
                                 <?php
                                 //Foreach loop to send the id values and the option
                                 while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
-                                    if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {                              
-                                        echo '<option value="' . $project_arr['PROJ_ID']. '">' . $project_arr['NAME'] . '</option>';
+                                    if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {
+                                        echo '<option value="' . $project_arr['PROJ_ID'] . '">' . $project_arr['NAME'] . '</option>';
                                     }
                                 }
                                 ?>
@@ -127,16 +128,16 @@ $queryGoal_result = $queryGoal->get_result();
         <div class="currentGoal">
             <section>
                 <?php
-                $queryGoal = $con->prepare("SELECT * FROM Goal");
+                $queryGoal = $con->prepare('SELECT * FROM Goal WHERE STUDENT_ID = "' . $user_data["STUDENT_ID"] . '"');
                 $queryGoal->execute();
                 $queryGoal_result = $queryGoal->get_result();
 
                 if ($queryGoal_result && mysqli_num_rows($queryGoal_result) > 0) {
                     while ($goal_arr = mysqli_fetch_assoc($queryGoal_result)) {
                         echo '<p class="fontsizeGoal">' . $goal_arr['NAME'] . '
-                        <a href="#" onclick="openGoalRemove(\''.(string)$goal_arr['GOAL_ID'].'\')"><img class="deleteIcon" 
+                        <a href="#" onclick="openGoalRemove(\'' . (string)$goal_arr['GOAL_ID'] . '\')"><img class="deleteIcon" 
                         src="../src/icon/delete_icon.png" alt="delete icon" title="Delete Goal"></a>
-                        <a href="#" onclick="openGoalEdit(\''.$goal_arr['GOAL_ID'].'\')"><img class="editIcon" 
+                        <a href="#" onclick="openGoalEdit(\'' . $goal_arr['GOAL_ID'] . '\')"><img class="editIcon" 
                         width="20" height="20" src="../src/icon/edit.png" alt="edit icon" 
                         title="Edit Goal"></a></p>';
                     }
@@ -152,35 +153,35 @@ $queryGoal_result = $queryGoal->get_result();
         <div class="popupRemove" id="removeContent">
         </div>
     </div>
-    
+
 </body>
 <?php
-    /*
-    <div class="popupEdit">
-    <div class="popup-content">
-        <form method="get" action="../src/modifyGoal.php">
-            <h2><label>Change Percentage</label></h2>
-            <a href="#" onclick="closeGoalEdit()"><img class="closeBtn" src="../src/icon/exitIcon.png"
-                                                       style="width: 42px; height: 42px;" alt="exit"></a>
-            <input type="text" class="popupInput" placeholder="New Percentage">
-            <?php
-            echo '<input type="hidden" name ="goal_id" value="">';
-            ?>
-            <p class="button"><input type="Submit" value="Save Changes"></p>
-        </form>
-    </div>
+/*
+<div class="popupEdit">
+<div class="popup-content">
+    <form method="get" action="../src/modifyGoal.php">
+        <h2><label>Change Percentage</label></h2>
+        <a href="#" onclick="closeGoalEdit()"><img class="closeBtn" src="../src/icon/exitIcon.png"
+                                                   style="width: 42px; height: 42px;" alt="exit"></a>
+        <input type="text" class="popupInput" placeholder="New Percentage">
+        <?php
+        echo '<input type="hidden" name ="goal_id" value="">';
+        ?>
+        <p class="button"><input type="Submit" value="Save Changes"></p>
+    </form>
+</div>
 </div>
 
 <div class="popupRemove">
-    <div class="popup-content">
-        <form method="get" action="../src/modifyGoal.php">
-        <h2><label>Are you sure you want to remove this goal?</label></h2>
-        <a href="#" onclick="closeGoalRemove()"><img class="closeBtn" src="../src/icon/exitIcon.png"
-                                                     style="width: 42px; height: 42px;" alt="exit"></a>
-        <a href="../src/removeGoal.php" class="button">Yes</a>
-        <a href="#" onclick="closeGoalRemove()" class="button">No</a>
-        </form>
-    </div>
+<div class="popup-content">
+    <form method="get" action="../src/modifyGoal.php">
+    <h2><label>Are you sure you want to remove this goal?</label></h2>
+    <a href="#" onclick="closeGoalRemove()"><img class="closeBtn" src="../src/icon/exitIcon.png"
+                                                 style="width: 42px; height: 42px;" alt="exit"></a>
+    <a href="../src/removeGoal.php" class="button">Yes</a>
+    <a href="#" onclick="closeGoalRemove()" class="button">No</a>
+    </form>
+</div>
 </div>
 */
 ?>
