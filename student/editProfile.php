@@ -38,7 +38,7 @@ $user_data = checkLogin($con);
                         <a href="student_dashboard.php"><img class="sidebar-item" src="../src/icon/studentDashboard.png" alt="goal setting & progress setting icon" title="Goal Setting & Progress Setting"></a>
                     </li>
                     <li>
-                        <a  href="student_GoalSetting_ProgressTracking.php"><img class="sidebar-item" src="../src/icon/goal_progress_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
+                        <a href="student_GoalSetting_ProgressTracking.php"><img class="sidebar-item" src="../src/icon/goal_progress_128px.png" alt="project proposal management icon" title="Project Proposal Management"></a>
                     </li>
                     <li>
                         <a href="student_projectPlanning.php"><img class="sidebar-item" src="../src/icon/project_planning_128px.png" alt="project planning icon" title="Project Planning"></a>
@@ -48,7 +48,7 @@ $user_data = checkLogin($con);
                     </li>
                     <li>
                         <a href="../student/submitProject.php"><img class="sidebar-item" src="../src/icon/submit_project.png" alt="project submission icon" title="Project Submission"></a>
-                    </li>  
+                    </li>
                 </ul>
             </div>
             <div class="bottom-sidebar">

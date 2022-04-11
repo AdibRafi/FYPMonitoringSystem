@@ -1,6 +1,6 @@
-#mark-box{
+#mark-box {
   justify-content: center;
-    /* border: 1px solid black; */
+  /* border: 1px solid black; */
   padding: 1rem;
   border-radius: 10px;
   margin-top: 2rem;
@@ -8,11 +8,11 @@
   color: white;
 }
 
-.skill-bars{
+.skill-bars {
   padding: 25px 30px;
   width: 600px;
   background: #fff;
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   position: fixed;
   /*right:80px; 
@@ -21,19 +21,19 @@
   top: 60%;
 }
 
-.skill-bars .bar{
+.skill-bars .bar {
   margin: 20px 0;
 }
 
-.skill-bars .bar:first-child{
+.skill-bars .bar:first-child {
   margin-top: 0px;
 }
 
-.skill-bars .bar .info{
+.skill-bars .bar .info {
   margin-bottom: 5px;
 }
 
-.skill-bars .bar .info span{
+.skill-bars .bar .info span {
   font-weight: 500;
   font-size: 17px;
   opacity: 0;
@@ -41,12 +41,12 @@
 }
 
 @keyframes showText {
-  100%{
+  100% {
     opacity: 1;
   }
 }
 
-.skill-bars .bar .progress-line{
+.skill-bars .bar .progress-line {
   height: 10px;
   width: 100%;
   background: #f0f0f0;
@@ -54,28 +54,28 @@
   transform: scaleX(0);
   transform-origin: left;
   border-radius: 10px;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05),
-              0 1px rgba(255,255,255,0.8);
-  animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    0 1px rgba(255, 255, 255, 0.8);
+  animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
 @keyframes animate {
-  100%{
+  100% {
     transform: scaleX(1);
   }
 }
 
-.bar .progress-line span{
+.bar .progress-line span {
   height: 100%;
   position: absolute;
   border-radius: 10px;
   transform: scaleX(0);
   transform-origin: left;
   background: #6665ee;
-  animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-.progress-line span::before{
+.progress-line span::before {
   position: absolute;
   content: "";
   top: -10px;
@@ -90,7 +90,7 @@
   animation: showText2 0.5s 1.5s linear forwards;
 }
 
-.progress-line span::after{
+.progress-line span::after {
   position: absolute;
   top: -28px;
   right: 0;
@@ -105,18 +105,16 @@
 }
 
 @keyframes showText2 {
-  100%{
+  100% {
     opacity: 1;
   }
 }
-
-
 
 .progress-line.GoalDescription span::after {
   content: attr(afterBack);
 }
 
-.goal{
+.goal {
   font-size: large;
   margin-bottom: 10px;
   border-style: solid;
@@ -124,13 +122,13 @@
   text-align: center;
 }
 
-.banner{
+.banner {
   padding-left: 30px;
 }
 
-.student{
+.student {
   text-align: center;
-  border-style:solid;
+  border-style: solid;
   padding-top: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -143,4 +141,3 @@
   border: 5px solid gray;
   margin: 0;
 }
-

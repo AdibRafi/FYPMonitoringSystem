@@ -22,8 +22,8 @@ $querySup_result = $querySup->get_result();
 <head>
     <meta charset="UTF-8">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="css/student_ProjectPlanning.css">
     <link rel="stylesheet" href="../supervisor/css/sidebar_header.css">
+    <link rel="stylesheet" href="css/student_ProjectPlanning.css">
     <script type="text/javascript" src="../supervisor/js/sidebar.js" defer></script>
 </head>
 
@@ -52,7 +52,7 @@ $querySup_result = $querySup->get_result();
                     </li>
                     <li>
                         <a href="../student/submitProject.php"><img class="sidebar-item" src="../src/icon/submit_project.png" alt="project submission icon" title="Project Submission"></a>
-                    </li>  
+                    </li>
                 </ul>
             </div>
             <div class="bottom-sidebar">
@@ -120,7 +120,7 @@ $querySup_result = $querySup->get_result();
                             ?>
                     </div>
 
-                   
+
 
                     <div class="studentHiddenValue ">
                         <?php
