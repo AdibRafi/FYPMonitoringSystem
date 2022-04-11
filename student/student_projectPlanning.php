@@ -10,7 +10,7 @@ $queryProj = $con->prepare("SELECT * FROM Project");
 $queryProj->execute();
 $queryProj_result = $queryProj->get_result();
 
-$querySup = $con->prepare("SELECT SUPERVISOR_ID,NAME FROM Supervisor");
+$querySup = $con->prepare("SELECT SUPERVISOR_ID,NAME,ISVERIFIED FROM Supervisor");
 $querySup->execute();
 $querySup_result = $querySup->get_result();
 
@@ -115,7 +115,9 @@ $querySup_result = $querySup->get_result();
                             <?php
                             //Foreach loop to send the id values and the option
                             while ($sup_arr = mysqli_fetch_assoc($querySup_result)) {
-                                echo '<option value="' . $sup_arr['SUPERVISOR_ID'] . '">' . $sup_arr['NAME'] . '</option>';
+                                if ($sup_arr['ISVERIFIED'] == 1) {
+                                    echo '<option value="' . $sup_arr['SUPERVISOR_ID'] . '">' . $sup_arr['NAME'] . '</option>';
+                                }
                             }
                             ?>
                     </div>
