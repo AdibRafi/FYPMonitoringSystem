@@ -90,7 +90,9 @@ $queryProj_result = $queryProj->get_result();
             //Insert project data here
             if ($queryProj_result && mysqli_num_rows($queryProj_result) > 0) {
                 while ($project_arr = mysqli_fetch_assoc($queryProj_result)) {
-                    if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']) {
+                    if ($project_arr['STUDENT_ID'] === $_SESSION['STUDENT_ID']
+                        && $project_arr['APPROVED_SUPERVISOR'] == 1
+                        && $project_arr['APPROVED_ADMIN'] == 1) {
                         echo '<div class = "projectBox">';
                         echo '<div> <b>Project ID:</b> ' . $project_arr['PROJ_ID'] . '</div>';
                         echo '<div> <b>Project Name:</b> ' . $project_arr['NAME'] . '</div>';
