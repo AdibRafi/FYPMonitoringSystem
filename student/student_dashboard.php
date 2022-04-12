@@ -138,6 +138,8 @@ $queryMark_result = $queryMark->get_result();
                         }
                     }
                 }
+                else
+                    echo '<h3>Marks Unavailable</h3>'
                 ?>
             </div>
         </div>
