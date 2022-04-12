@@ -66,7 +66,7 @@ $user_data = checkLogin($con);
         </div>
         <div class="content">
             <div class="student-to-project-assignment-box">
-                <h1>Welcome to Student-to-Project Assginment</h1>
+                <h1>Welcome to Student-to-Project Assignment</h1>
                 <div class="approved-project-list-box">
                     <h1>Approved Project List</h1>
                     <?php
