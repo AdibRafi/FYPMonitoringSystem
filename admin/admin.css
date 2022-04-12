@@ -154,3 +154,12 @@ input[type="radio"]:checked + label:before {
     width: 20px;
     height: 20px;
 }
+
+input[type='checkbox']{
+    transform: scale(1.5);
+}
+
+input[type='checkbox']:checked{
+    accent-color: #8a5e4a;
+}
+
