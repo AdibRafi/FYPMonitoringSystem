@@ -95,7 +95,7 @@ require('../../src/database.php');
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo '<tr onclick="selectRow(this)">
-                        <td><input type="checkbox" name="supervisor[]" value="' . $row["SUPERVISOR_ID"] . '"></td>
+                        <td><input onclick="this.checked = !this.checked;" type="checkbox" name="supervisor[]" value="' . $row["SUPERVISOR_ID"] . '"></td>
                         <td>' . $row["SUPERVISOR_ID"] . '</td>
                         <td>' . $row["NAME"] . '</td>
                         <td>' . $row["AGE"] . '</td>
