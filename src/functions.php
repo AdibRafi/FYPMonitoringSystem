@@ -51,7 +51,6 @@ function checkLogin($con)
 
         if ($login_check_query_result) {
             return $login_check_query_result;
-            die;
         }
     } else if (isset($_SESSION['STUDENT_ID'])) {
         $student_id = $_SESSION['STUDENT_ID'];
@@ -59,7 +58,6 @@ function checkLogin($con)
 
         if ($login_check_query_result) {
             return $login_check_query_result;
-            die;
         }
     }
 
@@ -78,16 +76,13 @@ function checkUsername($user_id, $user_type)
     if ($user_type == "student") {
         //Student
         $query = $con->prepare("SELECT STUDENT_ID FROM Student WHERE STUDENT_ID == ?");
-        $query->bind_param("s", $user_id);
-        $query->execute();
-        $query_result = $query->get_result();
     } else {
         //Supervisor
         $query = $con->prepare("SELECT USER_ID FROM Supervisor WHERE SUPERVISOR_ID == ?");
-        $query->bind_param("s", $user_id);
-        $query->execute();
-        $query_result = $query->get_result();
     }
+    $query->bind_param("s", $user_id);
+    $query->execute();
+    $query_result = $query->get_result();
 
     if ($query_result && mysqli_num_rows($query_result) > 0) {
 
@@ -118,7 +113,7 @@ function getID($con, $type): string
             $query->execute();
             $query_result = $query->get_result();
             $lastrow = $query_result->fetch_assoc();
-            if ($query_result && mysqli_num_rows($query_result) > 0) {
+            if (mysqli_num_rows($query_result) > 0) {
                 $id = preg_replace_callback("|(\d+)|", "increment", $lastrow['MEET_ID']);
             } else {
                 $id = "MT001";
@@ -129,7 +124,7 @@ function getID($con, $type): string
             $query->execute();
             $query_result = $query->get_result();
             $lastrow = $query_result->fetch_assoc();
-            if ($query_result && mysqli_num_rows($query_result) > 0) {
+            if (mysqli_num_rows($query_result) > 0) {
                 $id = preg_replace_callback("|(\d+)|", "increment", $lastrow['GOAL_ID']);
             } else {
                 $id = "GO001";
@@ -140,7 +135,7 @@ function getID($con, $type): string
             $query->execute();
             $query_result = $query->get_result();
             $lastrow = $query_result->fetch_assoc();
-            if ($query_result && mysqli_num_rows($query_result) > 0) {
+            if (mysqli_num_rows($query_result) > 0) {
                 $id = preg_replace_callback("|(\d+)|", "increment", $lastrow['MARK_ID']);
             } else {
                 $id = "MK001";
@@ -151,7 +146,7 @@ function getID($con, $type): string
             $query->execute();
             $query_result = $query->get_result();
             $lastrow = $query_result->fetch_assoc();
-            if ($query_result && mysqli_num_rows($query_result) > 0) {
+            if (mysqli_num_rows($query_result) > 0) {
                 $id = preg_replace_callback("|(\d+)|", "increment", $lastrow['PROJ_ID']);
             } else {
                 $id = "PR001";
@@ -211,7 +206,7 @@ function getNameFromID($con, $id, $type): string
     return $name;
 }
 
-function isApproved($APPROVED_SUPERVISOR, $APPROVED_ADMIN)
+function isApproved($APPROVED_SUPERVISOR, $APPROVED_ADMIN): string
 {
     if ($APPROVED_SUPERVISOR == "1" && $APPROVED_ADMIN == "1") {
         return 'Approved';

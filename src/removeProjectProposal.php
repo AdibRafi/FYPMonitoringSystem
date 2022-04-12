@@ -17,7 +17,7 @@ if (mysqli_affected_rows($con) > 0) {
     $con->next_result();
 
     echo ("<script>
-        alert('Project successfully approved!');
+        alert('Project successfully unapproved!');
         window.location.href='../supervisor/project_proposal_management.php';
         </script>");
     die;
