@@ -13,6 +13,19 @@ function getStudentDatabyStudentID($con, $studentID)
 
     return mysqli_fetch_assoc($getStudentName_query_result);
 }
+function getMarkDatabyStudentID($con, $studentID)
+{
+
+    $getStudentName_query = $con->prepare("SELECT * FROM Mark where STUDENT_ID = ?");
+    $getStudentName_query->bind_param("s", $studentID);
+    $getStudentName_query->execute();
+    $getStudentName_query_result = $getStudentName_query->get_result();
+
+    $getStudentName_query->close();
+    $con->next_result();
+
+    return mysqli_fetch_assoc($getStudentName_query_result);
+}
 
 function getSupervisorDatabySupervisorID($con, $supervisorID)
 {
