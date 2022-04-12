@@ -7,7 +7,7 @@ require('functions.php');
 
 $projectID = $_GET['projectID'];
 
-$sql = "UPDATE Project SET APPROVED_SUPERVISOR = NULL WHERE PROJ_ID = ?";
+$sql = "DELETE FROM Project WHERE PROJ_ID = ?";
 $removeProject_query = $con->prepare($sql);
 $removeProject_query->execute([$projectID]);
 $approveProject_query_result = $removeProject_query->get_result();

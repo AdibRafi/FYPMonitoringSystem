@@ -152,7 +152,7 @@ $user_data = checkLogin($con);
                                             <?php
                                             require("../src/database.php");
 
-                                            $getStudentList_query = $con->prepare("SELECT * FROM Student");
+                                            $getStudentList_query = $con->prepare("SELECT * FROM Student WHERE ISVERIFIED = 1");
                                             $getStudentList_query->execute();
                                             $result = $getStudentList_query->get_result();
 

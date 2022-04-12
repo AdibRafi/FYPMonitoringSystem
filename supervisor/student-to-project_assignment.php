@@ -100,7 +100,10 @@ $user_data = checkLogin($con);
                     <div class="select-student">
                         <select required title='Student name' id='student-id' name='student_id'>
                             <?php
-                            $sql = "SELECT STUDENT_ID,NAME FROM Student WHERE NOT EXISTS(SELECT STUDENT_ID FROM Project WHERE Project.STUDENT_ID=Student.STUDENT_ID);";
+                            $sql = "SELECT STUDENT_ID,NAME FROM Student WHERE NOT EXISTS
+                                    (SELECT STUDENT_ID FROM Project WHERE
+                                    Project.STUDENT_ID=Student.STUDENT_ID) AND 
+                                    ISVERIFIED = 1;";
                             $getStudent_query = $con->prepare($sql);
                             $getStudent_query->execute();
                             $getStudent_query_result = $getStudent_query->get_result();
