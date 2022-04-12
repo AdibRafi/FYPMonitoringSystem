@@ -92,7 +92,7 @@ require('../../src/database.php');
                         <th>Supervisor ID</th>
                     </tr>
                     <?php
-                    $sql = "SELECT * from Project where  APPROVED_ADMIN = 0";
+                    $sql = "SELECT * from Project where  APPROVED_ADMIN = 0 AND APPROVED_SUPERVISOR = 1;";
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
