@@ -14,7 +14,7 @@ require('../../../src/database.php');
     <link rel="stylesheet" href="../../../supervisor/css/sidebar_header.css" type="text/css">
     <script type="text/javascript" src="../../admin.js"></script>
     <script type="text/javascript" src="../../../supervisor/js/sidebar.js" defer></script>
-    
+
 </head>
 <body>
 <header class="header">
@@ -66,10 +66,10 @@ require('../../../src/database.php');
         </div>
         <div class="bottom-sidebar">
             <ul class="sidebar-item-list">
-<!--                <li>-->
-<!--                    <img class="sidebar-item" src="../../../src/icon/edit_profile_128px.png" alt="edit profile icon"-->
-<!--                         title="Edit Profile">-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                    <img class="sidebar-item" src="../../../src/icon/edit_profile_128px.png" alt="edit profile icon"-->
+                <!--                         title="Edit Profile">-->
+                <!--                </li>-->
                 <li>
                     <a href="../../../src/logout.php"><img class="sidebar-item" src="../../../src/icon/logout_128px.png"
                                                            alt="logout icon" title="Logout"></a>
@@ -80,7 +80,7 @@ require('../../../src/database.php');
     <div class="content">
         <div class="verify-box">
             <h1>List Supervisor</h1>
-            <h2>Click Row to Select</h2>
+            <h2>Select Supervisor ID</h2>
             <form action="listSupervisor_function.php" method="post">
                 <table>
                     <tr>
@@ -95,11 +95,11 @@ require('../../../src/database.php');
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo '<tr onclick="selectRow(this)">
+                            echo '<tr>
                         <td><div class="radioBtn">
                         <input type="radio" value="' . $row["SUPERVISOR_ID"] . '"
-                        id="select" name="selectRadio">
-                        <label for="select">' . $row["SUPERVISOR_ID"] . '</label>
+                        id="' . $row["SUPERVISOR_ID"] . '" name="selectRadio">
+                        <label for="' . $row["SUPERVISOR_ID"] . '">' . $row["SUPERVISOR_ID"] . '</label>
                         </div> </td>
                         <td>' . $row["NAME"] . '</td>
                         <td>' . $row["AGE"] . '</td>

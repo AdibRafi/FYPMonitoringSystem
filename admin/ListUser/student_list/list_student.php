@@ -78,7 +78,7 @@ require('../../../src/database.php');
     <div class="content">
         <div class="verify-box">
             <h1>List Student</h1>
-            <h2>Click Row to Select</h2>
+            <h2>Select Student ID</h2>
             <form action="listStudent_function.php" method="post">
                 <table>
                     <tr>
@@ -92,11 +92,11 @@ require('../../../src/database.php');
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo '<tr onclick="selectRow(this)">
+                            echo '<tr>
                         <td><div class="radioBtn">
                         <input type="radio" value="' . $row["STUDENT_ID"] . '"
-                        id="select" name="selectRadio">
-                        <label for="select">' . $row["STUDENT_ID"] . '</label>
+                        id="'.$row["STUDENT_ID"].'" name="selectRadio">
+                        <label for="'.$row["STUDENT_ID"].'">' . $row["STUDENT_ID"] . '</label>
                         </div> </td>
                         <td>' . $row["NAME"] . '</td>
                         <td>' . $row["AGE"] . '</td>
