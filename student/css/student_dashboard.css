@@ -16,7 +16,7 @@
 .skill-bars {
   padding: 25px 30px;
   width: 600px;
-  background: #fff;
+  background-color: var(--containerColour);
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   position: fixed;
@@ -35,7 +35,7 @@
 }
 
 .skill-bars .bar .info {
-  margin-bottom: 5px;
+  margin-bottom: 30px;
 }
 
 .skill-bars .bar .info span {
@@ -125,6 +125,7 @@
   border-style: solid;
   border-width: 5px;
   text-align: center;
+  background-color: #fff;
 }
 
 .banner {
